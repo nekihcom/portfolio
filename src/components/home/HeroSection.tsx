@@ -3,6 +3,7 @@
 import { motion } from 'framer-motion';
 import { Button } from '@/components/ui/button';
 import { ArrowDown } from 'lucide-react';
+import { profile } from '@/data/profile';
 
 export function HeroSection() {
   return (
@@ -14,9 +15,9 @@ export function HeroSection() {
         className="space-y-6 max-w-3xl"
       >
         <h1 className="text-4xl md:text-6xl font-bold tracking-tight">
-          もちけん
+          {profile.name}
           <span className="text-base md:text-xl font-normal ml-2 opacity-70">
-            (Mochiken)
+            ({profile.englishName})
           </span>
         </h1>
 
@@ -26,7 +27,7 @@ export function HeroSection() {
           animate={{ opacity: 1 }}
           transition={{ delay: 0.3, duration: 0.6 }}
         >
-          フロントエンドも、バックエンドも、アプリもインフラもやるエンジニア
+          {profile.catchphrase}
         </motion.p>
 
         <motion.div
@@ -36,13 +37,13 @@ export function HeroSection() {
           transition={{ delay: 0.6, duration: 0.6 }}
         >
           <div className="bg-muted p-3 px-6 rounded-full text-sm">
-            1997年生まれ
+            {profile.birthYear}年生まれ
           </div>
           <div className="bg-muted p-3 px-6 rounded-full text-sm">
-            埼玉県出身
+            {profile.birthPlace}出身
           </div>
           <div className="bg-muted p-3 px-6 rounded-full text-sm">
-            東京都在住
+            {profile.currentPlace}在住
           </div>
         </motion.div>
 

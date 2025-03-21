@@ -3,30 +3,24 @@
 import { motion } from 'framer-motion';
 import { Button } from '@/components/ui/button';
 import { Github, Mail, Linkedin, Twitter } from 'lucide-react';
+import { socialLinks } from '@/data/social';
 
 export function ContactSection() {
-  const socialLinks = [
-    {
-      name: 'GitHub',
-      icon: <Github className="h-5 w-5" />,
-      href: 'https://github.com/nekihcom',
-    },
-    {
-      name: 'Twitter',
-      icon: <Twitter className="h-5 w-5" />,
-      href: 'https://twitter.com/mochiken',
-    },
-    {
-      name: 'LinkedIn',
-      icon: <Linkedin className="h-5 w-5" />,
-      href: 'https://linkedin.com/in/mochiken',
-    },
-    {
-      name: 'メール',
-      icon: <Mail className="h-5 w-5" />,
-      href: 'mailto:contact@example.com',
-    },
-  ];
+  // アイコンのマッピング
+  const getIcon = (iconName: string) => {
+    switch (iconName) {
+      case 'github':
+        return <Github className="h-5 w-5" />;
+      case 'twitter':
+        return <Twitter className="h-5 w-5" />;
+      case 'linkedin':
+        return <Linkedin className="h-5 w-5" />;
+      case 'mail':
+        return <Mail className="h-5 w-5" />;
+      default:
+        return null;
+    }
+  };
 
   return (
     <section className="py-24 px-4">
@@ -60,7 +54,7 @@ export function ContactSection() {
               className="no-underline"
             >
               <Button variant="outline" className="gap-2">
-                {link.icon}
+                {getIcon(link.iconName)}
                 {link.name}
               </Button>
             </a>
