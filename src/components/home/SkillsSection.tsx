@@ -2,6 +2,7 @@
 
 import { motion } from 'framer-motion';
 import { skills, skillCategories, Skill } from '@/data/skills';
+import { Star } from 'lucide-react';
 
 function SkillCard({ skill }: { skill: Skill }) {
   return (
@@ -9,15 +10,84 @@ function SkillCard({ skill }: { skill: Skill }) {
       <h3 className="font-medium mb-2">{skill.name}</h3>
       <div className="flex gap-1">
         {Array.from({ length: 5 }).map((_, i) => (
-          <div
+          <Star
             key={i}
-            className={`h-1.5 w-full rounded-full ${
-              i < skill.level ? 'bg-primary' : 'bg-muted'
+            className={`h-5 w-5 ${
+              i < skill.level ? 'text-primary fill-primary' : 'text-muted'
             }`}
           />
         ))}
       </div>
     </div>
+  );
+}
+
+// レートの凡例コンポーネント
+function SkillLevelLegend() {
+  return (
+    <motion.div
+      initial={{ opacity: 0 }}
+      whileInView={{ opacity: 1 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.5, delay: 0.3 }}
+      className="bg-card p-4 rounded-lg shadow-sm mb-12 max-w-lg mx-auto"
+    >
+      <h3 className="text-center font-medium mb-4">スキルレベルの凡例</h3>
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+        <div className="flex items-center gap-2">
+          <div className="flex">
+            {Array.from({ length: 1 }).map((_, i) => (
+              <Star key={i} className="h-4 w-4 text-primary fill-primary" />
+            ))}
+            {Array.from({ length: 4 }).map((_, i) => (
+              <Star key={i + 1} className="h-4 w-4 text-muted" />
+            ))}
+          </div>
+          <span className="text-sm">基礎知識あり</span>
+        </div>
+        <div className="flex items-center gap-2">
+          <div className="flex">
+            {Array.from({ length: 2 }).map((_, i) => (
+              <Star key={i} className="h-4 w-4 text-primary fill-primary" />
+            ))}
+            {Array.from({ length: 3 }).map((_, i) => (
+              <Star key={i + 2} className="h-4 w-4 text-muted" />
+            ))}
+          </div>
+          <span className="text-sm">実務経験あり</span>
+        </div>
+        <div className="flex items-center gap-2">
+          <div className="flex">
+            {Array.from({ length: 3 }).map((_, i) => (
+              <Star key={i} className="h-4 w-4 text-primary fill-primary" />
+            ))}
+            {Array.from({ length: 2 }).map((_, i) => (
+              <Star key={i + 3} className="h-4 w-4 text-muted" />
+            ))}
+          </div>
+          <span className="text-sm">一人で実装可能</span>
+        </div>
+        <div className="flex items-center gap-2">
+          <div className="flex">
+            {Array.from({ length: 4 }).map((_, i) => (
+              <Star key={i} className="h-4 w-4 text-primary fill-primary" />
+            ))}
+            {Array.from({ length: 1 }).map((_, i) => (
+              <Star key={i + 4} className="h-4 w-4 text-muted" />
+            ))}
+          </div>
+          <span className="text-sm">チーム内で指導可能</span>
+        </div>
+        <div className="flex items-center gap-2 sm:col-span-2 mx-auto">
+          <div className="flex">
+            {Array.from({ length: 5 }).map((_, i) => (
+              <Star key={i} className="h-4 w-4 text-primary fill-primary" />
+            ))}
+          </div>
+          <span className="text-sm">エキスパート</span>
+        </div>
+      </div>
+    </motion.div>
   );
 }
 
@@ -49,6 +119,8 @@ export function SkillsSection() {
         >
           スキルセット
         </motion.h2>
+
+        <SkillLevelLegend />
 
         <div className="space-y-16">
           {skillCategories.map((category) => (
