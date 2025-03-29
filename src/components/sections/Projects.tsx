@@ -3,22 +3,23 @@
 import { cn } from "@/lib/utils"
 import { ParallaxSection } from "@/components/ui/ParallaxSection"
 import { motion } from "framer-motion"
+import Image from "next/image"
 
 const projects = [
   {
     title: "Project 1",
     description: "プロジェクトの説明文がここに入ります。",
-    image: "/project1.jpg",
+    image: "https://placeholder.jp/800×450.png",
   },
   {
     title: "Project 2",
     description: "プロジェクトの説明文がここに入ります。",
-    image: "/project2.jpg",
+    image: "https://placeholder.jp/800×450.png",
   },
   {
     title: "Project 3",
     description: "プロジェクトの説明文がここに入ります。",
-    image: "/project3.jpg",
+    image: "https://placeholder.jp/800×450.png",
   },
 ]
 
@@ -49,8 +50,13 @@ export function Projects() {
               viewport={{ once: true }}
               className="bg-white rounded-lg shadow-lg overflow-hidden"
             >
-              <div className="aspect-video bg-gray-200">
-                {/* プロジェクト画像をここに配置 */}
+              <div className="aspect-video relative">
+                <Image
+                  src={project.image}
+                  alt={project.title}
+                  fill
+                  className="object-cover"
+                />
               </div>
               <div className="p-6">
                 <h3 className="text-xl font-semibold mb-2">{project.title}</h3>

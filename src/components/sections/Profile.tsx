@@ -3,6 +3,7 @@
 import { cn } from "@/lib/utils"
 import { ParallaxSection } from "@/components/ui/ParallaxSection"
 import { motion } from "framer-motion"
+import Image from "next/image"
 
 export function Profile() {
   return (
@@ -20,8 +21,14 @@ export function Profile() {
         >
           <h2 className="text-4xl font-bold mb-8">Profile</h2>
           <div className="space-y-6">
-            <div className="w-48 h-48 mx-auto bg-gray-200 rounded-full overflow-hidden">
-              {/* プロフィール画像をここに配置 */}
+            <div className="w-48 h-48 mx-auto rounded-full overflow-hidden">
+              <Image
+                src="https://placeholder.jp/192×192.png"
+                alt="プロフィール画像"
+                width={192}
+                height={192}
+                className="w-full h-full object-cover"
+              />
             </div>
             <div>
               <h3 className="text-2xl font-semibold mb-2">Your Name</h3>

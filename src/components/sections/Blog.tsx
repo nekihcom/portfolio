@@ -3,25 +3,26 @@
 import { cn } from "@/lib/utils"
 import { ParallaxSection } from "@/components/ui/ParallaxSection"
 import { motion } from "framer-motion"
+import Image from "next/image"
 
 const posts = [
   {
     title: "ブログ記事1",
     date: "2024-03-29",
     excerpt: "ブログ記事の抜粋がここに入ります。",
-    image: "/blog1.jpg",
+    image: "https://placeholder.jp/800×450.png",
   },
   {
     title: "ブログ記事2",
     date: "2024-03-28",
     excerpt: "ブログ記事の抜粋がここに入ります。",
-    image: "/blog2.jpg",
+    image: "https://placeholder.jp/800×450.png",
   },
   {
     title: "ブログ記事3",
     date: "2024-03-27",
     excerpt: "ブログ記事の抜粋がここに入ります。",
-    image: "/blog3.jpg",
+    image: "https://placeholder.jp/800×450.png",
   },
 ]
 
@@ -52,8 +53,13 @@ export function Blog() {
               viewport={{ once: true }}
               className="bg-white rounded-lg shadow-lg overflow-hidden"
             >
-              <div className="aspect-video bg-gray-200">
-                {/* ブログ記事のサムネイル画像をここに配置 */}
+              <div className="aspect-video relative">
+                <Image
+                  src={post.image}
+                  alt={post.title}
+                  fill
+                  className="object-cover"
+                />
               </div>
               <div className="p-6">
                 <time className="text-sm text-gray-500 mb-2 block">{post.date}</time>
