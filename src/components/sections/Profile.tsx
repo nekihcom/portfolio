@@ -23,7 +23,7 @@ export function Profile() {
           <div className="space-y-6">
             <div className="w-48 h-48 mx-auto rounded-full overflow-hidden">
               <Image
-                src="https://placeholder.jp/192×192.png"
+                src="https://placehold.jp/192x192.png"
                 alt="プロフィール画像"
                 width={192}
                 height={192}
