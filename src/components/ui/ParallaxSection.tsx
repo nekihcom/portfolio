@@ -18,10 +18,10 @@ export function ParallaxSection({
   const ref = useRef<HTMLDivElement>(null)
   const { scrollYProgress } = useScroll({
     target: ref,
-    offset: ["start end", "end start"],
+    offset: ["start 80%", "end 20%"],
   })
 
-  const y = useTransform(scrollYProgress, [0, 1], ["0%", "20%"])
+  const y = useTransform(scrollYProgress, [0, 1], ["0%", "50%"])
   const opacity = useTransform(scrollYProgress, [0, 0.5, 1], [0, 1, 0])
 
   return (
