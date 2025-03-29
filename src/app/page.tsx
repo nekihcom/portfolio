@@ -1,6 +1,9 @@
 import { Header } from "@/components/layout/Header"
-import { MainVisual } from "@/components/layout/MainVisual"
 import { Footer } from "@/components/layout/Footer"
+import { Profile } from "@/components/sections/Profile"
+import { Projects } from "@/components/sections/Projects"
+import { Blog } from "@/components/sections/Blog"
+import { Contact } from "@/components/sections/Contact"
 
 export default function Home() {
   const isDev = process.env.NODE_ENV === "development"
@@ -13,7 +16,10 @@ export default function Home() {
           開発環境です
         </div>
       )}
-      <MainVisual />
+      <Profile />
+      <Projects />
+      <Blog />
+      <Contact />
       <Footer />
     </main>
   )
