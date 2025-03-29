@@ -7,7 +7,7 @@ import { motion } from "framer-motion"
 export function Profile() {
   return (
     <ParallaxSection
-      className="min-h-screen flex items-center"
+      className="min-h-screen flex items-center justify-center"
       backgroundClassName="bg-gradient-to-br from-blue-50 to-indigo-50"
     >
       <div className="container mx-auto px-4">
