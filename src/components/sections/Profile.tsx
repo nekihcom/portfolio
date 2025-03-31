@@ -4,6 +4,7 @@ import { cn } from "@/lib/utils"
 import { ParallaxSection } from "@/components/ui/ParallaxSection"
 import { motion } from "framer-motion"
 import Image from "next/image"
+import Link from "next/link"
 import { profileData } from "@/data/profile"
 
 export function Profile() {
@@ -63,6 +64,19 @@ export function Profile() {
                 </motion.a>
               ))}
             </div>
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.3 }}
+              viewport={{ once: true }}
+            >
+              <Link
+                href="/profile"
+                className="inline-block px-6 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
+              >
+                プロフィール詳細へ
+              </Link>
+            </motion.div>
           </div>
         </motion.div>
       </div>
