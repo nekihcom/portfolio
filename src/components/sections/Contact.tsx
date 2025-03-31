@@ -5,7 +5,7 @@ import { ParallaxSection } from "@/components/ui/ParallaxSection"
 
 export function Contact() {
   return (
-    <ParallaxSection className="bg-gray-50">
+    <ParallaxSection id="contact" className="bg-gray-50 pt-20">
       <div className="text-center">
         <motion.h2
           initial={{ opacity: 0, y: 20 }}
