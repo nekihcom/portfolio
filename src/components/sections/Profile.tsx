@@ -4,6 +4,7 @@ import { cn } from "@/lib/utils"
 import { ParallaxSection } from "@/components/ui/ParallaxSection"
 import { motion } from "framer-motion"
 import Image from "next/image"
+import { profileData } from "@/data/profile"
 
 export function Profile() {
   return (
@@ -23,7 +24,7 @@ export function Profile() {
           <div className="space-y-6">
             <div className="w-48 h-48 mx-auto rounded-full overflow-hidden">
               <Image
-                src="https://placehold.jp/192x192.png"
+                src={profileData.image}
                 alt="プロフィール画像"
                 width={192}
                 height={192}
@@ -31,11 +32,11 @@ export function Profile() {
               />
             </div>
             <div>
-              <h3 className="text-2xl font-semibold mb-2">Your Name</h3>
-              <p className="text-gray-600">Full Stack Developer</p>
+              <h3 className="text-2xl font-semibold mb-2">{profileData.name}</h3>
+              <p className="text-gray-600">{profileData.title}</p>
             </div>
             <p className="text-gray-600">
-              ここに自己紹介文を記載します。
+              {profileData.description}
             </p>
           </div>
         </motion.div>
