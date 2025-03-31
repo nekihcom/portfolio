@@ -1,29 +1,18 @@
-"use client"
-
-import { motion } from "framer-motion"
-import { ParallaxSection } from "@/components/ui/ParallaxSection"
+import { cn } from "@/lib/utils"
 
 export function MainVisual() {
   return (
-    <ParallaxSection className="bg-gradient-to-b from-gray-900 to-gray-800 text-white">
-      <div className="text-center">
-        <motion.h1
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          className="text-5xl font-bold mb-4"
-        >
-          Welcome to My Portfolio
-        </motion.h1>
-        <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.2 }}
-          className="text-xl text-gray-300"
-        >
-          I&apos;m a passionate developer creating amazing web experiences
-        </motion.p>
+    <section className={cn(
+      "relative h-screen",
+      "flex items-center justify-center",
+      "bg-gradient-to-b from-gray-50 to-white"
+    )}>
+      <div className="container mx-auto px-4">
+        <div className="text-center">
+          <h2 className="text-4xl font-bold mb-4">Welcome to My Portfolio</h2>
+          <p className="text-gray-600">I'm a Full Stack Developer</p>
+        </div>
       </div>
-    </ParallaxSection>
+    </section>
   )
 } 
