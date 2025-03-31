@@ -11,7 +11,7 @@ export function Profile() {
   return (
     <ParallaxSection
       className="min-h-screen flex items-center justify-center"
-      backgroundClassName="bg-gradient-to-br from-blue-50 to-indigo-50"
+      backgroundClassName="bg-white"
     >
       <div className="container mx-auto px-4">
         <motion.div
