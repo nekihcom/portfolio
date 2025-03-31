@@ -1,33 +1,26 @@
 "use client"
 
+import { cn } from "@/lib/utils"
 import { Parallax } from "react-scroll-parallax"
-import { motion } from "framer-motion"
 
 interface ParallaxSectionProps {
   children: React.ReactNode
   className?: string
-  speed?: number
-  id?: string
+  backgroundClassName?: string
 }
 
 export function ParallaxSection({
   children,
-  className = "",
-  speed = -20,
-  id,
+  className,
+  backgroundClassName,
 }: ParallaxSectionProps) {
   return (
-    <Parallax speed={speed}>
-      <motion.div
-        id={id}
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.6 }}
-        className={className}
-      >
-        {children}
-      </motion.div>
-    </Parallax>
+    <section className={cn("relative overflow-hidden", className)}>
+      <Parallax
+        translateY={[-20, 20]}
+        className={cn("absolute inset-0", backgroundClassName)}
+      />
+      <div className="relative z-10">{children}</div>
+    </section>
   )
 } 
