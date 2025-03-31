@@ -4,30 +4,13 @@ import { cn } from "@/lib/utils"
 import { ParallaxSection } from "@/components/ui/ParallaxSection"
 import { motion } from "framer-motion"
 import Image from "next/image"
-
-const projects = [
-  {
-    title: "Project 1",
-    description: "プロジェクトの説明文がここに入ります。",
-    image: "https://placehold.jp/800x450.png",
-  },
-  {
-    title: "Project 2",
-    description: "プロジェクトの説明文がここに入ります。",
-    image: "https://placehold.jp/800x450.png",
-  },
-  {
-    title: "Project 3",
-    description: "プロジェクトの説明文がここに入ります。",
-    image: "https://placehold.jp/800x450.png",
-  },
-]
+import { projectsData } from "@/data/projects"
 
 export function Projects() {
   return (
     <ParallaxSection
-      className="min-h-screen py-20"
-      backgroundClassName="bg-gradient-to-br from-green-50 to-emerald-50"
+      className="min-h-screen flex items-center justify-center"
+      backgroundClassName="bg-white"
     >
       <div className="container mx-auto px-4">
         <motion.div
@@ -41,7 +24,7 @@ export function Projects() {
           <p className="text-gray-600">これまでに制作したプロジェクト一覧です。</p>
         </motion.div>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {projects.map((project, index) => (
+          {projectsData.map((project, index) => (
             <motion.div
               key={project.title}
               initial={{ opacity: 0, y: 20 }}

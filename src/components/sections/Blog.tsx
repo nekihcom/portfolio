@@ -4,33 +4,13 @@ import { cn } from "@/lib/utils"
 import { ParallaxSection } from "@/components/ui/ParallaxSection"
 import { motion } from "framer-motion"
 import Image from "next/image"
-
-const posts = [
-  {
-    title: "ブログ記事1",
-    date: "2024-03-29",
-    excerpt: "ブログ記事の抜粋がここに入ります。",
-    image: "https://placehold.jp/800x450.png",
-  },
-  {
-    title: "ブログ記事2",
-    date: "2024-03-28",
-    excerpt: "ブログ記事の抜粋がここに入ります。",
-    image: "https://placehold.jp/800x450.png",
-  },
-  {
-    title: "ブログ記事3",
-    date: "2024-03-27",
-    excerpt: "ブログ記事の抜粋がここに入ります。",
-    image: "https://placehold.jp/800x450.png",
-  },
-]
+import { blogData } from "@/data/blog"
 
 export function Blog() {
   return (
     <ParallaxSection
-      className="min-h-screen py-20"
-      backgroundClassName="bg-gradient-to-br from-purple-50 to-pink-50"
+      className="min-h-screen flex items-center justify-center"
+      backgroundClassName="bg-white"
     >
       <div className="container mx-auto px-4">
         <motion.div
@@ -44,7 +24,7 @@ export function Blog() {
           <p className="text-gray-600">技術記事や日々の学びを発信しています。</p>
         </motion.div>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {posts.map((post, index) => (
+          {blogData.map((post, index) => (
             <motion.article
               key={post.title}
               initial={{ opacity: 0, y: 20 }}

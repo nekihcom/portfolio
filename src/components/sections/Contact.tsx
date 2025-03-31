@@ -7,8 +7,8 @@ import { motion } from "framer-motion"
 export function Contact() {
   return (
     <ParallaxSection
-      className="min-h-screen py-20"
-      backgroundClassName="bg-gradient-to-br from-orange-50 to-amber-50"
+      className="min-h-screen flex items-center justify-center"
+      backgroundClassName="bg-white"
     >
       <div className="container mx-auto px-4">
         <motion.div
