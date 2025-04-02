@@ -8,9 +8,9 @@ interface ContainerProps {
 
 export function Container({ children, className }: ContainerProps) {
   return (
-    <div className="container mx-auto px-4">
+    <div className="w-full flex justify-center">
       <div className={cn(
-        `${containerWidth.sm} md:${containerWidth.md} lg:${containerWidth.lg} mx-auto`,
+        `${containerWidth.sm} md:${containerWidth.md} lg:${containerWidth.lg}`,
         className
       )}>
         {children}
