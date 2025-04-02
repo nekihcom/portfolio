@@ -18,7 +18,7 @@ export function Profile() {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
           viewport={{ once: true }}
-          className="max-w-7xl mx-auto"
+          className="max-w-[330px] md:max-w-[960px] mx-auto"
         >
           <div className="flex flex-col md:flex-row gap-8 items-center">
             {/* プロフィール情報 */}
