@@ -1,100 +1,86 @@
 "use client"
 
-import { ParallaxSection } from "@/components/ui/ParallaxSection"
-import { Container } from "@/components/ui/Container"
 import { motion } from "framer-motion"
-import Image from "next/image"
-import Link from "next/link"
 import { profileData } from "@/data/profile"
+import { Container } from "@/components/ui/Container"
 
 export function Profile() {
   return (
-    <ParallaxSection
-      className="min-h-screen flex items-center justify-center"
-      backgroundClassName="bg-white"
-    >
-      {/* <Container> */}
+    <section className="py-20 bg-gray-50">
+      <Container className="max-w-[960px]">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
           viewport={{ once: true }}
+          transition={{ duration: 0.5 }}
+          className="flex flex-col md:flex-row items-center gap-8"
         >
-          <div className="flex flex-col md:flex-row gap-8 items-center">
-            {/* プロフィール情報 */}
-            <div className="flex-[2.5] text-center md:text-left min-w-0">
-              <div className="w-48 h-48 mx-auto md:mx-0 rounded-full overflow-hidden mb-6">
-                <Image
-                  src={profileData.image}
-                  alt="プロフィール画像"
-                  width={192}
-                  height={192}
-                  className="w-full h-full object-cover"
-                />
-              </div>
-              <div className="max-w-2xl">
-                <h3 className="text-2xl font-semibold mb-2">
-                  <span>{profileData.name}</span>
-                  <br />
-                  <span>{profileData.fullName}</span>
-                  {/* <span className="md:hidden">{profileData.name}<br/>{profileData.fullName}</span> */}
-                  {/* <span className="hidden md:inline">{profileData.name} {profileData.fullName}</span> */}
-                </h3>
-                <p className="text-gray-600 mb-4 whitespace-nowrap">{profileData.title}</p>
-              </div>
-            </div>
-
-            {/* SNSリンク */}
-            <div className="flex-1 w-full max-w-md">
-              <div className="space-y-4">
-                {profileData.socialLinks.map((link, index) => (
-                  <motion.a
-                    key={link.name}
-                    href={link.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    initial={{ opacity: 0, x: 20 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    transition={{ duration: 0.5, delay: index * 0.1 }}
-                    viewport={{ once: true }}
-                    className="flex items-center p-4 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors"
-                    aria-label={link.name}
-                  >
-                    <svg
-                      className="w-6 h-6 mr-4 text-gray-600"
-                      fill="currentColor"
-                      viewBox="0 0 24 24"
-                      aria-hidden="true"
-                    >
-                      <path d={link.icon} />
-                    </svg>
-                    <span className="text-gray-600">{link.name}</span>
-                  </motion.a>
-                ))}
-              </div>
-            </div>
-          </div>
-
-          {/* 自己紹介文とプロフィールページへのリンク */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.2 }}
-            viewport={{ once: true }}
-            className="mt-12 text-center"
-          >
-            <p className="text-gray-600 mb-8 max-w-3xl mx-auto">
-              {profileData.description}
-            </p>
-            <Link
-              href="/profile"
-              className="inline-block px-8 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors text-lg"
+          <div className="w-full md:w-1/2">
+            <motion.div
+              initial={{ opacity: 0, scale: 0.8 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: 0.2 }}
+              className="relative w-48 h-48 mx-auto"
             >
-              プロフィール詳細へ
-            </Link>
-          </motion.div>
+              <div className="absolute inset-0 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full blur-xl opacity-20"></div>
+              <img
+                src={profileData.image}
+                alt={profileData.name}
+                className="relative w-full h-full object-cover rounded-full border-4 border-white shadow-lg"
+              />
+            </motion.div>
+          </div>
+          <div className="w-full md:w-1/2 text-center md:text-left">
+            <motion.h2
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: 0.3 }}
+              className="text-3xl font-bold mb-4"
+            >
+              {profileData.name}
+            </motion.h2>
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: 0.4 }}
+              className="text-xl text-gray-600 mb-6"
+            >
+              {profileData.title}
+            </motion.p>
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: 0.5 }}
+              className="text-gray-600 mb-8"
+            >
+              {profileData.description}
+            </motion.p>
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: 0.6 }}
+              className="flex justify-center md:justify-start gap-4"
+            >
+              {profileData.socialLinks.map((link, index) => (
+                <a
+                  key={index}
+                  href={link.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-gray-600 hover:text-blue-500 transition-colors"
+                >
+                  {link.icon}
+                </a>
+              ))}
+            </motion.div>
+          </div>
         </motion.div>
-      {/* </Container> */}
-    </ParallaxSection>
+      </Container>
+    </section>
   )
 } 
