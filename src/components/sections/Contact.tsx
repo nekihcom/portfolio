@@ -2,6 +2,7 @@
 
 import { ParallaxSection } from "@/components/ui/ParallaxSection"
 import { motion } from "framer-motion"
+import { containerWidth } from "@/lib/utils"
 
 export function Contact() {
   return (
@@ -15,7 +16,7 @@ export function Contact() {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
           viewport={{ once: true }}
-          className="max-w-3xl mx-auto text-center"
+          className={`${containerWidth.sm} md:${containerWidth.md} lg:${containerWidth.lg} mx-auto`}
         >
           <h2 className="text-4xl font-bold mb-8">お問い合わせ</h2>
           <motion.a

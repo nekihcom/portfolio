@@ -5,6 +5,7 @@ import { motion } from "framer-motion"
 import Image from "next/image"
 import Link from "next/link"
 import { profileData } from "@/data/profile"
+import { containerWidth } from "@/lib/utils"
 
 export function Profile() {
   return (
@@ -18,7 +19,7 @@ export function Profile() {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
           viewport={{ once: true }}
-          className="max-w-[330px] md:max-w-[960px] mx-auto"
+          className={`${containerWidth.sm} md:${containerWidth.md} lg:${containerWidth.lg} mx-auto`}
         >
           <div className="flex flex-col md:flex-row gap-8 items-center">
             {/* プロフィール情報 */}

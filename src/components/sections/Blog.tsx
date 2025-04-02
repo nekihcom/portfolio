@@ -4,6 +4,7 @@ import { ParallaxSection } from "@/components/ui/ParallaxSection"
 import { motion } from "framer-motion"
 import Image from "next/image"
 import { blogData } from "@/data/blog"
+import { containerWidth } from "@/lib/utils"
 
 export function Blog() {
   return (
@@ -17,7 +18,7 @@ export function Blog() {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
           viewport={{ once: true }}
-          className="text-center mb-16"
+          className={`${containerWidth.sm} md:${containerWidth.md} lg:${containerWidth.lg} mx-auto`}
         >
           <h2 className="text-4xl font-bold mb-4">Blog</h2>
           <p className="text-gray-600">技術記事や日々の学びを発信しています。</p>
