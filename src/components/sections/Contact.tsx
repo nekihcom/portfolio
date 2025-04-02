@@ -15,56 +15,21 @@ export function Contact() {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
           viewport={{ once: true }}
-          className="max-w-2xl mx-auto text-center"
+          className="max-w-3xl mx-auto text-center"
         >
-          <h2 className="text-4xl font-bold mb-8">Contact</h2>
-          <p className="text-gray-600 mb-12">
-            お問い合わせは以下のフォームからお願いします。
-          </p>
-          <form className="space-y-6">
-            <div>
-              <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-1">
-                お名前
-              </label>
-              <input
-                type="text"
-                id="name"
-                name="name"
-                className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-                placeholder="山田 太郎"
-              />
-            </div>
-            <div>
-              <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">
-                メールアドレス
-              </label>
-              <input
-                type="email"
-                id="email"
-                name="email"
-                className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-                placeholder="example@email.com"
-              />
-            </div>
-            <div>
-              <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-1">
-                メッセージ
-              </label>
-              <textarea
-                id="message"
-                name="message"
-                rows={4}
-                className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-                placeholder="メッセージを入力してください"
-              />
-            </div>
-            <button
-              type="submit"
-              className="w-full bg-blue-600 text-white py-2 px-4 rounded-md hover:bg-blue-700 transition-colors"
-            >
-              送信する
-            </button>
-          </form>
+          <h2 className="text-4xl font-bold mb-8">お問い合わせ</h2>
+          <motion.a
+            href="https://docs.google.com/forms/d/e/1FAIpQLSeRWwNv5Fyxqmv6AJQuzAJWonAyoSAd1rerzl9ncV1dyM-zgA/viewform?usp=dialog"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-block px-8 py-4 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors text-lg"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+            viewport={{ once: true }}
+          >
+            お問い合わせフォームへ
+          </motion.a>
         </motion.div>
       </div>
     </ParallaxSection>
