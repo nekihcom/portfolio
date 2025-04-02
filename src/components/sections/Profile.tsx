@@ -13,12 +13,13 @@ export function Profile() {
       className="min-h-screen flex items-center justify-center"
       backgroundClassName="bg-white"
     >
-      {/* <Container> */}
+      <Container>
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
           viewport={{ once: true }}
+          className="max-w-[960px] mx-auto"
         >
           <div className="flex flex-col md:flex-row gap-8 items-center">
             {/* プロフィール情報 */}
@@ -55,7 +56,7 @@ export function Profile() {
                     whileInView={{ opacity: 1, x: 0 }}
                     transition={{ duration: 0.5, delay: index * 0.1 }}
                     viewport={{ once: true }}
-                    className="flex items-center p-4 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors"
+                    className="flex gap-5 items-center py-4 px-16 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors"
                     aria-label={link.name}
                   >
                     <svg
@@ -92,7 +93,7 @@ export function Profile() {
             </Link>
           </motion.div>
         </motion.div>
-      {/* </Container> */}
+      </Container>
     </ParallaxSection>
   )
 } 
