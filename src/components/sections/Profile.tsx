@@ -6,7 +6,6 @@ import { motion } from "framer-motion"
 import Image from "next/image"
 import Link from "next/link"
 import { profileData } from "@/data/profile"
-import { containerWidth } from "@/lib/utils"
 
 export function Profile() {
   return (
@@ -14,17 +13,16 @@ export function Profile() {
       className="min-h-screen flex items-center justify-center"
       backgroundClassName="bg-white"
     >
-      <Container>
+      {/* <Container> */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
           viewport={{ once: true }}
-          // className={`${containerWidth.sm} md:${containerWidth.md} lg:${containerWidth.lg} mx-auto`}
         >
           <div className="flex flex-col md:flex-row gap-8 items-center">
             {/* プロフィール情報 */}
-            <div className="flex-[1.5] text-center md:text-left min-w-0">
+            <div className="flex-[2.5] text-center md:text-left min-w-0">
               <div className="w-48 h-48 mx-auto md:mx-0 rounded-full overflow-hidden mb-6">
                 <Image
                   src={profileData.image}
@@ -36,8 +34,11 @@ export function Profile() {
               </div>
               <div className="max-w-2xl">
                 <h3 className="text-2xl font-semibold mb-2">
-                  <span className="md:hidden">{profileData.name}<br/>{profileData.fullName}</span>
-                  <span className="hidden md:inline">{profileData.name} {profileData.fullName}</span>
+                  <span>{profileData.name}</span>
+                  <br />
+                  <span>{profileData.fullName}</span>
+                  {/* <span className="md:hidden">{profileData.name}<br/>{profileData.fullName}</span> */}
+                  {/* <span className="hidden md:inline">{profileData.name} {profileData.fullName}</span> */}
                 </h3>
                 <p className="text-gray-600 mb-4 whitespace-nowrap">{profileData.title}</p>
               </div>
@@ -93,7 +94,7 @@ export function Profile() {
             </Link>
           </motion.div>
         </motion.div>
-      </Container>
+      {/* </Container> */}
     </ParallaxSection>
   )
 } 

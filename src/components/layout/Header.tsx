@@ -1,4 +1,5 @@
 import { cn } from "@/lib/utils"
+import { Container } from "@/components/ui/Container"
 
 export function Header() {
   return (
@@ -8,9 +9,11 @@ export function Header() {
       "border-b border-gray-200",
       "px-4 py-4"
     )}>
-      <div className="container mx-auto">
+      {/* <div className="container mx-auto"> */}
+      <Container>
         <h1 className="text-2xl font-bold">Portfolio</h1>
-      </div>
+      </Container>
+      {/* </div> */}
     </header>
   )
 } 
