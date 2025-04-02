@@ -1,6 +1,7 @@
 "use client"
 
 import { ParallaxSection } from "@/components/ui/ParallaxSection"
+import { Container } from "@/components/ui/Container"
 import { motion } from "framer-motion"
 import { containerWidth } from "@/lib/utils"
 
@@ -10,13 +11,12 @@ export function Contact() {
       className="min-h-screen flex items-center justify-center"
       backgroundClassName="bg-white"
     >
-      <div className="container mx-auto px-4">
+      <Container>
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
           viewport={{ once: true }}
-          className={`${containerWidth.sm} md:${containerWidth.md} lg:${containerWidth.lg} mx-auto`}
         >
           <h2 className="text-4xl font-bold mb-8">お問い合わせ</h2>
           <motion.a
@@ -32,7 +32,7 @@ export function Contact() {
             お問い合わせフォームへ
           </motion.a>
         </motion.div>
-      </div>
+      </Container>
     </ParallaxSection>
   )
 } 

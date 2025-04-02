@@ -1,6 +1,7 @@
 "use client"
 
 import { ParallaxSection } from "@/components/ui/ParallaxSection"
+import { Container } from "@/components/ui/Container"
 import { motion } from "framer-motion"
 import Image from "next/image"
 import Link from "next/link"
@@ -13,13 +14,13 @@ export function Profile() {
       className="min-h-screen flex items-center justify-center"
       backgroundClassName="bg-white"
     >
-      <div className="container mx-auto px-4">
+      <Container>
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
           viewport={{ once: true }}
-          className={`${containerWidth.sm} md:${containerWidth.md} lg:${containerWidth.lg} mx-auto`}
+          // className={`${containerWidth.sm} md:${containerWidth.md} lg:${containerWidth.lg} mx-auto`}
         >
           <div className="flex flex-col md:flex-row gap-8 items-center">
             {/* プロフィール情報 */}
@@ -92,7 +93,7 @@ export function Profile() {
             </Link>
           </motion.div>
         </motion.div>
-      </div>
+      </Container>
     </ParallaxSection>
   )
 } 

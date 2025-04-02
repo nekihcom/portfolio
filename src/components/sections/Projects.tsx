@@ -1,6 +1,7 @@
 "use client"
 
 import { ParallaxSection } from "@/components/ui/ParallaxSection"
+import { Container } from "@/components/ui/Container"
 import { motion } from "framer-motion"
 import Image from "next/image"
 import { projectsData } from "@/data/projects"
@@ -12,13 +13,12 @@ export function Projects() {
       className="min-h-screen flex items-center justify-center"
       backgroundClassName="bg-white"
     >
-      <div className="container mx-auto px-4">
+      <Container>
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
           viewport={{ once: true }}
-          className={`${containerWidth.sm} md:${containerWidth.md} lg:${containerWidth.lg} mx-auto`}
         >
           <h2 className="text-4xl font-bold mb-4">Projects</h2>
           <p className="text-gray-600">これまでに制作したプロジェクト一覧です。</p>
@@ -48,7 +48,7 @@ export function Projects() {
             </motion.div>
           ))}
         </div>
-      </div>
+      </Container>
     </ParallaxSection>
   )
 } 
