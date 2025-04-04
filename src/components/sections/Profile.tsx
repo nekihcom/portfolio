@@ -24,7 +24,7 @@ export const Profile = () => {
   }
 
   return (
-    <section id="profile" className="py-20 bg-gray-50">
+    <section id="profile" className="bg-gray-50 py-44">
       <Container>
         <SectionTitle>Profile</SectionTitle>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
@@ -70,9 +70,10 @@ export const Profile = () => {
 
         {/* 自己紹介文ブロック */}
         <div className="text-center">
-          <p className="text-gray-600 mb-6 whitespace-pre-line">
-            {profileData.description}
-          </p>
+          <p
+            className="text-gray-600 mb-6"
+            dangerouslySetInnerHTML={{ __html: profileData.description }}
+          />
           <Link
             href="/about"
             className="inline-block px-8 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"

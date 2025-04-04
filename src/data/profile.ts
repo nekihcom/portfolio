@@ -5,7 +5,7 @@ export const profileData = {
   fullName: "やまだ たろう",
   title: "フロントエンドエンジニア",
   image: getPlaceholderImageUrl(imageSizes.profile.width, imageSizes.profile.height),
-  description: "Webアプリケーション開発に情熱を持つフロントエンドエンジニアです。React、Next.js、TypeScriptなどのモダンな技術スタックを使用した開発を得意としています。ユーザー体験を重視したUI/UXデザインと、保守性の高いコードを心がけています。",
+  description: "Webアプリケーション開発に情熱を持つフロントエンドエンジニアです。<br />React、Next.js、TypeScriptなどのモダンな技術スタックを使用した開発を得意としています。<br />ユーザー体験を重視したUI/UXデザインと、保守性の高いコードを心がけています。",
   socialLinks: [
     {
       name: "X (Twitter)",
