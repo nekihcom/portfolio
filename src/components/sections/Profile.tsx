@@ -5,6 +5,7 @@ import { SectionTitle } from "../../components/ui/SectionTitle"
 import { profileData } from "@/data/profile"
 import Image from "next/image"
 import Link from "next/link"
+import { motion } from "framer-motion"
 
 export const Profile = () => {
   // SNSリンクのスタイルを定義
@@ -29,7 +30,13 @@ export const Profile = () => {
         <SectionTitle>Profile</SectionTitle>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
           {/* プロフィールブロック */}
-          <div className="text-center">
+          <motion.div
+            initial={{ opacity: 0, x: -20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+            className="text-center"
+          >
             <div className="relative w-32 h-32 mx-auto mb-4">
               <Image
                 src={profileData.image}
@@ -41,18 +48,27 @@ export const Profile = () => {
             <h3 className="text-2xl font-bold mb-1">{profileData.name}</h3>
             <p className="text-gray-600 mb-1">{profileData.fullName}</p>
             <p className="text-blue-600 font-medium">{profileData.title}</p>
-          </div>
+          </motion.div>
 
           {/* SNSブロック */}
-          <div>
+          <motion.div
+            initial={{ opacity: 0, x: 20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+          >
             <div className="space-y-4">
-              {profileData.socialLinks.map((link) => (
-                <a
+              {profileData.socialLinks.map((link, index) => (
+                <motion.a
                   key={link.name}
                   href={link.url}
                   target="_blank"
                   rel="noopener noreferrer"
                   className={`flex items-center p-4 rounded-lg transition-all duration-300 transform hover:scale-105 shadow-sm ${getSnsStyle(link.name)}`}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5, delay: index * 0.1 }}
                 >
                   <svg
                     className="w-6 h-6 mr-3"
@@ -62,14 +78,20 @@ export const Profile = () => {
                     <path d={link.icon} />
                   </svg>
                   <span className="font-medium">{link.name}</span>
-                </a>
+                </motion.a>
               ))}
             </div>
-          </div>
+          </motion.div>
         </div>
 
         {/* 自己紹介文ブロック */}
-        <div className="text-center">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5, delay: 0.2 }}
+          className="text-center"
+        >
           <p
             className="text-gray-600 mb-6"
             dangerouslySetInnerHTML={{ __html: profileData.description }}
@@ -80,7 +102,7 @@ export const Profile = () => {
           >
             自己紹介ページへ
           </Link>
-        </div>
+        </motion.div>
       </Container>
     </section>
   )
