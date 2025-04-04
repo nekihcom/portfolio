@@ -14,8 +14,15 @@ export const Blog = () => {
       <Container>
         <SectionTitle>Blog</SectionTitle>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {blogData.map((post) => (
-            <article key={post.title} className="bg-white rounded-lg shadow-md overflow-hidden">
+          {blogData.map((post, index) => (
+            <motion.article
+              key={post.title}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: index * 0.1 }}
+              className="bg-white rounded-lg shadow-md overflow-hidden"
+            >
               <div className="aspect-video relative">
                 <Image
                   src={post.image}
@@ -33,7 +40,7 @@ export const Blog = () => {
                 </h3>
                 <p className="mt-4 text-gray-600">{post.excerpt}</p>
               </div>
-            </article>
+            </motion.article>
           ))}
         </div>
       </Container>
