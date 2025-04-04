@@ -9,19 +9,19 @@ export const projectsData: Project[] = [
   {
     title: "ポートフォリオサイト",
     description: "Next.jsとTypeScriptを使用したポートフォリオサイト",
-    image: "/images/projects/portfolio.jpg",
+    image: "https://placehold.jp/800x450.png",
     technologies: ["Next.js", "TypeScript", "Tailwind CSS"]
   },
   {
     title: "ECサイト",
     description: "ReactとFirebaseを使用したECサイト",
-    image: "/images/projects/ec-site.jpg",
+    image: "https://placehold.jp/800x450.png",
     technologies: ["React", "Firebase", "Stripe"]
   },
   {
     title: "タスク管理アプリ",
     description: "Vue.jsとNode.jsを使用したタスク管理アプリ",
-    image: "/images/projects/task-app.jpg",
+    image: "https://placehold.jp/800x450.png",
     technologies: ["Vue.js", "Node.js", "MongoDB"]
   }
 ] 
