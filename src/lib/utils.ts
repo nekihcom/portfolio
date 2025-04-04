@@ -8,5 +8,5 @@ export function cn(...inputs: ClassValue[]) {
 export const containerWidth = {
   sm: "w-[90%] max-w-[330px]",
   md: "w-[90%] max-w-[660px]",
-  lg: "w-[90%] max-w-[1120px]",
+  lg: "w-[90%] max-w-[1200px]",
 }

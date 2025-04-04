@@ -16,11 +16,13 @@ export default function Home() {
           開発環境です
         </div>
       )}
-      <Profile />
-      <Projects />
-      <Blog />
-      <Contact />
-      <Footer />
+      <div className="mt-32">
+        <Profile />
+        <Projects />
+        <Blog />
+        <Contact />
+        <Footer />
+      </div>
     </main>
   )
 }
