@@ -1,9 +1,9 @@
 export const profileData = {
   name: "Mochiken",
   fullName: "Masaya Kemmochi",
-  title: "Full Stack Developer",
+  title: "システムエンジニア",
   image: "https://placehold.jp/192x192.png",
-  description: "ここに自己紹介文を記載します。",
+  description: "埼玉県出身、都内在住。社会人7年目。",
   socialLinks: [
     {
       name: "X (Twitter)",

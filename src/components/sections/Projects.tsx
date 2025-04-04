@@ -1,19 +1,12 @@
 "use client"
 
-import { ParallaxSection } from "@/components/ui/ParallaxSection"
-import { Container } from "@/components/ui/Container"
 import { motion } from "framer-motion"
 import Image from "next/image"
 import { projectsData } from "@/data/projects"
-import { containerWidth } from "@/lib/utils"
 
 export function Projects() {
   return (
-    <ParallaxSection
-      className="min-h-screen flex items-center justify-center"
-      backgroundClassName="bg-white"
-    >
-      <Container>
+    <>
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -48,7 +41,6 @@ export function Projects() {
             </motion.div>
           ))}
         </div>
-      </Container>
-    </ParallaxSection>
+        </>
   )
 } 
