@@ -3,7 +3,7 @@
 import { motion } from "framer-motion"
 import Image from "next/image"
 import { projectsData } from "@/data/projects"
-import { Container } from "@/components/ui/Container"
+import { Container } from "../../components/ui/Container"
 
 export function Projects() {
   return (
