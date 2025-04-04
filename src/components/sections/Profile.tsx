@@ -7,13 +7,29 @@ import Image from "next/image"
 import Link from "next/link"
 
 export const Profile = () => {
+  // SNSリンクのスタイルを定義
+  const getSnsStyle = (name: string) => {
+    switch (name) {
+      case "X (Twitter)":
+        return "bg-gray-900 hover:bg-gray-800 text-white"
+      case "GitHub":
+        return "bg-gray-700 hover:bg-gray-600 text-white"
+      case "LinkedIn":
+        return "bg-blue-800 hover:bg-blue-700 text-white"
+      case "Qiita":
+        return "bg-green-600 hover:bg-green-500 text-white"
+      default:
+        return "bg-gray-50 hover:bg-gray-100 text-gray-900"
+    }
+  }
+
   return (
     <section id="profile" className="py-20 bg-gray-50">
       <Container>
         <SectionTitle>Profile</SectionTitle>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
           {/* プロフィールブロック */}
-          <div className="bg-white rounded-lg shadow-md p-6 text-center">
+          <div className="text-center">
             <div className="relative w-32 h-32 mx-auto mb-4">
               <Image
                 src={profileData.image}
@@ -28,8 +44,7 @@ export const Profile = () => {
           </div>
 
           {/* SNSブロック */}
-          <div className="bg-white rounded-lg shadow-md p-6">
-            <h3 className="text-xl font-bold mb-4">SNS</h3>
+          <div>
             <div className="space-y-4">
               {profileData.socialLinks.map((link) => (
                 <a
@@ -37,7 +52,7 @@ export const Profile = () => {
                   href={link.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center p-4 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors"
+                  className={`flex items-center p-4 rounded-lg transition-all duration-300 transform hover:scale-105 shadow-sm ${getSnsStyle(link.name)}`}
                 >
                   <svg
                     className="w-6 h-6 mr-3"
@@ -54,7 +69,7 @@ export const Profile = () => {
         </div>
 
         {/* 自己紹介文ブロック */}
-        <div className="bg-white rounded-lg shadow-md p-8 text-center">
+        <div className="text-center">
           <p className="text-gray-600 mb-6 whitespace-pre-line">
             {profileData.description}
           </p>
