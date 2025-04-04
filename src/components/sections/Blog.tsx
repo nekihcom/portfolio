@@ -4,7 +4,7 @@ import { motion } from "framer-motion"
 import Image from "next/image"
 import { blogData } from "@/data/blog"
 import { Container } from "@/components/ui/Container"
-import { SectionTitle } from "@/components/ui/SectionTitle"
+import { SectionTitle } from "../../components/ui/SectionTitle"
 import { formatDate } from "@/lib/utils"
 import Link from "next/link"
 
