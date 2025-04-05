@@ -40,7 +40,7 @@ export function Footer() {
               </Link>
             ))}
           </div>
-          <div className="w-24 h-px bg-teal-500" />
+          <div className="w-full h-px bg-teal-500" />
           <p className="text-center text-teal-100">
             © {new Date().getFullYear()} Portfolio. All rights reserved.
           </p>
