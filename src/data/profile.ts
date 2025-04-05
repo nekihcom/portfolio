@@ -1,9 +1,9 @@
 import { getPlaceholderImageUrl, imageSizes } from "@/config/images"
 
 export const profileData = {
-  name: "山田 太郎",
-  fullName: "やまだ たろう",
-  title: "フロントエンドエンジニア",
+  name: "Mochiken",
+  fullName: "Masaya Kemmochi",
+  title: "アウトドア派ソフトウェアエンジニア",
   image: getPlaceholderImageUrl(imageSizes.profile.width, imageSizes.profile.height),
   description: "Webアプリケーション開発に情熱を持つフロントエンドエンジニアです。<br />React、Next.js、TypeScriptなどのモダンな技術スタックを使用した開発を得意としています。<br />ユーザー体験を重視したUI/UXデザインと、保守性の高いコードを心がけています。",
   socialLinks: [

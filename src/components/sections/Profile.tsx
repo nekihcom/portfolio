@@ -47,7 +47,7 @@ export const Profile = () => {
             </div>
             <h3 className="text-2xl font-bold mb-1">{profileData.name}</h3>
             <p className="text-gray-600 mb-1">{profileData.fullName}</p>
-            <p className="text-blue-600 font-medium">{profileData.title}</p>
+            <p className="text-teal-600 font-medium">{profileData.title}</p>
           </motion.div>
 
           {/* SNSブロック */}
@@ -98,7 +98,7 @@ export const Profile = () => {
           />
           <Link
             href="/about"
-            className="inline-block px-8 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
+            className="inline-block px-8 py-3 bg-teal-600 text-white rounded-lg hover:bg-teal-700 transition-colors"
           >
             自己紹介ページへ
           </Link>
