@@ -35,7 +35,7 @@ export const Profile = () => {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
-            className="text-center"
+            className="text-center md:ml-[200px]"
           >
             <div className="relative w-32 h-32 mx-auto mb-4">
               <Image
@@ -57,7 +57,7 @@ export const Profile = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
           >
-            <div className="space-y-4">
+            <div className="space-y-4 max-w-[330px]">
               {profileData.socialLinks.map((link, index) => (
                 <motion.a
                   key={link.name}
