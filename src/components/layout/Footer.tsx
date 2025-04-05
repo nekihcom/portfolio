@@ -6,8 +6,8 @@ import Link from "next/link"
 export function Footer() {
   return (
     <footer className={cn(
-      "bg-gray-50",
-      "border-t border-gray-200",
+      "bg-teal-600",
+      "border-t border-teal-700",
       "py-8"
     )}>
       <div className="container mx-auto px-4">
@@ -19,7 +19,7 @@ export function Footer() {
                 href={link.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="hover:opacity-80 transition-opacity"
+                className="hover:opacity-80 transition-opacity text-white"
               >
                 {link.iconImage ? (
                   <Image
@@ -40,7 +40,7 @@ export function Footer() {
               </Link>
             ))}
           </div>
-          <p className="text-center text-gray-600">
+          <p className="text-center text-teal-100">
             © {new Date().getFullYear()} Portfolio. All rights reserved.
           </p>
         </div>
