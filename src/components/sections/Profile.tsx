@@ -70,13 +70,23 @@ export const Profile = () => {
                   viewport={{ once: true }}
                   transition={{ duration: 0.5, delay: index * 0.1 }}
                 >
-                  <svg
-                    className="w-6 h-6 mr-3"
-                    viewBox="0 0 24 24"
-                    fill="currentColor"
-                  >
-                    <path d={link.icon} />
-                  </svg>
+                  {link.iconImage ? (
+                    <Image
+                      src={link.iconImage}
+                      alt={link.name}
+                      width={24}
+                      height={24}
+                      className="mr-3"
+                    />
+                  ) : (
+                    <svg
+                      className="w-6 h-6 mr-3"
+                      viewBox="0 0 24 24"
+                      fill="currentColor"
+                    >
+                      <path d={link.icon} />
+                    </svg>
+                  )}
                   <span className="font-medium">{link.name}</span>
                 </motion.a>
               ))}
