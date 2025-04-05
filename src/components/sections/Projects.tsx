@@ -7,7 +7,7 @@ import { Container } from "../../components/ui/Container"
 
 export function Projects() {
   return (
-    <section className="py-20 bg-gray-50">
+    <section className="min-h-screen flex items-center bg-gray-50">
       <Container className="max-w-[1200px]">
         <motion.h2
           initial={{ opacity: 0, y: 20 }}

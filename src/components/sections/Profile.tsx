@@ -25,7 +25,7 @@ export const Profile = () => {
   }
 
   return (
-    <section id="profile" className="bg-gray-50 py-44">
+    <section id="profile" className="bg-gray-50 min-h-screen flex items-center">
       <Container>
         <SectionTitle>Profile</SectionTitle>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">

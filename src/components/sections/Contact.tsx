@@ -6,7 +6,7 @@ import { motion } from "framer-motion"
 
 export const Contact = () => {
   return (
-    <section id="contact" className="py-20 bg-gray-50">
+    <section id="contact" className="min-h-screen flex items-center bg-gray-50">
       <Container>
         <SectionTitle>お問い合わせ</SectionTitle>
         <motion.div
