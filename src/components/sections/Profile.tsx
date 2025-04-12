@@ -110,7 +110,7 @@ export const Profile = () => {
             href="/about"
             className="inline-block px-8 py-3 bg-teal-600 text-white rounded-lg hover:bg-teal-700 transition-colors"
           >
-            自己紹介ページへ
+            もっと知る
           </Link>
         </motion.div>
       </Container>

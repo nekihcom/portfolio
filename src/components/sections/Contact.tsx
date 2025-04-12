@@ -27,7 +27,7 @@ export const Contact = () => {
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
-            お問い合わせフォーム
+            ちょっとしたことでもご相談ください
           </motion.a>
         </motion.div>
       </Container>

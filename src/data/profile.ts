@@ -12,7 +12,7 @@ export const profileData = {
   fullName: "Masaya Kemmochi",
   title: "アウトドア派ソフトウェアエンジニア",
   image: getPlaceholderImageUrl(imageSizes.profile.width, imageSizes.profile.height),
-  description: "CMSやBIのシステム構築・導入を専門とするシステムエンジニアです。<br />WEB開発やCMSの知識を活かし、クライアントの課題解決に取り組んでいます。<br />コミュニケーションを重視し、タスクやリスクの適切なコントロールを心がけています。<br />野球や筋トレを趣味とし、Next.jsなどのモダンなフロントエンド技術や生成AIを活用した開発にも興味があります。",
+  description: "ITでものづくりをしています。一日一善、一日一歩ずつ。",
   socialLinks: [
     {
       name: "X (Twitter)",
