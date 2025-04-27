@@ -42,7 +42,6 @@ export const Profile = () => {
                 src={profileData.image}
                 alt={profileData.name}
                 fill
-                sizes="(max-width: 768px) 128px, 128px"
                 className="rounded-full object-cover"
               />
             </div>

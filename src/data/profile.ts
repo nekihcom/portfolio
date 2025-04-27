@@ -11,7 +11,6 @@ export const profileData = {
   name: "Mochiken",
   fullName: "Masaya Kemmochi",
   title: "アウトドア派ソフトウェアエンジニア",
-  // image: getPlaceholderImageUrl(imageSizes.profile.width, imageSizes.profile.height),
   image: "/profile/profile.jpg",
   description: "ITでものづくりをしています。一日一善、一日一歩ずつ。",
   socialLinks: [
