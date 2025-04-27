@@ -1,4 +1,3 @@
-import { getPlaceholderImageUrl, imageSizes } from "@/config/images"
 
 interface SocialLink {
   name: string
