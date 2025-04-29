@@ -11,7 +11,7 @@ export const projectsData: Project[] = [
   {
     title: "ポートフォリオサイト",
     description: "Next.jsとTypeScriptを使用したポートフォリオサイト",
-    image: getPlaceholderImageUrl(imageSizes.project.width, imageSizes.project.height),
+    image: "/portfolio/mchkn.png",
     technologies: ["Next.js", "TypeScript", "Tailwind CSS"]
   },
   {
