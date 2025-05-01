@@ -1,12 +1,12 @@
 "use client"
 
 import Image from "next/image"
-// import Link from "next/link"
 import { motion } from "framer-motion"
 
 import { Container } from "@/components/ui/Container"
 import { SectionTitle } from "@/components/ui/SectionTitle"
 import { profileData } from "@/data/profile"
+import { SocialLink } from "../ui/SocialLink"
 
 
 export const Profile = () => {
@@ -62,36 +62,7 @@ export const Profile = () => {
           >
             <div className="space-y-4 max-w-[330px]">
               {profileData.socialLinks.map((link, index) => (
-                <motion.a
-                  key={link.name}
-                  href={link.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className={`flex items-center p-4 rounded-lg transition-all duration-300 transform hover:scale-105 shadow-sm ${getSnsStyle(link.name)}`}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.5, delay: index * 0.1 }}
-                >
-                  {link.iconImage ? (
-                    <Image
-                      src={link.iconImage}
-                      alt={link.name}
-                      width={24}
-                      height={24}
-                      className="mr-3"
-                    />
-                  ) : (
-                    <svg
-                      className="w-6 h-6 mr-3"
-                      viewBox="0 0 24 24"
-                      fill="currentColor"
-                    >
-                      <path d={link.icon} />
-                    </svg>
-                  )}
-                  <span className="font-medium">{link.name}</span>
-                </motion.a>
+                <SocialLink key={index} link={link} index={index} />
               ))}
             </div>
           </motion.div>
