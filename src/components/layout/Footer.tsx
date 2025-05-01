@@ -42,7 +42,7 @@ export function Footer() {
           </div>
           <div className="w-full h-px bg-teal-500" />
           <p className="text-center text-teal-100">
-            © {new Date().getFullYear()} Portfolio. All rights reserved.
+            © {new Date().getFullYear()} Masaya Kemmochi. All rights reserved.
           </p>
         </div>
       </div>

@@ -1,13 +1,16 @@
 "use client"
 
-import { Container } from "@/components/ui/Container"
-import { SectionTitle } from "../../components/ui/SectionTitle"
-import { profileData } from "@/data/profile"
 import Image from "next/image"
-import Link from "next/link"
+// import Link from "next/link"
 import { motion } from "framer-motion"
 
+import { Container } from "@/components/ui/Container"
+import { SectionTitle } from "@/components/ui/SectionTitle"
+import { profileData } from "@/data/profile"
+
+
 export const Profile = () => {
+
   // SNSリンクのスタイルを定義
   const getSnsStyle = (name: string) => {
     switch (name) {
@@ -106,14 +109,15 @@ export const Profile = () => {
             className="text-gray-600 mb-6"
             dangerouslySetInnerHTML={{ __html: profileData.description }}
           />
-          <Link
+          {/* <Link
             href="/about"
             className="inline-block px-8 py-3 bg-teal-600 text-white rounded-lg hover:bg-teal-700 transition-colors"
           >
             もっと知る
-          </Link>
+          </Link> */}
         </motion.div>
       </Container>
     </section>
   )
+  
 } 
