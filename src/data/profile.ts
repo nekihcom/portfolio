@@ -11,7 +11,7 @@ export const profileData = {
   fullName: "Masaya Kemmochi",
   title: "アウトドア派ソフトウェアエンジニア",
   image: "/profile/profile.jpg",
-  description: "ITでものづくりをしています。一日一善、一日一歩ずつ。",
+  description: "ITでものづくりをしています。<br class='isSp'/>一日一善、一日一歩ずつ。",
   socialLinks: [
     {
       name: "X (Twitter)",

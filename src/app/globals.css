@@ -120,3 +120,20 @@
     @apply bg-background text-foreground;
   }
 }
+
+.isPc {
+  display: block;
+}
+
+.isSp {
+  display: none;
+} 
+
+@media (max-width: 768px) {
+  .isPc {
+    display: none;
+  }
+  .isSp {
+    display: block;
+  }
+} 
