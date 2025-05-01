@@ -1,17 +1,16 @@
 import QiitaArticleCard from "./QiitaArticleCard";
 import { ParsedQiitaItem } from "@/type/type";
 
+interface QiitaArticleListProps {
+  allArticles: ParsedQiitaItem[]
+}
 
-const QiitaArticleList = (props:{allArticles:Array<ParsedQiitaItem>}) => {
-
-  const { allArticles } = props;
-
+export default function QiitaArticleList({ allArticles }: QiitaArticleListProps) {
   return (
     <>
-      {allArticles && allArticles.map((article, index) => (
-          <QiitaArticleCard key={index} qiita={article} index={index} />
+      {allArticles.map((article, index) => (
+        <QiitaArticleCard key={article.id} qiita={article} index={index} />
       ))}
     </>
   );
 }
-export default QiitaArticleList;

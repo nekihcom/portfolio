@@ -3,10 +3,8 @@ import { SectionTitle } from "@/components/ui/SectionTitle"
 import NoteArticleList from "@/components/ui/NoteArticleList"
 import { getMyAllNotePosts } from "@/lib/hook/useArticle"
 
-
 export default async function Note() {
-
-  const noteItems = (await getMyAllNotePosts()).noteItems;
+  const { noteItems } = await getMyAllNotePosts()
 
   return (
     <section id="note" className="min-h-screen flex items-center bg-gray-50">
