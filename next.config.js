@@ -14,6 +14,12 @@ const nextConfig = {
         port: '',
         pathname: '/**',
       },
+      {
+        protocol: 'https',
+        hostname: 'qiita-user-contents.imgix.net',
+        port: '',
+        pathname: '/**',
+      },
     ],
   },
 }

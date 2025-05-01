@@ -1,25 +1,24 @@
-"use client";
+"use client"; 
 
 import Link from 'next/link';
-import Image from 'next/image';
 import { motion } from 'framer-motion';
 
-import { ParsedNoteItem } from '@/type/type';
-
+import { ParsedQiitaItem } from '@/type/type';
+import Image from 'next/image';
 
 
 type Props = {
-  note: ParsedNoteItem;
+  qiita: ParsedQiitaItem;
   index: number;
 }
 
 
-const NoteArticleCard = (props: Props) => {
+const QiitaArticleCard = (props: Props) => {
 
-  const { note, index } = props;
+  const { qiita, index } = props;
   // https://www.ey-office.com/blog_archive/2023/04/18/short-code-to-get-todays-date-in-yyyy-mm-dd-format-in-javascript/
   // sv-SEロケールはYYYY-MM-DD形式の日付文字列を戻す
-  const displaynoteCreatedDt = new Date(note.pubDate).toLocaleDateString('sv-SE');
+  const displayqiitaCreatedDt = new Date(qiita.created_at.split('T')[0]).toLocaleDateString('sv-SE');
 
   return (
     <>
@@ -32,22 +31,23 @@ const NoteArticleCard = (props: Props) => {
       >
         <div className="aspect-video relative">
           <Image
-            src={note.ogpImageUrl}
-            alt={note.title}
+            src={qiita.ogpImageUrl}
+            alt={qiita.title}
             fill
             className="object-cover"
           />
         </div>
         <div className="p-6">
-          <time className="text-sm text-gray-500">{displaynoteCreatedDt}</time>
+          <time className="text-sm text-gray-500">{displayqiitaCreatedDt}</time>
           <h3 className="mt-2 text-xl font-bold">
-            <Link href={note.link} className="hover:text-blue-600 transition-colors">
-              {note.title}
+            <Link href={qiita.url} className="hover:text-blue-600 transition-colors">
+              {qiita.title}
             </Link>
           </h3>
         </div>
       </motion.article>
     </>
   );
+
 }
-export default NoteArticleCard;
+export default QiitaArticleCard;

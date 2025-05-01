@@ -9,10 +9,10 @@ export function Header() {
           <div className="flex">
             <div className="flex-shrink-0 flex items-center">
               <Link href="/" className="text-xl font-bold text-gray-800">
-                Portfolio
+                Mochiken's Portfolio
               </Link>
             </div>
-            <nav className="ml-6 flex space-x-8">
+            {/* <nav className="ml-6 flex space-x-8">
               {navigationLinks.map((link) => (
                 <Link
                   key={link.name}
@@ -22,7 +22,7 @@ export function Header() {
                   {link.name}
                 </Link>
               ))}
-            </nav>
+            </nav> */}
           </div>
         </div>
       </div>

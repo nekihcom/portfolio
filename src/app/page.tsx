@@ -5,7 +5,7 @@ import { Projects } from "@/components/sections/Projects"
 import { Contact } from "@/components/sections/Contact"
 import { DevEnvironment } from "@/components/ui/DevEnvironment"
 import Note from "@/components/sections/Note"
-
+import Qiita from "@/components/sections/Qiita"
 export default function Home() {
   return (
     <main className="min-h-screen">
@@ -13,6 +13,7 @@ export default function Home() {
       <DevEnvironment />
       <Profile />
       <Projects />
+      <Qiita />
       <Note />
       <Contact />
       <Footer />

@@ -2,15 +2,12 @@ import { JSDOM } from "jsdom";
 import ky from "ky";
 
 
-import { 
-  // ParsedQiitaItem, QiitaItemResponse, 
-  ParsedNoteItem } from "@/type/type";
+import { ParsedQiitaItem, QiitaItemResponse, ParsedNoteItem } from "@/type/type";
 import data from "@/rss/data.json";
 
 
 // SAMPLE
 // https://qiita.com/ganja_tuber/items/0fe614ee469b4124a43d
-/*
 export const getMyAllQiitaPosts = async () => {
   const jsdom = new JSDOM();
   const apiUrl = `${process.env.QIITA_FETCH_BASE}`;
@@ -76,7 +73,6 @@ export const getMyAllQiitaPosts = async () => {
     qiitaItems: parsedQiitaItems.slice(0,3)
   };
 };
-*/
 
 
 
