@@ -10,7 +10,7 @@ export default async function Note() {
   return (
     <section id="note" className="min-h-screen flex items-center bg-gray-50">
       <Container>
-        <SectionTitle>Note</SectionTitle>
+        <SectionTitle>note</SectionTitle>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           <NoteArticleList allArticles={noteItems} />
         </div>

@@ -2,22 +2,17 @@
 
 import { motion } from "framer-motion"
 import Image from "next/image"
-import { projectsData } from "@/data/projects"
-import { Container } from "../../components/ui/Container"
 
-export function Projects() {
+import { projectsData } from "@/data/projects"
+import { Container } from "@/components/ui/Container"
+import { SectionTitle } from "@/components/ui/SectionTitle"
+
+
+export const Projects = () => {
   return (
     <section className="min-h-screen flex items-center bg-gray-50">
       <Container className="max-w-[1200px]">
-        <motion.h2
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
-          className="text-3xl font-bold text-center mb-12"
-        >
-          プロジェクト
-        </motion.h2>
+        <SectionTitle>Projects</SectionTitle>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {projectsData.map((project, index) => (
             <motion.div
