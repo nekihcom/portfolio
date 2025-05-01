@@ -1,5 +1,3 @@
-import { getPlaceholderImageUrl, imageSizes } from "@/config/images"
-
 export interface Project {
   title: string
   description: string

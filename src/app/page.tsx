@@ -2,9 +2,9 @@ import { Header } from "@/components/layout/Header"
 import { Footer } from "@/components/layout/Footer"
 import { Profile } from "@/components/sections/Profile"
 import { Projects } from "@/components/sections/Projects"
-import { Blog } from "@/components/sections/Blog"
 import { Contact } from "@/components/sections/Contact"
 import { DevEnvironment } from "@/components/ui/DevEnvironment"
+import Note from "@/components/sections/Note"
 
 export default function Home() {
   return (
@@ -13,7 +13,7 @@ export default function Home() {
       <DevEnvironment />
       <Profile />
       <Projects />
-      <Blog />
+      <Note />
       <Contact />
       <Footer />
     </main>

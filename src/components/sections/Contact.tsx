@@ -1,14 +1,17 @@
 "use client"
 
-import { Container } from "@/components/ui/Container"
-import { SectionTitle } from "../../components/ui/SectionTitle"
 import { motion } from "framer-motion"
 
+import { Container } from "@/components/ui/Container"
+import { SectionTitle } from "@/components/ui/SectionTitle"
+
+
 export const Contact = () => {
+
   return (
     <section id="contact" className="min-h-screen flex items-center bg-gray-50">
       <Container>
-        <SectionTitle>お問い合わせ</SectionTitle>
+        <SectionTitle>Contact</SectionTitle>
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -33,4 +36,5 @@ export const Contact = () => {
       </Container>
     </section>
   )
+  
 } 

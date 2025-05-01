@@ -1,10 +1,15 @@
+"use client"
+
 import { motion } from "framer-motion"
 
+
 interface SectionTitleProps {
-  children: React.ReactNode
+  children: React.ReactNode;
 }
 
+
 export const SectionTitle = ({ children }: SectionTitleProps) => {
+
   return (
     <motion.h2
       initial={{ opacity: 0, y: 20 }}
@@ -16,4 +21,5 @@ export const SectionTitle = ({ children }: SectionTitleProps) => {
       {children}
     </motion.h2>
   )
+
 } 

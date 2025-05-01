@@ -1,13 +1,16 @@
 "use client"
 
-import { Container } from "@/components/ui/Container"
-import { SectionTitle } from "../../components/ui/SectionTitle"
-import { profileData } from "@/data/profile"
 import Image from "next/image"
 import Link from "next/link"
 import { motion } from "framer-motion"
 
+import { Container } from "@/components/ui/Container"
+import { SectionTitle } from "@/components/ui/SectionTitle"
+import { profileData } from "@/data/profile"
+
+
 export const Profile = () => {
+
   // SNSリンクのスタイルを定義
   const getSnsStyle = (name: string) => {
     switch (name) {
@@ -116,4 +119,5 @@ export const Profile = () => {
       </Container>
     </section>
   )
+  
 } 
