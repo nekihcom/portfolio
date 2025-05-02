@@ -1,6 +1,7 @@
-import { getMyAllQiitaPosts } from "@/lib/hook/useArticle"
+import { Container } from "@/components/ui/Container"
 import { SectionTitle } from "@/components/ui/SectionTitle"
 import QiitaArticleList from "@/components/ui/QiitaArticleList"
+import { getMyAllQiitaPosts } from "@/lib/hook/useArticle"
 import { SectionContainer } from "@/components/ui/SectionContainer"
 import { BgLink } from "@/components/ui/BgLink"
 
@@ -16,6 +17,8 @@ export default async function Qiita() {
       <div className="text-center mt-8">
         <BgLink
           href="https://qiita.com/nekihcom"
+          target="_blank"
+          rel="noopener noreferrer"
           text="Qiitaを見てみる"
           style="bg-green-600 text-white hover:bg-green-700"
         />

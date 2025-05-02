@@ -13,9 +13,11 @@ export default async function Note() {
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         <NoteArticleList allArticles={noteItems} />
       </div>
-      <div className="mt-8 text-center">
+      <div className="text-center mt-8">
         <BgLink
           href="https://note.com/nekihcom"
+          target="_blank"
+          rel="noopener noreferrer"
           text="noteを見てみる"
           style="bg-gray-600 text-white hover:bg-gray-700"
         />
