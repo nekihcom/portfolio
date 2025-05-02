@@ -1,7 +1,6 @@
 import Image from "next/image"
 
 import { Project } from "@/data/projects"
-import { Tag } from "@/components/ui/Tag"
 
 export const ProjectCard = (project: Project) => {
   return (

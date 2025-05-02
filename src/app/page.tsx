@@ -1,12 +1,11 @@
-import { Header } from "@/components/layout/Header"
+// import { Header } from "@/components/layout/Header"
 import { Footer } from "@/components/layout/Footer"
 import { Profile } from "@/components/sections/Profile"
 import Projects from "@/components/sections/Projects"
 import Contact from "@/components/sections/Contact"
-import { DevEnvironment } from "@/components/ui/DevEnvironment"
+// import { DevEnvironment } from "@/components/ui/DevEnvironment"
 import Note from "@/components/sections/Note"
 import Qiita from "@/components/sections/Qiita"
-import Image from "next/image"
 
 export default function Home() {
   return (

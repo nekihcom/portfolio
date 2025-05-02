@@ -13,7 +13,7 @@ const QiitaArticleCard = (props: Props) => {
   const { qiita, index } = props;
   // https://www.ey-office.com/blog_archive/2023/04/18/short-code-to-get-todays-date-in-yyyy-mm-dd-format-in-javascript/
   // sv-SEロケールはYYYY-MM-DD形式の日付文字列を戻す
-  const displayQiitaCreatedDt = new Date(qiita.created_at.split('T')[0]).toLocaleDateString('sv-SE');
+  // const displayQiitaCreatedDt = new Date(qiita.created_at.split('T')[0]).toLocaleDateString('sv-SE');
 
   return (
     <Link

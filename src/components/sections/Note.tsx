@@ -3,7 +3,6 @@ import { SectionTitle } from "@/components/ui/SectionTitle"
 import NoteArticleList from "@/components/ui/NoteArticleList"
 import { SectionContainer } from "@/components/ui/SectionContainer"
 import { BgLink } from "@/components/ui/BgLink"
-import { Container } from "@/components/ui/Container"
 
 export default async function Note() {
   const { noteItems } = await getMyAllNotePosts()

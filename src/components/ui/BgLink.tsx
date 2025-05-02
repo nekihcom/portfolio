@@ -3,7 +3,7 @@ import Link from "next/link"
 type Props = {
   href: string
   text: string
-  style: string
+  style?: string
   target?: string
   rel?: string
 }

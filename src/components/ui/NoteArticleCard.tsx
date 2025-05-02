@@ -3,7 +3,6 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { ParsedNoteItem } from '@/type/type';
-import { Tag } from "./Tag";
 
 type Props = {
   note: ParsedNoteItem;

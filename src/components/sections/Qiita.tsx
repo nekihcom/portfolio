@@ -1,4 +1,3 @@
-import { Container } from "@/components/ui/Container"
 import { SectionTitle } from "@/components/ui/SectionTitle"
 import QiitaArticleList from "@/components/ui/QiitaArticleList"
 import { getMyAllQiitaPosts } from "@/lib/hook/useArticle"
