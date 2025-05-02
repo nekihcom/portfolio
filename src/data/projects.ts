@@ -12,16 +12,4 @@ export const projectsData: Project[] = [
     image: "/portfolio/mchkn.png",
     technologies: ["Next.js", "TypeScript", "Tailwind CSS"]
   },
-  {
-    title: "ポートフォリオサイト1",
-    description: "Next.jsとTypeScriptを使用したポートフォリオサイト",
-    image: "/portfolio/mchkn.png",
-    technologies: ["Next.js", "TypeScript", "Tailwind CSS"]
-  },
-  {
-    title: "ポートフォリオサイト2",
-    description: "Next.jsとTypeScriptを使用したポートフォリオサイト",
-    image: "/portfolio/mchkn.png",
-    technologies: ["Next.js", "TypeScript", "Tailwind CSS"]
-  },
 ] 
