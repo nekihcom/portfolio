@@ -1,8 +1,8 @@
 "use client"; 
 
 import Link from 'next/link';
-import { ParsedQiitaItem } from '@/type/type';
 import Image from 'next/image';
+import { ParsedQiitaItem } from '@/type/type';
 
 type Props = {
   qiita: ParsedQiitaItem;
@@ -13,10 +13,15 @@ const QiitaArticleCard = (props: Props) => {
   const { qiita, index } = props;
   // https://www.ey-office.com/blog_archive/2023/04/18/short-code-to-get-todays-date-in-yyyy-mm-dd-format-in-javascript/
   // sv-SEロケールはYYYY-MM-DD形式の日付文字列を戻す
-  const displayqiitaCreatedDt = new Date(qiita.created_at.split('T')[0]).toLocaleDateString('sv-SE');
+  const displayQiitaCreatedDt = new Date(qiita.created_at.split('T')[0]).toLocaleDateString('sv-SE');
 
   return (
-    <article className="bg-white rounded-lg shadow-md overflow-hidden">
+    <Link
+      href={qiita.url}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="block bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow"
+    >
       <div className="aspect-video relative">
         <Image
           src={qiita.ogpImageUrl}
@@ -28,14 +33,12 @@ const QiitaArticleCard = (props: Props) => {
         />
       </div>
       <div className="p-6">
-        <time className="text-sm text-gray-500">{displayqiitaCreatedDt}</time>
-        <h3 className="mt-2 text-xl font-bold">
-          <Link href={qiita.url} className="hover:text-blue-600 transition-colors">
-            {qiita.title}
-          </Link>
+        <time className="text-sm text-gray-500">{displayQiitaCreatedDt}</time>
+        <h3 className="mt-2 text-xl font-bold text-gray-900 hover:text-blue-600 transition-colors">
+          {qiita.title}
         </h3>
       </div>
-    </article>
+    </Link>
   );
 }
 
