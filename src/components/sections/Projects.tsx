@@ -11,7 +11,7 @@ export const Projects = () => {
   return (
     <SectionContainer id="projects" className="bg-gray-300a">
       <SectionTitle>Projects</SectionTitle>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 justify-items-center">
         {projectsData.map((project, index) => (
           <motion.div
             key={index}
@@ -19,7 +19,7 @@ export const Projects = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: index * 0.1 }}
-            className="bg-white rounded-lg shadow-md overflow-hidden"
+            className="bg-white rounded-lg shadow-md overflow-hidden w-[300px]"
           >
             <ProjectCard {...project} />
           </motion.div>
