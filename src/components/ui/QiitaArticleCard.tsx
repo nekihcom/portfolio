@@ -32,12 +32,12 @@ const QiitaArticleCard = (props: Props) => {
           priority={index < 2}
         />
       </div>
-      <div className="p-6">
+      {/* <div className="p-6">
         <time className="text-sm text-gray-500">{displayQiitaCreatedDt}</time>
         <h3 className="mt-2 text-xl font-bold text-gray-900 hover:text-gray-500 transition-all duration-300">
           {qiita.title}
         </h3>
-      </div>
+      </div> */}
     </Link>
   );
 }

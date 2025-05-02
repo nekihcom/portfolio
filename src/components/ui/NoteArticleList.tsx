@@ -9,7 +9,7 @@ export default function NoteArticleList({ allArticles }: NoteArticleListProps) {
   return (
     <>
       {allArticles.map((article, index) => (
-        <div key={article.guid} className="w-[300px]">
+        <div key={article.guid} className="w-11/12 sm:w-full md:w-[240px]">
           <NoteArticleCard note={article} index={index} />
         </div>
       ))}
