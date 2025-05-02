@@ -14,7 +14,7 @@ export default function Home() {
       {/* <Header /> */}
       {/* <DevEnvironment /> */}
       <div>
-        <main className="m-auto py-4 md:min-w-3xl md:w-2/3">
+        <main className="py-4">
           <Profile />
           <Projects />
           <Qiita />
