@@ -9,7 +9,9 @@ export default function QiitaArticleList({ allArticles }: QiitaArticleListProps)
   return (
     <>
       {allArticles.map((article, index) => (
-        <QiitaArticleCard key={article.id} qiita={article} index={index} />
+        <div key={article.url} className="w-[300px]">
+          <QiitaArticleCard qiita={article} index={index} />
+        </div>
       ))}
     </>
   );

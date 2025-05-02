@@ -11,7 +11,7 @@ export default async function Qiita() {
   return (
     <SectionContainer id="qiita" className="bg-gray-600a">
       <SectionTitle>Qiita</SectionTitle>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 justify-items-center">
         <QiitaArticleList allArticles={qiitaItems} />
       </div>
       <div className="text-center mt-8">
