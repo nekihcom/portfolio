@@ -1,17 +1,18 @@
 import NoteArticleCard from "./NoteArticleCard";
 import { ParsedNoteItem } from "@/type/type";
 
+interface NoteArticleListProps {
+  allArticles: ParsedNoteItem[];
+}
 
-const NoteArticleList = (props:{allArticles:Array<ParsedNoteItem>}) => {
-
-  const { allArticles } = props;
-
+export default function NoteArticleList({ allArticles }: NoteArticleListProps) {
   return (
     <>
-      {allArticles && allArticles.map((article, index) => (
-        <NoteArticleCard key={index} note={article} index={index} />
+      {allArticles.map((article, index) => (
+        <div key={article.guid} className="w-[300px]">
+          <NoteArticleCard note={article} index={index} />
+        </div>
       ))}
     </>
   );
 }
-export default NoteArticleList;

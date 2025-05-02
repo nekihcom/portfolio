@@ -3,6 +3,7 @@ import { SectionTitle } from "@/components/ui/SectionTitle"
 import NoteArticleList from "@/components/ui/NoteArticleList"
 import { SectionContainer } from "@/components/ui/SectionContainer"
 import { BgLink } from "@/components/ui/BgLink"
+import { Container } from "@/components/ui/Container"
 
 export default async function Note() {
   const { noteItems } = await getMyAllNotePosts()
@@ -10,7 +11,7 @@ export default async function Note() {
   return (
     <SectionContainer id="note" className="bg-gray-300a">
       <SectionTitle>note</SectionTitle>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 justify-items-center">
         <NoteArticleList allArticles={noteItems} />
       </div>
       <div className="text-center mt-8">
