@@ -121,19 +121,21 @@
   }
 }
 
-.isPc {
-  display: block;
-}
-
-.isSp {
-  display: none;
-} 
-
+/* レスポンシブ対応 */
 @media (max-width: 768px) {
   .isPc {
     display: none;
   }
   .isSp {
     display: block;
+  }
+}
+
+@media (min-width: 769px) {
+  .isPc {
+    display: block;
+  }
+  .isSp {
+    display: none;
   }
 } 
