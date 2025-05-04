@@ -6,13 +6,13 @@ export default function NotFound() {
   return (
     <>
       <DevEnvironment />
-      <div className="min-h-screen flex flex-col">
-        <main className="flex-grow flex items-center justify-center">
+      <div className="h-screen flex flex-col">
+        <main className="flex-1 flex items-center justify-center">
           <div className="text-center">
-            <h1 className="text-6xl font-bold mb-4">
+            <h1 className="text-5xl font-bold mb-3">
               404
             </h1>
-            <p className="text-xl mb-8">
+            <p className="text-lg mb-6">
               お探しのページは、どこかへ行ってしまったようです...
             </p>
             <Link
