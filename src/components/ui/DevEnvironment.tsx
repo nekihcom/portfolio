@@ -8,7 +8,7 @@ export function DevEnvironment({ className }: DevEnvironmentProps) {
   if (!isDev) return null
 
   return (
-    <div className={`sticky top-0 left-0 right-0 z-50 bg-teal-100 text-teal-800 text-center py-2 ${className || ""}`}>
+    <div className={`bg-teal-100 text-teal-800 text-center py-2 z-40 ${className || ""}`}>
       開発環境です
     </div>
   )
