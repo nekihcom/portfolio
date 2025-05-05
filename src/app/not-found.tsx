@@ -125,7 +125,7 @@ export default function NotFound() {
             </motion.h1>
             
             <motion.p 
-              className="text-xl mb-8 max-w-md mx-auto"
+              className="text-xl mb-8 max-w-none mx-auto whitespace-nowrap"
               variants={itemVariants}
             >
               お探しのページは、どこかへ行ってしまったようです...
