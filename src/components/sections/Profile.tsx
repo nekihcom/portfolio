@@ -46,12 +46,12 @@ export const Profile = () => {
   }
 
   return (
-    <SectionContainer id="profile" className="bg-gray-500a">
+    <SectionContainer id="profile" className="mb-12">
       <motion.div
         variants={containerVariants}
         initial="hidden"
         whileInView="visible"
-        viewport={{ once: true, margin: "-50px" }}
+        viewport={{ once: true, margin: "-75px" }}
       >
         {/* プロフィールブロック */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">

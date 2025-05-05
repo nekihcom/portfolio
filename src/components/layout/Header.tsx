@@ -49,10 +49,10 @@ export const Header = () => {
 
   // アニメーション設定
   const headerVariants = {
-    initial: { opacity: 0, y: -20 },
+    initial: { opacity: 0, x: -100 },
     animate: { 
       opacity: 1, 
-      y: 0,
+      x: 0,
       transition: {
         duration: 0.6,
         ease: [0.22, 1, 0.36, 1]
@@ -92,6 +92,32 @@ export const Header = () => {
     }
   }
 
+  // タイトルのアニメーション設定
+  const titleVariants = {
+    initial: { opacity: 0, x: -100 },
+    animate: { 
+      opacity: 1, 
+      x: 0,
+      transition: {
+        duration: 0.6,
+        ease: [0.22, 1, 0.36, 1]
+      }
+    }
+  }
+
+  // リンクのアニメーション設定
+  const linkVariants = {
+    initial: { opacity: 0, x: 100 },
+    animate: { 
+      opacity: 1, 
+      x: 0,
+      transition: {
+        duration: 0.6,
+        ease: [0.22, 1, 0.36, 1]
+      }
+    }
+  }
+
   return (
     <>
       <motion.header
@@ -99,18 +125,20 @@ export const Header = () => {
         animate="animate"
         variants={headerVariants}
         className={clsx(
-          "fixed top-0 left-0 right-0 z-50 py-4 transition-all duration-300",
+          "fixed top-0 left-0 right-0 z-50 py-4 transition-all duration-300 overflow-x-hidden",
           isScrolled ? "bg-white/90 backdrop-blur-sm shadow-sm" : "bg-transparent"
         )}
       >
-        <div className="w-[95%] sm:w-[90%] max-w-[780px] mx-auto flex justify-between items-center">
+        <div className="w-full sm:w-full max-w-[780px] mx-auto px-4 md:px-0 flex justify-between items-center">
           {/* サイトタイトル */}
-          <Link href="/" className="text-xl font-bold text-teal-600 hover:text-teal-700 transition-colors">
-            Mochiken&apos;s Portfolio
-          </Link>
+          <motion.div variants={titleVariants}>
+            <Link href="/" className="text-xl font-bold text-teal-600 hover:text-teal-700 transition-colors">
+              Mochiken&apos;s Portfolio
+            </Link>
+          </motion.div>
 
           {/* デスクトップナビゲーション */}
-          <nav className="hidden md:flex space-x-6">
+          <motion.nav className="hidden md:flex space-x-6" variants={linkVariants}>
             {navLinks.map((link) => (
               <ScrollLink
                 key={link.id}
@@ -126,7 +154,7 @@ export const Header = () => {
                 <span className="absolute left-0 bottom-0 w-0 h-0.5 bg-teal-500 transition-all duration-300 group-hover:w-full" />
               </ScrollLink>
             ))}
-          </nav>
+          </motion.nav>
 
           {/* モバイルメニューボタン */}
           <button 
@@ -160,7 +188,7 @@ export const Header = () => {
             animate="open"
             exit="closed"
             variants={menuVariants}
-            className="fixed inset-0 bg-white z-40 pt-20 px-4 md:hidden"
+            className="fixed inset-0 bg-white z-40 pt-20 px-0 md:hidden overflow-x-hidden"
           >
             <div className="flex flex-col space-y-4">
               {navLinks.map((link) => (

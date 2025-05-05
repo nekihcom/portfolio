@@ -2,24 +2,21 @@ import { SectionTitle } from "@/components/ui/SectionTitle"
 import QiitaArticleList from "@/components/ui/QiitaArticleList"
 import { getMyAllQiitaPosts } from "@/lib/hook/useArticle"
 import { SectionContainer } from "@/components/ui/SectionContainer"
-import { BgLink } from "@/components/ui/BgLink"
+import { ExploreLink } from "@/components/ui/ExploreLink"
 
 export default async function Qiita() {
   const { qiitaItems } = await getMyAllQiitaPosts()
 
   return (
-    <SectionContainer id="qiita" className="bg-gray-600a">
-      <SectionTitle description="Qiitaに投稿した技術記事の一覧です。プログラミングやWeb開発に関する知見を共有しています。">Qiita</SectionTitle>
+    <SectionContainer id="qiita" className="my-24">
+      <SectionTitle>Qiita</SectionTitle>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 justify-items-center">
         <QiitaArticleList allArticles={qiitaItems} />
       </div>
-      <div className="text-center mt-8">
-        <BgLink
+      <div className="mt-8">
+        <ExploreLink
           href="https://qiita.com/nekihcom"
-          target="_blank"
-          rel="noopener noreferrer"
-          text="Qiitaを見てみる"
-          style="bg-green-600 text-white hover:bg-green-700"
+          jaText="Qiitaをもっと見る"
         />
       </div>
     </SectionContainer>

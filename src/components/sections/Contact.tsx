@@ -4,7 +4,7 @@ import { SectionContainer } from "@/components/ui/SectionContainer"
 
 export default function Contact() {
   return (
-    <SectionContainer id="contact" className="bg-gray-400a">
+    <SectionContainer id="contact" className="my-48">
       <SectionTitle isCenter={true}>Contact</SectionTitle>
       <ContactForm />
     </SectionContainer>

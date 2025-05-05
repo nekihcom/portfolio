@@ -63,7 +63,7 @@ export const SocialLink = (props: Props) => {
     >
       <div>
         <p className="text-xs">{ link.name }</p>
-        <span className="font-medium">@{link.username}</span>
+        <span className="font-medium text-xl username-font">@{link.username}</span>
       </div>
       {link.iconImage ? (
           <motion.div
