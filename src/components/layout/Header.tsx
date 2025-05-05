@@ -125,11 +125,11 @@ export const Header = () => {
         animate="animate"
         variants={headerVariants}
         className={clsx(
-          "fixed top-0 left-0 right-0 z-50 py-4 transition-all duration-300",
+          "fixed top-0 left-0 right-0 z-50 py-4 transition-all duration-300 overflow-x-hidden",
           isScrolled ? "bg-white/90 backdrop-blur-sm shadow-sm" : "bg-transparent"
         )}
       >
-        <div className="w-[95%] sm:w-[90%] max-w-[780px] mx-auto flex justify-between items-center">
+        <div className="w-full sm:w-full max-w-[780px] mx-auto px-4 md:px-0 flex justify-between items-center">
           {/* サイトタイトル */}
           <motion.div variants={titleVariants}>
             <Link href="/" className="text-xl font-bold text-teal-600 hover:text-teal-700 transition-colors">
@@ -188,7 +188,7 @@ export const Header = () => {
             animate="open"
             exit="closed"
             variants={menuVariants}
-            className="fixed inset-0 bg-white z-40 pt-20 px-4 md:hidden"
+            className="fixed inset-0 bg-white z-40 pt-20 px-0 md:hidden overflow-x-hidden"
           >
             <div className="flex flex-col space-y-4">
               {navLinks.map((link) => (
