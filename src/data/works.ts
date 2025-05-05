@@ -1,4 +1,4 @@
-export type Project = {
+export type Work = {
   title: string
   description: string
   image: string
@@ -6,7 +6,7 @@ export type Project = {
   url?: string
 }
 
-export const projectsData: Project[] = [
+export const worksData: Work[] = [
   {
     title: "note2Wordpress",
     description: "noteの記事をWordpressに移行するためのツール",

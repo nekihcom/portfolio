@@ -1,24 +1,24 @@
 "use client"
 
 import { useMemo, lazy, Suspense } from "react"
-import { projectsData } from "@/data/projects"
+import { worksData } from "@/data/works"
 import { SectionTitle } from "@/components/ui/SectionTitle"
 import { SectionContainer } from "@/components/ui/SectionContainer"
-import { ProjectCard } from "@/components/ui/ProjectCard"
+import { WorkCard } from "@/components/ui/WorkCard"
 
 const MotionDiv = lazy(() => import("framer-motion").then((mod) => ({ default: mod.motion.div })))
 
-export default function Projects() {
-  const projects = useMemo(() => projectsData, [])
+export default function Works() {
+  const works = useMemo(() => worksData, [])
 
   return (
-    <SectionContainer id="projects" className="bg-gray-300a">
-      <SectionTitle description="これまでに開発したプロジェクトの一部です。GitHubのリポジトリや実際のサイトにアクセスできます。">Projects</SectionTitle>
+    <SectionContainer id="works" className="bg-gray-300a">
+      <SectionTitle description="これまでに手がけた作品の一部です。GitHubのリポジトリや実際のサイトにアクセスできます。">Works</SectionTitle>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 justify-items-center">
-        {projects.map((project, index) => (
+        {works.map((work, index) => (
           <Suspense key={index} fallback={
             <div className="bg-white rounded-lg shadow-md overflow-hidden w-11/12 sm:w-full md:w-[240px]">
-              <ProjectCard {...project} />
+              <WorkCard {...work} />
             </div>
           }>
             <MotionDiv
@@ -32,7 +32,7 @@ export default function Projects() {
               }}
               className="bg-white rounded-lg shadow-md overflow-hidden w-11/12 sm:w-full md:w-[240px]"
             >
-              <ProjectCard {...project} />
+              <WorkCard {...work} />
             </MotionDiv>
           </Suspense>
         ))}

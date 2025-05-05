@@ -2,7 +2,7 @@
 import { Footer } from "@/components/layout/Footer"
 import { MainVisual } from "@/components/layout/MainVisual"
 import { Profile } from "@/components/sections/Profile"
-import Projects from "@/components/sections/Projects"
+import Works from "@/components/sections/Works"
 import Contact from "@/components/sections/Contact"
 import { DevEnvironment } from "@/components/ui/DevEnvironment"
 import Note from "@/components/sections/Note"
@@ -16,7 +16,7 @@ export default function Home() {
         <main>
           <MainVisual />
           <Profile />
-          <Projects />
+          <Works />
           <Qiita />
           <Note />
           <Contact />
