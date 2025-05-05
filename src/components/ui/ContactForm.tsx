@@ -1,4 +1,4 @@
-import { BgLink } from "@/components/ui/BgLink"
+import { ContactButton } from "@/components/ui/ContactButton"
 
 export function ContactForm() {
   return (
@@ -7,9 +7,9 @@ export function ContactForm() {
         お問い合わせやお仕事のご依頼はこちらからお気軽にご連絡ください。
         <br />3日以内にご返信いたします。
       </p>
-      <BgLink
+      <ContactButton
         href="https://docs.google.com/forms/d/e/1FAIpQLSeRWwNv5Fyxqmv6AJQuzAJWonAyoSAd1rerzl9ncV1dyM-zgA/viewform?usp=dialog"
-        text="ちょっとしたことでもご相談ください"
+        text="Drop a Line"
       />
     </div>
   )
