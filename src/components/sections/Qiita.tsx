@@ -9,7 +9,7 @@ export default async function Qiita() {
 
   return (
     <SectionContainer id="qiita" className="bg-gray-600a">
-      <SectionTitle>Qiita</SectionTitle>
+      <SectionTitle description="Qiitaに投稿した技術記事の一覧です。プログラミングやWeb開発に関する知見を共有しています。">Qiita</SectionTitle>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 justify-items-center">
         <QiitaArticleList allArticles={qiitaItems} />
       </div>

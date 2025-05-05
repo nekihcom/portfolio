@@ -13,7 +13,7 @@ export default function Projects() {
 
   return (
     <SectionContainer id="projects" className="bg-gray-300a">
-      <SectionTitle>Projects</SectionTitle>
+      <SectionTitle description="これまでに開発したプロジェクトの一部です。GitHubのリポジトリや実際のサイトにアクセスできます。">Projects</SectionTitle>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 justify-items-center">
         {projects.map((project, index) => (
           <Suspense key={index} fallback={

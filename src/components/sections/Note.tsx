@@ -9,7 +9,7 @@ export default async function Note() {
 
   return (
     <SectionContainer id="note" className="bg-gray-300a">
-      <SectionTitle>note</SectionTitle>
+      <SectionTitle description="noteに投稿した記事の一覧です。技術的な内容だけでなく、日々の気づきやエンジニアとしての考え方なども発信しています。">note</SectionTitle>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 justify-items-center">
         <NoteArticleList allArticles={noteItems} />
       </div>
