@@ -9,7 +9,7 @@ export type TSocialLink = {
 export const profileData = {
   name: "Mochiken",
   fullName: "Masaya Kemmochi",
-  title: "アウトドア派ソフトウェアエンジニア",
+  title: "Software Engineer",
   image: "/profile/profile.jpg",
   description: "ITでものづくりをしています。<br class='isSp'/>一日一善、一日一歩ずつ。",
   socialLinks: [

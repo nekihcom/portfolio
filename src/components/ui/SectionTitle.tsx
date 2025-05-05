@@ -58,7 +58,7 @@ export const SectionTitle = ({ children, isCenter=false, description }: SectionT
         <motion.h2
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true, margin: "-150px" }}
+          viewport={{ once: true, margin: "-50px" }}
           variants={titleVariants}
           className={`text-4xl font-bold ${isCenter ? 'text-center' : 'text-left'}`}
         >
@@ -68,7 +68,7 @@ export const SectionTitle = ({ children, isCenter=false, description }: SectionT
           className={`h-1 bg-teal-500 mt-2 rounded ${isCenter ? 'mx-auto' : ''}`}
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true, margin: "-150px" }}
+          viewport={{ once: true, margin: "-50px" }}
           variants={underlineVariants}
         />
       </div>
@@ -76,7 +76,7 @@ export const SectionTitle = ({ children, isCenter=false, description }: SectionT
         <motion.p
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true, margin: "-150px" }}
+          viewport={{ once: true, margin: "-50px" }}
           variants={descriptionVariants}
           className="text-gray-600 mt-4 text-left"
         >
