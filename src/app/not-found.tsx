@@ -47,9 +47,8 @@ export default function NotFound() {
   }
 
   const buttonVariants = {
-    hidden: { scale: 0.9, opacity: 0 },
+    hidden: { opacity: 0 },
     visible: {
-      scale: 1,
       opacity: 1,
       transition: {
         delay: 0.8,
@@ -57,7 +56,6 @@ export default function NotFound() {
       }
     },
     hover: {
-      scale: 1.05,
       backgroundColor: "#0d9488", // teal-600の濃い色
       boxShadow: "0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05)",
       transition: {
@@ -65,7 +63,8 @@ export default function NotFound() {
       }
     },
     tap: {
-      scale: 0.98
+      y: 2,
+      boxShadow: "0 2px 4px -1px rgba(0, 0, 0, 0.1)"
     }
   }
 
