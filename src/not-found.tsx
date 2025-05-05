@@ -119,7 +119,7 @@ export default function NotFound() {
               className="text-7xl font-bold mb-6 relative inline-block"
               variants={numberVariants}
             >
-              <span className="bg-clip-text text-transparent bg-gradient-to-r from-teal-500 to-blue-500">
+              <span className="text-teal-600">
                 404
               </span>
             </motion.h1>
