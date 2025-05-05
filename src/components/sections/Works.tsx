@@ -12,7 +12,7 @@ export default function Works() {
   const works = useMemo(() => worksData, [])
 
   return (
-    <SectionContainer id="works" className="bg-gray-300a">
+    <SectionContainer id="works" className="my-24">
       <SectionTitle description="これまでに手がけた作品の一部です。GitHubのリポジトリや実際のサイトにアクセスできます。">Works</SectionTitle>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 justify-items-center">
         {works.map((work, index) => (
@@ -24,7 +24,7 @@ export default function Works() {
             <MotionDiv
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-100px" }}
+              viewport={{ once: true, margin: "-150px" }}
               transition={{ 
                 duration: 0.3,
                 delay: Math.min(index * 0.05, 0.3),
