@@ -128,6 +128,15 @@ export default function NotFound() {
             >
               お探しのページは、どこかへ行ってしまったようです...
             </motion.p>
+            
+            <motion.div variants={buttonVariants}>
+              <Link
+                href="/"
+                className="bg-teal-600 text-white font-bold py-3 px-6 rounded-lg w-[180px] inline-block shadow-sm"
+              >
+                トップページへ戻る
+              </Link>
+            </motion.div>
           </motion.div>
         </main>
         <Footer />
