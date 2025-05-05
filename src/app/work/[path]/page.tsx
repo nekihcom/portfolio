@@ -5,6 +5,7 @@ import Link from "next/link"
 import ReactMarkdown from "react-markdown"
 import remarkGfm from "remark-gfm"
 import { getMarkdownContent } from "@/lib/markdown"
+import { SectionContainer } from "@/components/ui/SectionContainer"
 
 export default function WorkDetail({ params }: { params: { path: string } }) {
   const work = worksData.find((work) => work.path === params.path)
@@ -17,7 +18,7 @@ export default function WorkDetail({ params }: { params: { path: string } }) {
 
   return (
     <div className="min-h-screen bg-gray-50">
-      <main className="container mx-auto px-4 py-8">
+      <SectionContainer id="work-detail" className="py-8">
         <div className="max-w-4xl mx-auto">
           <div className={`mb-8 ${process.env.NODE_ENV === "development" ? "mt-24" : ""}`}>
             <Link 
@@ -96,7 +97,7 @@ export default function WorkDetail({ params }: { params: { path: string } }) {
             </div>
           </div>
         </div>
-      </main>
+      </SectionContainer>
     </div>
   )
 } 
