@@ -3,6 +3,8 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import { Providers } from "./providers";
 import { Header } from "@/components/layout/Header";
+import { DevEnvironment } from "@/components/ui/DevEnvironment";
+import { Footer } from "@/components/layout/Footer";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -52,8 +54,14 @@ export default function RootLayout({
     <html lang="ja">
       <body className={inter.className}>
         <Providers>
-          <Header />
-          {children}
+          <div className="flex flex-col min-h-screen">
+            <Header />
+            <DevEnvironment className="sticky top-[64px]" />
+            <div className="flex-grow">
+              {children}
+            </div>
+            <Footer />
+          </div>
         </Providers>
       </body>
     </html>

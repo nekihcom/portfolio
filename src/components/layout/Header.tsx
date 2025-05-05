@@ -103,7 +103,7 @@ export const Header = () => {
           isScrolled ? "bg-white/90 backdrop-blur-sm shadow-sm" : "bg-transparent"
         )}
       >
-        <div className="w-[95%] max-w-[780px] mx-auto flex justify-between items-center">
+        <div className="w-[95%] sm:w-[90%] max-w-[780px] mx-auto flex justify-between items-center">
           {/* サイトタイトル */}
           <Link href="/" className="text-xl font-bold text-teal-600 hover:text-teal-700 transition-colors">
             Mochiken&apos;s Portfolio
@@ -160,7 +160,7 @@ export const Header = () => {
             animate="open"
             exit="closed"
             variants={menuVariants}
-            className="fixed inset-0 bg-white z-40 pt-20 px-6 md:hidden"
+            className="fixed inset-0 bg-white z-40 pt-20 px-4 md:hidden"
           >
             <div className="flex flex-col space-y-4">
               {navLinks.map((link) => (

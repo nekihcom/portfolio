@@ -2,8 +2,6 @@
 
 import Link from "next/link"
 import { motion } from "framer-motion"
-import { Footer } from "@/components/layout/Footer"
-import { DevEnvironment } from "@/components/ui/DevEnvironment"
 
 export default function NotFound() {
   // アニメーション設定
@@ -81,71 +79,67 @@ export default function NotFound() {
   }
 
   return (
-    <>
-      <DevEnvironment />
-      <div className="h-[97vh] flex flex-col relative overflow-hidden">
-        {/* 背景の装飾要素 */}
+    <div className="h-[97vh] flex flex-col relative overflow-hidden">
+      {/* 背景の装飾要素 */}
+      <motion.div 
+        className="absolute top-20 right-20 w-64 h-64 rounded-full bg-teal-100/30 blur-3xl"
+        initial="hidden"
+        animate="visible"
+        variants={decorationVariants}
+      />
+      <motion.div 
+        className="absolute bottom-40 left-10 w-72 h-72 rounded-full bg-blue-100/30 blur-3xl"
+        initial="hidden"
+        animate="visible"
+        variants={decorationVariants}
+        transition={{ delay: 0.3 }}
+      />
+      <motion.div 
+        className="absolute top-1/4 left-1/4 w-20 h-20 rounded-full bg-teal-200/20 blur-xl"
+        initial="hidden"
+        animate="visible"
+        variants={decorationVariants}
+        transition={{ delay: 0.5 }}
+      />
+      
+      <main className="flex-1 flex items-center justify-center z-10">
         <motion.div 
-          className="absolute top-20 right-20 w-64 h-64 rounded-full bg-teal-100/30 blur-3xl"
+          className="text-center"
           initial="hidden"
           animate="visible"
-          variants={decorationVariants}
-        />
-        <motion.div 
-          className="absolute bottom-40 left-10 w-72 h-72 rounded-full bg-blue-100/30 blur-3xl"
-          initial="hidden"
-          animate="visible"
-          variants={decorationVariants}
-          transition={{ delay: 0.3 }}
-        />
-        <motion.div 
-          className="absolute top-1/4 left-1/4 w-20 h-20 rounded-full bg-teal-200/20 blur-xl"
-          initial="hidden"
-          animate="visible"
-          variants={decorationVariants}
-          transition={{ delay: 0.5 }}
-        />
-        
-        <main className="flex-1 flex items-center justify-center z-10">
-          <motion.div 
-            className="text-center"
-            initial="hidden"
-            animate="visible"
-            variants={containerVariants}
+          variants={containerVariants}
+        >
+          <motion.h1 
+            className="text-7xl font-bold mb-6 relative inline-block"
+            variants={numberVariants}
           >
-            <motion.h1 
-              className="text-7xl font-bold mb-6 relative inline-block"
-              variants={numberVariants}
+            <span className="text-teal-600">
+              404
+            </span>
+          </motion.h1>
+          
+          <motion.p 
+            className="text-xl mb-8 max-w-none mx-auto whitespace-nowrap"
+            variants={itemVariants}
+          >
+            お探しのページは、どこかへ行ってしまったようです...
+          </motion.p>
+          
+          <motion.div 
+            variants={buttonVariants}
+            whileHover="hover"
+            whileTap="tap"
+            className="w-full max-w-sm mx-auto"
+          >
+            <Link
+              href="/"
+              className="bg-teal-600 text-white font-bold py-3 px-6 rounded-lg w-full inline-block shadow-sm"
             >
-              <span className="text-teal-600">
-                404
-              </span>
-            </motion.h1>
-            
-            <motion.p 
-              className="text-xl mb-8 max-w-none mx-auto whitespace-nowrap"
-              variants={itemVariants}
-            >
-              お探しのページは、どこかへ行ってしまったようです...
-            </motion.p>
-            
-            <motion.div 
-              variants={buttonVariants}
-              whileHover="hover"
-              whileTap="tap"
-              className="w-full max-w-sm mx-auto"
-            >
-              <Link
-                href="/"
-                className="bg-teal-600 text-white font-bold py-3 px-6 rounded-lg w-full inline-block shadow-sm"
-              >
-                トップページへ戻る
-              </Link>
-            </motion.div>
+              トップページへ戻る
+            </Link>
           </motion.div>
-        </main>
-        <Footer />
-      </div>
-    </>
+        </motion.div>
+      </main>
+    </div>
   )
 } 

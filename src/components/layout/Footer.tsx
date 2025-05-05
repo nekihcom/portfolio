@@ -10,7 +10,7 @@ export function Footer() {
       "border-t border-teal-700",
       "py-8"
     )}>
-      <div className="container mx-auto px-4">
+      <div className="w-[95%] sm:w-[90%] max-w-[780px] mx-auto">
         <div className="flex flex-col items-center space-y-4">
           <div className="flex space-x-4">
             {profileData.socialLinks.map((link) => (
