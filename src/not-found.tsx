@@ -6,7 +6,7 @@ export default function NotFound() {
   return (
     <>
       <DevEnvironment />
-      <div className="min-h-screen flex flex-col">
+      <div className="h-[97vh] flex flex-col">
         <main className="flex-grow flex items-center justify-center">
           <div className="text-center">
             <h1 className="text-6xl font-bold mb-4">
