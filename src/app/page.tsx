@@ -1,4 +1,3 @@
-// import { Header } from "@/components/layout/Header"
 import { Footer } from "@/components/layout/Footer"
 import { Profile } from "@/components/sections/Profile"
 import Works from "@/components/sections/Works"
