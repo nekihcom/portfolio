@@ -56,7 +56,7 @@ export default function RootLayout({
         <Providers>
           <div className="flex flex-col min-h-screen">
             <Header />
-            <DevEnvironment className="sticky top-[64px]" />
+            <DevEnvironment className="sticky top-[60px]" />
             <div className="flex-grow">
               {children}
             </div>
