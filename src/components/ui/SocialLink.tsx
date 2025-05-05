@@ -28,24 +28,48 @@ export const SocialLink = (props: Props) => {
     }
   }
 
+  // アニメーション設定
+  const linkVariants = {
+    hidden: { opacity: 0, x: -30, rotateY: -10 },
+    visible: { 
+      opacity: 1, 
+      x: 0, 
+      rotateY: 0,
+      transition: { 
+        duration: 0.5, 
+        delay: index * 0.1,
+        type: "spring",
+        stiffness: 100,
+        damping: 10
+      }
+    }
+  }
+
   return (
-    <>
-      <motion.a
-        key={link.name}
-        href={link.url}
-        target="_blank"
-        rel="noopener noreferrer"
-        className={`flex items-center justify-between p-4 rounded-lg transition-all duration-300 transform hover:scale-105 shadow-sm ${getSnsStyle(link.name)}`}
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.5, delay: index * 0.1 }}
-      >
-        <div>
-          <p className="text-xs">{ link.name }</p>
-          <span className="font-medium">@{link.username}</span>
-        </div>
-        {link.iconImage ? (
+    <motion.a
+      key={link.name}
+      href={link.url}
+      target="_blank"
+      rel="noopener noreferrer"
+      className={`flex items-center justify-between p-4 rounded-lg shadow-md transition-all duration-300 ${getSnsStyle(link.name)}`}
+      variants={linkVariants}
+      whileHover={{ 
+        scale: 1.05, 
+        rotate: 1,
+        boxShadow: "0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05)",
+        transition: { duration: 0.2 }
+      }}
+      whileTap={{ scale: 0.98 }}
+    >
+      <div>
+        <p className="text-xs">{ link.name }</p>
+        <span className="font-medium">@{link.username}</span>
+      </div>
+      {link.iconImage ? (
+          <motion.div
+            initial={{ rotate: 0 }}
+            whileHover={{ rotate: 10, transition: { duration: 0.2 } }}
+          >
             <Image
               src={link.iconImage}
               alt={link.name}
@@ -53,7 +77,12 @@ export const SocialLink = (props: Props) => {
               height={24}
               className="mr-3"
             />
-          ) : (
+          </motion.div>
+        ) : (
+          <motion.div
+            initial={{ rotate: 0 }}
+            whileHover={{ rotate: 10, transition: { duration: 0.2 } }}
+          >
             <svg
               className="w-6 h-6 mr-3"
               viewBox="0 0 24 24"
@@ -61,9 +90,9 @@ export const SocialLink = (props: Props) => {
             >
               <path d={link.icon} />
             </svg>
-          )
-        }
-      </motion.a>
-    </>
+          </motion.div>
+        )
+      }
+    </motion.a>
   )
 }
