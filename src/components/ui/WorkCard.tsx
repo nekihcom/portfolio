@@ -3,11 +3,15 @@ import Link from "next/link"
 import { Work } from "@/data/works"
 
 export const WorkCard = (work: Work) => {
+  const href = work.detailFlg ? `/work/${work.path}` : work.url || "#"
+  const target = work.detailFlg ? undefined : work.url ? "_blank" : undefined
+  const rel = work.detailFlg ? undefined : work.url ? "noopener noreferrer" : undefined
+
   return (
     <Link 
-      href={work.url || "#"} 
-      target={work.url ? "_blank" : undefined}
-      rel={work.url ? "noopener noreferrer" : undefined}
+      href={href}
+      target={target}
+      rel={rel}
       className="group relative block"
     >
       <div className="aspect-video relative">
