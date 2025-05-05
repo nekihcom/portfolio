@@ -1,6 +1,5 @@
 // import { Header } from "@/components/layout/Header"
 import { Footer } from "@/components/layout/Footer"
-import { MainVisual } from "@/components/layout/MainVisual"
 import { Profile } from "@/components/sections/Profile"
 import Works from "@/components/sections/Works"
 import Contact from "@/components/sections/Contact"
@@ -13,8 +12,7 @@ export default function Home() {
     <>
       <DevEnvironment />
       <div>
-        <main>
-          <MainVisual />
+        <main className="py-4">
           <Profile />
           <Works />
           <Qiita />
