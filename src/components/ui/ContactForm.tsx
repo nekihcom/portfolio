@@ -9,7 +9,7 @@ export function ContactForm() {
       </p>
       <ContactButton
         href="https://docs.google.com/forms/d/e/1FAIpQLSeRWwNv5Fyxqmv6AJQuzAJWonAyoSAd1rerzl9ncV1dyM-zgA/viewform?usp=dialog"
-        text="Drop a Line"
+        text="Drop a Line!!"
       />
     </div>
   )
