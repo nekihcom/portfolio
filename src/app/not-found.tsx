@@ -56,15 +56,14 @@ export default function NotFound() {
       }
     },
     hover: {
-      backgroundColor: "#0d9488", // teal-600の濃い色
-      boxShadow: "0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05)",
+      boxShadow: "0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)",
       transition: {
         duration: 0.2
       }
     },
     tap: {
-      y: 2,
-      boxShadow: "0 2px 4px -1px rgba(0, 0, 0, 0.1)"
+      y: 1,
+      boxShadow: "0 1px 2px 0 rgba(0, 0, 0, 0.05)"
     }
   }
 
@@ -133,7 +132,7 @@ export default function NotFound() {
             <motion.div variants={buttonVariants} whileHover="hover" whileTap="tap">
               <Link
                 href="/"
-                className="inline-block bg-teal-600 text-white font-bold py-3 px-6 rounded-lg transition-colors"
+                className="inline-block bg-teal-600 text-white font-bold py-3 px-6 rounded-lg w-[180px] shadow-sm"
               >
                 トップページへ戻る
               </Link>
