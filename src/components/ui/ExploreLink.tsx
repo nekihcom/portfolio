@@ -37,11 +37,11 @@ export const ExploreLink = ({
           href={href}
           target={target}
           rel={rel}
-          className="inline-flex items-center text-gray-800 hover:text-gray-900 font-medium"
+          className="inline-flex items-center text-gray-800 group-hover:text-teal-600 font-medium transition-colors duration-300"
         >
           <span className="mr-1">{jaText}</span>
-          <span className="text-sm opacity-80 mr-1">/ {enText}</span>
-          <span className="text-lg">→</span>
+          <span className="text-sm opacity-80 mr-1 group-hover:opacity-90">/ {enText}</span>
+          <span className="text-lg group-hover:translate-x-0.5 transition-transform duration-300">→</span>
         </Link>
         <motion.div 
           className="absolute bottom-0 left-0 h-0.5 bg-teal-500 rounded"
