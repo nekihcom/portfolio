@@ -129,14 +129,14 @@ export default function NotFound() {
               お探しのページは、どこかへ行ってしまったようです...
             </motion.p>
             
-            <motion.div variants={buttonVariants} whileHover="hover" whileTap="tap">
-              <Link
+            {/* <motion.div variants={buttonVariants} whileHover="hover" whileTap="tap"> */}
+              {/* <Link
                 href="/"
-                className="inline-block bg-teal-600 text-white font-bold py-3 px-6 rounded-lg w-[180px] shadow-sm"
+                className="bg-teal-600 text-white font-bold py-3 px-6 rounded-lg w-[180px] shadow-sm"
               >
                 トップページへ戻る
-              </Link>
-            </motion.div>
+              </Link> */}
+            {/* </motion.div> */}
           </motion.div>
         </main>
         <Footer />
