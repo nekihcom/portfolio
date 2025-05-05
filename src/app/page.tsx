@@ -11,7 +11,7 @@ export default function Home() {
     <>
       <DevEnvironment />
       <div>
-        <main className="py-4">
+        <main className="py-4 pt-24">
           <Profile />
           <Works />
           <Qiita />
