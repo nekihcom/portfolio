@@ -5,8 +5,9 @@ import { SectionContainer } from "@/components/ui/SectionContainer"
 import { getWorks } from "@/lib/microcms"
 
 export default async function WorkDetail({ params }: { params: { path: string } }) {
+  const { path } = await params;
   const works = await getWorks();
-  const work = works.find((w) => w.path === params.path);
+  const work = works.find((w) => w.path === path);
 
   if (!work) {
     notFound();
