@@ -1,3 +1,5 @@
+import { ReactNode } from "react";
+
 export type QiitaItemResponse = {
   coediting: boolean;
   comments_count: number;
@@ -63,17 +65,19 @@ export type ParsedNoteItem = {
 
 export type Work = {
   id: string;
-  title: string;
-  description: string;
-  image?: {
-    url: string;
-    height: number;
-    width: number;
-  };
-  technologies: string[];
-  url: string;
   createdAt: string;
   updatedAt: string;
   publishedAt: string;
   revisedAt: string;
+  title: string;
+  description: string;
+  thumbnail: {
+    url: string;
+    height: number;
+    width: number;
+  };
+  keywords: string;
+  url: string;
+  path: string;
+  body: ReactNode;
 }

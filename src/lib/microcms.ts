@@ -3,22 +3,14 @@ import { Work } from "@/type/type";
 const MICROCMS_API_KEY = process.env.NEXT_PUBLIC_MICROCMS_API_KEY;
 const MICROCMS_API_URL = process.env.NEXT_PUBLIC_MICROCMS_API_URL;
 
-if (!MICROCMS_API_KEY) {
-  throw new Error("NEXT_PUBLIC_MICROCMS_API_KEY is not defined");
+if (!MICROCMS_API_KEY || !MICROCMS_API_URL) {
+  throw new Error('Required environment variables are not set');
 }
-
-if (!MICROCMS_API_URL) {
-  throw new Error("NEXT_PUBLIC_MICROCMS_API_URL is not defined");
-}
-
-// 型アサーションを使用して、環境変数が定義されていることを保証
-const apiKey: string = MICROCMS_API_KEY;
-const apiUrl: string = MICROCMS_API_URL;
 
 export async function getWorks(): Promise<Work[]> {
-  const response = await fetch(`${apiUrl}/work`, {
+  const response = await fetch(`${MICROCMS_API_URL}/work`, {
     headers: {
-      "X-MICROCMS-API-KEY": apiKey,
+      "X-MICROCMS-API-KEY": MICROCMS_API_KEY as string,
     },
   });
 
@@ -28,4 +20,21 @@ export async function getWorks(): Promise<Work[]> {
 
   const data = await response.json();
   return data.contents;
+}
+
+export async function getWork(path: string): Promise<Work | null> {
+  const res = await fetch(`${MICROCMS_API_URL}/work/${path}`, {
+    headers: {
+      "X-MICROCMS-API-KEY": MICROCMS_API_KEY as string,
+    },
+  });
+
+  if (!res.ok) {
+    if (res.status === 404) {
+      return null;
+    }
+    throw new Error("Failed to fetch work");
+  }
+
+  return res.json();
 } 
