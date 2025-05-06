@@ -79,5 +79,5 @@ export type Work = {
   keywords: string;
   url: string;
   path: string;
-  body: ReactNode;
+  body: string;
 }
