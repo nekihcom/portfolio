@@ -28,7 +28,7 @@ export default async function WorkDetail({ params }: { params: { path: string } 
             </Link>
           </div>
 
-          <div className="rounded-lg overflow-hidden">
+          <div className="rounded-lg overflow-hidden bg-white shadow-lg">
             <div className="aspect-video relative">
               <Image
                 src={work.thumbnail.url}
@@ -58,12 +58,12 @@ export default async function WorkDetail({ params }: { params: { path: string } 
                 </div>
               )}
 
-              <div className="max-w-none prose prose-teal">
+              <div className="prose prose-teal max-w-none prose-headings:font-bold prose-headings:text-gray-900 prose-p:text-gray-600 prose-a:text-teal-600 prose-a:no-underline hover:prose-a:underline prose-img:rounded-lg prose-img:shadow-md">
                 <div dangerouslySetInnerHTML={{ __html: work.body }} />
               </div>
 
               {work.url && (
-                <div className="mt-24 flex justify-center">
+                <div className="mt-12 flex justify-center">
                   <Link
                     href={work.url}
                     target="_blank"
