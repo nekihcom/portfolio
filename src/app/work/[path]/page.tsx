@@ -16,7 +16,7 @@ export default async function WorkDetail({ params }: { params: { path: string } 
     <div className="min-h-screen bg-gray-50">
       <SectionContainer id="work-detail" className="py-8">
         <div className="max-w-4xl mx-auto">
-          <div className={`mb-8 ${process.env.NODE_ENV === "development" ? "mt-24" : ""}`}>
+          <div className={`mb-8 ${process.env.NODE_ENV === "development" ? "mt-12" : ""}`}>
             <Link 
               href="/#works"
               className="text-teal-600 hover:text-teal-700 flex items-center gap-2"
@@ -28,7 +28,7 @@ export default async function WorkDetail({ params }: { params: { path: string } 
             </Link>
           </div>
 
-          <div className="rounded-lg overflow-hidden bg-white shadow-lg">
+          <div className="rounded-lg overflow-hidden">
             <div className="aspect-video relative">
               <Image
                 src={work.thumbnail.url}
@@ -58,9 +58,22 @@ export default async function WorkDetail({ params }: { params: { path: string } 
                 </div>
               )}
 
-              <div className="prose prose-teal max-w-none prose-headings:font-bold prose-headings:text-gray-900 prose-p:text-gray-600 prose-a:text-teal-600 prose-a:no-underline hover:prose-a:underline prose-img:rounded-lg prose-img:shadow-md">
-                <div dangerouslySetInnerHTML={{ __html: work.body }} />
-              </div>
+              <div
+                className="prose prose-teal max-w-none
+                  [&>h1]:text-3xl [&>h1]:font-bold [&>h1]:text-gray-900 [&>h1]:mt-8 [&>h1]:mb-4 [&>h1]:border-b-4 [&>h1]:border-teal-500 [&>h1]:inline-block [&>h1]:pb-1
+                  [&>h2]:text-2xl [&>h2]:font-bold [&>h2]:text-gray-900 [&>h2]:mt-6 [&>h2]:mb-3
+                  [&>h3]:text-xl [&>h3]:font-bold [&>h3]:text-gray-900 [&>h3]:mt-4 [&>h3]:mb-2
+                  [&>p]:text-gray-600 [&>p]:leading-relaxed [&>p]:my-4
+                  [&>a]:text-teal-600 [&>a]:no-underline hover:[&>a]:underline
+                  [&>ul]:list-disc [&>ul]:pl-6 [&>ul]:my-4
+                  [&>ol]:list-decimal [&>ol]:pl-6 [&>ol]:my-4
+                  [&>li]:text-gray-600 [&>li]:my-1
+                  [&>img]:rounded-lg [&>img]:shadow-md [&>img]:my-6
+                  [&>blockquote]:border-l-4 [&>blockquote]:border-teal-500 [&>blockquote]:pl-4 [&>blockquote]:italic [&>blockquote]:text-gray-600
+                  [&>code]:text-teal-600 [&>code]:bg-gray-100 [&>code]:px-1 [&>code]:py-0.5 [&>code]:rounded
+                  [&>pre]:bg-gray-900 [&>pre]:text-gray-100 [&>pre]:p-4 [&>pre]:rounded-lg [&>pre]:overflow-x-auto"
+                dangerouslySetInnerHTML={{ __html: work.body }}
+              />
 
               {work.url && (
                 <div className="mt-12 flex justify-center">
