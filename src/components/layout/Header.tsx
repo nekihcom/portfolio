@@ -18,6 +18,7 @@ export const Header = () => {
     }
 
     window.addEventListener("scroll", handleScroll)
+    handleScroll(); // 初回実行で現在のスクロール位置を反映
     return () => window.removeEventListener("scroll", handleScroll)
   }, [])
 
