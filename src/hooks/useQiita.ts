@@ -14,6 +14,7 @@ export const useQiitas = () => {
         const data = await res.json();
         setQiitas(data.qiitaItems || []);
       } catch (err) {
+        console.error('Qiita fetch error:', err);
         setError(err instanceof Error ? err : new Error('Failed to fetch Qiita articles'));
       } finally {
         setIsLoading(false);
