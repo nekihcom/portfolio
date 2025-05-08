@@ -1,8 +1,7 @@
 import { Profile } from "@/components/sections/Profile"
 import Works from "@/components/sections/Works"
 import Contact from "@/components/sections/Contact"
-import Note from "@/components/sections/Note"
-import Qiita from "@/components/sections/Qiita"
+import Blog from "@/components/sections/Blog"
 
 export default function Home() {
   return (
@@ -10,8 +9,7 @@ export default function Home() {
       <main className="py-4 pt-24">
         <Profile />
         <Works />
-        <Qiita />
-        <Note />
+        <Blog />
         <Contact />
       </main>
     </div>
