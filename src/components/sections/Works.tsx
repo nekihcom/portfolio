@@ -12,7 +12,7 @@ export default async function Works() {
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 justify-items-center">
         {works.map((work, index) => (
           <div
-            key={work.id}
+            key={index}
             className="bg-white rounded-lg shadow-md overflow-hidden w-11/12 sm:w-full md:w-[240px]"
           >
             <WorkCard {...work} />

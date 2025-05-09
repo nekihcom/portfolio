@@ -4,8 +4,17 @@ import { notFound } from "next/navigation"
 import { SectionContainer } from "@/components/ui/SectionContainer"
 import { getWorks } from "@/lib/microcms"
 
-export default async function WorkDetail({ params }: { params: { path: string } }) {
-  const { path } = await params;
+type PageProps = {
+  params: { path: string };
+  searchParams: Record<string, string | string[] | undefined>;
+}
+
+export default function Page(props: PageProps) {
+  return <WorkContent {...props} />;
+}
+
+async function WorkContent({ params }: { params: { path: string } }) {
+  const { path } = params;
   const works = await getWorks();
   const work = works.find((w) => w.path === path);
 

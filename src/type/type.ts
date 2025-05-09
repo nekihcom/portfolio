@@ -1,5 +1,3 @@
-import { ReactNode } from "react";
-
 export type Work = {
   id: string;
   createdAt: string;
