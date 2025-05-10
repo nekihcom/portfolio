@@ -16,8 +16,10 @@ export default async function Blog() {
     createdAt: blog.createdAt,
     updatedAt: blog.updatedAt,
     publishedAt: blog.publishedAt,
+    post_dt: blog.post_dt,
     ogpImageUrl: blog.thumbnail?.url || 'https://placehold.jp/300x200.png',
     link: `/blog/${blog.id}`,
+    category: blog.category,
   }));
 
   // 表示するブログ記事を最大3件に制限

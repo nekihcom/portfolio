@@ -12,7 +12,7 @@ type Props = {
 const BlogCard = (props: Props) => {
   const { blog, index } = props;
   // sv-SEロケールはYYYY-MM-DD形式の日付文字列を戻す
-  const displayBlogCreatedDt = new Date(blog.publishedAt).toLocaleDateString('sv-SE');
+  const displayBlogPostDt = new Date(blog.post_dt).toLocaleDateString('sv-SE');
   // デフォルト画像のURL
   const defaultImageUrl = "https://placehold.jp/300x200.png";
 
@@ -34,8 +34,13 @@ const BlogCard = (props: Props) => {
             />
           </div>
           <div className="p-4 flex flex-col flex-grow">
-            <time className="text-sm text-gray-500">{displayBlogCreatedDt}</time>
-            <h3 className="mt-2 text-lg font-bold line-clamp-2 hover:text-gray-600 transition-colors duration-300">{blog.title}</h3>
+            <div className="flex justify-between items-center">
+              <time className="text-sm text-gray-500">{displayBlogPostDt}</time>
+              {blog.category && (
+                <span className="text-xs bg-teal-100 text-teal-600 px-2 py-1 rounded-full">{blog.category}</span>
+              )}
+            </div>
+            <h3 className="mt-2 text-sm font-bold line-clamp-2 hover:text-gray-600 transition-colors duration-300">{blog.title}</h3>
           </div>
         </div>
       </Link>

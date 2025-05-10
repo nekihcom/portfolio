@@ -20,7 +20,7 @@ export default async function Page({ params }: { params: BlogParams }) {
   }
 
   // 日付をフォーマット（YYYY-MM-DD）
-  const publishedDate = new Date(blog.publishedAt).toLocaleDateString('sv-SE')
+  const postDate = new Date(blog.post_dt).toLocaleDateString('sv-SE')
   // キーワードを配列に分割
   const keywords = blog.keywords ? blog.keywords.split(',').map(keyword => keyword.trim()) : []
 
@@ -51,13 +51,18 @@ export default async function Page({ params }: { params: BlogParams }) {
                   className="object-cover"
                   priority
                 />
+                {blog.category && (
+                  <span className="absolute bottom-4 right-4 bg-teal-100 text-teal-600 px-3 py-1 rounded-full text-sm shadow-md">
+                    {blog.category}
+                  </span>
+                )}
               </div>
             )}
 
             <div className="p-6">
               <h1 className="text-3xl font-bold text-gray-900 mb-4">{blog.title}</h1>
               <div className="text-gray-600 mb-6">
-                <time dateTime={blog.publishedAt}>{publishedDate}</time>
+                <time dateTime={blog.post_dt}>{postDate}</time>
               </div>
 
               {/* キーワード */}

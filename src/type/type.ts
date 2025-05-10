@@ -23,6 +23,7 @@ export type Blog = {
   updatedAt: string;
   publishedAt: string;
   revisedAt: string;
+  post_dt: string;
   title: string;
   thumbnail: {
     url: string;
@@ -31,6 +32,7 @@ export type Blog = {
   };
   body: string;
   keywords: string;
+  category: string;
 }
 
 export type ParsedBlogItem = {
@@ -40,6 +42,8 @@ export type ParsedBlogItem = {
   createdAt: string;
   updatedAt: string;
   publishedAt: string;
+  post_dt: string;
   ogpImageUrl: string;
   link: string;
+  category: string;
 }
