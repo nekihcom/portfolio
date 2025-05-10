@@ -31,7 +31,7 @@ export default async function Page({ params }: { params: BlogParams }) {
           <div className={`mb-8 ${process.env.NODE_ENV === "development" ? "mt-12" : ""}`}>
             <Link 
               href="/#blog"
-              className="text-teal-600 hover:text-teal-700 flex items-center gap-2"
+              className="text-teal-600 hover:text-teal-700 underline flex items-center gap-2"
             >
               <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
                 <path fillRule="evenodd" d="M9.707 16.707a1 1 0 01-1.414 0l-6-6a1 1 0 010-1.414l6-6a1 1 0 011.414 1.414L5.414 9H17a1 1 0 110 2H5.414l4.293 4.293a1 1 0 010 1.414z" clipRule="evenodd" />
@@ -89,7 +89,7 @@ export default async function Page({ params }: { params: BlogParams }) {
                   [&>h2]:text-2xl [&>h2]:font-bold [&>h2]:text-gray-900 [&>h2]:mt-6 [&>h2]:mb-3
                   [&>h3]:text-xl [&>h3]:font-bold [&>h3]:text-gray-900 [&>h3]:mt-4 [&>h3]:mb-2
                   [&>p]:text-gray-600 [&>p]:leading-relaxed [&>p]:my-4
-                  [&>a]:text-teal-600 [&>a]:no-underline hover:[&>a]:underline
+                  [&>a]:text-teal-600 [&>a]:underline hover:[&>a]:text-teal-700
                   [&>ul]:list-disc [&>ul]:pl-6 [&>ul]:my-4
                   [&>ol]:list-decimal [&>ol]:pl-6 [&>ol]:my-4
                   [&>li]:text-gray-600 [&>li]:my-1
@@ -105,7 +105,7 @@ export default async function Page({ params }: { params: BlogParams }) {
           <div className={`mb-8 ${process.env.NODE_ENV === "development" ? "mt-12" : ""}`}>
             <Link 
               href="/#blog"
-              className="text-teal-600 hover:text-teal-700 flex items-center gap-2"
+              className="text-teal-600 hover:text-teal-700 underline flex items-center gap-2"
             >
               <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
                 <path fillRule="evenodd" d="M9.707 16.707a1 1 0 01-1.414 0l-6-6a1 1 0 010-1.414l6-6a1 1 0 011.414 1.414L5.414 9H17a1 1 0 110 2H5.414l4.293 4.293a1 1 0 010 1.414z" clipRule="evenodd" />
