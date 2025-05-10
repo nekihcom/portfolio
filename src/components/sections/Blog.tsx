@@ -22,10 +22,10 @@ export default async function Blog() {
     category: blog.category,
   }));
 
-  // 表示するブログ記事を最大3件に制限
-  const displayBlogs = parsedBlogs.slice(0, 3);
-  // 4件以上あるかどうかを判定
-  const hasMoreBlogs = parsedBlogs.length > 3;
+  // 表示するブログ記事を最大6件に制限
+  const displayBlogs = parsedBlogs.slice(0, 6);
+  // 7件以上あるかどうかを判定
+  const hasMoreBlogs = parsedBlogs.length > 6;
 
   return (
     <SectionContainer id="blog" className="mt-24 mb-36">
