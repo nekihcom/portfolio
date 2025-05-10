@@ -71,3 +71,25 @@ export async function getBlog(path: string): Promise<Blog | null> {
 
   return res.json();
 } 
+
+// ページネーション用のブログ取得関数
+export async function getPaginatedBlogs(
+  offset: number = 0,
+  limit: number = 9
+): Promise<Blog[]> {
+  const response = await fetch(
+    `${MICROCMS_API_URL}/blog?offset=${offset}&limit=${limit}`,
+    {
+      headers: {
+        "X-MICROCMS-API-KEY": MICROCMS_API_KEY as string,
+      },
+    }
+  );
+
+  if (!response.ok) {
+    throw new Error("Failed to fetch blogs");
+  }
+
+  const data = await response.json();
+  return data.contents;
+} 

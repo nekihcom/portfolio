@@ -38,6 +38,8 @@ export default async function Blog() {
           <ExploreLink
             href="/blog"
             jaText="ブログをもっと見る"
+            target="_self"
+            rel=""
           />
         </div>
       )}
