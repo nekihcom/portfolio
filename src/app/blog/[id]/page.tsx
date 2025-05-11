@@ -30,7 +30,7 @@ export default async function Page({ params }: { params: BlogParams }) {
         <div className="max-w-4xl mx-auto">
           <div className={`mb-8 ${process.env.NODE_ENV === "development" ? "mt-12" : ""}`}>
             <Link 
-              href="/#blog"
+              href="/blog"
               className="text-teal-600 hover:text-teal-700 flex items-center gap-2"
             >
               <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
@@ -104,7 +104,7 @@ export default async function Page({ params }: { params: BlogParams }) {
 
           <div className={`mb-8 ${process.env.NODE_ENV === "development" ? "mt-12" : ""}`}>
             <Link 
-              href="/#blog"
+              href="/blog"
               className="text-teal-600 hover:text-teal-700 flex items-center gap-2"
             >
               <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
