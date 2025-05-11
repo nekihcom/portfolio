@@ -11,7 +11,6 @@ export const useInfiniteScroll = <T>(
   hasMore: boolean;
   containerRef: (node: HTMLDivElement | null) => void;
 } => {
-  const [items, setItems] = useState<T[]>(initialItems);
   const [displayedItems, setDisplayedItems] = useState<T[]>(initialItems.slice(0, itemsPerPage));
   const [isLoading, setIsLoading] = useState(false);
   const [hasMore, setHasMore] = useState(true);
@@ -28,7 +27,6 @@ export const useInfiniteScroll = <T>(
       if (newItems.length === 0) {
         setHasMore(false);
       } else {
-        setItems((prevItems) => [...prevItems, ...newItems]);
         setDisplayedItems((prevDisplayed) => [...prevDisplayed, ...newItems.slice(0, itemsPerPage)]);
         setPage(nextPage);
       }
