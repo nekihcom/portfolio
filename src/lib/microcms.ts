@@ -1,10 +1,37 @@
-import { Work, Blog } from "@/type/type";
+import { Work, Blog, QiitaResponse } from "@/type/type";
 
 const MICROCMS_API_KEY = process.env.NEXT_PUBLIC_MICROCMS_API_KEY;
 const MICROCMS_API_URL = process.env.NEXT_PUBLIC_MICROCMS_API_URL;
+const QIITA_FETCH_BASE = process.env.QIITA_FETCH_BASE;
+const QIITA_TOKEN = process.env.QIITA_TOKEN;
 
-if (!MICROCMS_API_KEY || !MICROCMS_API_URL) {
-  throw new Error('Required environment variables are not set');
+if (!MICROCMS_API_KEY) {
+  throw new Error('Required environment variables <MICROCMS_API_KEY> are not set');
+}
+if (!MICROCMS_API_URL) {
+  throw new Error('Required environment variables <MICROCMS_API_URL> are not set');
+}
+if (!QIITA_FETCH_BASE) {
+  throw new Error('Required environment variables <QIITA_FETCH_BASE> are not set');
+}
+if (!QIITA_TOKEN) {
+  throw new Error('Required environment variables <QIITA_TOKEN> are not set');
+}
+
+
+export async function getQiita(): Promise<QiitaResponse[]> {
+  const response = await fetch(`${QIITA_FETCH_BASE}`, {
+    headers: {
+      "Authorization": `Bearer ${QIITA_TOKEN}`,
+    },
+  });
+
+  if (!response.ok) {
+    throw new Error("Failed to fetch qiita articles");
+  }
+
+  const data = await response.json();
+  return data;
 }
 
 export async function getWorks(): Promise<Work[]> {
