@@ -1,18 +1,18 @@
+"use client";
+
 import Image from "next/image"
 import Link from "next/link"
-import { Work } from "@/data/works"
+import { Work } from "@/type/type"
 
 export const WorkCard = (work: Work) => {
   return (
     <Link 
-      href={work.url || "#"} 
-      target={work.url ? "_blank" : undefined}
-      rel={work.url ? "noopener noreferrer" : undefined}
+      href={`/work/${work.path}`}
       className="group relative block"
     >
       <div className="aspect-video relative">
         <Image
-          src={work.image}
+          src={work.thumbnail.url}
           alt={work.title}
           fill
           className="object-cover transition-transform duration-300 group-hover:scale-105"

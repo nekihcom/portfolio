@@ -18,6 +18,7 @@ export const Header = () => {
     }
 
     window.addEventListener("scroll", handleScroll)
+    handleScroll(); // 初回実行で現在のスクロール位置を反映
     return () => window.removeEventListener("scroll", handleScroll)
   }, [])
 
@@ -37,8 +38,7 @@ export const Header = () => {
   // ナビゲーションリンク
   const navLinks = [
     { id: "works", label: "Works" },
-    { id: "qiita", label: "Qiita" },
-    { id: "note", label: "note" },
+    { id: "blog", label: "Blog" },
     { id: "contact", label: "Contact" }
   ]
 

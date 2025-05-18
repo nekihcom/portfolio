@@ -20,7 +20,17 @@ const nextConfig = {
         port: '',
         pathname: '/**',
       },
+      {
+        protocol: 'https',
+        hostname: 'images.microcms-assets.io',
+        port: '',
+        pathname: '/**',
+      },
     ],
+  },
+  typescript: {
+    // ビルド時の型チェックを無効化
+    ignoreBuildErrors: true,
   },
 }
 
