@@ -86,17 +86,24 @@ export default async function Page({ params }: { params: BlogParams }) {
               <div
                 className="prose prose-teal max-w-none
                   [&>h1]:text-3xl [&>h1]:font-bold [&>h1]:text-gray-900 [&>h1]:mt-8 [&>h1]:mb-4 [&>h1]:border-b-4 [&>h1]:border-teal-500 [&>h1]:inline-block [&>h1]:pb-1
-                  [&>h2]:text-2xl [&>h2]:font-bold [&>h2]:text-gray-900 [&>h2]:mt-6 [&>h2]:mb-3
-                  [&>h3]:text-xl [&>h3]:font-bold [&>h3]:text-gray-900 [&>h3]:mt-4 [&>h3]:mb-2
-                  [&>p]:text-gray-600 [&>p]:leading-relaxed [&>p]:my-4
+                  [&>h2]:text-2xl [&>h2]:font-bold [&>h2]:text-gray-900 [&>h2]:my-8
+                  [&>h3]:text-xl [&>h3]:font-bold [&>h3]:text-gray-900 [&>h3]:my-8
+                  [&>p]:text-gray-600 [&>p]:leading-relaxed [&>p]:my-8
                   [&>p>a]:text-teal-600 [&>p>a]:underline hover:[&>p>a]:text-teal-700
-                  [&>ul]:list-disc [&>ul]:pl-6 [&>ul]:my-4
-                  [&>ol]:list-decimal [&>ol]:pl-6 [&>ol]:my-4
-                  [&>li]:text-gray-600 [&>li]:my-1
-                  [&>img]:rounded-lg [&>img]:shadow-md [&>img]:my-6
+                  [&>ul]:list-disc [&>ul]:pl-6 [&>ul]:my-8
+                  [&>ol]:list-decimal [&>ol]:pl-6 [&>ol]:my-8
+                  [&>li]:text-gray-600 [&>li]:my-2
+                  [&>img]:rounded-lg [&>img]:shadow-md [&>img]:my-8
                   [&>blockquote]:border-l-4 [&>blockquote]:border-teal-500 [&>blockquote]:pl-4 [&>blockquote]:italic [&>blockquote]:text-gray-600
-                  [&>code]:text-teal-600 [&>code]:bg-gray-100 [&>code]:px-1 [&>code]:py-0.5 [&>code]:rounded
-                  [&>pre]:bg-gray-900 [&>pre]:text-gray-100 [&>pre]:p-4 [&>pre]:rounded-lg [&>pre]:overflow-x-auto"
+                  [&>code]:text-teal-600 [&>code]:bg-gray-100 [&>code]:px-1 [&>code]:py-0.5 [&>code]:rounded [&>code]:my-8
+                  [&>pre]:bg-gray-900 [&>pre]:text-gray-100 [&>pre]:p-4 [&>pre]:rounded-lg [&>pre]:overflow-x-auto [&>pre]:my-8
+                  [&>table]:w-full [&>table]:border-collapse [&>table]:my-8
+                  [&>table>thead]:bg-gray-100
+                  [&>table>thead>tr>th]:border [&>table>thead>tr>th]:border-gray-300 [&>table>thead>tr>th]:px-4 [&>table>thead>tr>th]:py-2 [&>table>thead>tr>th]:text-left [&>table>thead>tr>th]:text-gray-900 [&>table>thead>tr>th]:font-semibold
+                  [&>table>tbody>tr>td]:border [&>table>tbody>tr>td]:border-gray-300 [&>table>tbody>tr>td]:px-4 [&>table>tbody>tr>td]:py-2 [&>table>tbody>tr>td]:text-gray-600
+                  [&>table>tbody>tr:nth-child(even)]:bg-gray-50
+                  [&>table>tbody>tr>th]:border [&>table>tbody>tr>th]:border-gray-300 [&>table>tbody>tr>th]:px-4 [&>table>tbody>tr>th]:py-2 [&>table>tbody>tr>th]:text-left [&>table>tbody>tr>th]:text-gray-900 [&>table>tbody>tr>th]:font-semibold [&>table>tbody>tr>th]:bg-gray-200
+                  [&>table>tbody>tr>th>p]:text-center"
                 dangerouslySetInnerHTML={{ __html: blog.body }}
               />
             </div>
