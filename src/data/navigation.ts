@@ -1,17 +1,17 @@
 export const navigationLinks = [
   {
-    name: "プロフィール",
-    href: "/profile",
-    description: "自己紹介や経歴など"
+    name: "Works",
+    href: "#works",
+    description: "これまでに開発したアプリやツール"
   },
   {
-    name: "プロジェクト",
-    href: "/projects",
-    description: "過去の制作物や実績"
+    name: "Qiita",
+    href: "#qiita",
+    description: "技術記事"
   },
   {
-    name: "ブログ",
-    href: "/blog",
-    description: "技術記事や日記など"
+    name: "Contact",
+    href: "#contact",
+    description: "お問い合わせ"
   }
 ] 

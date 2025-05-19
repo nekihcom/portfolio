@@ -38,7 +38,7 @@ export const Header = () => {
   // ナビゲーションリンク
   const navLinks = [
     { id: "works", label: "Works" },
-    { id: "blog", label: "Blog" },
+    { id: "qiita", label: "Qiita" },
     { id: "contact", label: "Contact" }
   ]
 
