@@ -13,7 +13,7 @@ export default async function Works() {
         {works.map((work, index) => (
           <div
             key={index}
-            className="bg-white rounded-lg shadow-md overflow-hidden w-11/12 sm:w-full md:w-[240px]"
+            className="bg-white rounded-lg shadow-md overflow-hidden w-11/12 sm:w-full md:w-[300px]"
           >
             <WorkCard {...work} />
           </div>
