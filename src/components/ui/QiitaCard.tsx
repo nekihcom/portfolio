@@ -20,6 +20,8 @@ const QiitaCard = (props: Props) => {
     <article className="bg-white rounded-lg shadow-md overflow-hidden h-full hover:shadow-lg transition-all duration-300">
       <Link
         href={qiita.url}
+        target="_blank"
+        rel="noopener noreferrer"
         className="block h-full"
       >
         <div className="flex flex-col h-full">
