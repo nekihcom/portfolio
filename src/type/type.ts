@@ -110,3 +110,11 @@ export type ParsedBlogItem = {
   link: string;
   category: string;
 }
+
+
+export type Note = {
+  title: string;
+  link: string;
+  pubDate: string;
+  thumbnail: string;
+}

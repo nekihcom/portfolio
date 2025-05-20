@@ -38,7 +38,8 @@ export const Header = () => {
   // ナビゲーションリンク
   const navLinks = [
     { id: "works", label: "Works" },
-    { id: "blog", label: "Blog" },
+    { id: "qiita", label: "Qiita" },
+    { id: "note", label: "Note" },
     { id: "contact", label: "Contact" }
   ]
 
@@ -129,7 +130,7 @@ export const Header = () => {
           isScrolled ? "bg-white/90 backdrop-blur-sm shadow-sm" : "bg-transparent"
         )}
       >
-        <div className="w-full sm:w-full max-w-[780px] mx-auto px-4 md:px-0 flex justify-between items-center">
+        <div className="w-full sm:w-full max-w-[960px] mx-auto px-4 md:px-0 flex justify-between items-center">
           {/* サイトタイトル */}
           <motion.div variants={titleVariants}>
             <Link href="/" className="text-xl font-bold text-teal-600 hover:text-teal-700 transition-colors">
