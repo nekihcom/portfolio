@@ -33,6 +33,7 @@ const getOgpImageUrls = async (urls: string[]): Promise<string[]> => {
   return ogpUrls;
 };
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 const parseQiitaItems = (qiitaItems: any[], ogpUrls: string[]): ParsedQiitaItem[] => {
   return qiitaItems.map(({
     coediting,
