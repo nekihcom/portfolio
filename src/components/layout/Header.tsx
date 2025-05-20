@@ -39,6 +39,7 @@ export const Header = () => {
   const navLinks = [
     { id: "works", label: "Works" },
     { id: "qiita", label: "Qiita" },
+    { id: "note", label: "Note" },
     { id: "contact", label: "Contact" }
   ]
 
