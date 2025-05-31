@@ -121,7 +121,6 @@
   }
   body {
     @apply bg-background text-foreground;
-    overflow-x: hidden;
     font-family: 'Zen Kaku Gothic New', sans-serif !important;
   }
 }

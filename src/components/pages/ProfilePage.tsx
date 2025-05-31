@@ -5,6 +5,7 @@ import { profileData } from "@/data/profile"
 import { SocialLink } from "@/components/ui/SocialLink"
 import { ProfileBlock } from "@/components/ui/ProfileBlock"
 import { SectionContainer } from "@/components/ui/SectionContainer"
+import { ContactForm } from "@/components/ui/ContactForm"
 
 export const ProfilePage = () => {
   // アニメーション設定
@@ -80,7 +81,7 @@ export const ProfilePage = () => {
             {/* SNSブロック */}
             <motion.div
               variants={itemVariants}
-              className="flex flex-col relative"
+              className="flex flex-col items-center relative"
             >
               {/* デコレーション要素 */}
               <motion.div 
@@ -144,10 +145,34 @@ export const ProfilePage = () => {
               <div className="bg-white p-6 rounded-lg shadow-sm">
                 <h3 className="text-lg font-semibold text-gray-800 mb-4">バックエンド</h3>
                 <ul className="space-y-2 text-gray-600">
-                  <li>• Node.js</li>
-                  <li>• Python</li>
-                  <li>• PostgreSQL</li>
-                  <li>• AWS</li>
+                  <li>• PHP / Symfony</li>
+                  <li>• Java</li>
+                  <li>• Python / Django</li>
+                </ul>
+              </div>
+              <div className="bg-white p-6 rounded-lg shadow-sm">
+                <h3 className="text-lg font-semibold text-gray-800 mb-4">CMS</h3>
+                <ul className="space-y-2 text-gray-600">
+                  <li>• Drupal</li>
+                  <li>• WordPress</li>
+                  <li>• microCMS</li>
+                </ul>
+              </div>
+              <div className="bg-white p-6 rounded-lg shadow-sm">
+                <h3 className="text-lg font-semibold text-gray-800 mb-4">ミドルウェア・インフラ</h3>
+                <ul className="space-y-2 text-gray-600">
+                  <li>• AWS EC2 / RDS / VPC / S3 / Route53 / Redshift</li>
+                  <li>• MySQL / PostgreSQL</li>
+                </ul>
+              </div>
+              <div className="bg-white p-6 rounded-lg shadow-sm">
+                <h3 className="text-lg font-semibold text-gray-800 mb-4">その他</h3>
+                <ul className="space-y-2 text-gray-600">
+                  <li>• Git / GitHub</li>
+                  <li>• Figma</li>
+                  <li>• Cursor</li>
+                  <li>• Notion</li>
+                  <li>• Slack</li>
                 </ul>
               </div>
             </div>
@@ -164,22 +189,29 @@ export const ProfilePage = () => {
                 <li className="flex items-start">
                   <span className="inline-block w-2 h-2 bg-teal-500 rounded-full mt-2 mr-3"></span>
                   <div>
-                    <h3 className="text-lg font-semibold text-gray-800">AWS Certified Solutions Architect – Associate</h3>
-                    <p className="text-gray-600 mt-1">2023年取得</p>
+                    <h3 className="text-lg font-semibold text-gray-800">統計検定2級</h3>
+                    <p className="text-gray-600 mt-1">2025年5月取得</p>
+                  </div>
+                </li>
+                <li className="flex items-start">
+                  <span className="inline-block w-2 h-2 bg-teal-500 rounded-full mt-2 mr-3"></span>
+                  <div>
+                    <h3 className="text-lg font-semibold text-gray-800">Drupal Site Builder</h3>
+                    <p className="text-gray-600 mt-1">2022年8月取得</p>
                   </div>
                 </li>
                 <li className="flex items-start">
                   <span className="inline-block w-2 h-2 bg-teal-500 rounded-full mt-2 mr-3"></span>
                   <div>
                     <h3 className="text-lg font-semibold text-gray-800">応用情報技術者</h3>
-                    <p className="text-gray-600 mt-1">2022年取得</p>
+                    <p className="text-gray-600 mt-1">2021年取得</p>
                   </div>
                 </li>
                 <li className="flex items-start">
                   <span className="inline-block w-2 h-2 bg-teal-500 rounded-full mt-2 mr-3"></span>
                   <div>
                     <h3 className="text-lg font-semibold text-gray-800">基本情報技術者</h3>
-                    <p className="text-gray-600 mt-1">2021年取得</p>
+                    <p className="text-gray-600 mt-1">2019年取得</p>
                   </div>
                 </li>
               </ul>
@@ -196,44 +228,38 @@ export const ProfilePage = () => {
               <div className="bg-white p-6 rounded-lg shadow-sm">
                 <div>
                   <div className="flex items-center gap-3">
-                    <h3 className="text-lg font-semibold text-gray-800">株式会社テクノロジー</h3>
+                    <h3 className="text-lg font-semibold text-gray-800">SIer</h3>
                     <span className="px-3 py-1 bg-teal-100 text-teal-800 text-sm rounded-full">現在</span>
                   </div>
                   <h4 className="text-base text-gray-700 mt-1">ソフトウェアエンジニア</h4>
                 </div>
-                <p className="text-gray-600 mt-2">2020年 - 現在</p>
+                <p className="text-gray-600 mt-2">2019年 - 現在</p>
                 <p className="text-gray-600 mt-2">
-                  フロントエンド開発を中心に、Webアプリケーションの設計・開発に従事。
-                  ユーザー体験を重視したUI/UXデザインと、パフォーマンスの最適化に注力。
+                  CMSを使ったポータルサイトや社内システムの構築、BIツールを導入することによる営業活動支援などを実施。<br/>
+                  特にDrupalやPowerBIの開発に力を入れ、要件定義から保守運用まで幅広く従事。<br />
+                  メンバーとしての実装作業のみならずチームマネジメントの経験も積む。
                 </p>
               </div>
-
               <div className="bg-white p-6 rounded-lg shadow-sm">
                 <div>
-                  <h3 className="text-lg font-semibold text-gray-800">株式会社デザイン</h3>
-                  <h4 className="text-base text-gray-700 mt-1">Webデザイナー</h4>
+                  <h3 className="text-lg font-semibold text-gray-800">成蹊大学理工学部情報科学科</h3>
                 </div>
-                <p className="text-gray-600 mt-2">2018年 - 2020年</p>
+                <p className="text-gray-600 mt-2">2015年 - 2019年</p>
                 <p className="text-gray-600 mt-2">
-                  コーポレートサイトやECサイトのデザインを担当。
-                  Adobe Creative Suiteを活用したデザイン制作と、HTML/CSSによる実装を担当。
-                </p>
-              </div>
-
-              <div className="bg-white p-6 rounded-lg shadow-sm">
-                <div>
-                  <h3 className="text-lg font-semibold text-gray-800">株式会社システム</h3>
-                  <h4 className="text-base text-gray-700 mt-1">システムエンジニア</h4>
-                </div>
-                <p className="text-gray-600 mt-2">2016年 - 2018年</p>
-                <p className="text-gray-600 mt-2">
-                  企業向け業務システムの要件定義から設計、開発、テストまでを担当。
-                  プロジェクトマネジメントの経験も積む。
+                  専攻は自然言語処理で、卒業研究のテーマはTwitterのツイートを用いた言語生成モデルの構築。<br />
+                  アルゴリズムやデータベース、ネットワーク、プログラミングなどIT全般を学ぶ。
                 </p>
               </div>
             </div>
           </motion.div>
         </motion.div>
+      
+        <motion.div
+            variants={fadeInUpVariants}
+            className="mt-32"
+          >
+            <ContactForm />
+          </motion.div>
       </SectionContainer>
     </div>
   )
