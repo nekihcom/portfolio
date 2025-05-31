@@ -1,11 +1,11 @@
 "use client"
 
 import { motion } from "framer-motion"
-
 import { profileData } from "@/data/profile"
 import { SocialLink } from "@/components/ui/SocialLink"
 import { ProfileBlock } from "@/components/ui/ProfileBlock"
 import { SectionContainer } from "@/components/ui/SectionContainer"
+import { ExploreLink } from "@/components/ui/ExploreLink"
 
 export const Profile = () => {
   // アニメーション設定
@@ -29,18 +29,6 @@ export const Profile = () => {
         type: "spring",
         damping: 12,
         stiffness: 100
-      }
-    }
-  }
-
-  const fadeInUpVariants = {
-    hidden: { opacity: 0, y: 30 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: {
-        duration: 0.7,
-        ease: [0.25, 0.46, 0.45, 0.94]
       }
     }
   }
@@ -80,7 +68,7 @@ export const Profile = () => {
           {/* SNSブロック */}
           <motion.div
             variants={itemVariants}
-            className="flex justify-center relative"
+            className="flex flex-col relative"
           >
             {/* デコレーション要素 */}
             <motion.div 
@@ -95,26 +83,22 @@ export const Profile = () => {
                 <SocialLink key={index} link={link} index={index} />
               ))}
             </div>
+            <div className="mt-8">
+              <p
+                className="text-gray-600"
+                dangerouslySetInnerHTML={{ __html: profileData.description }}
+              />
+            </div>
+            <div className="mt-8 flex justify-start">
+              <ExploreLink 
+                href="/profile" 
+                jaText="プロフィール詳細を見る" 
+                enText="View full profile"
+                target="_self"
+              />
+            </div>
           </motion.div>
         </div>
-        
-        {/* 自己紹介文ブロック */}
-        <motion.div
-          variants={fadeInUpVariants}
-          className="text-center relative"
-        >
-          <motion.div 
-            className="absolute -z-10 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[200%] h-20 bg-gradient-to-r from-transparent via-teal-50 to-transparent opacity-50"
-            initial={{ opacity: 0, scaleX: 0 }}
-            whileInView={{ opacity: 0.5, scaleX: 1 }}
-            transition={{ duration: 1.2, ease: "easeOut" }}
-            viewport={{ once: true }}
-          />
-          <p
-            className="text-gray-600 relative z-10"
-            dangerouslySetInnerHTML={{ __html: profileData.description }}
-          />
-        </motion.div>
       </motion.div>
     </SectionContainer>
   )

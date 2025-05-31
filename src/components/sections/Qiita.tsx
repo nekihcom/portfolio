@@ -7,30 +7,32 @@ import { ParsedQiitaItem } from "@/type/type";
 import { getQiita } from "@/lib/microcms"
 import { ExploreLink } from "../ui/ExploreLink";
 import QiitaList from "../ui/QiitaList";
-const getOgpImageUrls = async (urls: string[]): Promise<string[]> => {
-  const jsdom = new JSDOM();
-  const ogpUrls: string[] = [];
 
-  for (const url of urls) {
-    try {
-      const res = await ky.get(url);
-      const text = await res.text();
-      const el = new jsdom.window.DOMParser().parseFromString(text, "text/html");
-      const headEls = el.head.children;
-      
-      Array.from(headEls).forEach((v) => {
-        const prop = v.getAttribute("property");
-        if (prop === "og:image") {
-          ogpUrls.push(v.getAttribute("content") ?? "");
-        }
-      });
-    } catch (error) {
-      console.error(`Failed to fetch OGP for ${url}:`, error);
-      ogpUrls.push("");
+const getOgpImageUrl = async (url: string): Promise<string> => {
+  try {
+    const res = await ky.get(url);
+    const text = await res.text();
+    const jsdom = new JSDOM();
+    const el = new jsdom.window.DOMParser().parseFromString(text, "text/html");
+    const headEls = el.head.children;
+    
+    for (const v of Array.from(headEls)) {
+      const prop = v.getAttribute("property");
+      if (prop === "og:image") {
+        return v.getAttribute("content") ?? "";
+      }
     }
+    return "";
+  } catch (error) {
+    console.error(`Failed to fetch OGP for ${url}:`, error);
+    return "";
   }
+};
 
-  return ogpUrls;
+const getOgpImageUrls = async (urls: string[]): Promise<string[]> => {
+  // 並列でリクエストを実行
+  const promises = urls.map(url => getOgpImageUrl(url));
+  return Promise.all(promises);
 };
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any

@@ -8,8 +8,8 @@ export function ContactForm() {
         <br />3日以内にご返信いたします。
       </p>
       <ContactButton
-        href="https://docs.google.com/forms/d/e/1FAIpQLSeRWwNv5Fyxqmv6AJQuzAJWonAyoSAd1rerzl9ncV1dyM-zgA/viewform?usp=dialog"
-        text="Drop a Line!!"
+        href="https://forms.gle/36pauyQdBoQ21VzV6"
+        text="Send Your Message"
       />
     </div>
   )
