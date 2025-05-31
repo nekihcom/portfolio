@@ -126,11 +126,11 @@ export const Header = () => {
         animate="animate"
         variants={headerVariants}
         className={clsx(
-          "fixed top-0 left-0 right-0 z-50 py-4 transition-all duration-300 overflow-x-hidden",
+          "fixed top-0 left-0 right-0 z-50 py-4 transition-all duration-300",
           isScrolled ? "bg-white/90 backdrop-blur-sm shadow-sm" : "bg-transparent"
         )}
       >
-        <div className="w-full sm:w-full max-w-[960px] mx-auto px-4 md:px-0 flex justify-between items-center">
+        <div className="sm:w-11/12 md:w-full max-w-[960px] mx-auto px-4 md:px-0 flex justify-between items-center">
           {/* サイトタイトル */}
           <motion.div variants={titleVariants}>
             <Link href="/" className="text-xl font-bold text-teal-600 hover:text-teal-700 transition-colors">
@@ -160,7 +160,7 @@ export const Header = () => {
           {/* モバイルメニューボタン */}
           <button 
             onClick={() => setIsMenuOpen(!isMenuOpen)}
-            className="md:hidden text-foreground p-1 focus:outline-none"
+            className="md:hidden text-foreground p-1 focus:outline-none mr-6"
             aria-label={isMenuOpen ? "メニューを閉じる" : "メニューを開く"}
           >
             <div className="w-6 h-6 relative">
@@ -189,35 +189,37 @@ export const Header = () => {
             animate="open"
             exit="closed"
             variants={menuVariants}
-            className="fixed inset-0 bg-white z-40 pt-20 px-0 md:hidden overflow-x-hidden"
+            className="fixed inset-0 bg-white z-40 pt-20 md:hidden"
           >
-            <div className="flex flex-col space-y-4">
-              {navLinks.map((link) => (
-                <motion.div key={link.id} variants={menuItemVariants}>
-                  <ScrollLink
-                    to={link.id}
-                    spy={true}
-                    smooth={true}
-                    offset={-80}
-                    duration={800}
-                    onClick={handleLinkClick}
-                    activeClass="text-teal-600 font-medium"
-                    className="block py-3 text-foreground hover:text-teal-600 text-lg border-b border-gray-100"
-                  >
-                    {link.label}
-                  </ScrollLink>
-                </motion.div>
-              ))}
-            </div>
+            <div className="w-full max-w-[960px] mx-auto px-4">
+              <div className="flex flex-col space-y-4">
+                {navLinks.map((link) => (
+                  <motion.div key={link.id} variants={menuItemVariants}>
+                    <ScrollLink
+                      to={link.id}
+                      spy={true}
+                      smooth={true}
+                      offset={-80}
+                      duration={800}
+                      onClick={handleLinkClick}
+                      activeClass="text-teal-600 font-medium"
+                      className="block py-3 text-foreground hover:text-teal-600 text-lg border-b border-gray-100"
+                    >
+                      {link.label}
+                    </ScrollLink>
+                  </motion.div>
+                ))}
+              </div>
 
-            {/* 背景装飾 */}
-            <motion.div 
-              className="absolute -z-10 bottom-20 right-10 w-40 h-40 rounded-full bg-teal-50 blur-xl opacity-50"
-              initial={{ opacity: 0, scale: 0 }}
-              animate={{ opacity: 0.5, scale: 1 }}
-              exit={{ opacity: 0, scale: 0 }}
-              transition={{ duration: 0.8 }}
-            />
+              {/* 背景装飾 */}
+              <motion.div 
+                className="absolute -z-10 bottom-20 right-10 w-40 h-40 rounded-full bg-teal-50 blur-xl opacity-50"
+                initial={{ opacity: 0, scale: 0 }}
+                animate={{ opacity: 0.5, scale: 1 }}
+                exit={{ opacity: 0, scale: 0 }}
+                transition={{ duration: 0.8 }}
+              />
+            </div>
           </motion.div>
         )}
       </AnimatePresence>
