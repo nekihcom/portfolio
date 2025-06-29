@@ -10,14 +10,14 @@ interface WorkCardProps {
 
 /**
  * 作品情報を表示するカードコンポーネント
- * URLがある場合はクリック可能、ない場合は表示のみ
+ * 作品詳細ページへのリンクとして機能
  * 
  * @param work - 作品情報
  * @param className - 追加のCSSクラス
  */
 export function WorkCard({ work, className = "" }: WorkCardProps) {
   const cardContent = (
-    <Card className={`hover:shadow-lg transition-shadow ${work.url ? 'cursor-pointer' : 'cursor-default'} ${className}`}>
+    <Card className={`hover:shadow-lg transition-shadow cursor-pointer ${className}`}>
       <div className="aspect-video bg-slate-200 rounded-t-lg overflow-hidden">
         {work.thumbnail ? (
           <img 
@@ -43,28 +43,20 @@ export function WorkCard({ work, className = "" }: WorkCardProps) {
             </Badge>
           ))}
         </div>
-        {work.url && (
-          <div className="mt-3 text-xs text-slate-500">
-            🔗 詳しく見てみる
-          </div>
-        )}
+        <div className="mt-3 text-xs text-slate-500">
+          📖 詳細を見る
+        </div>
       </CardContent>
     </Card>
   );
 
-  // URLがある場合はLinkでラップ、ない場合はそのまま表示
-  if (work.url) {
-    return (
-      <Link 
-        href={work.url} 
-        target="_blank" 
-        rel="noopener noreferrer"
-        className="block"
-      >
-        {cardContent}
-      </Link>
-    );
-  }
-
-  return cardContent;
+  // 作品詳細ページへのリンク
+  return (
+    <Link 
+      href={`/work/${work.id}`}
+      className="block"
+    >
+      {cardContent}
+    </Link>
+  );
 } 

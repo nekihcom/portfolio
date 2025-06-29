@@ -74,7 +74,18 @@ class MicroCMSClient {
   // 特定の作品を取得
   async getWork(id: string): Promise<Work | null> {
     try {
-      return await this.fetchAPI<Work>(`/work/${id}`);
+      const work = await this.fetchAPI<Work>(`/work/${id}`);
+      
+      // contentフィールドが存在しない場合のフォールバック
+      if (!work.body) {
+        console.warn(`Work ${id} has no body field`);
+        return {
+          ...work,
+          body: '<p>詳細情報が利用できません。</p>'
+        };
+      }
+      
+      return work;
     } catch (error) {
       console.error(`Failed to fetch work ${id}:`, error);
       return null;

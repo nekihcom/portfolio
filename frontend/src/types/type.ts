@@ -4,7 +4,7 @@ export interface Work {
   id: string;
   title: string;
   description: string;
-  content: string;
+  body: string;
   thumbnail?: {
     url: string;
     width: number;

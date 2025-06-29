@@ -1,12 +1,12 @@
 import { Button } from "@/components/ui/button";
 import { WorkCard } from "@/components/features/WorkCard";
 import { Work } from "@/types/type";
+import Link from "next/link";
 
 interface WorksSectionProps {
   works?: Work[];
   title?: string;
   viewAllButtonText?: string;
-  onViewAllClick?: () => void;
   className?: string;
 }
 
@@ -17,14 +17,12 @@ interface WorksSectionProps {
  * @param works - 作品情報の配列
  * @param title - セクションタイトル
  * @param viewAllButtonText - 「すべて見る」ボタンのテキスト
- * @param onViewAllClick - 「すべて見る」ボタンクリック時のコールバック
  * @param className - 追加のCSSクラス
  */
 export function WorksSection({
   works = [],
   title = "最近の作品",
   viewAllButtonText = "すべて見る",
-  onViewAllClick,
   className = ""
 }: WorksSectionProps) {
   return (
@@ -33,9 +31,13 @@ export function WorksSection({
         <h2 className="text-3xl font-bold text-slate-900">
           {title}
         </h2>
-        <Button variant="outline" onClick={onViewAllClick}>
-          {viewAllButtonText}
-        </Button>
+        {viewAllButtonText && (
+          <Link href="/work">
+            <Button variant="outline">
+              {viewAllButtonText}
+            </Button>
+          </Link>
+        )}
       </div>
       
       {works.length > 0 ? (
