@@ -21,7 +21,7 @@ export interface BlogPost {
   id: string;
   title: string;
   excerpt: string;
-  content: string;
+  body: string;
   thumbnail?: {
     url: string;
     width: number;

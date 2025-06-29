@@ -1,5 +1,3 @@
-'use client'
-
 import { fetchHomeData } from "@/lib/fetchHomeData";
 import { HeroSection } from "@/components/sections/HeroSection";
 import { WorksSection } from "@/components/sections/WorksSection";
@@ -16,6 +14,12 @@ export default async function Home() {
       <WorksSection works={works} />
       <BlogSection posts={posts} />
       <ContactSection />
-    </main>
+      </main>
   );
 }
+
+/**
+ * ISRの再生成間隔を設定（秒単位）
+ * 1時間（3600秒）ごとに再生成
+ */
+export const revalidate = 3600;

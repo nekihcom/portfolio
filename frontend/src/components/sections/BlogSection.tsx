@@ -1,13 +1,13 @@
 import { Button } from "@/components/ui/button";
 import { BlogCard } from "@/components/features/BlogCard";
 import { BlogPost } from "@/types/type";
+import Link from "next/link";
 
 interface BlogSectionProps {
   posts?: BlogPost[];
   title?: string;
   viewAllButtonText?: string;
   onViewAllClick?: () => void;
-  onPostClick?: (post: BlogPost) => void;
   className?: string;
 }
 
@@ -19,7 +19,6 @@ interface BlogSectionProps {
  * @param title - セクションタイトル
  * @param viewAllButtonText - 「すべて見る」ボタンのテキスト
  * @param onViewAllClick - 「すべて見る」ボタンクリック時のコールバック
- * @param onPostClick - 記事クリック時のコールバック
  * @param className - 追加のCSSクラス
  */
 export function BlogSection({
@@ -27,15 +26,8 @@ export function BlogSection({
   title = "最新のブログ記事",
   viewAllButtonText = "すべて見る",
   onViewAllClick,
-  onPostClick,
   className = ""
 }: BlogSectionProps) {
-  const handlePostClick = (post: BlogPost) => {
-    if (onPostClick) {
-      onPostClick(post);
-    }
-  };
-
   return (
     <section className={`container mx-auto px-4 py-16 ${className}`}>
       <div className="flex justify-between items-center mb-12">
@@ -50,11 +42,9 @@ export function BlogSection({
       {posts.length > 0 ? (
         <div className="grid md:grid-cols-3 gap-6">
           {posts.map((post) => (
-            <BlogCard 
-              key={post.id} 
-              post={post} 
-              onClick={() => handlePostClick(post)}
-            />
+            <Link key={post.id} href={`/blog/${post.id}`}>
+              <BlogCard post={post} />
+            </Link>
           ))}
         </div>
       ) : (

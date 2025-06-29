@@ -84,7 +84,19 @@ class MicroCMSClient {
   // 特定のブログ記事を取得
   async getBlogPost(id: string): Promise<BlogPost | null> {
     try {
-      return await this.fetchAPI<BlogPost>(`/blog/${id}`);
+      const post = await this.fetchAPI<BlogPost>(`/blog/${id}`);
+      
+      // contentフィールドが存在しない場合のフォールバック
+      console.log(post);
+      if (!post.body) {
+        console.warn(`Blog post ${id} has no content field`);
+        return {
+          ...post,
+          body: '<p>コンテンツが利用できません。</p>'
+        };
+      }
+      
+      return post;
     } catch (error) {
       console.error(`Failed to fetch blog post ${id}:`, error);
       return null;
