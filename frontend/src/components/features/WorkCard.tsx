@@ -45,7 +45,7 @@ export function WorkCard({ work, className = "" }: WorkCardProps) {
         </div>
         {work.url && (
           <div className="mt-3 text-xs text-slate-500">
-            🔗 クリックして詳細を見る
+            🔗 詳しく見てみる
           </div>
         )}
       </CardContent>

@@ -1,13 +1,9 @@
 import { Button } from "@/components/ui/button";
 import { SocialLinks, SocialLink } from "@/components/layout/SocialLinks";
 import { heroData } from "@/data/HeroData";
+import { Badge } from "@/components/ui/badge";
 
 interface HeroSectionProps {
-  profileImage?: string;
-  title?: string;
-  description?: string;
-  primaryButtonText?: string;
-  secondaryButtonText?: string;
   onPrimaryButtonClick?: () => void;
   onSecondaryButtonClick?: () => void;
   className?: string;
@@ -18,11 +14,6 @@ interface HeroSectionProps {
  * ヒーローセクションコンポーネント
  * サイトのメインとなる自己紹介エリアを表示
  * 
- * @param profileImage - プロフィール画像のURL
- * @param title - メインタイトル
- * @param description - 説明文
- * @param primaryButtonText - プライマリボタンのテキスト
- * @param secondaryButtonText - セカンダリボタンのテキスト
  * @param onPrimaryButtonClick - プライマリボタンクリック時のコールバック
  * @param onSecondaryButtonClick - セカンダリボタンクリック時のコールバック
  * @param className - 追加のCSSクラス
@@ -37,6 +28,7 @@ export function HeroSection({
   return (
     <section className={`container mx-auto px-4 py-20 ${className}`}>
       <div className="text-center max-w-4xl mx-auto">
+        {/* プロフィール画像 */}
         <div className="mb-8">
           <img 
             src={heroData.profileImage} 
@@ -44,29 +36,28 @@ export function HeroSection({
             className="w-32 h-32 rounded-full mx-auto mb-6 border-4 border-white shadow-lg"
           />
         </div>
-        <h1 className="text-5xl font-bold text-slate-900 mb-6">
-          {heroData.title}
+
+        {/* 名前 */}
+        <h1 className="text-4xl font-bold text-slate-900 mb-2">
+          {heroData.name}
         </h1>
-        <p className="text-xl text-slate-600 mb-8 leading-relaxed whitespace-pre-line">
+
+        {/* 職種 */}
+        <h2 className="text-2xl font-semibold text-slate-700 mb-6">
+          {heroData.jobTitle}
+        </h2>
+
+        {/* 自己紹介 */}
+        <p className="text-lg text-slate-600 mb-4 leading-relaxed max-w-2xl mx-auto">
           {heroData.description}
         </p>
-        <div className="flex gap-4 justify-center mb-12">
-          <Button 
-            size="lg" 
-            className="px-8"
-            onClick={onPrimaryButtonClick}
-          >
-            {heroData.primaryButtonText}
-          </Button>
-          <Button 
-            variant="outline" 
-            size="lg" 
-            className="px-8"
-            onClick={onSecondaryButtonClick}
-          >
-            {heroData.secondaryButtonText}
-          </Button>
+
+        {/* 趣味 */}
+        <div className="text-lg text-slate-600 mb-8 leading-relaxed max-w-2xl mx-auto">
+          {heroData.hobbies}
         </div>
+
+        {/* SNSリンク */}
         <SocialLinks links={socialLinks} />
       </div>
     </section>
