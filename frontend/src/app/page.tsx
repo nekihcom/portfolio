@@ -1,9 +1,12 @@
+'use client'
+
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { microCMSClient } from "@/lib/microcms";
 import { Work, BlogPost } from "@/types/type";
 import { ContactButton } from "../components/ContactButton";
+import Link from "next/link";
 
 // スキルデータ
 const skills = [
@@ -138,34 +141,76 @@ export default async function Home() {
         {works.length > 0 ? (
           <div className="grid md:grid-cols-3 gap-6">
             {works.map((work) => (
-              <Card key={work.id} className="hover:shadow-lg transition-shadow cursor-pointer">
-                <div className="aspect-video bg-slate-200 rounded-t-lg overflow-hidden">
-                  {work.thumbnail ? (
-                    <img 
-                      src={work.thumbnail.url} 
-                      alt={work.title}
-                      className="w-full h-full object-cover"
-                    />
-                  ) : (
-                    <div className="w-full h-full bg-gradient-to-br from-slate-300 to-slate-400 flex items-center justify-center">
-                      <span className="text-slate-600 text-sm">No Image</span>
+              work.url ? (
+                <Link 
+                  key={work.id} 
+                  href={work.url} 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="block"
+                >
+                  <Card className="hover:shadow-lg transition-shadow cursor-pointer">
+                    <div className="aspect-video bg-slate-200 rounded-t-lg overflow-hidden">
+                      {work.thumbnail ? (
+                        <img 
+                          src={work.thumbnail.url} 
+                          alt={work.title}
+                          className="w-full h-full object-cover"
+                        />
+                      ) : (
+                        <div className="w-full h-full bg-gradient-to-br from-slate-300 to-slate-400 flex items-center justify-center">
+                          <span className="text-slate-600 text-sm">No Image</span>
+                        </div>
+                      )}
                     </div>
-                  )}
-                </div>
-                <CardHeader>
-                  <CardTitle className="text-lg">{work.title}</CardTitle>
-                  <CardDescription>{work.description}</CardDescription>
-                </CardHeader>
-                <CardContent>
-                  <div className="flex flex-wrap gap-2">
-                    {(work.technologies || []).map((tech, techIndex) => (
-                      <Badge key={techIndex} variant="outline" className="text-xs">
-                        {tech}
-                      </Badge>
-                    ))}
+                    <CardHeader>
+                      <CardTitle className="text-lg">{work.title}</CardTitle>
+                      <CardDescription>{work.description}</CardDescription>
+                    </CardHeader>
+                    <CardContent>
+                      <div className="flex flex-wrap gap-2">
+                        {(work.technologies || []).map((tech, techIndex) => (
+                          <Badge key={techIndex} variant="outline" className="text-xs">
+                            {tech}
+                          </Badge>
+                        ))}
+                      </div>
+                      <div className="mt-3 text-xs text-slate-500">
+                        🔗 クリックして詳細を見る
+                      </div>
+                    </CardContent>
+                  </Card>
+                </Link>
+              ) : (
+                <Card key={work.id} className="hover:shadow-lg transition-shadow cursor-default">
+                  <div className="aspect-video bg-slate-200 rounded-t-lg overflow-hidden">
+                    {work.thumbnail ? (
+                      <img 
+                        src={work.thumbnail.url} 
+                        alt={work.title}
+                        className="w-full h-full object-cover"
+                      />
+                    ) : (
+                      <div className="w-full h-full bg-gradient-to-br from-slate-300 to-slate-400 flex items-center justify-center">
+                        <span className="text-slate-600 text-sm">No Image</span>
+                      </div>
+                    )}
                   </div>
-                </CardContent>
-              </Card>
+                  <CardHeader>
+                    <CardTitle className="text-lg">{work.title}</CardTitle>
+                    <CardDescription>{work.description}</CardDescription>
+                  </CardHeader>
+                  <CardContent>
+                    <div className="flex flex-wrap gap-2">
+                      {(work.technologies || []).map((tech, techIndex) => (
+                        <Badge key={techIndex} variant="outline" className="text-xs">
+                          {tech}
+                        </Badge>
+                      ))}
+                    </div>
+                  </CardContent>
+                </Card>
+              )
             ))}
           </div>
         ) : (
