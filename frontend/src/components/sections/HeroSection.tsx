@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import { SocialLinks } from "@/components/layout/SocialLinks";
+import { SocialLinks, SocialLink } from "@/components/layout/SocialLinks";
 
 interface HeroSectionProps {
   profileImage?: string;
@@ -10,6 +10,7 @@ interface HeroSectionProps {
   onPrimaryButtonClick?: () => void;
   onSecondaryButtonClick?: () => void;
   className?: string;
+  socialLinks: SocialLink[];
 }
 
 /**
@@ -24,6 +25,7 @@ interface HeroSectionProps {
  * @param onPrimaryButtonClick - プライマリボタンクリック時のコールバック
  * @param onSecondaryButtonClick - セカンダリボタンクリック時のコールバック
  * @param className - 追加のCSSクラス
+ * @param socialLinks - SNSリンク配列
  */
 export function HeroSection({
   profileImage = "/api/placeholder/150/150",
@@ -33,7 +35,8 @@ export function HeroSection({
   secondaryButtonText = "ブログを読む",
   onPrimaryButtonClick,
   onSecondaryButtonClick,
-  className = ""
+  className = "",
+  socialLinks
 }: HeroSectionProps) {
   return (
     <section className={`container mx-auto px-4 py-20 ${className}`}>
@@ -68,7 +71,7 @@ export function HeroSection({
             {secondaryButtonText}
           </Button>
         </div>
-        <SocialLinks />
+        <SocialLinks links={socialLinks} />
       </div>
     </section>
   );
