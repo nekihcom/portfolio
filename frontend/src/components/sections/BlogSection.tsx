@@ -7,7 +7,6 @@ interface BlogSectionProps {
   posts?: BlogPost[];
   title?: string;
   viewAllButtonText?: string;
-  onViewAllClick?: () => void;
   className?: string;
 }
 
@@ -18,14 +17,12 @@ interface BlogSectionProps {
  * @param posts - ブログ記事情報の配列
  * @param title - セクションタイトル
  * @param viewAllButtonText - 「すべて見る」ボタンのテキスト
- * @param onViewAllClick - 「すべて見る」ボタンクリック時のコールバック
  * @param className - 追加のCSSクラス
  */
 export function BlogSection({
   posts = [],
   title = "最新のブログ記事",
   viewAllButtonText = "すべて見る",
-  onViewAllClick,
   className = ""
 }: BlogSectionProps) {
   return (
@@ -34,17 +31,19 @@ export function BlogSection({
         <h2 className="text-3xl font-bold text-slate-900">
           {title}
         </h2>
-        <Button variant="outline" onClick={onViewAllClick}>
-          {viewAllButtonText}
-        </Button>
+        <Link href="/blog">
+          <Button variant="outline">
+            {viewAllButtonText}
+          </Button>
+        </Link>
       </div>
       
       {posts.length > 0 ? (
         <div className="grid md:grid-cols-3 gap-6">
           {posts.map((post) => (
-            <Link key={post.id} href={`/blog/${post.id}`}>
+            <div key={post.id} className="h-full">
               <BlogCard post={post} />
-            </Link>
+            </div>
           ))}
         </div>
       ) : (

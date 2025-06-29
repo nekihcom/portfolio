@@ -18,12 +18,12 @@ interface WorkCardProps {
 export function WorkCard({ work, className = "" }: WorkCardProps) {
   const cardContent = (
     <Card className={`hover:shadow-lg transition-shadow cursor-pointer ${className}`}>
-      <div className="aspect-video bg-slate-200 rounded-t-lg overflow-hidden">
+      <div className="h-48 aspect-video bg-slate-200 rounded-t-lg overflow-hidden">
         {work.thumbnail ? (
           <img 
             src={work.thumbnail.url} 
             alt={work.title}
-            className="w-full h-full object-cover"
+            className="w-full h-full object-cover rounded-t-xl"
           />
         ) : (
           <div className="w-full h-full bg-gradient-to-br from-slate-300 to-slate-400 flex items-center justify-center">
