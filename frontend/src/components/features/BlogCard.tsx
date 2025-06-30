@@ -42,7 +42,6 @@ export function BlogCard({ post, className = "pt-0" }: BlogCardProps) {
         <CardContent>
           <div className="flex justify-between items-center text-sm text-slate-500">
             <span>{new Date(post.publishedAt).toLocaleDateString('ja-JP')}</span>
-            <span>5分</span>
           </div>
         </CardContent>
       </div>

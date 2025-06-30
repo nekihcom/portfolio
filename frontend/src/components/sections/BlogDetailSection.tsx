@@ -40,15 +40,13 @@ export function BlogDetailSection({ post, className = "" }: BlogDetailSectionPro
                 day: 'numeric'
               })}
             </span>
-            <span className="mx-2">•</span>
-            <span className="text-sm">5分</span>
           </div>
           {post.thumbnail && (
             <div className="mb-6">
               <img 
                 src={post.thumbnail.url} 
                 alt={post.title}
-                className="w-full h-64 object-cover rounded-lg"
+                className="w-full h-96 object-cover rounded-lg"
               />
             </div>
           )}
