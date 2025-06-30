@@ -17,7 +17,7 @@ interface BlogDetailSectionProps {
 export function BlogDetailSection({ post, className = "" }: BlogDetailSectionProps) {
   return (
     <section className={`container mx-auto px-4 py-16 ${className}`}>
-      <div className="max-w-4xl mx-auto">
+      <div className="max-w-[960px] mx-auto">
         {/* 戻るボタン */}
         <div className="mb-8">
           <Link href="/">

@@ -19,7 +19,7 @@ interface WorkDetailSectionProps {
 export function WorkDetailSection({ work, className = "" }: WorkDetailSectionProps) {
   return (
     <section className={`container mx-auto px-4 py-16 ${className}`}>
-      <div className="max-w-6xl mx-auto">
+      <div className="max-w-[960px] mx-auto">
         {/* 戻るボタン */}
         <div className="mb-8">
           <Link href="/">
