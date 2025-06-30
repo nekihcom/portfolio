@@ -26,7 +26,7 @@ export function WorksSection({
   className = ""
 }: WorksSectionProps) {
   return (
-    <section className={`container mx-auto px-4 py-16 ${className}`}>
+    <section className={`container mx-auto px-4 pb-16 ${className}`}>
       <div className="flex justify-between items-center mb-12">
         <h2 className="text-3xl font-bold text-slate-900">
           {title}
@@ -47,7 +47,7 @@ export function WorksSection({
           ))}
         </div>
       ) : (
-        <div className="text-center py-16">
+        <div className="text-center pb-16">
           <div className="text-6xl mb-4">🚧</div>
           <h3 className="text-2xl font-semibold text-slate-700 mb-2">準備中</h3>
           <p className="text-slate-500">作品の準備を進めています。もうしばらくお待ちください。</p>

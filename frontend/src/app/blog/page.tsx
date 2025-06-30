@@ -1,5 +1,7 @@
 import { fetchBlogPosts } from "@/lib/fetchBlogData";
-import { BlogListSection } from "@/components/sections/BlogListSection";
+import { BlogSection } from "@/components/sections/BlogSection";
+import { Button } from "@/components/ui/button";
+import Link from "next/link";
 
 /**
  * ブログ一覧ページ
@@ -9,7 +11,23 @@ export default async function BlogListPage() {
 
   return (
     <main className="min-h-screen bg-gradient-to-br from-slate-50 to-slate-100">
-      <BlogListSection posts={posts} />
+      <div className="container mx-auto px-4 py-16">
+        {/* ページヘッダー */}
+        <div>
+          <Link href="/">
+            <Button variant="outline" className="mb-20">
+              ← トップページに戻る
+            </Button>
+          </Link>
+          <h1 className="text-4xl font-bold text-slate-900 mb-4">
+            ブログ記事一覧
+          </h1>
+          <p className="text-lg text-slate-600 mb-2">
+            技術的な学びや開発の記録を共有しています。
+          </p>
+        </div>
+        <BlogSection posts={posts} title="" viewAllButtonText="" />
+      </div>
     </main>
   );
 }

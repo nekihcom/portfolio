@@ -14,7 +14,7 @@ interface BlogCardProps {
  * @param post - ブログ記事情報
  * @param className - 追加のCSSクラス
  */
-export function BlogCard({ post, className = "" }: BlogCardProps) {
+export function BlogCard({ post, className = "pt-0" }: BlogCardProps) {
   const cardContent = (
     <Card className={`h-full flex flex-col hover:shadow-lg transition-shadow cursor-pointer ${className}`}>
       {/* サムネイル画像 */}

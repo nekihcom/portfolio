@@ -8,6 +8,7 @@ interface BlogSectionProps {
   title?: string;
   viewAllButtonText?: string;
   className?: string;
+  maxCount?: number;
 }
 
 /**
@@ -18,31 +19,38 @@ interface BlogSectionProps {
  * @param title - セクションタイトル
  * @param viewAllButtonText - 「すべて見る」ボタンのテキスト
  * @param className - 追加のCSSクラス
+ * @param maxCount - 表示する記事の最大件数
  */
 export function BlogSection({
   posts = [],
   title = "最新のブログ記事",
   viewAllButtonText = "すべて見る",
-  className = ""
+  className = "",
+  maxCount
 }: BlogSectionProps) {
+  const displayPosts = maxCount ? posts.slice(0, maxCount) : posts;
   return (
-    <section className={`container mx-auto px-4 py-16 ${className}`}>
+    <section className={`container mx-auto px-4 pb-16 ${className}`}>
       <div className="flex justify-between items-center mb-12">
         <h2 className="text-3xl font-bold text-slate-900">
           {title}
         </h2>
-        <Link href="/blog">
-          <Button variant="outline">
-            {viewAllButtonText}
-          </Button>
-        </Link>
+        { viewAllButtonText != "" ? (
+          <Link href="/blog">
+            <Button variant="outline">
+              {viewAllButtonText}
+            </Button>
+          </Link>
+        ): (
+          <></>
+        )}
       </div>
       
-      {posts.length > 0 ? (
+      {displayPosts.length > 0 ? (
         <div className="grid md:grid-cols-3 gap-6">
-          {posts.map((post) => (
+          {displayPosts.map((post) => (
             <div key={post.id} className="h-full">
-              <BlogCard post={post} className="pt-0" />
+              <BlogCard post={post} />
             </div>
           ))}
         </div>

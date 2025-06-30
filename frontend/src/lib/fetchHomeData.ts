@@ -16,8 +16,8 @@ export async function fetchHomeData() {
       console.warn('microCMS environment variables are not configured');
     } else {
       const [worksData, postsData] = await Promise.allSettled([
-        microCMSClient.getWorks(3),
-        microCMSClient.getBlogPosts(3)
+        microCMSClient.getWorks(6),
+        microCMSClient.getBlogPosts(6)
       ]);
       if (worksData.status === 'fulfilled' && worksData.value.length > 0) {
         works = worksData.value;

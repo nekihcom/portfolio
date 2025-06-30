@@ -13,16 +13,16 @@ export default async function WorksPage() {
     <main className="min-h-screen bg-gradient-to-br from-slate-50 to-slate-100">
       <div className="container mx-auto px-4 py-16">
         {/* ページヘッダー */}
-        <div className="mb-8">
+        <div>
           <Link href="/">
-            <Button variant="outline" className="mb-4">
+            <Button variant="outline" className="mb-20">
               ← トップページに戻る
             </Button>
           </Link>
           <h1 className="text-4xl font-bold text-slate-900 mb-4">
             作品一覧
           </h1>
-          <p className="text-lg text-slate-600">
+          <p className="text-lg text-slate-600 mb-2">
             制作した作品の一覧です。各作品をクリックすると詳細をご覧いただけます。
           </p>
         </div>

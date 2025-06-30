@@ -4,6 +4,7 @@ export interface SocialLink {
   name: string;
   url: string;
   icon: React.ReactNode;
+  username?: string;
 }
 
 interface SocialLinksProps {
