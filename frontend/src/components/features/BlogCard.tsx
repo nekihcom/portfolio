@@ -16,9 +16,9 @@ interface BlogCardProps {
  */
 export function BlogCard({ post, className = "pt-0" }: BlogCardProps) {
   const cardContent = (
-    <Card className={`h-full flex flex-col hover:shadow-lg transition-shadow cursor-pointer ${className}`}>
+    <Card className={`h-full flex flex-col hover:shadow-lg transition-shadow cursor-pointer max-w-[370px] ${className}`}>
       {/* サムネイル画像 */}
-      <div className="w-full h-48 bg-slate-200 overflow-hidden flex-shrink-0">
+      <div className="w-full h-40 bg-slate-200 overflow-hidden flex-shrink-0">
         {post.thumbnail ? (
           <img 
             src={post.thumbnail.url} 

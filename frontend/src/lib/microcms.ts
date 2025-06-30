@@ -98,7 +98,6 @@ class MicroCMSClient {
       const post = await this.fetchAPI<BlogPost>(`/blog/${id}`);
       
       // contentフィールドが存在しない場合のフォールバック
-      console.log(post);
       if (!post.body) {
         console.warn(`Blog post ${id} has no content field`);
         return {

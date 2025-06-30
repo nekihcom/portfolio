@@ -26,7 +26,7 @@ export function WorksSection({
   className = ""
 }: WorksSectionProps) {
   return (
-    <section className={`container mx-auto px-4 pb-16 ${className}`}>
+    <section className={`container mx-auto max-w-[1150px] px-4 py-16 ${className}`}>
       <div className="flex justify-between items-center mb-12">
         <h2 className="text-3xl font-bold text-slate-900">
           {title}

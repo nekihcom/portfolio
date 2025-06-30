@@ -26,7 +26,7 @@ export function HeroSection({
   socialLinks
 }: HeroSectionProps) {
   return (
-    <section className={`container mx-auto px-4 py-20 ${className}`}>
+    <section className={`container mx-auto max-w-[1150px] px-4 py-20 ${className}`}>
       <div className="max-w-4xl mx-auto flex flex-col gap-8">
         {/* 上部 2カラム */}
         <div className="flex flex-col md:flex-row gap-8 items-center md:items-start">

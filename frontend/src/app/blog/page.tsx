@@ -11,7 +11,7 @@ export default async function BlogListPage() {
 
   return (
     <main className="min-h-screen bg-gradient-to-br from-slate-50 to-slate-100">
-      <div className="container mx-auto px-4 py-16">
+      <div className="container mx-auto max-w-[1150px] px-4 py-16">
         {/* ページヘッダー */}
         <div>
           <Link href="/">

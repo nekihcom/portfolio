@@ -17,13 +17,13 @@ interface WorkCardProps {
  */
 export function WorkCard({ work, className = "" }: WorkCardProps) {
   const cardContent = (
-    <Card className={`hover:shadow-lg transition-shadow cursor-pointer ${className}`}>
-      <div className="h-48 aspect-video bg-slate-200 rounded-t-lg overflow-hidden">
+    <Card className={`h-full flex flex-col hover:shadow-lg transition-shadow cursor-pointer max-w-[370px] ${className}`}>
+      <div className="w-full h-40 bg-slate-200 overflow-hidden flex-shrink-0">
         {work.thumbnail ? (
           <img 
             src={work.thumbnail.url} 
             alt={work.title}
-            className="w-full h-full object-cover rounded-t-xl"
+            className="w-full h-full object-cover"
           />
         ) : (
           <div className="w-full h-full bg-gradient-to-br from-slate-300 to-slate-400 flex items-center justify-center">
@@ -31,7 +31,7 @@ export function WorkCard({ work, className = "" }: WorkCardProps) {
           </div>
         )}
       </div>
-      <CardHeader>
+      <CardHeader className="flex-1">
         <CardTitle className="text-lg">{work.title}</CardTitle>
         <CardDescription>{work.description}</CardDescription>
       </CardHeader>
