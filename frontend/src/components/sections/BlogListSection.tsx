@@ -1,6 +1,6 @@
 import { BlogPost } from "@/types/type";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { BlogCard } from "@/components/features/BlogCard";
 import Link from "next/link";
 
 interface BlogListSectionProps {
@@ -37,22 +37,9 @@ export function BlogListSection({ posts, className = "" }: BlogListSectionProps)
         {posts.length > 0 ? (
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {posts.map((post) => (
-              <Link key={post.id} href={`/blog/${post.id}`}>
-                <Card className="hover:shadow-lg transition-shadow cursor-pointer h-full">
-                  <CardHeader>
-                    <CardTitle className="text-lg line-clamp-2">{post.title}</CardTitle>
-                    <CardDescription className="line-clamp-3">{post.excerpt}</CardDescription>
-                  </CardHeader>
-                  <CardContent>
-                    <div className="flex justify-between items-center text-sm text-slate-500">
-                      <span>
-                        {new Date(post.publishedAt).toLocaleDateString('ja-JP')}
-                      </span>
-                      <span>5分</span>
-                    </div>
-                  </CardContent>
-                </Card>
-              </Link>
+              <div key={post.id} className="h-full">
+                <BlogCard post={post} />
+              </div>
             ))}
           </div>
         ) : (

@@ -42,7 +42,7 @@ export function BlogSection({
         <div className="grid md:grid-cols-3 gap-6">
           {posts.map((post) => (
             <div key={post.id} className="h-full">
-              <BlogCard post={post} />
+              <BlogCard post={post} className="pt-0" />
             </div>
           ))}
         </div>

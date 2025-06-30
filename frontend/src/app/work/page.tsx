@@ -30,7 +30,6 @@ export default async function WorksPage() {
         {/* 作品セクション */}
         <WorksSection 
           works={works} 
-          title="すべての作品"
           viewAllButtonText=""
         />
       </div>

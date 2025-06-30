@@ -21,7 +21,7 @@ interface WorksSectionProps {
  */
 export function WorksSection({
   works = [],
-  title = "最近の作品",
+  title = "",
   viewAllButtonText = "すべて見る",
   className = ""
 }: WorksSectionProps) {
@@ -43,7 +43,7 @@ export function WorksSection({
       {works.length > 0 ? (
         <div className="grid md:grid-cols-3 gap-6">
           {works.map((work) => (
-            <WorkCard key={work.id} work={work} />
+            <WorkCard key={work.id} work={work} className="pt-0" />
           ))}
         </div>
       ) : (
