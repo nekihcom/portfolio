@@ -1,11 +1,8 @@
-import { Button } from "@/components/ui/button";
-import { SocialLinks, SocialLink } from "@/components/layout/SocialLinks";
 import { heroData } from "@/data/HeroData";
-import { Badge } from "@/components/ui/badge";
+import { SocialLink } from "@/components/layout/SocialLinks";
+import Image from "next/image";
 
 interface HeroSectionProps {
-  onPrimaryButtonClick?: () => void;
-  onSecondaryButtonClick?: () => void;
   className?: string;
   socialLinks: SocialLink[];
 }
@@ -14,14 +11,10 @@ interface HeroSectionProps {
  * ヒーローセクションコンポーネント
  * サイトのメインとなる自己紹介エリアを表示
  * 
- * @param onPrimaryButtonClick - プライマリボタンクリック時のコールバック
- * @param onSecondaryButtonClick - セカンダリボタンクリック時のコールバック
  * @param className - 追加のCSSクラス
  * @param socialLinks - SNSリンク配列
  */
 export function HeroSection({
-  onPrimaryButtonClick,
-  onSecondaryButtonClick,
   className = "",
   socialLinks
 }: HeroSectionProps) {
@@ -32,11 +25,14 @@ export function HeroSection({
         <div className="flex flex-col md:flex-row gap-8 items-center md:items-start">
           {/* 左カラム：画像・名前・職業 */}
           <div className="flex flex-col items-center w-full md:w-1/2 text-center">
-            <img 
-              src={heroData.profileImage} 
-              alt="プロフィール画像" 
-              className="w-48 h-48 rounded-full mb-6 border-4 border-white shadow-lg mx-auto"
-            />
+            <div className="relative w-48 h-48 mb-6">
+              <Image 
+                src={heroData.profileImage} 
+                alt="プロフィール画像" 
+                fill
+                className="rounded-full border-4 border-white shadow-lg object-cover"
+              />
+            </div>
             <h1 className="text-4xl font-bold text-slate-900 mb-2 mx-auto">
               {heroData.name}
             </h1>

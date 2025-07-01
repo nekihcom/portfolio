@@ -27,7 +27,7 @@ export function ContactSection({
   className = ""
 }: ContactSectionProps) {
   return (
-    <section className="container mx-auto max-w-[1150px] px-4 py-16 text-center">
+    <section className={`container mx-auto max-w-[1150px] px-4 py-16 text-center ${className}`}>
       <Card className="max-w-2xl mx-auto">
         <CardHeader className="text-center">
           <CardTitle className="text-2xl">{title}</CardTitle>

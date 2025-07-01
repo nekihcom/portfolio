@@ -2,6 +2,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Badge } from "@/components/ui/badge";
 import { Work } from "@/types/type";
 import Link from "next/link";
+import Image from "next/image";
 
 interface WorkCardProps {
   work: Work;
@@ -18,12 +19,13 @@ interface WorkCardProps {
 export function WorkCard({ work, className = "" }: WorkCardProps) {
   const cardContent = (
     <Card className={`h-full flex flex-col hover:shadow-lg transition-shadow cursor-pointer max-w-[370px] ${className}`}>
-      <div className="w-full h-40 bg-slate-200 overflow-hidden flex-shrink-0">
+      <div className="w-full h-40 bg-slate-200 overflow-hidden flex-shrink-0 relative">
         {work.thumbnail ? (
-          <img 
+          <Image 
             src={work.thumbnail.url} 
             alt={work.title}
-            className="w-full h-full object-cover"
+            fill
+            className="object-cover"
           />
         ) : (
           <div className="w-full h-full bg-gradient-to-br from-slate-300 to-slate-400 flex items-center justify-center">

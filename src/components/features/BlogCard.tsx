@@ -1,6 +1,7 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { BlogPost } from "@/types/type";
 import Link from "next/link";
+import Image from "next/image";
 
 interface BlogCardProps {
   post: BlogPost;
@@ -18,12 +19,13 @@ export function BlogCard({ post, className = "pt-0" }: BlogCardProps) {
   const cardContent = (
     <Card className={`h-full flex flex-col hover:shadow-lg transition-shadow cursor-pointer max-w-[370px] ${className}`}>
       {/* サムネイル画像 */}
-      <div className="w-full h-40 bg-slate-200 overflow-hidden flex-shrink-0">
+      <div className="w-full h-40 bg-slate-200 overflow-hidden flex-shrink-0 relative">
         {post.thumbnail ? (
-          <img 
+          <Image 
             src={post.thumbnail.url} 
             alt={post.title}
-            className="w-full h-full object-cover rounded-t-xl"
+            fill
+            className="object-cover rounded-t-xl"
           />
         ) : (
           <div className="w-full h-full bg-gradient-to-br from-slate-300 to-slate-400 flex items-center justify-center">

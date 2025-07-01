@@ -2,6 +2,7 @@ import { BlogPost } from "@/types/type";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import Link from "next/link";
+import Image from "next/image";
 
 interface BlogDetailSectionProps {
   post: BlogPost;
@@ -42,11 +43,12 @@ export function BlogDetailSection({ post, className = "" }: BlogDetailSectionPro
             </span>
           </div>
           {post.thumbnail && (
-            <div className="mb-6">
-              <img 
+            <div className="mb-6 relative h-96">
+              <Image 
                 src={post.thumbnail.url} 
                 alt={post.title}
-                className="w-full h-96 object-cover rounded-lg"
+                fill
+                className="object-cover rounded-lg"
               />
             </div>
           )}

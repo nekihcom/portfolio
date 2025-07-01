@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import Link from "next/link";
+import Image from "next/image";
 import { ExternalLink, Github, Calendar, Code } from "lucide-react";
 
 interface WorkDetailSectionProps {
@@ -94,11 +95,14 @@ export function WorkDetailSection({ work, className = "" }: WorkDetailSectionPro
         {work.thumbnail && (
           <Card className="mb-8">
             <CardContent className="p-0">
-              <img 
-                src={work.thumbnail.url} 
-                alt={work.title}
-                className="w-full h-96 object-cover rounded-lg"
-              />
+              <div className="relative h-96">
+                <Image 
+                  src={work.thumbnail.url} 
+                  alt={work.title}
+                  fill
+                  className="object-cover rounded-lg"
+                />
+              </div>
             </CardContent>
           </Card>
         )}
