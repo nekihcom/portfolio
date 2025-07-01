@@ -1,7 +1,9 @@
-import { Button } from "@/components/ui/button";
 import { BlogCard } from "@/components/features/BlogCard";
 import { BlogPost } from "@/types/type";
-import Link from "next/link";
+import { SectionBackground } from "@/components/ui/SectionBackground";
+import { SectionHeader } from "@/components/ui/SectionHeader";
+import { ViewAllButton } from "@/components/ui/ViewAllButton";
+import { EmptyState } from "@/components/ui/EmptyState";
 
 interface BlogSectionProps {
   posts?: BlogPost[];
@@ -23,44 +25,55 @@ interface BlogSectionProps {
  */
 export function BlogSection({
   posts = [],
-  title = "最新のブログ記事",
+  title = "Blog",
   viewAllButtonText = "すべて見る",
   className = "",
   maxCount
 }: BlogSectionProps) {
   const displayPosts = maxCount ? posts.slice(0, maxCount) : posts;
+  
   return (
-    <section className={`container mx-auto max-w-[1150px] px-4 py-16 ${className}`}>
-      <div className="flex justify-between items-center mb-12">
-        <h2 className="text-3xl font-bold text-slate-900">
-          {title}
-        </h2>
-        { viewAllButtonText != "" ? (
-          <Link href="/blog">
-            <Button variant="outline">
-              {viewAllButtonText}
-            </Button>
-          </Link>
-        ): (
-          <></>
-        )}
-      </div>
+    <SectionBackground className={className}>
+      {/* セクションヘッダー */}
+      <SectionHeader
+        title={title}
+        description="技術的な学びや開発の記録を共有しています 🚀"
+        leftEmoji="📝"
+        rightEmoji="💡"
+      />
       
       {displayPosts.length > 0 ? (
-        <div className="grid md:grid-cols-3 gap-6">
-          {displayPosts.map((post) => (
-            <div key={post.id} className="h-full">
-              <BlogCard post={post} />
-            </div>
-          ))}
-        </div>
+        <>
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 pb-10">
+            {displayPosts.map((post, index) => (
+              <div 
+                key={post.id} 
+                className="group"
+                style={{ animationDelay: `${index * 100}ms` }}
+              >
+                <BlogCard post={post} className="group-hover:scale-105 transition-transform duration-500 pt-0" />
+              </div>
+            ))}
+          </div>
+
+          {/* ボタンエリア */}
+          {viewAllButtonText && viewAllButtonText !== "" && (
+            <ViewAllButton
+              href="/blog"
+              text={viewAllButtonText}
+              emoji="👀"
+            />
+          )}
+        </>
       ) : (
-        <div className="text-center py-16">
-          <div className="text-6xl mb-4">✍️</div>
-          <h3 className="text-2xl font-semibold text-slate-700 mb-2">執筆中</h3>
-          <p className="text-slate-500">記事の執筆を進めています。もうしばらくお待ちください。</p>
-        </div>
+        <EmptyState
+          emoji="✍️"
+          title="執筆中です"
+          description="素晴らしい記事を準備しています。もうしばらくお待ちください ✨"
+          subText="Coming Soon..."
+          leftIcon="📖"
+        />
       )}
-    </section>
+    </SectionBackground>
   );
 } 

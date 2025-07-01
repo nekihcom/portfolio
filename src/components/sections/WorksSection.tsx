@@ -1,7 +1,9 @@
-import { Button } from "@/components/ui/button";
 import { WorkCard } from "@/components/features/WorkCard";
 import { Work } from "@/types/type";
-import Link from "next/link";
+import { SectionBackground } from "@/components/ui/SectionBackground";
+import { SectionHeader } from "@/components/ui/SectionHeader";
+import { ViewAllButton } from "@/components/ui/ViewAllButton";
+import { EmptyState } from "@/components/ui/EmptyState";
 
 interface WorksSectionProps {
   works?: Work[];
@@ -21,38 +23,51 @@ interface WorksSectionProps {
  */
 export function WorksSection({
   works = [],
-  title = "",
+  title = "Work",
   viewAllButtonText = "すべて見る",
   className = ""
 }: WorksSectionProps) {
   return (
-    <section className={`container mx-auto max-w-[1150px] px-4 py-16 ${className}`}>
-      <div className="flex justify-between items-center mb-12">
-        <h2 className="text-3xl font-bold text-slate-900">
-          {title}
-        </h2>
-        {viewAllButtonText && (
-          <Link href="/work">
-            <Button variant="outline">
-              {viewAllButtonText}
-            </Button>
-          </Link>
-        )}
-      </div>
-      
+    <SectionBackground className={className}>
+      {/* セクションヘッダー */}
+      <SectionHeader
+        title={title}
+        description="これまでに制作した作品をご紹介します 🚀"
+        leftEmoji="🎨"
+        rightEmoji="✨"
+      />
+
       {works.length > 0 ? (
-        <div className="grid md:grid-cols-3 gap-6">
-          {works.map((work) => (
-            <WorkCard key={work.id} work={work} className="pt-0" />
-          ))}
-        </div>
+        <>
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 pb-10">
+            {works.map((work, index) => (
+              <div 
+                key={work.id} 
+                className="group"
+                style={{ animationDelay: `${index * 100}ms` }}
+              >
+                <WorkCard work={work} className="pt-0 group-hover:scale-105 transition-transform duration-500" />
+              </div>
+            ))}
+          </div>
+
+          {/* ボタンエリア */}
+          {viewAllButtonText && (
+            <ViewAllButton
+              href="/work"
+              text={viewAllButtonText}
+              emoji="👀"
+            />
+          )}
+        </>
       ) : (
-        <div className="text-center pb-16">
-          <div className="text-6xl mb-4">🚧</div>
-          <h3 className="text-2xl font-semibold text-slate-700 mb-2">準備中</h3>
-          <p className="text-slate-500">作品の準備を進めています。もうしばらくお待ちください。</p>
-        </div>
+        <EmptyState
+          emoji="🚧"
+          title="準備中です"
+          description="素晴らしい作品を準備しています。もうしばらくお待ちください ✨"
+          subText="Coming Soon..."
+        />
       )}
-    </section>
+    </SectionBackground>
   );
 } 

@@ -1,54 +1,81 @@
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card, CardContent } from "@/components/ui/card";
 import { ContactButton } from "@/components/ContactButton";
+import { socialLinks } from "@/data/SocialLinkData";
+import { ReactNode } from "react";
+import { SectionBackground } from "@/components/ui/SectionBackground";
+import { SectionHeader } from "@/components/ui/SectionHeader";
+import { SocialLink } from "@/components/features/SocialLink";
 
 interface ContactSectionProps {
   title?: string;
   description?: string;
-  message?: string;
-  note?: string;
+  message?: ReactNode;
   className?: string;
 }
 
 /**
  * お問い合わせセクションコンポーネント
- * お問い合わせフォームへの誘導を表示
+ * 洗練されたデザインでお問い合わせを促進
  * 
  * @param title - セクションタイトル
  * @param description - 説明文
  * @param message - メッセージ文
- * @param note - 注意書き
  * @param className - 追加のCSSクラス
  */
 export function ContactSection({
-  title = "お問い合わせ",
-  description = "ご質問やお仕事のご相談はお気軽に",
-  message = "フリーランスでのお仕事や、技術的な相談など、\nどんなことでもお気軽にお問い合わせください。",
-  note = "※GoogleFormは新しいタブで開きます",
+  title = "一緒にモノづくりしませんか？",
+  description = "お困りごとのお手伝いをします",
+  message = <>お仕事のご相談や技術的なご質問等、<br />どんなことでもお気軽にご連絡ください。</>,
   className = ""
 }: ContactSectionProps) {
   return (
-    <section className={`container mx-auto max-w-[1150px] px-4 py-16 text-center ${className}`}>
-      <Card className="max-w-2xl mx-auto">
-        <CardHeader className="text-center">
-          <CardTitle className="text-2xl">{title}</CardTitle>
-          <CardDescription className="text-lg">
-            {description}
-          </CardDescription>
-        </CardHeader>
-        <CardContent className="space-y-6">
-          <div className="text-center">
-            <p className="text-slate-600 mb-6 whitespace-pre-line">
-              {message}
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <ContactButton />
+    <SectionBackground className={className}>
+      <SectionHeader
+        title={title}
+        description={description}
+      />
+
+      {/* メインコンテンツ */}
+      <Card className="max-w-4xl mx-auto border-0 bg-white/90 shadow-xl">
+        <CardContent className="p-8 md:p-12">
+          <div className="grid md:grid-cols-2 gap-12 items-center">
+            {/* 左側：メッセージとボタン */}
+            <div className="space-y-8">
+              <div>
+                <h3 className="text-center text-2xl font-semibold text-gray-900 mb-4">
+                  お気軽にご相談ください
+                </h3>
+                <p className="text-center text-lg text-gray-600 leading-relaxed mb-6">
+                  {message}
+                </p>
+              </div>
+
+              <div className="space-y-4">
+                <ContactButton />
+              </div>
             </div>
-            <p className="text-xs text-slate-500 mt-4">
-              {note}
-            </p>
+
+            {/* 右側：SNSリンクと連絡先 */}
+            <div className="space-y-8">
+              <div>
+                <h4 className="text-lg font-semibold text-gray-900 mb-4 flex items-center gap-2">
+                  <span>💬</span>
+                  他の連絡方法
+                </h4>
+                <div className="space-y-3">
+                  {socialLinks.slice(0, 2).map((link) => (
+                    <SocialLink
+                      key={link.name}
+                      link={link}
+                      className="p-4 rounded-xl bg-gray-50 hover:bg-teal-50"
+                    />
+                  ))}
+                </div>
+              </div>
+            </div>
           </div>
         </CardContent>
       </Card>
-    </section>
+    </SectionBackground>
   );
 } 

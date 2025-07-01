@@ -11,7 +11,7 @@ export default async function Home() {
   return (
     <main className="min-h-screen bg-gradient-to-br from-slate-50 to-slate-100">
       <HeroSection socialLinks={socialLinks} />
-      <WorksSection title="最近の作品" works={works} />
+      <WorksSection works={works} />
       <BlogSection posts={posts} maxCount={6} />
       <ContactSection />
       </main>
