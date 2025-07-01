@@ -4,6 +4,7 @@ import { SectionBackground } from "@/components/ui/SectionBackground";
 import { ProfileImage } from "@/components/features/ProfileImage";
 import { SkillTags } from "@/components/features/SkillTags";
 import { SocialLink as SocialLinkComponent } from "@/components/features/SocialLink";
+import { AnimatedSection } from "@/components/ui/AnimatedSection";
 
 interface HeroSectionProps {
   className?: string;
@@ -33,7 +34,7 @@ export function HeroSection({
         {/* 上部 2カラム */}
         <div className="flex flex-col lg:flex-row gap-12 items-center lg:items-start mb-16">
           {/* 左カラム：画像・名前・職業 */}
-          <div className="flex flex-col items-center w-full lg:w-1/2 text-center">
+          <AnimatedSection delay={0.2} className="flex flex-col items-center w-full lg:w-1/2 text-center">
             <ProfileImage 
               src={heroData.profileImage} 
               alt="プロフィール画像" 
@@ -53,10 +54,10 @@ export function HeroSection({
               
               <SkillTags skills={skills} />
             </div>
-          </div>
+          </AnimatedSection>
 
           {/* 右カラム：SNSリンク（カード形式） */}
-          <div className="flex-1 w-full flex flex-col items-center lg:items-end">
+          <AnimatedSection delay={0.4} className="flex-1 w-full flex flex-col items-center lg:items-end">
             <div className="w-full max-w-sm">
               <div className="flex flex-col gap-4">
                 {socialLinks.map((link, index) => (
@@ -68,11 +69,11 @@ export function HeroSection({
                 ))}
               </div>
             </div>
-          </div>
+          </AnimatedSection>
         </div>
 
         {/* 下部 1カラム：説明文・趣味 */}
-        <div className="text-center max-w-3xl mx-auto">
+        <AnimatedSection delay={0.6} className="text-center max-w-3xl mx-auto">
           <div className="p-8">
             <p className="text-xl text-gray-700 leading-relaxed mb-6">
               {heroData.description}
@@ -83,7 +84,7 @@ export function HeroSection({
               </div>
             )}
           </div>
-        </div>
+        </AnimatedSection>
       </div>
     </SectionBackground>
   );

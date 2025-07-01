@@ -4,6 +4,7 @@ import { SectionBackground } from "@/components/ui/SectionBackground";
 import { SectionHeader } from "@/components/ui/SectionHeader";
 import { ViewAllButton } from "@/components/ui/ViewAllButton";
 import { EmptyState } from "@/components/ui/EmptyState";
+import { AnimatedSection } from "@/components/ui/AnimatedSection";
 
 interface WorksSectionProps {
   works?: Work[];
@@ -30,43 +31,50 @@ export function WorksSection({
   return (
     <SectionBackground className={className}>
       {/* セクションヘッダー */}
-      <SectionHeader
-        title={title}
-        description="これまでに制作した作品をご紹介します 🚀"
-        leftEmoji="🎨"
-        rightEmoji="✨"
-      />
+      <AnimatedSection delay={0.2}>
+        <SectionHeader
+          title={title}
+          description="これまでに制作した作品をご紹介します 🚀"
+          leftEmoji="🎨"
+          rightEmoji="✨"
+        />
+      </AnimatedSection>
 
       {works.length > 0 ? (
         <>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 pb-10">
-            {works.map((work, index) => (
-              <div 
-                key={work.id} 
-                className="group"
-                style={{ animationDelay: `${index * 100}ms` }}
-              >
-                <WorkCard work={work} className="pt-0 group-hover:scale-105 transition-transform duration-500" />
-              </div>
-            ))}
-          </div>
+          <AnimatedSection delay={0.4}>
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 pb-10">
+              {works.map((work, index) => (
+                <div 
+                  key={work.id} 
+                  className="group"
+                >
+                  <WorkCard work={work} className="pt-0 group-hover:scale-105 transition-transform duration-500" index={index} />
+                </div>
+              ))}
+            </div>
+          </AnimatedSection>
 
           {/* ボタンエリア */}
           {viewAllButtonText && (
-            <ViewAllButton
-              href="/work"
-              text={viewAllButtonText}
-              emoji="👀"
-            />
+            <AnimatedSection delay={0.6}>
+              <ViewAllButton
+                href="/work"
+                text={viewAllButtonText}
+                emoji="👀"
+              />
+            </AnimatedSection>
           )}
         </>
       ) : (
-        <EmptyState
-          emoji="🚧"
-          title="準備中です"
-          description="素晴らしい作品を準備しています。もうしばらくお待ちください ✨"
-          subText="Coming Soon..."
-        />
+        <AnimatedSection delay={0.4}>
+          <EmptyState
+            emoji="🚧"
+            title="準備中です"
+            description="素晴らしい作品を準備しています。もうしばらくお待ちください ✨"
+            subText="Coming Soon..."
+          />
+        </AnimatedSection>
       )}
     </SectionBackground>
   );

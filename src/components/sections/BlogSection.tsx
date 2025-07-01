@@ -4,6 +4,7 @@ import { SectionBackground } from "@/components/ui/SectionBackground";
 import { SectionHeader } from "@/components/ui/SectionHeader";
 import { ViewAllButton } from "@/components/ui/ViewAllButton";
 import { EmptyState } from "@/components/ui/EmptyState";
+import { AnimatedSection } from "@/components/ui/AnimatedSection";
 
 interface BlogSectionProps {
   posts?: BlogPost[];
@@ -35,44 +36,51 @@ export function BlogSection({
   return (
     <SectionBackground className={className}>
       {/* セクションヘッダー */}
-      <SectionHeader
-        title={title}
-        description="技術的な学びや開発の記録を共有しています 🚀"
-        leftEmoji="📝"
-        rightEmoji="💡"
-      />
+      <AnimatedSection delay={0.2}>
+        <SectionHeader
+          title={title}
+          description="技術的な学びや開発の記録を共有しています 🚀"
+          leftEmoji="📝"
+          rightEmoji="💡"
+        />
+      </AnimatedSection>
       
       {displayPosts.length > 0 ? (
         <>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 pb-10">
-            {displayPosts.map((post, index) => (
-              <div 
-                key={post.id} 
-                className="group"
-                style={{ animationDelay: `${index * 100}ms` }}
-              >
-                <BlogCard post={post} className="group-hover:scale-105 transition-transform duration-500 pt-0" />
-              </div>
-            ))}
-          </div>
+          <AnimatedSection delay={0.4}>
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 pb-10">
+              {displayPosts.map((post, index) => (
+                <div 
+                  key={post.id} 
+                  className="group"
+                >
+                  <BlogCard post={post} className="group-hover:scale-105 transition-transform duration-500 pt-0" index={index} />
+                </div>
+              ))}
+            </div>
+          </AnimatedSection>
 
           {/* ボタンエリア */}
           {viewAllButtonText && viewAllButtonText !== "" && (
-            <ViewAllButton
-              href="/blog"
-              text={viewAllButtonText}
-              emoji="👀"
-            />
+            <AnimatedSection delay={0.6}>
+              <ViewAllButton
+                href="/blog"
+                text={viewAllButtonText}
+                emoji="📚"
+              />
+            </AnimatedSection>
           )}
         </>
       ) : (
-        <EmptyState
-          emoji="✍️"
-          title="執筆中です"
-          description="素晴らしい記事を準備しています。もうしばらくお待ちください ✨"
-          subText="Coming Soon..."
-          leftIcon="📖"
-        />
+        <AnimatedSection delay={0.4}>
+          <EmptyState
+            emoji="✍️"
+            title="執筆中です"
+            description="素晴らしい記事を準備しています。もうしばらくお待ちください ✨"
+            subText="Coming Soon..."
+            leftIcon="📖"
+          />
+        </AnimatedSection>
       )}
     </SectionBackground>
   );
