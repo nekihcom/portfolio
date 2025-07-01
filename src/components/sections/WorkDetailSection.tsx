@@ -1,10 +1,9 @@
 import { Work } from "@/types/type";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import Link from "next/link";
 import Image from "next/image";
-import { ExternalLink, Github, Calendar, Code } from "lucide-react";
+import { ExternalLink, Github } from "lucide-react";
 import { BlogContent } from "@/components/features/BlogContent";
 import { SectionBackground } from "@/components/ui/SectionBackground";
 import { ScrollAnimation } from "@/components/ui/ScrollAnimation";

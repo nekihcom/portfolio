@@ -3,7 +3,6 @@ import Image from "next/image";
 interface ProfileImageProps {
   src: string;
   alt: string;
-  size?: number;
   className?: string;
 }
 
@@ -13,13 +12,11 @@ interface ProfileImageProps {
  * 
  * @param src - 画像のURL
  * @param alt - 代替テキスト
- * @param size - 画像サイズ（px）
  * @param className - 追加のCSSクラス
  */
 export function ProfileImage({
   src,
   alt,
-  size = 224, // 56 * 4 = 224px
   className = ""
 }: ProfileImageProps) {
   return (
