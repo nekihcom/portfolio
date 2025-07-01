@@ -33,6 +33,11 @@ export function ScrollAnimation({
   const ref = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
+    // ページ読み込み時に即座にアニメーションを開始
+    const timer = setTimeout(() => {
+      setIsVisible(true);
+    }, 100);
+
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
@@ -50,6 +55,7 @@ export function ScrollAnimation({
     }
 
     return () => {
+      clearTimeout(timer);
       if (ref.current) {
         observer.unobserve(ref.current);
       }
