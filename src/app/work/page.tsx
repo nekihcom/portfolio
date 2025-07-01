@@ -20,10 +20,10 @@ export default async function WorksPage() {
             </Button>
           </Link>
           <h1 className="text-4xl font-bold text-slate-900 mb-4">
-            作品一覧
+            Work
           </h1>
           <p className="text-lg text-slate-600 mb-2">
-            制作した作品の一覧です。各作品をクリックすると詳細をご覧いただけます。
+            各作品をクリックすると詳細をご覧いただけます。
           </p>
         </div>
 
@@ -31,6 +31,7 @@ export default async function WorksPage() {
         <WorksSection 
           works={works} 
           viewAllButtonText=""
+          isDisplaySectionTtl={false}
         />
       </div>
     </main>

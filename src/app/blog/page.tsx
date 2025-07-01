@@ -20,13 +20,13 @@ export default async function BlogListPage() {
             </Button>
           </Link>
           <h1 className="text-4xl font-bold text-slate-900 mb-4">
-            ブログ記事一覧
+            Blog
           </h1>
           <p className="text-lg text-slate-600 mb-2">
             技術的な学びや開発の記録を共有しています。
           </p>
         </div>
-        <BlogSection posts={posts} title="" viewAllButtonText="" />
+        <BlogSection posts={posts} title="" viewAllButtonText="" isDisplaySectionTtl={false} />
       </div>
     </main>
   );
