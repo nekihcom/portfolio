@@ -1,7 +1,7 @@
 import { MetadataRoute } from 'next'
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = 'https://mochiken-portfolio.vercel.app'
+  const baseUrl = 'https://www.mchkn.com'
   
   // 静的ページ
   const staticPages = [
@@ -11,12 +11,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: 'weekly' as const,
       priority: 1,
     },
-    {
-      url: `${baseUrl}/about`,
-      lastModified: new Date(),
-      changeFrequency: 'monthly' as const,
-      priority: 0.8,
-    },
+    // {
+    //   url: `${baseUrl}/about`,
+    //   lastModified: new Date(),
+    //   changeFrequency: 'monthly' as const,
+    //   priority: 0.8,
+    // },
     {
       url: `${baseUrl}/blog`,
       lastModified: new Date(),
