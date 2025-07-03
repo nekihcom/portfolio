@@ -79,9 +79,19 @@ export function HeroSection({
               {heroData.description}
             </p>
             {heroData.hobbies && (
-              <div className="flex items-center justify-center gap-4 text-lg text-gray-600">
-                <div>{heroData.hobbies}</div>
-              </div>
+              <>
+                <div className="flex items-center justify-center gap-4 text-lg text-gray-600 mb-6">
+                  <div>{heroData.hobbies}</div>
+                </div>
+                <a
+                  href="/about"
+                  className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-teal-500 hover:bg-teal-600 text-white font-semibold shadow transition-colors duration-200 text-lg"
+                  aria-label="自己紹介ページへ"
+                >
+                  <span>もっと詳しく</span>
+                  <span role="img" aria-label="right arrow">👉</span>
+                </a>
+              </>
             )}
           </div>
         </AnimatedSection>
