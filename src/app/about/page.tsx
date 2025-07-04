@@ -1,4 +1,5 @@
 import { AboutSection } from "@/components/sections/AboutSection";
+import { SkillListSection } from "@/components/sections/SkillListSection";
 import { ExperienceSection } from "@/components/sections/ExperienceSection";
 import { ContactSection } from "@/components/sections/ContactSection";
 import { generateMetadata } from "@/lib/metadata";
@@ -13,6 +14,7 @@ export default function AboutPage() {
   return (
     <main className="min-h-screen bg-gradient-to-br from-slate-50 to-slate-100">
       <AboutSection />
+      <SkillListSection />
       <ExperienceSection />
       <ContactSection />
     </main>

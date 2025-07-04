@@ -13,30 +13,6 @@ export const aboutData = {
     description: "フロントエンド開発を中心に、ユーザー体験を重視したWebアプリケーションの開発を行っています。React、Next.js、TypeScriptを得意とし、パフォーマンスとアクセシビリティを意識した開発を心がけています。",
   },
 
-  // スキル
-  skills: {
-    frontend: [
-      { name: "React", level: 5, emoji: "⚛️" },
-      { name: "Next.js", level: 4, emoji: "🚀" },
-      { name: "TypeScript", level: 4, emoji: "📘" },
-      { name: "JavaScript", level: 5, emoji: "🟨" },
-      { name: "HTML/CSS", level: 5, emoji: "🎨" },
-      { name: "Tailwind CSS", level: 3, emoji: "🎯" },
-    ],
-    backend: [
-      { name: "Node.js", level: 3, emoji: "🟢" },
-      { name: "Express", level: 2, emoji: "⚡" },
-      { name: "PostgreSQL", level: 2, emoji: "🐘" },
-      { name: "MongoDB", level: 1, emoji: "🍃" },
-    ],
-    tools: [
-      { name: "Git", level: 4, emoji: "📝" },
-      { name: "Docker", level: 2, emoji: "🐳" },
-      { name: "AWS", level: 1, emoji: "☁️" },
-      { name: "Vercel", level: 5, emoji: "▲" },
-    ],
-  },
-
   // 経歴
   experience: [
     {
@@ -87,5 +63,52 @@ export const aboutData = {
     { title: "技術向上", emoji: "📈", description: "常に新しい技術を学び、より良いユーザー体験を提供できるエンジニアを目指します。" },
     { title: "ユーザー第一", emoji: "👥", description: "ユーザーのニーズを最優先に考え、使いやすく価値のあるアプリケーションを開発します。" },
     { title: "継続的改善", emoji: "🔄", description: "コードの品質向上とパフォーマンス最適化を継続的に行い、より良いプロダクトを作り続けます。" },
+  ],
+
+  // スキルカテゴリリスト
+  skillList: [
+    {
+      category: "🎨 フロントエンド",
+      items: [
+        "HTML / CSS / Javascript / TypeScript", 
+        "React / Next.js / Tailwind CSS / Sass / jQuery"
+      ]
+    },
+    {
+      category: "⚙️ バックエンド",
+      items: [
+        "Java / PHP / Python", 
+        "Symfony / Django"
+      ]
+    },
+    {
+      category: "🗂️ CMS",
+      items: [
+        "Drupal / Wordpress / microCMS"
+      ]
+    },
+    {
+      category: "🔧 ミドルウェア",
+      items: [
+        "Apache / SQL / MySQL / PostgreSQL"
+      ]
+    },
+    {
+      category: "☁️ インフラ",
+      items: [
+        "AWS(VPC / EC2 / Route53 / RDS / S3 / Cloudwatch / Redshift / Lightsail / Amplify)"
+      ]
+    },
+    {
+      category: "🔖 その他",
+      items: [
+        "Git / GitHub / GitHub Actions",
+        "Vercel / Netlify",
+        "Linux / Windows / MacOS",
+        "Figma / Adobe XD / Canva",
+        "GoogleAnalytics / GoogleTagManager",
+        "PowerBI"
+      ]
+    }
   ],
 }; 
