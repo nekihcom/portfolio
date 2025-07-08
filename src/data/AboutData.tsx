@@ -50,6 +50,38 @@ export const aboutData = {
     },
   ],
 
+  // 主なプロジェクト
+  projects: [
+    {
+      name: "ポートフォリオサイト",
+      period: "2024",
+      description: "Next.js + TypeScript + Tailwind CSSで構築した個人ポートフォリオサイト",
+      technologies: ["Next.js", "TypeScript", "Tailwind CSS", "microCMS", "Vercel"],
+      url: "https://mchkn.com",
+    },
+    {
+      name: "ECサイト管理システム",
+      period: "2023",
+      description: "React + Node.jsで開発したECサイトの管理画面システム",
+      technologies: ["React", "Node.js", "Express", "PostgreSQL", "AWS"],
+      url: null,
+    },
+    {
+      name: "社内勤怠管理アプリ",
+      period: "2022",
+      description: "Vue.js + PHPで開発した社内勤怠管理Webアプリケーション",
+      technologies: ["Vue.js", "PHP", "MySQL", "Apache"],
+      url: null,
+    },
+    {
+      name: "ブログプラットフォーム",
+      period: "2021",
+      description: "WordPressをカスタマイズした企業向けブログプラットフォーム",
+      technologies: ["WordPress", "PHP", "MySQL", "CSS"],
+      url: null,
+    },
+  ],
+
   // 趣味・興味
   hobbies: [
     { name: "野球", emoji: "⚾️", description: "学生時代から続けている野球。技術向上とチームワークの大切さを学びました。" },
