@@ -4,6 +4,9 @@ import { SectionHeader } from "@/components/ui/SectionHeader";
 import { ProfileImage } from "@/components/features/ProfileImage";
 import { AnimatedSection } from "@/components/ui/AnimatedSection";
 import { ScrollAnimation } from "@/components/ui/ScrollAnimation";
+import { socialLinks } from "@/data/SocialLinkData";
+import { SocialLink as SocialLinkComponent } from "@/components/features/SocialLink";
+
 
 interface AboutSectionProps {
   className?: string;
@@ -20,16 +23,7 @@ export function AboutSection({
 }: AboutSectionProps) {
   return (
     <SectionBackground className={className}>
-      <div className="max-w-6xl mx-auto px-4 pt-16 pb-4">
-        <ScrollAnimation>
-          <SectionHeader
-            title="自己紹介"
-            description="About Me"
-            leftEmoji="👋"
-            className="text-center mb-16"
-          />
-        </ScrollAnimation>
-
+      <div className="max-w-6xl mx-auto px-4 pt- pb-4">
         <div className="w-4/5 mx-auto">
           <div className="grid lg:grid-cols-2 gap-12 items-start mb-16">
             {/* 左カラム：プロフィール画像・基本情報 */}
@@ -41,7 +35,7 @@ export function AboutSection({
                   className="mb-8"
                 />
               
-                <div className="space-y-4">
+                <div className="space-y-4 mb-12">
                   <h1 className="text-3xl font-bold text-gray-900">
                     {aboutData.profile.name}
                   </h1>
@@ -69,37 +63,33 @@ export function AboutSection({
                     </a>
                   </div>
                 </div>
+
+                <p className="text-gray-700 leading-relaxed">
+                  {aboutData.profile.description}
+                </p>
               </div>
             </AnimatedSection>
 
             {/* 右カラム：自己紹介文 */}
             <AnimatedSection delay={0.4} className="lg:col-span-1">
               <div>
-                <p className="text-gray-700 leading-relaxed mb-16">
-                  {aboutData.profile.description}
-                </p>
-
-                {/* 趣味・興味 */}
-                <div className="mb-16">
-                  <h3 className="text-xl font-semibold text-gray-900 mb-4 flex items-center gap-2">
-                    <span>🎯</span>
-                    趣味
-                  </h3>
-                  <div className="space-y-3">
-                    {aboutData.hobbies.map((hobby) => (
-                      <div key={hobby.name} className="flex items-start gap-3">
-                        <span className="text-xl">{hobby.emoji}</span>
-                        <div>
-                          <h4 className="font-medium text-gray-900 mb-1">{hobby.name}</h4>
-                          <p className="text-sm text-gray-600">{hobby.description}</p>
-                        </div>
-                      </div>
-                    ))}
+                {/* SNSリンクカード */}
+                <AnimatedSection delay={0.4} className="flex-1 w-full flex flex-col items-center lg:items-start mb-16">
+                  <div className="w-full max-w-sm">
+                    <div className="flex flex-col gap-4">
+                      {socialLinks.map((link, index) => (
+                        <SocialLinkComponent
+                          key={link.name}
+                          link={link}
+                          index={index}
+                        />
+                      ))}
+                    </div>
                   </div>
-                </div>
+                </AnimatedSection>
 
                 {/* 目標・価値観 */}
-                <div> 
+                <div className="mb-12"> 
                   <h3 className="text-xl font-semibold text-gray-900 mb-4 flex items-center gap-2">
                     <span>🎯</span>
                     目標・価値観
@@ -114,6 +104,17 @@ export function AboutSection({
                         </div>
                       </div>
                     ))}
+                  </div>
+                </div>
+
+                {/* 趣味・興味 */}
+                <div>
+                  <h3 className="text-xl font-semibold text-gray-900 mb-4 flex items-center gap-2">
+                    <span>🎯</span>
+                    趣味
+                  </h3>
+                  <div className="space-y-3">
+                    {aboutData.hobbies}
                   </div>
                 </div>
               </div>

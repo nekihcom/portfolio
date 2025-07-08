@@ -8,9 +8,9 @@ export const aboutData = {
     profileImage: "/image.webp",
     name: "もちけん / Mochiken",
     jobTitle: "Application Engineer",
-    location: "日本",
-    email: "contact@mchkn.com",
-    description: "フロントエンド開発を中心に、ユーザー体験を重視したWebアプリケーションの開発を行っています。React、Next.js、TypeScriptを得意とし、パフォーマンスとアクセシビリティを意識した開発を心がけています。",
+    location: "Tokyo, Japan",
+    email: "mchkn.dev@gmail.com",
+    description: <>toC向けWebアプリケーションや業務システムなど幅広く開発を行っています。<br />フロントエンド・バックエンド問わず、また要件定義からリリースまで一気通貫で対応できることが強みです。</>,
   },
 
   // 経歴
@@ -82,20 +82,14 @@ export const aboutData = {
     },
   ],
 
-  // 趣味・興味
-  hobbies: [
-    { name: "野球", emoji: "⚾️", description: "学生時代から続けている野球。技術向上とチームワークの大切さを学びました。" },
-    { name: "バドミントン", emoji: "🏸", description: "週末の運動として楽しんでいます。集中力と反射神経の向上に役立っています。" },
-    { name: "散歩", emoji: "🚶", description: "新しいアイデアを考える時間として活用。自然の中を歩くことでリフレッシュできます。" },
-    { name: "YouTube", emoji: "📷", description: "技術動画やエンターテイメント動画を視聴。新しい技術トレンドの情報収集に役立っています。" },
-  ],
-
   // 目標・価値観
   goals: [
-    { title: "技術向上", emoji: "📈", description: "常に新しい技術を学び、より良いユーザー体験を提供できるエンジニアを目指します。" },
-    { title: "ユーザー第一", emoji: "👥", description: "ユーザーのニーズを最優先に考え、使いやすく価値のあるアプリケーションを開発します。" },
-    { title: "継続的改善", emoji: "🔄", description: "コードの品質向上とパフォーマンス最適化を継続的に行い、より良いプロダクトを作り続けます。" },
+    { title: "技術向上", emoji: "📈", description: "常に新しい技術を学び、より良いユーザー体験の提供や課題解決を実行できるエンジニアを目指しています。" },
+    { title: "最適化", emoji: "♻️", description: "何事も「より良いやり方は無いか？」という視点で取り組み、最適なソリューションを提供することを意識しています。" },
   ],
+
+  // 趣味・興味
+  hobbies: <>⚾️野球 / 🏸バドミントン / 🚶散歩 / 📷YouTube</>,
 
   // スキルカテゴリリスト
   skillList: [
