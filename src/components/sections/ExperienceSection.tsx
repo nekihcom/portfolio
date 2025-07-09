@@ -78,18 +78,6 @@ export function ExperienceSection() {
                         {exp.period}
                       </div>
 
-                      {/* プロジェクト情報 */}
-                      <div className="space-y-3">
-                        <ul className="space-y-2">
-                          {exp.achievements.map((achievement, achievementIndex) => (
-                            <li key={achievementIndex} className="text-sm text-gray-600 flex items-start gap-2">
-                              <span className="text-teal-500 mt-1">•</span>
-                              {achievement}
-                            </li>
-                          ))}
-                        </ul>
-                      </div>
-                      
                       {/* クリックヒント */}
                       <div className="mt-4 text-xs text-gray-400 text-center">
                         クリックして詳細を見る
@@ -106,57 +94,51 @@ export function ExperienceSection() {
       {/* 詳細モーダル */}
       <Dialog open={isModalOpen} onOpenChange={setIsModalOpen}>
         <DialogContent className="max-w-2xl max-h-[90vh] overflow-y-auto">
-          <DialogHeader>
-            <DialogTitle className="text-xl font-semibold text-gray-900">
-              {selectedExperience ? `${selectedExperience.title} - ${selectedExperience.company}` : ""}
-            </DialogTitle>
-          </DialogHeader>
-          
           {selectedExperience && (
-            <div className="space-y-6">
-              {/* 基本情報 */}
-              <div className="bg-gray-50 rounded-lg p-4">
-                <div className="flex items-center gap-3 mb-3">
-                  <span className="text-2xl">💼</span>
-                  <div>
-                    <h3 className="text-xl font-semibold text-gray-900">
-                      {selectedExperience.title}
-                    </h3>
-                    <p className="text-teal-600 font-medium">{selectedExperience.company}</p>
+            <>
+              <DialogHeader>
+                <DialogTitle className="text-xl font-semibold text-gray-900">
+                  <div className="flex items-center gap-3 mb-3">
+                    <span className="text-2xl">💼</span>
+                    <div>
+                      <h3 className="text-xl font-semibold text-gray-900">
+                        {selectedExperience.title}
+                      </h3>
+                      <p className="text-teal-600 font-medium text-sm">{selectedExperience.company}</p>
+                    </div>
                   </div>
+                </DialogTitle>
+              </DialogHeader>
+          
+              <div className="space-y-6">
+                {/* 詳細説明 */}
+                <div>
+                  <h4 className="font-semibold text-gray-900 mb-3 flex items-center gap-2">
+                    <span>📝</span>
+                    詳細
+                  </h4>
+                  <p className="text-gray-700 leading-relaxed">
+                    {selectedExperience.description}
+                  </p>
                 </div>
-                <div className="text-sm text-gray-500">
-                  {selectedExperience.period}
+
+                {/* 主な成果・プロジェクト */}
+                <div>
+                  <h4 className="font-semibold text-gray-900 mb-3 flex items-center gap-2">
+                    <span>🚀</span>
+                    主な成果・プロジェクト
+                  </h4>
+                  <ul className="space-y-3">
+                    {selectedExperience.achievements.map((achievement, index) => (
+                      <li key={index} className="text-gray-700 flex items-start gap-3">
+                        <span className="text-teal-500 mt-1 text-lg">•</span>
+                        <span className="leading-relaxed">{achievement}</span>
+                      </li>
+                    ))}
+                  </ul>
                 </div>
               </div>
-
-              {/* 詳細説明 */}
-              <div>
-                <h4 className="font-semibold text-gray-900 mb-3 flex items-center gap-2">
-                  <span>📝</span>
-                  詳細
-                </h4>
-                <p className="text-gray-700 leading-relaxed">
-                  {selectedExperience.description}
-                </p>
-              </div>
-
-              {/* 主な成果・プロジェクト */}
-              <div>
-                <h4 className="font-semibold text-gray-900 mb-3 flex items-center gap-2">
-                  <span>🚀</span>
-                  主な成果・プロジェクト
-                </h4>
-                <ul className="space-y-3">
-                  {selectedExperience.achievements.map((achievement, index) => (
-                    <li key={index} className="text-gray-700 flex items-start gap-3">
-                      <span className="text-teal-500 mt-1 text-lg">•</span>
-                      <span className="leading-relaxed">{achievement}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </div>
+            </>
           )}
         </DialogContent>
       </Dialog>
