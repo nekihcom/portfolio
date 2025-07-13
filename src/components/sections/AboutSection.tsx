@@ -6,6 +6,8 @@ import { AnimatedSection } from "@/components/ui/AnimatedSection";
 import { ScrollAnimation } from "@/components/ui/ScrollAnimation";
 import { socialLinks } from "@/data/SocialLinkData";
 import { SocialLink as SocialLinkComponent } from "@/components/features/SocialLink";
+import { Button } from "@/components/ui/button";
+import Link from "next/link";
 
 
 interface AboutSectionProps {
@@ -24,6 +26,25 @@ export function AboutSection({
   return (
     <SectionBackground className={className}>
       <div className="max-w-6xl mx-auto px-4 pt- pb-4">
+        {/* トップページに戻るボタン */}
+        <ScrollAnimation animationType="slide-left" delay={0.1}>
+          <div className="mb-8">
+            <Link href="/">
+              <Button 
+                variant="outline" 
+                className="mb-4 group bg-white/90 border-teal-200 text-teal-700 hover:bg-teal-50 hover:border-teal-300 hover:text-teal-800 px-6 py-3 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105"
+              >
+                <span className="flex items-center gap-2">
+                  <svg className="w-5 h-5 group-hover:-translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+                  </svg>
+                  <span>トップページに戻る</span>
+                </span>
+              </Button>
+            </Link>
+          </div>
+        </ScrollAnimation>
+
         <div className="w-4/5 mx-auto">
           <div className="grid lg:grid-cols-2 gap-12 items-start mb-16">
             {/* 左カラム：プロフィール画像・基本情報 */}
