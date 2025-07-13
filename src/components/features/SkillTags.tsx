@@ -17,7 +17,6 @@ interface SkillTagsProps {
  */
 export function SkillTags({
   skills,
-  className = ""
 }: SkillTagsProps) {
   return (
     <>
