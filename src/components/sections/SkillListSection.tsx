@@ -12,6 +12,7 @@ export function SkillListSection() {
         <ScrollAnimation>
           <SectionHeader
             title="スキル"
+            description="Skills"
             leftEmoji="🛠️"
             className="text-center mb-12"
           />

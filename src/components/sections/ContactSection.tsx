@@ -32,14 +32,14 @@ export function ContactSection({
 }: ContactSectionProps) {
   return (
     <SectionBackground className={className}>
-      <AnimatedSection delay={0.2}>
+      {/* <AnimatedSection delay={0.2}>
         <ScrollAnimation animationType="slide-up" delay={0.1}>
           <SectionHeader
             title={title}
             description={description}
           />
         </ScrollAnimation>
-      </AnimatedSection>
+      </AnimatedSection> */}
 
       {/* メインコンテンツ */}
       <AnimatedSection delay={0.4}>
