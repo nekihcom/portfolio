@@ -1,4 +1,5 @@
 import { heroData } from "@/data/HeroData";
+import { aboutData } from "@/data/AboutData";
 import { SocialLink } from "@/components/layout/SocialLinks";
 import { SectionBackground } from "@/components/ui/SectionBackground";
 import { ProfileImage } from "@/components/features/ProfileImage";
@@ -22,11 +23,18 @@ export function HeroSection({
   className = "",
   socialLinks
 }: HeroSectionProps) {
-  const skills = [
-    { label: "フロントエンド", emoji: "🎯" },
-    { label: "パフォーマンス", emoji: "⚡" },
-    { label: "UI/UX", emoji: "🎨" }
-  ];
+
+  const skills = aboutData.skillList
+    .filter((skill) => !skill.category.includes("🔖 その他"))
+    .map((skill) => {
+      const emoji = skill.category.match(/^[^\s]+/)?.[0] || "💻";
+      const label = skill.category.replace(/^[^\s]+\s*/, "");
+      return {
+        emoji,
+        label
+      };
+    });
+  console.log(skills);
 
   return (
     <SectionBackground className={className}>
@@ -51,8 +59,11 @@ export function HeroSection({
                 </h2>
                 <span className="text-xl">💻</span>
               </div>
-              
-              <SkillTags skills={skills} />
+              <div className="flex flex-wrap justify-center gap-2 mb-6">
+                <div className="grid grid-cols-3 gap-2">
+                  <SkillTags skills={skills} />
+                </div>
+              </div>
             </div>
           </AnimatedSection>
 

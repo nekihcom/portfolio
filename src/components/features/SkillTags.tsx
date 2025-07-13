@@ -20,7 +20,7 @@ export function SkillTags({
   className = ""
 }: SkillTagsProps) {
   return (
-    <div className={`flex flex-wrap justify-center gap-2 mb-6 ${className}`}>
+    <>
       {skills.map((skill, index) => (
         <span 
           key={index}
@@ -29,6 +29,6 @@ export function SkillTags({
           {skill.emoji} {skill.label}
         </span>
       ))}
-    </div>
+    </>
   );
 } 
