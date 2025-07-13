@@ -20,7 +20,7 @@ export function ProfileImage({
   className = ""
 }: ProfileImageProps) {
   return (
-    <div className={`relative w-56 h-56 mb-8 group ${className}`}>
+    <div className={`relative w-56 h-56 mb-8 group mx-auto ${className}`}>
       {/* 装飾的な背景 */}
       <div className="absolute -inset-4 rounded-full blur-lg opacity-20 group-hover:opacity-30 transition-opacity duration-500" />
       <div className="relative w-full h-full">
