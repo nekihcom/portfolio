@@ -60,7 +60,7 @@ export function HeroSection({
                 <span className="text-xl">💻</span>
               </div>
               <div className="flex flex-wrap justify-center gap-2 mb-6">
-                <div className="grid grid-cols-3 gap-2">
+                <div className="grid grid-cols-2 md:grid-cols-3 gap-2">
                   <SkillTags skills={skills} />
                 </div>
               </div>
