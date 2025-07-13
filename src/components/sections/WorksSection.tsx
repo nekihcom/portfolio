@@ -51,11 +51,11 @@ export function WorksSection({
         <>
           <AnimatedSection delay={0.4}>
             <ScrollAnimation animationType="fade-in" delay={0.2}>
-              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 pb-10">
+              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 pb-10 justify-items-center">
                 {works.map((work, index) => (
                   <div 
                     key={work.id} 
-                    className="group"
+                    className="group w-full max-w-[370px]"
                   >
                     <WorkCard work={work} className="pt-0 group-hover:scale-105 transition-transform duration-500" index={index} />
                   </div>
@@ -83,7 +83,7 @@ export function WorksSection({
             <EmptyState
               emoji="🚧"
               title="準備中です"
-              description="素晴らしい作品を準備しています。もうしばらくお待ちください ✨"
+              description="もうしばらくお待ちください ✨"
               subText="Coming Soon..."
             />
           </ScrollAnimation>
