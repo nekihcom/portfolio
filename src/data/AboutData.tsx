@@ -10,7 +10,7 @@ export const aboutData = {
     jobTitle: "Application Engineer",
     location: "Tokyo, Japan",
     email: "mchkn.dev@gmail.com",
-    description: <>toC向けWebアプリケーションや業務システムなど幅広く開発を行っています。<br />フロントエンド・バックエンド問わず、また要件定義からリリースまで一気通貫で対応できることが強みです。</>,
+    description: <>toC向けWebアプリケーションやtoB向け業務効率化システムなど幅広く開発を行っています。<br />フロントエンド・バックエンド問わず、また要件定義からリリースまで一気通貫で対応できることが強みです。</>,
   },
 
   // 経歴
@@ -59,7 +59,7 @@ export const aboutData = {
     },
     {
       period: "2015.4 - 2019.3",
-      title: "学生時代",
+      title: "大学生",
       company: "成蹊大学理工学部情報科学科",
       description: <>情報数学やアルゴリズム、ネットワーク、データベース、セキュリティなど幅広く学びました。<br/>３年次以降は自然言語処理を専攻とし、Twitterのデータを使った言語生成モデルを構築しました。</>,
       achievements: [
