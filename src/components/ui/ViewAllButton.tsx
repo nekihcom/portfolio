@@ -28,7 +28,7 @@ export function ViewAllButton({
       <Link href={href}>
         <Button 
           variant="outline" 
-          className="group bg-white/90 border-teal-200 text-teal-700 hover:bg-teal-50 hover:border-teal-300 hover:text-teal-800 px-8 py-3 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105"
+          className="group bg-white/90 border-teal-200 text-teal-700 hover:bg-teal-50 hover:border-teal-300 hover:text-teal-800 px-8 py-3 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 cursor-pointer"
         >
           <span className="flex items-center gap-2">
             <span className="text-lg">{emoji}</span>
