@@ -3,7 +3,6 @@ import { ContactButton } from "@/components/ContactButton";
 import { socialLinks } from "@/data/SocialLinkData";
 import { ReactNode } from "react";
 import { SectionBackground } from "@/components/ui/SectionBackground";
-import { SectionHeader } from "@/components/ui/SectionHeader";
 import { SocialLink } from "@/components/features/SocialLink";
 import { AnimatedSection } from "@/components/ui/AnimatedSection";
 import { ScrollAnimation } from "@/components/ui/ScrollAnimation";
@@ -25,8 +24,6 @@ interface ContactSectionProps {
  * @param className - 追加のCSSクラス
  */
 export function ContactSection({
-  title = "一緒にモノづくりしませんか？",
-  description = "お困りごとのお手伝いをします",
   message = <>お仕事のご相談や技術的なご質問等、<br />どんなことでもお気軽にご連絡ください。</>,
   className = ""
 }: ContactSectionProps) {

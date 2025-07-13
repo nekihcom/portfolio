@@ -26,11 +26,6 @@ export function ExperienceSection() {
     setIsModalOpen(true);
   };
 
-  const handleCloseModal = () => {
-    setIsModalOpen(false);
-    setSelectedExperience(null);
-  };
-
   return (
     <SectionBackground className="py-16">
       <div className="max-w-4xl mx-auto px-4">

@@ -1,6 +1,5 @@
 import { aboutData } from "@/data/AboutData";
 import { SectionBackground } from "@/components/ui/SectionBackground";
-import { SectionHeader } from "@/components/ui/SectionHeader";
 import { ProfileImage } from "@/components/features/ProfileImage";
 import { AnimatedSection } from "@/components/ui/AnimatedSection";
 import { ScrollAnimation } from "@/components/ui/ScrollAnimation";
