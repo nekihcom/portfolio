@@ -1,140 +1,76 @@
-# ポートフォリオサイト
+# Mochiken Portfolio
 
-個人のスキルや制作実績、アウトプットを発信することを目的としたポートフォリオサイトです。  
-Next.jsフロントエンドとDjangoバックエンドのモノレポ構成で、ブログ記事、作品紹介、お問い合わせ機能を備えています。
+フロントエンドエンジニア Mochiken のポートフォリオサイトです。  
+Next.js + TypeScript + shadcn/ui で構築され、ブログ記事、作品紹介、自己紹介機能を備えています。
 
-## 技術スタック
+## 🌟 特徴
+
+- **モダンな技術スタック**: Next.js 15 (App Router) + TypeScript + Tailwind CSS
+- **高品質なUI**: shadcn/ui による統一感のあるデザイン
+- **コンテンツ管理**: microCMS によるヘッドレスCMS
+- **お問い合わせ**: GoogleForm による運用コストの削減
+- **パフォーマンス**: ISR/SSG による高速な表示
+- **アクセシビリティ**: 適切なセマンティックHTMLとARIA属性
+
+## 🛠️ 技術スタック
 
 ### フロントエンド
-- **Next.js** (App Router)
+- **Next.js 15** (App Router)
 - **TypeScript**
-- **shadcn/ui**
+- **Tailwind CSS**
+- **shadcn/ui** (Radix UI + Tailwind CSS)
 - **Storybook**
 
-### バックエンド
-- **Django** + **Django REST Framework**
-- **djoser** (JWT認証)
-- **Pillow** (画像処理)
+### コンテンツ管理・外部サービス
+- **microCMS** (ヘッドレスCMS)
+- **GoogleForm** (お問い合わせフォーム)
+- **AWS Amplify** (デプロイ・ホスティング)
 
-### データベース
-- **SQLite** (開発環境)
+### 開発ツール
+- **ESLint** + **Prettier** (コード品質)
+- **Vitest** (テスト)
+- **GitHub Actions** (CI/CD)
 
-## ディレクトリ構造
+## 📁 プロジェクト構造
 
 ```
 portfolio/
-├── backend/           # Djangoバックエンド
-│   ├── apps/         # Djangoアプリケーション
-│   ├── portfolio_api/ # Djangoプロジェクト設定
-│   ├── venv/         # Python仮想環境
-│   ├── manage.py     # Django管理コマンド
-│   └── requirements.txt # Python依存関係
-├── docs/             # プロジェクトドキュメント
-│   ├── requirements.md      # 要件定義書
-│   ├── model_api_design.md  # モデル・API設計
-│   └── git-workflow.md      # Git運用ルール
-├── log/              # 実装ログファイル
-│   ├── 2025-06-27.md # 日付別ログ
-│   └── 2025-06-29.md
-├── evidence/         # 証跡ファイル
-│   └── evidence_20250628.md
-├── .git/            # Gitリポジトリ
-├── .cursor/         # Cursor IDE設定
-├── .gitignore       # Git除外設定
-└── README.md        # このファイル
+├── src/
+│   ├── app/                    # Next.js App Router
+│   │   ├── about/             # 自己紹介ページ
+│   │   ├── blog/              # ブログ一覧・詳細ページ
+│   │   ├── work/              # 作品一覧・詳細ページ
+│   │   ├── globals.css        # グローバルスタイル
+│   │   ├── layout.tsx         # ルートレイアウト
+│   │   └── page.tsx           # トップページ
+│   ├── components/             # UIコンポーネント
+│   │   ├── ui/                # shadcn/ui コンポーネント
+│   │   ├── sections/          # ページセクション
+│   │   ├── features/          # 機能コンポーネント
+│   │   ├── layout/            # レイアウトコンポーネント
+│   │   └── seo/               # SEO関連コンポーネント
+│   ├── data/                  # 静的データ
+│   ├── lib/                   # ユーティリティ関数
+│   ├── types/                 # TypeScript型定義
+│   └── stories/               # Storybookストーリー
+├── docs/                      # プロジェクトドキュメント
+│   ├── requirements.md        # 要件定義書
+│   └── git-workflow.md        # Git運用ルール
+├── public/                    # 静的ファイル
+├── .storybook/                # Storybook設定
+└── README.md                  # このファイル
 ```
 
-## セットアップ
+## 🚀 セットアップ
 
-### バックエンド（Django）
+### 1. リポジトリのクローン
 
-1. **仮想環境の有効化**
-   ```bash
-   source backend/venv/bin/activate
-   ```
+```bash
+git clone https://github.com/nekihcom/portfolio.git
+cd portfolio
+```
 
-2. **依存関係のインストール**
-   ```bash
-   cd backend
-   pip install -r requirements.txt
-   ```
-
-3. **データベースマイグレーション**
-   ```bash
-   python manage.py migrate
-   ```
-
-4. **開発サーバー起動**
-   ```bash
-   python manage.py runserver
-   ```
-
-### フロントエンド（Next.js）
-
-*フロントエンドは未実装です*
-
-## API エンドポイント
-
-### 認証
-- `POST /api/auth/jwt/create/` - JWTトークン取得
-
-### ブログ
-- `GET /api/blogs/` - ブログ記事一覧
-- `POST /api/blogs/` - ブログ記事作成（管理者のみ）
-- `GET /api/blogs/{id}/` - ブログ記事詳細
-- `PUT/PATCH /api/blogs/{id}/` - ブログ記事更新（管理者のみ）
-- `DELETE /api/blogs/{id}/` - ブログ記事削除（管理者のみ）
-
-### 作品
-- `GET /api/works/` - 作品一覧
-- `POST /api/works/` - 作品作成（管理者のみ）
-- `GET /api/works/{id}/` - 作品詳細
-- `PUT/PATCH /api/works/{id}/` - 作品更新（管理者のみ）
-- `DELETE /api/works/{id}/` - 作品削除（管理者のみ）
-
-### お問い合わせ
-- `POST /api/contacts/` - お問い合わせ送信
-
-## ドキュメント
-
-- [要件定義書](./docs/requirements.md) - プロジェクトの要件と技術選定
-- [モデル・API設計](./docs/model_api_design.md) - データモデルとAPI設計方針
-- [Git運用ルール](./docs/git-workflow.md) - ブランチ戦略とコミット規約
-
-## 開発状況
-
-### 完了済み
-- ✅ Djangoプロジェクト構築
-- ✅ モデル設計・実装
-- ✅ API実装（ブログ、作品、お問い合わせ）
-- ✅ JWT認証設定
-- ✅ CORS設定
-- ✅ 画像アップロード機能
-- ✅ 管理者認証必須のAPI制御
-
-### 未実装
-- 🔄 Next.jsフロントエンド
-- 🔄 Storybook設定
-- 🔄 CI/CD設定
-- 🔄 本番環境デプロイ
-
-
-# ポートフォリオサイト フロントエンド
-
-Next.js + TypeScript + shadcn/ui + Storybook で構築されたポートフォリオサイトのフロントエンドです。
-
-## 技術スタック
-
-- **Next.js 15** (App Router)
-- **TypeScript**
-- **shadcn/ui** (Tailwind CSS + Radix UI)
-- **Storybook**
-- **microCMS** (ヘッドレスCMS)
-- **GoogleForm** (お問い合わせ)
-
-## セットアップ
-
-### 1. 依存関係のインストール
+### 2. 依存関係のインストール
 
 ```bash
 npm install
@@ -144,7 +80,7 @@ yarn install
 pnpm install
 ```
 
-### 2. 環境変数の設定
+### 3. 環境変数の設定
 
 `.env.local`ファイルを作成し、以下の環境変数を設定してください：
 
@@ -161,7 +97,7 @@ NEXT_PUBLIC_MICROCMS_WORK_ENDPOINT=your-work-endpoint
 
 サンプルファイル `env.example` を参考にしてください。
 
-### 3. 開発サーバーの起動
+### 4. 開発サーバーの起動
 
 ```bash
 npm run dev
@@ -173,7 +109,7 @@ pnpm dev
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-## 利用可能なスクリプト
+## 📜 利用可能なスクリプト
 
 ```bash
 # 開発サーバー起動
@@ -188,6 +124,9 @@ npm run start
 # 型チェック
 npm run type-check
 
+# テスト実行
+npm run test
+
 # Storybook起動
 npm run storybook
 
@@ -195,37 +134,110 @@ npm run storybook
 npm run build-storybook
 ```
 
-## プロジェクト構造
+## 📄 ページ構成
 
-```
-frontend/
-├── src/
-│   ├── app/                 # Next.js App Router
-│   │   └── page.tsx       # Next.js page
-│   ├── components/          # UIコンポーネント
-│   │   └── ui/             # shadcn/uiコンポーネント
-│   ├── stories/            # Storybookストーリー
-│   └── types/              # TypeScript型定義
-├── .storybook/             # Storybook設定
-├── public/                 # 静的ファイル
-└── env.example            # 環境変数サンプル
-```
+### トップページ (`/`)
+- ヒーローセクション（自己紹介・スキルタグ）
+- 最新ブログ記事のピックアップ
+- 最新作品のピックアップ
+- SNSリンク
 
-## デプロイ
+### 自己紹介ページ (`/about`)
+- プロフィール情報
+- 経歴・スキル詳細
+- 目標・価値観
+- 趣味・興味
 
-このプロジェクトは [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) で簡単にデプロイできます。
+### ブログ一覧ページ (`/blog`)
+- ブログ記事一覧表示
+- カテゴリ別フィルタリング
+- 検索機能
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+### ブログ詳細ページ (`/blog/[id]`)
+- 記事本文表示
+- メタ情報（投稿日、カテゴリ等）
+- 関連記事への導線
 
-## Learn More
+### 作品一覧ページ (`/work`)
+- 作品一覧表示
+- 技術スタック別フィルタリング
 
-To learn more about Next.js, take a look at the following resources:
+### 作品詳細ページ (`/work/[id]`)
+- 作品詳細情報
+- 技術スタック
+- デモ・GitHubリンク
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## 🎨 デザインシステム
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+### カラーパレット
+- **Primary**: Teal系（#0d9488）
+- **Background**: Slate系（#f8fafc）
+- **Text**: Gray系（#374151）
 
+### コンポーネント
+- shadcn/ui による統一感のあるデザイン
+- レスポンシブ対応
+- ダークモード対応（準備中）
 
-## ライセンス
-このプロジェクトは個人のポートフォリオサイトとして作成されています。 
+## 🔧 実装済み機能
+
+### ✅ 完了済み
+- [x] Next.js 15 (App Router) プロジェクト構築
+- [x] TypeScript設定
+- [x] Tailwind CSS + shadcn/ui 設定
+- [x] Storybook設定
+- [x] トップページ実装
+- [x] 自己紹介ページ実装
+- [x] ブログ一覧・詳細ページ実装
+- [x] 作品一覧・詳細ページ実装
+- [x] microCMS連携
+- [x] GoogleForm連携
+- [x] スクロールボタン実装
+- [x] SEO対策（メタタグ、JSON-LD）
+- [x] レスポンシブデザイン
+- [x] アニメーション効果
+- [x] アクセシビリティ対応
+
+### 🔄 開発中
+- [ ] ダークモード対応
+- [ ] パフォーマンス最適化
+- [ ] テスト実装
+
+## 📚 ドキュメント
+
+- [要件定義書](./docs/requirements.md) - プロジェクトの要件と技術選定
+- [Git運用ルール](./docs/git-workflow.md) - ブランチ戦略とコミット規約
+
+## 🚀 デプロイ
+
+このプロジェクトは [AWS Amplify](https://aws.amazon.com/amplify/) でデプロイされています。
+
+### デプロイ手順
+
+1. AWS Amplifyコンソールにアクセス
+2. GitHubリポジトリと連携
+3. 環境変数を設定
+4. 自動デプロイ開始
+
+## 🤝 コントリビューション
+
+1. このリポジトリをフォーク
+2. 機能ブランチを作成 (`git checkout -b feature/amazing-feature`)
+3. 変更をコミット (`git commit -m 'Add some amazing feature'`)
+4. ブランチにプッシュ (`git push origin feature/amazing-feature`)
+5. プルリクエストを作成
+
+## 📄 ライセンス
+
+このプロジェクトは個人のポートフォリオサイトとして作成されています。
+
+## 👨‍💻 作者
+
+**Mochiken** - フロントエンドエンジニア
+
+- GitHub: [@nekihcom](https://github.com/nekihcom)
+- ポートフォリオ: [https://mchkn.com](https://mchkn.com)
+
+---
+
+⭐ このリポジトリが役に立ったら、スターを押してください！ 
