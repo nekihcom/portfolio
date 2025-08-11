@@ -1,6 +1,6 @@
 import { Metadata } from 'next'
 
-const baseUrl = 'https://mochiken-portfolio.vercel.app'
+const baseUrl = 'https://www.mchkn.com'
 
 export function generateMetadata({
   title,

@@ -1,4 +1,9 @@
-// microCMS 型定義
+export interface SocialLink {
+  name: string;
+  url: string;
+  icon: React.ReactNode;
+  username?: string;
+}
 
 export interface Work {
   id: string;

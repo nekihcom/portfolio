@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { Footer } from "@/components/layout/Footer";
-import { ScrollToTopButton } from "@/components/ui/ScrollToTopButton";
+// import { ScrollToTopButton } from "@/components/ui/ScrollToTopButton";
 import { PersonJsonLd, WebsiteJsonLd } from "@/components/seo/JsonLd";
 
 const geistSans = Geist({
@@ -100,7 +100,7 @@ export default function RootLayout({
         />
         {children}
         <Footer />
-        <ScrollToTopButton />
+        {/* <ScrollToTopButton /> */}
       </body>
     </html>
   );
