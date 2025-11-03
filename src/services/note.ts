@@ -1,16 +1,25 @@
-import type { Article } from "@/types/article";
+import Parser from "rss-parser";
+import { note as noteConstants } from "@/constants/note";
+import type { NoteArticle } from "@/types/type";
+
+const parser = new Parser();
 
 /**
- * noteの最新記事を取得
- * TODO: 実際のAPIに置き換える
+ * noteの最新記事を取得（RSSフィードから）
  */
-export async function getNoteArticles(limit: number = 5): Promise<Article[]> {
-  // ダミーデータ
-  return Array.from({ length: limit }, (_, i) => ({
-    id: `note-${i + 1}`,
-    title: `note記事のタイトル ${i + 1}`,
-    url: `https://note.com/example/notes/${i + 1}`,
-    publishedAt: new Date(Date.now() - i * 7 * 24 * 60 * 60 * 1000).toISOString(),
-  }));
+export async function getNoteArticles(limit: number = noteConstants.limit): Promise<NoteArticle[]> {
+  try {
+    const feed = await parser.parseURL(noteConstants.url);
+    return feed.items.slice(0, limit).map((item, index) => ({
+      id: `${noteConstants.name}-${index + 1}`,
+      title: item.title || "",
+      url: item.link || "",
+      publishedAt: item.pubDate || new Date().toISOString(),
+    }));
+  } catch (error) {
+    console.error("Failed to fetch note articles:", error);
+    // エラー時は空配列を返す
+    return [];
+  }
 }
 

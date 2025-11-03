@@ -11,3 +11,16 @@ export interface Profile {
   socialLinks: SocialLink[];
 }
 
+export interface NoteArticle {
+  id: string;
+  title: string;
+  url: string;
+  publishedAt: string;
+}
+
+export interface QiitaArticle {
+  id: string;
+  title: string;
+  url: string;
+  publishedAt: string;
+}

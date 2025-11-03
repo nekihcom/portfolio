@@ -1,9 +1,9 @@
 import Link from "next/link";
-import type { Article } from "@/types/article";
+import type { NoteArticle } from "@/types/type";
 
 interface ArticleListSectionProps {
   title: string;
-  articles: Article[];
+  articles: NoteArticle[];
 }
 
 function formatDate(dateString: string): string {

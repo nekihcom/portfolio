@@ -1,6 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
-import type { Profile } from "@/types/profile";
+import type { Profile } from "@/types/type";
 
 interface ProfileSectionProps {
   profile: Profile;

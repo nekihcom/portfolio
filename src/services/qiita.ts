@@ -1,16 +1,40 @@
-import type { Article } from "@/types/article";
+import { qiita as qiitaConstants } from "@/constants/qiita";
+import type { QiitaArticle } from "@/types/type";
+
 
 /**
- * Qiitaの最新記事を取得
- * TODO: 実際のAPIに置き換える
+ * Qiitaの最新記事を取得（APIから）
  */
-export async function getQiitaArticles(limit: number = 5): Promise<Article[]> {
-  // ダミーデータ
-  return Array.from({ length: limit }, (_, i) => ({
-    id: `qiita-${i + 1}`,
-    title: `Qiita記事のタイトル ${i + 1}`,
-    url: `https://qiita.com/example/items/${i + 1}`,
-    publishedAt: new Date(Date.now() - i * 5 * 24 * 60 * 60 * 1000).toISOString(),
-  }));
+export async function getQiitaArticles(
+  limit: number = qiitaConstants.limit
+): Promise<QiitaArticle[]> {
+  try {
+    const response = await fetch(
+      `${qiitaConstants.url}?per_page=${limit}`,
+      {
+        headers: {
+          Accept: "application/json",
+        },
+        next: { revalidate: 3600 }, // 1時間キャッシュ
+      }
+    );
+
+    if (!response.ok) {
+      throw new Error(`Qiita API error: ${response.status}`);
+    }
+
+    const data: QiitaArticle[] = await response.json();
+
+    return data.map((item) => ({
+      id: item.id,
+      title: item.title,
+      url: item.url,
+      publishedAt: item.publishedAt || new Date().toISOString(),
+    }));
+  } catch (error) {
+    console.error("Failed to fetch Qiita articles:", error);
+    // エラー時は空配列を返す
+    return [];
+  }
 }
 
