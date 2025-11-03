@@ -1,17 +1,17 @@
 import Link from "next/link";
-import { Twitter, Youtube, ExternalLink } from "lucide-react";
+import Image from "next/image";
 import type { Profile } from "@/types/profile";
 
 interface ProfileSectionProps {
   profile: Profile;
 }
 
-const iconMap = {
-  x: Twitter,
-  youtube: Youtube,
-  note: ExternalLink,
-  qiita: ExternalLink,
-};
+const iconPaths = {
+  x: "/sns/x-icon.png",
+  youtube: "/sns/youtube-icon.png",
+  note: "/sns/note-icon.svg",
+  qiita: "/sns/qiita-icon.png",
+} as const;
 
 export function ProfileSection({ profile }: ProfileSectionProps) {
   return (
@@ -31,23 +31,31 @@ export function ProfileSection({ profile }: ProfileSectionProps) {
           {profile.occupation}
         </p>
       </div>
+      {profile.bio && (
+        <p
+          className="max-w-md text-center text-sm leading-relaxed text-black/70 dark:text-white/70 sm:text-base"
+          dangerouslySetInnerHTML={{ __html: profile.bio }}
+        />
+      )}
       <nav className="flex flex-wrap items-center justify-center gap-4">
-        {profile.socialLinks.map((link) => {
-          const Icon = iconMap[link.platform];
-          return (
-            <Link
-              key={link.platform}
-              href={link.url}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center gap-2 text-sm text-black hover:text-black/60 dark:text-white dark:hover:text-white/60 transition-colors"
-              aria-label={`${link.platform}のプロフィール`}
-            >
-              <Icon className="size-5" />
-              <span className="capitalize">{link.platform}</span>
-            </Link>
-          );
-        })}
+        {profile.socialLinks.map((link) => (
+          <Link
+            key={link.platform}
+            href={link.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center justify-center transition-opacity hover:opacity-60"
+            aria-label={`${link.platform}のプロフィール`}
+          >
+            <Image
+              src={iconPaths[link.platform]}
+              alt={link.platform}
+              width={24}
+              height={24}
+              className="size-6"
+            />
+          </Link>
+        ))}
       </nav>
     </section>
   );
