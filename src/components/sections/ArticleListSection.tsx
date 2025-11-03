@@ -4,7 +4,6 @@ import type { Article } from "@/types/article";
 interface ArticleListSectionProps {
   title: string;
   articles: Article[];
-  baseUrl?: string;
 }
 
 function formatDate(dateString: string): string {
@@ -19,7 +18,6 @@ function formatDate(dateString: string): string {
 export function ArticleListSection({
   title,
   articles,
-  baseUrl,
 }: ArticleListSectionProps) {
   if (articles.length === 0) {
     return null;
