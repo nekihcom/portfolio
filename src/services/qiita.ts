@@ -25,11 +25,11 @@ export async function getQiitaArticles(
 
     const data = await response.json();
 
-    return data.map((item: Article) => ({
+    return data.map((item: { id: string; title: string; url: string; created_at: string }) => ({
       id: item.id,
       title: item.title,
       url: item.url,
-      createdAt: item.createdAt || new Date().toISOString(),
+      createdAt: item.created_at,
     }));
   } catch (error) {
     console.error("Failed to fetch Qiita articles:", error);
