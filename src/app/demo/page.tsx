@@ -15,34 +15,6 @@ export default async function DemoPage() {
         <Button variant="destructive">Destructive</Button>
         <Button variant="outline">Outline</Button>
       </div>
-      <div className="my-10">
-        {noteArticles.length > 0 ? (
-          noteArticles.map((article) => (
-          <div key={article.id} className="mb-4">
-            <p>{article.title}</p>
-            <p>{article.url}</p>
-            <p>{article.publishedAt}</p>
-            <p>{new Date(article.publishedAt).toLocaleDateString()}</p>
-          </div>
-          ))
-        ) : (
-          <p className="text-sm text-gray-500">記事がありません</p>
-        )}
-      </div>
-      <div className="my-10">
-        {qiitaArticles.length > 0 ? (
-          qiitaArticles.map((article) => (
-          <div key={article.id} className="mb-4">
-            <p>{article.title}</p>
-            <p>{article.url}</p>
-            <p>{article.publishedAt}</p>
-            <p>{new Date(article.publishedAt).toLocaleDateString()}</p>
-          </div>
-          ))
-        ) : (
-          <p className="text-sm text-gray-500">記事がありません</p>
-        )}
-      </div>
       <Link href="/" className="text-sm text-muted-foreground underline">
         Back to Home
       </Link>

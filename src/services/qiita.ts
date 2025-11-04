@@ -1,5 +1,5 @@
 import { qiita as qiitaConstants } from "@/constants/qiita";
-import type { QiitaArticle } from "@/types/type";
+import type { Article } from "@/types/type";
 
 
 /**
@@ -7,7 +7,7 @@ import type { QiitaArticle } from "@/types/type";
  */
 export async function getQiitaArticles(
   limit: number = qiitaConstants.limit
-): Promise<QiitaArticle[]> {
+): Promise<Article[]> {
   try {
     const response = await fetch(
       `${qiitaConstants.url}?per_page=${limit}`,
@@ -23,13 +23,13 @@ export async function getQiitaArticles(
       throw new Error(`Qiita API error: ${response.status}`);
     }
 
-    const data: QiitaArticle[] = await response.json();
+    const data = await response.json();
 
-    return data.map((item) => ({
+    return data.map((item: Article) => ({
       id: item.id,
       title: item.title,
       url: item.url,
-      publishedAt: item.publishedAt || new Date().toISOString(),
+      createdAt: item.createdAt || new Date().toISOString(),
     }));
   } catch (error) {
     console.error("Failed to fetch Qiita articles:", error);

@@ -1,9 +1,10 @@
 import Link from "next/link";
-import type { NoteArticle } from "@/types/type";
+import { profile } from "@/constants/profile";
+import type { Article } from "@/types/type";
 
 interface ArticleListSectionProps {
   title: string;
-  articles: NoteArticle[];
+  articles: Article[];
 }
 
 function formatDate(dateString: string): string {
@@ -15,6 +16,14 @@ function formatDate(dateString: string): string {
   });
 }
 
+function getMoreUrl(title: string): string | null {
+  const platform = title.toLowerCase();
+  const socialLink = profile.socialLinks.find(
+    (link) => link.platform === platform
+  );
+  return socialLink?.url || null;
+}
+
 export function ArticleListSection({
   title,
   articles,
@@ -22,6 +31,8 @@ export function ArticleListSection({
   if (articles.length === 0) {
     return null;
   }
+
+  const moreUrl = getMoreUrl(title);
 
   return (
     <section className="space-y-6">
@@ -38,7 +49,7 @@ export function ArticleListSection({
               className="group flex items-center gap-4 rounded-sm border-b border-black/10 pb-4 transition-colors hover:border-black/30 dark:border-white/10 dark:hover:border-white/30"
             >
               <time className="shrink-0 text-sm text-black/50 dark:text-white/50">
-                {formatDate(article.publishedAt)}
+                {formatDate(article.createdAt)}
               </time>
               <span className="flex-1 text-base text-black group-hover:text-black/60 dark:text-white dark:group-hover:text-white/60 sm:text-lg">
                 {article.title}
@@ -47,6 +58,18 @@ export function ArticleListSection({
           </li>
         ))}
       </ul>
+      {moreUrl && (
+        <div className="flex justify-end pt-2">
+          <Link
+            href={moreUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-base font-medium text-black hover:text-black/60 dark:text-white dark:hover:text-white/60 transition-all duration-200 underline decoration-black hover:decoration-black/30 dark:decoration-white dark:hover:decoration-white/30"
+          >
+            MORE
+          </Link>
+        </div>
+      )}
     </section>
   );
 }
