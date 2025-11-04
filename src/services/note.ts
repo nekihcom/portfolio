@@ -10,11 +10,11 @@ const parser = new Parser();
 export async function getNoteArticles(limit: number = noteConstants.limit): Promise<Article[]> {
   try {
     const feed = await parser.parseURL(noteConstants.url);
-    return feed.items.slice(0, limit).map((item, index) => ({
-      id: `${noteConstants.name}-${index + 1}`,
-      title: item.title || "",
-      url: item.link || "",
-      createdAt: item.pubDate || new Date().toISOString(),
+    return feed.items.slice(0, limit).map((item) => ({
+      id: item.id ?? item.guid ?? "",
+      title: item.title ?? "",
+      url: (item.link ?? item.guid ?? ""),
+      createdAt: item.pubDate ?? new Date().toISOString(),
     }));
   } catch (error) {
     console.error("Failed to fetch note articles:", error);
