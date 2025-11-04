@@ -1,6 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
-import type { Profile } from "@/types/profile";
+import type { Profile } from "@/types/type";
 
 interface ProfileSectionProps {
   profile: Profile;
@@ -15,7 +15,7 @@ const iconPaths = {
 
 export function ProfileSection({ profile }: ProfileSectionProps) {
   return (
-    <section className="flex flex-col items-center gap-6 pb-12 sm:gap-8">
+    <section className="flex flex-col items-center gap-6 sm:gap-8">
       <div className="relative size-32 overflow-hidden rounded-full bg-black dark:bg-white sm:size-40">
         <img
           src={profile.imageUrl}

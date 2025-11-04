@@ -11,3 +11,10 @@ export interface Profile {
   socialLinks: SocialLink[];
 }
 
+
+export interface Article {
+  id: string;
+  title: string;
+  url: string;
+  createdAt: string;
+}
