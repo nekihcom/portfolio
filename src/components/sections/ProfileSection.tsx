@@ -24,8 +24,15 @@ export function ProfileSection({ profile }: ProfileSectionProps) {
         />
       </div>
       <div className="flex flex-col items-center gap-2">
-        <h1 className="text-2xl font-semibold text-black dark:text-white sm:text-3xl">
-          {profile.name}
+        <h1 className="flex flex-col items-center gap-0 text-2xl font-semibold text-black dark:text-white sm:flex-row sm:gap-2 sm:text-3xl">
+          {profile.name.split(" / ").map((part, index, array) => (
+            <span key={index}>
+              {part}
+              {index < array.length - 1 && (
+                <span className="hidden sm:inline"> / </span>
+              )}
+            </span>
+          ))}
         </h1>
         <p className="text-base text-black/60 dark:text-white/60 sm:text-lg">
           {profile.occupation}
