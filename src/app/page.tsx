@@ -16,7 +16,7 @@ export default async function Home() {
         <ProfileSection profile={profile} />
         <div className="flex justify-center pt-6">
           <Button asChild className="transition-all duration-300 hover:scale-105 hover:shadow-lg active:scale-95">
-            <Link href="/profile">プロフィールを詳しく見てみる</Link>
+            <Link href="/profile" className="bg-black/95">プロフィールを詳しく見てみる</Link>
           </Button>
         </div>
         <div className="space-y-12 pt-8 sm:pt-12">
