@@ -1,4 +1,10 @@
 import type { Skill } from "@/types/type";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
 
 interface SkillsSectionProps {
   skills: Skill[];
@@ -14,6 +20,18 @@ const categoryLabels: Record<Skill["category"], string> = {
   cicd: "CI/CD",
   other: "その他",
 };
+
+// カテゴリの表示順序を定義
+const categoryOrder: Skill["category"][] = [
+  "language",
+  "framework",
+  "middleware",
+  "cms",
+  "cicd",
+  "infrastructure",
+  "tool",
+  "other",
+];
 
 function groupSkillsByCategory(skills: Skill[]): Map<Skill["category"], Skill[]> {
   const grouped = new Map<Skill["category"], Skill[]>();
@@ -36,6 +54,14 @@ export function SkillsSection({ skills }: SkillsSectionProps) {
 
   const groupedSkills = groupSkillsByCategory(skills);
 
+  // 定義された順序でカテゴリを並べ替え
+  const orderedCategories = categoryOrder.filter((category) =>
+    groupedSkills.has(category)
+  );
+
+  // 一番上のカテゴリを初期表示時に開く
+  const defaultOpenCategory = orderedCategories.length > 0 ? [orderedCategories[0]] : [];
+
   return (
     <section className="space-y-6">
       <div>
@@ -50,30 +76,40 @@ export function SkillsSection({ skills }: SkillsSectionProps) {
           <span className="block sm:inline">⭐️⭐️⭐️：実務で自走でき、レクチャー可能</span>
         </div>
       </div>
-      <div className="space-y-8">
-        {Array.from(groupedSkills.entries()).map(([category, categorySkills]) => (
-          <div key={category} className="space-y-3">
-            <h3 className="text-base font-medium text-black/80 dark:text-white/80 sm:text-lg">
-              {categoryLabels[category]}
-            </h3>
-            <ul className="grid grid-cols-2 gap-3 sm:grid-cols-4">
-              {categorySkills.map((skill) => (
-                <li
-                  key={skill.name}
-                  className="flex flex-col gap-1 rounded-md border border-black/10 bg-white px-3 py-1.5 text-sm text-black sm:flex-row sm:items-center sm:justify-between sm:gap-1.5 dark:border-white/10 dark:bg-black dark:text-white"
-                >
-                  <span className="truncate">{skill.name}</span>
-                  {skill.level && (
-                    <span className="shrink-0 text-xs sm:text-xs" aria-label={`レベル${skill.level}`}>
-                      {renderStars(skill.level)}
-                    </span>
-                  )}
-                </li>
-              ))}
-            </ul>
-          </div>
-        ))}
-      </div>
+      <Accordion type="multiple" className="w-full" defaultValue={defaultOpenCategory}>
+        {orderedCategories.map((category) => {
+          const categorySkills = groupedSkills.get(category) || [];
+          return (
+            <AccordionItem key={category} value={category} className="border-b border-black/10 dark:border-white/10">
+              <AccordionTrigger className="text-base font-medium text-black/80 hover:no-underline dark:text-white/80 sm:text-lg">
+                <span>
+                  {categoryLabels[category]}
+                  <span className="ml-2 text-sm font-normal text-black/50 dark:text-white/50">
+                    ({categorySkills.length})
+                  </span>
+                </span>
+              </AccordionTrigger>
+              <AccordionContent>
+                <ul className="grid grid-cols-2 gap-3 pt-2 sm:grid-cols-4">
+                  {categorySkills.map((skill) => (
+                    <li
+                      key={skill.name}
+                      className="flex flex-row items-center justify-between gap-1.5 rounded-md border border-black/10 bg-white px-3 py-1.5 text-sm text-black dark:border-white/10 dark:bg-black dark:text-white"
+                    >
+                      <span className="truncate">{skill.name}</span>
+                      {skill.level && (
+                        <span className="shrink-0 text-xs" aria-label={`レベル${skill.level}`}>
+                          {renderStars(skill.level)}
+                        </span>
+                      )}
+                    </li>
+                  ))}
+                </ul>
+              </AccordionContent>
+            </AccordionItem>
+          );
+        })}
+      </Accordion>
     </section>
   );
 }
