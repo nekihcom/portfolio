@@ -10,7 +10,7 @@ export default function ProfilePage() {
     <div className="min-h-screen bg-white dark:bg-black">
       <main className="mx-auto w-full max-w-4xl px-4 py-8 sm:px-6 sm:py-12 md:py-16">
         <ProfileSection profile={detailedProfile} />
-        <div className="space-y-[4.5rem] pt-12 sm:pt-16">
+        <div className="space-y-18 pt-12 sm:pt-16">
           {detailedProfile.skills && (
             <SkillsSection skills={detailedProfile.skills} />
           )}
