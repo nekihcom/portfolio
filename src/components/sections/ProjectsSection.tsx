@@ -14,6 +14,9 @@ function formatDateRange(startDate?: string, endDate?: string): string {
   if (!startDate) return "";
   const start = formatDate(startDate);
   const end = endDate ? formatDate(endDate) : "現在";
+  if (start === end) {
+    return start;
+  }
   return `${start} - ${end}`;
 }
 

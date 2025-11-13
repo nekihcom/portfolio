@@ -92,10 +92,11 @@ export const detailedProfile: DetailedProfile = {
   projects: [
     {
       title: "ポートフォリオサイト",
-      description: "ソフトウェアエンジニアとしての実績をまとめたポートフォリオサイト",
+      description: "エンジニアとしての実績をまとめたポートフォリオサイト",
       technologies: ["Next.js", "TypeScript", "Tailwind CSS", "shadcn/ui"],
       url: "https://www.mchkn.com",
       startDate: "2025-11",
+      endDate: "2025-11",
     },
   ],
   certifications: [
