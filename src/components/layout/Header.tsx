@@ -33,10 +33,10 @@ export function Header() {
 
   return (
     <header
-      className={`max-w-[960px] rounded-b-xl rounded-bl-xl mx-auto fixed top-0 left-0 right-0 z-50 border-b border-black/10 shadow-lg transition-all duration-300 dark:border-white/10 backdrop-blur-sm ${
+      className={`max-w-[960px] rounded-b-xl rounded-bl-xl mx-auto fixed top-0 left-0 right-0 z-50 border-b border-black/10 shadow-2xl transition-all duration-300 dark:border-white/10 backdrop-blur-sm ${
         isScrolled
           ? "h-[60px] bg-transparent"
-          : "top-[-70px] h-[80px] bg-white/95 dark:bg-black/95"
+          : "top-[-60px] h-[80px] bg-white/95 dark:bg-black/95 animate-float"
       }`}
     >
       <div className="mx-auto flex h-full w-full max-w-4xl items-center justify-between px-4 sm:px-6">
