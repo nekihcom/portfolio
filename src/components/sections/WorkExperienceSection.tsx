@@ -24,7 +24,7 @@ export function WorkExperienceSection({
 
   return (
     <section className="space-y-6">
-      <h2 className="text-xl font-semibold text-black dark:text-white sm:text-2xl">
+      <h2 className="text-xl font-semibold dark:text-white sm:text-2xl">
         職歴
       </h2>
       <div className="space-y-8">
@@ -39,7 +39,7 @@ export function WorkExperienceSection({
             <div className="space-y-2">
               <div>
                 <div className="flex items-center gap-2">
-                  <h3 className="text-base font-semibold text-black dark:text-white sm:text-lg">
+                  <h3 className="text-base font-semibold dark:text-white sm:text-lg">
                     {exp.position}
                   </h3>
                   {!exp.endDate && (
@@ -48,10 +48,10 @@ export function WorkExperienceSection({
                     </span>
                   )}
                 </div>
-                <p className="text-sm text-black/70 dark:text-white/70 sm:text-base">
+                <p className="text-sm dark:text-white/70 sm:text-base">
                   {exp.company}
                 </p>
-                <time className="text-xs text-black/50 dark:text-white/50 sm:text-sm">
+                <time className="text-xs dark:text-white/50 sm:text-sm">
                   {formatDateRange(exp.startDate, exp.endDate)}
                 </time>
               </div>
@@ -59,7 +59,7 @@ export function WorkExperienceSection({
                 {exp.description.map((desc, descIndex) => (
                   <li
                     key={descIndex}
-                    className="text-sm text-black/70 dark:text-white/70 sm:text-base before:content-['・']"
+                    className="text-sm dark:text-white/70 sm:text-base before:content-['・']"
                   >
                     {desc}
                   </li>
@@ -70,7 +70,7 @@ export function WorkExperienceSection({
                   {exp.technologies.map((tech) => (
                     <span
                       key={tech}
-                      className="rounded-md border border-black/10 bg-black/5 px-2 py-0.5 text-xs text-black dark:border-white/10 dark:bg-white/5 dark:text-white"
+                      className="rounded-md border border-black/10 bg-black/5 px-2 py-0.5 text-xs dark:border-white/10 dark:bg-white/5 dark:text-white"
                     >
                       {tech}
                     </span>

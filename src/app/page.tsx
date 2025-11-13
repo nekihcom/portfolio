@@ -12,7 +12,7 @@ export default async function Home() {
   const qiitaArticles = await getQiitaArticles(5);
 
   return (
-    <div className="min-h-screen bg-white dark:bg-black">
+    <div className="min-h-screen dark:bg-black">
       <HeroSection profile={profile} />
       <main className="mx-auto w-full max-w-4xl px-4 py-8 sm:px-6 sm:py-12 md:py-16">
         <ProfileSection profile={profile} />

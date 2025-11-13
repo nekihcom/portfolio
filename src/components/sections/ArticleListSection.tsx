@@ -36,7 +36,7 @@ export function ArticleListSection({
 
   return (
     <section className="space-y-6">
-      <h2 className="text-xl font-semibold text-black dark:text-white sm:text-2xl">
+      <h2 className="text-xl font-semibold dark:text-white sm:text-2xl">
         {title}
       </h2>
       <ul className="space-y-4">
@@ -48,10 +48,10 @@ export function ArticleListSection({
               rel="noopener noreferrer"
               className="group flex items-center gap-4 rounded-sm border-b border-black/10 pb-4 transition-colors hover:border-black/30 dark:border-white/10 dark:hover:border-white/30"
             >
-              <time className="shrink-0 text-sm text-black/50 dark:text-white/50">
+              <time className="shrink-0 text-sm dark:text-white/50">
                 {formatDate(article.createdAt)}
               </time>
-              <span className="flex-1 text-base text-black group-hover:text-black/60 dark:text-white dark:group-hover:text-white/60 sm:text-lg">
+              <span className="flex-1 text-base group-hover:dark:text-white dark:group-hover:text-white/60 sm:text-lg">
                 {article.title}
               </span>
             </Link>
@@ -64,7 +64,7 @@ export function ArticleListSection({
             href={moreUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="text-base font-medium text-black hover:text-black/60 dark:text-white dark:hover:text-white/60 transition-all duration-200 underline decoration-black hover:decoration-black/30 dark:decoration-white dark:hover:decoration-white/30"
+            className="text-base font-medium hover:dark:text-white dark:hover:text-white/60 transition-all duration-200 underline decoration-black hover:decoration-black/30 dark:decoration-white dark:hover:decoration-white/30"
           >
             MORE
           </Link>

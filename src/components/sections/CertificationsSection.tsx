@@ -23,7 +23,7 @@ export function CertificationsSection({
 
   return (
     <section className="space-y-6">
-      <h2 className="text-xl font-semibold text-black dark:text-white sm:text-2xl">
+      <h2 className="text-xl font-semibold  dark:text-white sm:text-2xl">
         資格・認定
       </h2>
       <ul className="space-y-4">
@@ -38,22 +38,22 @@ export function CertificationsSection({
                   href={cert.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-base font-medium text-black hover:text-black/60 dark:text-white dark:hover:text-white/60 sm:text-lg"
+                  className="text-base font-medium  hover:/60 dark:text-white dark:hover:text-white/60 sm:text-lg"
                 >
                   {cert.name}
                 </Link>
               ) : (
-                <span className="text-base font-medium text-black dark:text-white sm:text-lg">
+                <span className="text-base font-medium  dark:text-white sm:text-lg">
                   {cert.name}
                 </span>
               )}
               {cert.issuer && (
-                <p className="text-sm text-black/60 dark:text-white/60">
+                <p className="text-sm /60 dark:text-white/60">
                   {cert.issuer}
                 </p>
               )}
             </div>
-            <time className="shrink-0 text-sm text-black/50 dark:text-white/50">
+            <time className="shrink-0 text-sm /50 dark:text-white/50">
               {formatDate(cert.issuedDate)}取得
             </time>
           </li>

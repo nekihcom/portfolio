@@ -7,7 +7,7 @@ import { useScrollPosition } from "@/hooks/useScrollPosition";
 import { profile } from "@/constants/profile";
 
 const navigationItems = [
-  { label: "HOME", href: "#" },
+  { label: "HOME", href: "/" },
   { label: "PROFILE", href: "#" },
   { label: "WORKS", href: "#" },
   { label: "CONTACT", href: "#" },
@@ -36,7 +36,7 @@ export function Header() {
       className={`max-w-[960px] rounded-b-xl rounded-bl-xl mx-auto fixed top-0 left-0 right-0 z-50 border-b border-black/10 shadow-2xl transition-all duration-300 dark:border-white/10 backdrop-blur-sm ${
         isScrolled
           ? "h-[60px] bg-transparent"
-          : "top-[-60px] h-[80px] bg-white/95 dark:bg-black/95 animate-float"
+          : "top-[-60px] h-[80px] bg-neutral-100/95 dark:bg-black/95 animate-float"
       }`}
     >
       <div className="mx-auto flex h-full w-full max-w-4xl items-center justify-between px-4 sm:px-6">
@@ -57,7 +57,7 @@ export function Header() {
                 key={item.label}
                 href={item.href}
                 onClick={handleLinkClick}
-                className={`font-medium text-black hover:opacity-70 dark:text-white ${
+                className={`font-medium hover:opacity-70 dark:text-white ${
                   isScrolled ? "text-sm" : "text-base"
                 } transition-all duration-300`}
               >
@@ -74,7 +74,7 @@ export function Header() {
               key={item.label}
               href={item.href}
               onClick={handleLinkClick}
-              className={`font-medium text-black hover:opacity-70 dark:text-white ${
+              className={`font-medium hover:opacity-70 dark:text-white ${
                 isScrolled ? "text-sm" : "text-base"
               } transition-all duration-300`}
             >
