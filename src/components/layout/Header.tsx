@@ -8,9 +8,9 @@ import { profile } from "@/constants/profile";
 
 const navigationItems = [
   { label: "HOME", href: "/" },
-  { label: "PROFILE", href: "#" },
-  { label: "WORKS", href: "#" },
-  { label: "CONTACT", href: "#" },
+  // { label: "PROFILE", href: "#" },
+  // { label: "WORKS", href: "#" },
+  // { label: "CONTACT", href: "#" },
 ];
 
 // PC用：左側に表示するリンク（HOME、お問い合わせ以外）
@@ -39,7 +39,7 @@ export function Header() {
           : "top-[-60px] h-[80px] bg-neutral-100/95 dark:bg-black/95 animate-float"
       }`}
     >
-      <div className="mx-auto flex h-full w-full max-w-4xl items-center justify-between px-4 sm:px-6">
+      <div className="mx-auto flex h-full w-full max-w-3xl items-center justify-between px-4 sm:px-6">
         <div className="flex items-center gap-6">
           {/* <Link
             href="/"

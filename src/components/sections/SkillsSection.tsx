@@ -5,6 +5,7 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
+import { SectionTitle } from "@/components/common/SectionTitle";
 
 interface SkillsSectionProps {
   skills: Skill[];
@@ -65,9 +66,7 @@ export function SkillsSection({ skills }: SkillsSectionProps) {
   return (
     <section className="space-y-6">
       <div>
-        <h2 className="text-xl font-semibold dark:text-white sm:text-2xl">
-          技術スタック
-        </h2>
+        <SectionTitle>技術スタック</SectionTitle>
         <div className="mt-1 text-xs dark:text-white/40 sm:text-sm">
           <span className="block sm:inline">⭐️：学習経験or個人開発での使用経験あり</span>
           <span className="hidden sm:inline"> / </span>

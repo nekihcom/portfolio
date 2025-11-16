@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { profile } from "@/constants/profile";
 import type { Article } from "@/types/type";
+import { SectionTitle } from "@/components/common/SectionTitle";
 
 interface ArticleListSectionProps {
   title: string;
@@ -36,9 +37,7 @@ export function ArticleListSection({
 
   return (
     <section className="space-y-6">
-      <h2 className="text-xl font-semibold dark:text-white sm:text-2xl">
-        {title}
-      </h2>
+      <SectionTitle>{title}</SectionTitle>
       <ul className="space-y-4">
         {articles.map((article) => (
           <li key={article.id}>

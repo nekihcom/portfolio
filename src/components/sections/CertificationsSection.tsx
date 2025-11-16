@@ -1,5 +1,6 @@
 import Link from "next/link";
 import type { Certification } from "@/types/type";
+import { SectionTitle } from "@/components/common/SectionTitle";
 
 interface CertificationsSectionProps {
   certifications: Certification[];
@@ -23,9 +24,7 @@ export function CertificationsSection({
 
   return (
     <section className="space-y-6">
-      <h2 className="text-xl font-semibold  dark:text-white sm:text-2xl">
-        資格・認定
-      </h2>
+      <SectionTitle>資格・認定</SectionTitle>
       <ul className="space-y-4">
         {certifications.map((cert, index) => (
           <li
