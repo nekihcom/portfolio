@@ -52,9 +52,9 @@ export function ProfileSection({ profile }: ProfileSectionProps) {
               />
             </div>
           )}
-          <div className="flex justify-end pt-2 md:justify-start">
+          {/* <div className="flex justify-end pt-2 md:justify-start">
             <MoreLink href="/profile" />
-          </div>
+          </div> */}
         </div>
       </div>
     </section>
