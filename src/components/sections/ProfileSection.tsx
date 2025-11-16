@@ -1,6 +1,7 @@
 import Link from "next/link";
-import Image from "next/image";
 import type { Profile } from "@/types/type";
+import { SectionTitle } from "../common/SectionTitle";
+import { SocialLinks } from "../common/SocialLinks";
 
 interface ProfileSectionProps {
   profile: Profile;
@@ -15,55 +16,52 @@ const iconPaths = {
 
 export function ProfileSection({ profile }: ProfileSectionProps) {
   return (
-    <section className="flex flex-col items-center gap-6 sm:gap-8">
-      <div className="relative size-32 overflow-hidden rounded-full bg-black dark:bg-white sm:size-40">
-        <img
-          src={profile.imageUrl}
-          alt={profile.name}
-          className="size-full object-cover"
-        />
-      </div>
-      <div className="flex flex-col items-center gap-2">
-        <h1 className="flex flex-col items-center gap-0 text-2xl font-semibold text-black dark:text-white sm:flex-row sm:gap-2 sm:text-3xl">
-          {profile.name.split(" / ").map((part, index, array) => (
-            <span key={index}>
-              {part}
-              {index < array.length - 1 && (
-                <span className="hidden sm:inline"> / </span>
-              )}
-            </span>
-          ))}
-        </h1>
-        <p className="text-base text-black/60 dark:text-white/60 sm:text-lg">
-          {profile.occupation}
-        </p>
-      </div>
-      {profile.bio && (
-        <p
-          className="max-w-md text-center text-sm leading-relaxed text-black/70 dark:text-white/70 sm:text-base"
-          dangerouslySetInnerHTML={{ __html: profile.bio }}
-        />
-      )}
-      <nav className="flex flex-wrap items-center justify-center gap-4">
-        {profile.socialLinks.map((link) => (
-          <Link
-            key={link.platform}
-            href={link.url}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex items-center justify-center transition-opacity hover:opacity-60"
-            aria-label={`${link.platform}のプロフィール`}
-          >
-            <Image
-              src={iconPaths[link.platform]}
-              alt={link.platform}
-              width={24}
-              height={24}
-              className="size-6"
+    <section className="flex flex-col gap-6 sm:gap-8 mb-[300px]">
+      <SectionTitle>PROFILE</SectionTitle>
+      <div className="flex flex-col items-center gap-6 md:flex-row md:items-start md:gap-8">
+        {/* 左側: プロフィール画像 */}
+        <div className="relative mx-auto size-48 shrink-0 overflow-hidden rounded-full bg-black dark:bg-white md:mx-0 sm:size-40">
+          <img
+            src={profile.imageUrl}
+            alt={profile.name}
+            className="size-full object-cover"
+          />
+        </div>
+        {/* 右側: 名前、職業、SNSリンク、bio、リンク */}
+        <div className="flex w-full flex-col gap-8 md:items-start">
+          <div className="flex flex-col items-center gap-3 md:items-start">
+            <div className="flex items-center gap-3">
+              <h1 className="text-2xl font-semibold dark:text-white sm:text-3xl">
+                {profile.name}
+              </h1>
+              <p className="text-base dark:text-white/60 sm:text-lg">
+                - {profile.occupation} -
+              </p>
+            </div>
+            <SocialLinks
+              socialLinks={profile.socialLinks}
+              iconPaths={iconPaths}
+              className="md:justify-start"
             />
-          </Link>
-        ))}
-      </nav>
+          </div>
+          {profile.bio && (
+            <>
+              <p
+                className="max-w-md leading-relaxed dark:text-white/70 sm:text-base"
+                dangerouslySetInnerHTML={{ __html: profile.bio }}
+              />
+            </>
+          )}
+          {/* <div className="flex justify-center pt-2 md:justify-start">
+            <Link
+              href="/profile"
+              className="text-sm text-primary underline-offset-4 transition-opacity hover:underline hover:opacity-70 dark:text-primary"
+            >
+              もっと知りたい →
+            </Link>
+          </div> */}
+        </div>
+      </div>
     </section>
   );
 }

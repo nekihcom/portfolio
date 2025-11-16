@@ -5,6 +5,7 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
+import { SectionTitle } from "@/components/common/SectionTitle";
 
 interface SkillsSectionProps {
   skills: Skill[];
@@ -65,10 +66,8 @@ export function SkillsSection({ skills }: SkillsSectionProps) {
   return (
     <section className="space-y-6">
       <div>
-        <h2 className="text-xl font-semibold text-black dark:text-white sm:text-2xl">
-          技術スタック
-        </h2>
-        <div className="mt-1 text-xs text-black/40 dark:text-white/40 sm:text-sm">
+        <SectionTitle>技術スタック</SectionTitle>
+        <div className="mt-1 text-xs dark:text-white/40 sm:text-sm">
           <span className="block sm:inline">⭐️：学習経験or個人開発での使用経験あり</span>
           <span className="hidden sm:inline"> / </span>
           <span className="block sm:inline">⭐️⭐️：実務経験あり</span>
@@ -81,10 +80,10 @@ export function SkillsSection({ skills }: SkillsSectionProps) {
           const categorySkills = groupedSkills.get(category) || [];
           return (
             <AccordionItem key={category} value={category} className="border-b border-black/10 dark:border-white/10">
-              <AccordionTrigger className="text-base font-medium text-black/80 hover:no-underline dark:text-white/80 sm:text-lg">
+              <AccordionTrigger className="text-base font-medium hover:no-underline dark:text-white/80 sm:text-lg">
                 <span>
                   {categoryLabels[category]}
-                  <span className="ml-2 text-sm font-normal text-black/50 dark:text-white/50">
+                  <span className="ml-2 text-sm font-normal dark:text-white/50">
                     ({categorySkills.length})
                   </span>
                 </span>
@@ -94,7 +93,7 @@ export function SkillsSection({ skills }: SkillsSectionProps) {
                   {categorySkills.map((skill) => (
                     <li
                       key={skill.name}
-                      className="flex flex-row items-center justify-between gap-1.5 rounded-md border border-black/10 bg-white px-3 py-1.5 text-sm text-black dark:border-white/10 dark:bg-black dark:text-white"
+                      className="flex flex-row items-center justify-between gap-1.5 rounded-md border border-black/10 bg-white px-3 py-1.5 text-sm dark:border-white/10 dark:bg-black dark:text-white"
                     >
                       <span className="truncate">{skill.name}</span>
                       {skill.level && (

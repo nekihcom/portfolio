@@ -1,5 +1,6 @@
 import Link from "next/link";
 import type { Project } from "@/types/type";
+import { SectionTitle } from "@/components/common/SectionTitle";
 
 interface ProjectsSectionProps {
   projects: Project[];
@@ -27,24 +28,22 @@ export function ProjectsSection({ projects }: ProjectsSectionProps) {
 
   return (
     <section className="space-y-6">
-      <h2 className="text-xl font-semibold text-black dark:text-white sm:text-2xl">
-        プロジェクト実績
-      </h2>
+      <SectionTitle>プロジェクト実績</SectionTitle>
       <div className="grid gap-6 sm:grid-cols-2">
         {projects.map((project, index) => {
           const content = (
             <div className="space-y-3">
               <div>
-                <h3 className="text-base font-semibold text-black dark:text-white sm:text-lg">
+                <h3 className="text-base font-semibold  dark:text-white sm:text-lg">
                   {project.title}
                 </h3>
                 {(project.startDate || project.endDate) && (
-                  <time className="text-xs text-black/50 dark:text-white/50 sm:text-sm">
+                  <time className="text-xs /50 dark:text-white/50 sm:text-sm">
                     {formatDateRange(project.startDate, project.endDate)}
                   </time>
                 )}
               </div>
-              <p className="text-sm leading-relaxed text-black/70 dark:text-white/70 sm:text-base">
+              <p className="text-sm leading-relaxed /70 dark:text-white/70 sm:text-base">
                 {project.description}
               </p>
             </div>

@@ -1,7 +1,7 @@
 import type { Profile, DetailedProfile } from "@/types/type";
 
 export const profile: Profile = {
-  name: "もちけん / Mochiken",
+  name: "もちけん",
   occupation: "Software Engineer",
   bio: "'97 / SIer所属 / 左利き / 歯列矯正中<br>千葉ロッテマリーンズが好きで、イコラブにハマってます。",
   imageUrl: "/profile/avatar.jpg", // ダミー画像用のパス
