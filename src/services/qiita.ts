@@ -1,40 +1,70 @@
-import { qiita as qiitaConstants } from "@/constants/qiita";
-import type { Article } from "@/types/type";
-
+import type { ParsedQiitaItem, QiitaItemResponse } from "@/types/type";
+import { getOgpImageUrl } from "@/services/ogp";
 
 /**
- * Qiitaの最新記事を取得（APIから）
+ * Qiitaの記事を詳細情報（OGP画像含む）とともに取得
+ * @param apiUrl Qiita APIのURL（環境変数から取得した完全なURL）
+ * @param revalidateSeconds キャッシュの再検証間隔（秒）
+ * @returns パース済みのQiita記事配列
  */
-export async function getQiitaArticles(
-  limit: number = qiitaConstants.limit
-): Promise<Article[]> {
-  try {
-    const response = await fetch(
-      `${qiitaConstants.url}?per_page=${limit}`,
-      {
-        headers: {
-          Accept: "application/json",
-        },
-        next: { revalidate: 3600 }, // 1時間キャッシュ
-      }
-    );
+export async function getQiitaArticlesWithOgp(
+  apiUrl: string,
+  revalidateSeconds: number = 60 * 10,
+): Promise<ParsedQiitaItem[]> {
+  const res = await fetch(apiUrl, {
+    headers: {
+      Authorization: `Bearer ${process.env.BEARER_TOKEN}`,
+    },
+    next: { revalidate: revalidateSeconds },
+  });
 
-    if (!response.ok) {
-      throw new Error(`Qiita API error: ${response.status}`);
-    }
-
-    const data = await response.json();
-
-    return data.map((item: { id: string; title: string; url: string; created_at: string }) => ({
-      id: item.id,
-      title: item.title,
-      url: item.url,
-      createdAt: item.created_at,
-    }));
-  } catch (error) {
-    console.error("Failed to fetch Qiita articles:", error);
-    // エラー時は空配列を返す
-    return [];
+  if (!res.ok) {
+    throw new Error(`Qiita API error: ${res.status}`);
   }
+
+  const qiitaItems = (await res.json()) as QiitaItemResponse[];
+
+  // OGP画像を並列取得
+  const ogpPromises = qiitaItems.map((item) => getOgpImageUrl(item.url));
+  const ogpUrls = await Promise.all(ogpPromises);
+
+  const parsedQiitaItems: ParsedQiitaItem[] = qiitaItems.map(
+    (
+      {
+        coediting,
+        comments_count,
+        created_at,
+        id,
+        likes_count,
+        page_views_count,
+        tags,
+        title,
+        updated_at,
+        url,
+        reactions_count,
+        private: _private,
+      },
+      i,
+    ) => {
+      const parsedItem: ParsedQiitaItem = {
+        coediting,
+        comments_count,
+        created_at,
+        id,
+        likes_count,
+        ogpImageUrl: ogpUrls[i] || "",
+        page_views_count,
+        private: _private,
+        reactions_count,
+        tags,
+        title,
+        updated_at,
+        url,
+      };
+      return parsedItem;
+    },
+  );
+
+  return parsedQiitaItems;
 }
 
