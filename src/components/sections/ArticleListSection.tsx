@@ -1,72 +1,43 @@
-import Link from "next/link";
-import Image from "next/image";
 import { SectionTitle } from "@/components/common/SectionTitle";
+import { ArticleCard } from "@/components/common/ArticleCard";
 import { loadArticlesFromJson } from "@/services/unified-articles";
 
-function formatDate(dateString: string): string {
-  const date = new Date(dateString);
-  return date.toLocaleDateString("ja-JP", {
-    year: "numeric",
-    month: "long",
-    day: "numeric",
-  });
-}
-
-function getSourceLabel(source: "note" | "qiita"): string {
-  return source === "note" ? "note" : "Qiita";
-}
-
 export async function ArticleListSection() {
-  const articles = await loadArticlesFromJson();
+  try {
+    const articles = await loadArticlesFromJson();
+    const displayedArticles = articles.slice(0, 4);
 
-  if (articles.length === 0) {
-    return null;
+    if (displayedArticles.length === 0) {
+      return (
+        <section className="space-y-6">
+          <SectionTitle>記事一覧</SectionTitle>
+          <p className="text-sm text-gray-500 dark:text-gray-400">
+            記事がありません。
+          </p>
+        </section>
+      );
+    }
+
+    return (
+      <section className="space-y-6 mb-[150px]">
+        <SectionTitle>記事一覧</SectionTitle>
+        <div className="grid grid-cols-1 gap-6 md:grid-cols-2 @lg:grid-cols-3">
+          {displayedArticles.map((article) => (
+            <ArticleCard key={article.uuid} article={article} />
+          ))}
+        </div>
+      </section>
+    );
+  } catch (error) {
+    console.error("Failed to load articles:", error);
+    return (
+      <section className="space-y-6">
+        <SectionTitle>記事一覧</SectionTitle>
+        <p className="text-sm text-red-500 dark:text-red-400">
+          記事の読み込みに失敗しました。
+        </p>
+      </section>
+    );
   }
-
-  return (
-    <section className="space-y-6">
-      <SectionTitle>記事一覧</SectionTitle>
-      <ul className="space-y-4">
-        {articles.map((article) => (
-          <li key={article.uuid}>
-            <Link
-              href={article.url}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="group flex items-center gap-4 rounded-sm border-b border-black/10 pb-4 transition-colors hover:border-black/30 dark:border-white/10 dark:hover:border-white/30"
-            >
-              <time className="shrink-0 text-sm dark:text-white/50">
-                {formatDate(article.updatedAt)}
-              </time>
-              <div className="flex flex-1 items-center gap-3">
-                {article.thumbnailUrl && (
-                  <div className="hidden shrink-0 sm:block sm:w-24">
-                    <Image
-                      src={article.thumbnailUrl}
-                      alt={article.title}
-                      width={96}
-                      height={54}
-                      className="h-auto w-full rounded object-cover"
-                      unoptimized
-                    />
-                  </div>
-                )}
-                <div className="flex-1 space-y-1">
-                  <div className="flex items-center gap-2">
-                    <span className="rounded-full bg-blue-100 px-2 py-0.5 text-xs font-medium text-blue-800 dark:bg-blue-900 dark:text-blue-200">
-                      {getSourceLabel(article.source)}
-                    </span>
-                    <span className="flex-1 text-base group-hover:dark:text-white dark:group-hover:text-white/60 sm:text-lg">
-                      {article.title}
-                    </span>
-                  </div>
-                </div>
-              </div>
-            </Link>
-          </li>
-        ))}
-      </ul>
-    </section>
-  );
 }
 
