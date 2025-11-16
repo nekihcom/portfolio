@@ -10,6 +10,7 @@ const parser = new Parser();
 export async function getNoteArticles(limit: number = noteConstants.limit): Promise<Article[]> {
   try {
     const feed = await parser.parseURL(noteConstants.url);
+    console.log(feed.items)
     return feed.items.slice(0, limit).map((item) => ({
       id: item.id ?? item.guid ?? "",
       title: item.title ?? "",

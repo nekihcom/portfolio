@@ -1,7 +1,8 @@
 import Link from "next/link";
-import { profile } from "@/constants/profile";
 import type { Article } from "@/types/type";
 import { SectionTitle } from "@/components/common/SectionTitle";
+import { MoreLink } from "@/components/common/MoreLink";
+import { profile } from "@/constants/profile";
 
 interface ArticleListSectionProps {
   title: string;
@@ -59,14 +60,7 @@ export function ArticleListSection({
       </ul>
       {moreUrl && (
         <div className="flex justify-end pt-2">
-          <Link
-            href={moreUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-base font-medium hover:dark:text-white dark:hover:text-white/60 transition-all duration-200 underline decoration-black hover:decoration-black/30 dark:decoration-white dark:hover:decoration-white/30"
-          >
-            MORE
-          </Link>
+          <MoreLink href={moreUrl} target="_blank" rel="noopener noreferrer" />
         </div>
       )}
     </section>
