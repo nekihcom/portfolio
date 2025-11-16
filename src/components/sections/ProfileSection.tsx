@@ -1,5 +1,5 @@
-import Link from "next/link";
 import type { Profile } from "@/types/type";
+import { MoreLink } from "../common/MoreLink";
 import { SectionTitle } from "../common/SectionTitle";
 import { SocialLinks } from "../common/SocialLinks";
 
@@ -18,9 +18,9 @@ export function ProfileSection({ profile }: ProfileSectionProps) {
   return (
     <section className="flex flex-col gap-6 sm:gap-8 mb-[300px]">
       <SectionTitle>PROFILE</SectionTitle>
-      <div className="flex flex-col items-center gap-6 md:flex-row md:items-start md:gap-8">
+      <div className="flex flex-col items@center gap-6 md:flex-row md:items-start md:gap-8">
         {/* 左側: プロフィール画像 */}
-        <div className="relative mx-auto size-48 shrink-0 overflow-hidden rounded-full bg-black dark:bg-white md:mx-0 sm:size-40">
+        <div className="relative mx-auto size-60 shrink-0 overflow-hidden rounded-full bg-black dark:bg-white md:mx-0">
           <img
             src={profile.imageUrl}
             alt={profile.name}
@@ -28,7 +28,7 @@ export function ProfileSection({ profile }: ProfileSectionProps) {
           />
         </div>
         {/* 右側: 名前、職業、SNSリンク、bio、リンク */}
-        <div className="flex w-full flex-col gap-8 md:items-start">
+        <div className="flex w-full flex-col gap-7 md:items-start">
           <div className="flex flex-col items-center gap-3 md:items-start">
             <div className="flex items-center gap-3">
               <h1 className="text-2xl font-semibold dark:text-white sm:text-3xl">
@@ -45,21 +45,16 @@ export function ProfileSection({ profile }: ProfileSectionProps) {
             />
           </div>
           {profile.bio && (
-            <>
+            <div className="flex justify-center md:block">
               <p
                 className="max-w-md leading-relaxed dark:text-white/70 sm:text-base"
                 dangerouslySetInnerHTML={{ __html: profile.bio }}
               />
-            </>
+            </div>
           )}
-          {/* <div className="flex justify-center pt-2 md:justify-start">
-            <Link
-              href="/profile"
-              className="text-sm text-primary underline-offset-4 transition-opacity hover:underline hover:opacity-70 dark:text-primary"
-            >
-              もっと知りたい →
-            </Link>
-          </div> */}
+          <div className="flex justify-end pt-2 md:justify-start">
+            <MoreLink href="/profile" />
+          </div>
         </div>
       </div>
     </section>
