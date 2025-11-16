@@ -27,7 +27,7 @@ export async function fetchAndUnifyArticles(): Promise<UnifiedArticle[]> {
     const noteArticles = await getNoteArticlesWithThumbnail(noteConstants.limit);
     
     // Qiitaの記事を取得（OGP画像含む）
-    const qiitaApiUrl = process.env.QIITA_API_URL || `${qiitaConstants.url}?per_page=${qiitaConstants.limit}`;
+    const qiitaApiUrl = process.env.QIITA_API_URL || `https://qiita.com/api/v2/users/nekihcom/items?per_page=${qiitaConstants.limit}`;
     const qiitaArticles = await getQiitaArticlesWithOgp(qiitaApiUrl, 0); // バッチ処理ではキャッシュしない
 
     // noteの記事をUnifiedArticle形式に変換
