@@ -17,6 +17,7 @@ export interface Article {
   title: string;
   url: string;
   createdAt: string;
+  thumbnail?: string;
 }
 
 export interface Skill {
