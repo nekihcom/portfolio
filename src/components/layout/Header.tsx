@@ -30,7 +30,7 @@ export function Header() {
 
   return (
     <header
-      className={`max-w-[960px] rounded-b-xl rounded-bl-xl mx-auto fixed top-0 left-0 right-0 z-50 border-b border-black/10 shadow-2xl transition-all duration-300 dark:border-white/10 backdrop-blur-sm ${
+      className={`max-w-6xl rounded-b-xl rounded-bl-xl mx-auto fixed top-0 left-0 right-0 z-50 border-b border-black/10 shadow-2xl transition-all duration-300 dark:border-white/10 backdrop-blur-sm ${
         isScrolled
           ? "h-[60px] bg-transparent"
           : "top-[-60px] h-[80px] bg-neutral-100/95 dark:bg-black/95 animate-float"

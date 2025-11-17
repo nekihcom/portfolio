@@ -1,7 +1,6 @@
 "use client";
 
 import { useState } from "react";
-import { SectionTitle } from "@/components/common/SectionTitle";
 import { ArticleCard } from "@/components/common/ArticleCard";
 import { SectionContainer } from "@/components/common/SectionContainer";
 import { Button } from "@/components/ui/button";
@@ -9,28 +8,28 @@ import { cn } from "@/lib/utils";
 import type { UnifiedArticle } from "@/types/type";
 
 const sectionTitle = "ARTICLES";
-const INITIAL_DISPLAY_COUNT = 6;
-const LOAD_MORE_COUNT = 12;
+const DEFAULT_INITIAL_DISPLAY_COUNT = 6;
+const DEFAULT_LOAD_MORE_COUNT = 12;
 
 interface ArticleListSectionProps {
   articles: UnifiedArticle[];
-  itemsPerRow?: number;
   showSectionTitle?: boolean;
   initialDisplayCount?: number;
+  loadMoreCount?: number;
 }
 
 export function ArticleListSection({
   articles,
-  itemsPerRow = 2,
   showSectionTitle = true,
-  initialDisplayCount = INITIAL_DISPLAY_COUNT,
+  initialDisplayCount = DEFAULT_INITIAL_DISPLAY_COUNT,
+  loadMoreCount = DEFAULT_LOAD_MORE_COUNT,
 }: ArticleListSectionProps) {
   const [displayCount, setDisplayCount] = useState(initialDisplayCount);
   const displayedArticles = articles.slice(0, displayCount);
   const hasMore = displayCount < articles.length;
 
   const handleLoadMore = () => {
-    setDisplayCount((prev) => prev + LOAD_MORE_COUNT);
+    setDisplayCount((prev) => prev + loadMoreCount);
   };
 
   if (articles.length === 0) {

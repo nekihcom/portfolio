@@ -16,7 +16,6 @@ export default async function Home() {
         <ProfileSection profile={profile} />
         <ArticleListSection
           articles={displayedArticles}
-          itemsPerRow={3}
           showSectionTitle={true}
           initialDisplayCount={INITIAL_DISPLAY_COUNT}
         />
