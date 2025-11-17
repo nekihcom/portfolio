@@ -1,7 +1,6 @@
 import type { Profile } from "@/types/type";
-import { MoreLink } from "../common/MoreLink";
-import { SectionTitle } from "../common/SectionTitle";
-import { SocialLinks } from "../common/SocialLinks";
+import { SocialLinks } from "@/components/common/SocialLinks";
+import { SectionContainer } from "@/components/common/SectionContainer";
 
 interface ProfileSectionProps {
   profile: Profile;
@@ -14,11 +13,12 @@ const iconPaths = {
   qiita: "/sns/qiita-icon.png",
 } as const;
 
+const sectionTitle = "PROFILE";
+
 export function ProfileSection({ profile }: ProfileSectionProps) {
   return (
-    <section className="flex flex-col gap-6 sm:gap-8 mb-[300px]">
-      <SectionTitle>PROFILE</SectionTitle>
-      <div className="flex flex-col items@center gap-6 md:flex-row md:items-start md:gap-8">
+    <SectionContainer sectionTitle={sectionTitle} className="flex flex-col gap-6 sm:gap-8 mb-[300px]">
+      <div className="flex flex-col gap-6 md:flex-row md:items-start md:gap-8">
         {/* 左側: プロフィール画像 */}
         <div className="relative mx-auto size-60 shrink-0 overflow-hidden rounded-full bg-black dark:bg-white md:mx-0">
           <img
@@ -57,7 +57,7 @@ export function ProfileSection({ profile }: ProfileSectionProps) {
           </div> */}
         </div>
       </div>
-    </section>
+    </SectionContainer>
   );
 }
 

@@ -5,6 +5,7 @@ import { useState } from "react";
 import { Menu, X } from "lucide-react";
 import { useScrollPosition } from "@/hooks/useScrollPosition";
 import { profile } from "@/constants/profile";
+import { SectionContainer } from "../common/SectionContainer";
 
 const navigationItems = [
   { label: "HOME", href: "/" },
@@ -35,7 +36,7 @@ export function Header() {
           : "top-[-60px] h-[80px] bg-neutral-100/95 dark:bg-black/95 animate-float"
       }`}
     >
-      <div className="mx-auto flex h-full w-full max-w-3xl items-center justify-between px-4 sm:px-6">
+      <SectionContainer className="flex h-full items-center justify-between">
         <div className="flex items-center gap-6">
           {/* <Link
             href="/"
@@ -91,7 +92,7 @@ export function Header() {
             <Menu className="h-6 w-6 text-black dark:text-white" />
           )}
         </button> */}
-      </div>
+      </SectionContainer>
 
       {/* モバイル用メニュー */}
       {/* {isMenuOpen && (
