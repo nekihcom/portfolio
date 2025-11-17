@@ -8,7 +8,7 @@ type Props = {
 
 export const SectionContainer = ({ sectionTitle="", children, className="" }: Props) => {
   return (
-    <section className={`mx-auto w-full max-w-3xl ${className}`}>
+    <section className={`mx-auto w-full max-w-2xl sm:max-w-3xl lg:max-w-5xl ${className}`}>
       {sectionTitle && (
         <SectionTitle>{sectionTitle}</SectionTitle>
       )}
