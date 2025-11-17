@@ -17,6 +17,8 @@ export default async function ArticlesPage() {
           showSectionTitle={false}
           initialDisplayCount={DEFAULT_INITIAL_DISPLAY_COUNT}
           loadMoreCount={DEFAULT_LOAD_MORE_COUNT}
+          detailLink={""}
+          detailLinkLabel={""}
         />
       </main>
     </div>

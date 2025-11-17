@@ -10,12 +10,16 @@ import type { UnifiedArticle } from "@/types/type";
 const sectionTitle = "ARTICLES";
 const DEFAULT_INITIAL_DISPLAY_COUNT = 6;
 const DEFAULT_LOAD_MORE_COUNT = 12;
+const DEFAULT_DETAIL_LINK = "/articles";
+const DEFAULT_DETAIL_LINK_LABEL = "Read More Articles →";
 
 interface ArticleListSectionProps {
   articles: UnifiedArticle[];
   showSectionTitle?: boolean;
   initialDisplayCount?: number;
   loadMoreCount?: number;
+  detailLink?: string;
+  detailLinkLabel?: string;
 }
 
 export function ArticleListSection({
@@ -23,6 +27,8 @@ export function ArticleListSection({
   showSectionTitle = true,
   initialDisplayCount = DEFAULT_INITIAL_DISPLAY_COUNT,
   loadMoreCount = DEFAULT_LOAD_MORE_COUNT,
+  detailLink = DEFAULT_DETAIL_LINK,
+  detailLinkLabel = DEFAULT_DETAIL_LINK_LABEL,
 }: ArticleListSectionProps) {
   const [displayCount, setDisplayCount] = useState(initialDisplayCount);
   const displayedArticles = articles.slice(0, displayCount);
@@ -49,6 +55,10 @@ export function ArticleListSection({
     <SectionContainer
       sectionTitle={showSectionTitle ? sectionTitle : undefined}
       className="space-y-6 mb-[150px]"
+      detailLink={detailLink}
+      detailLinkLabel={detailLinkLabel}
+      detailLinkVariant="outline"
+      detailLinkSize="lg"
     >
       <div
         className={cn(
