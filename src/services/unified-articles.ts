@@ -90,6 +90,7 @@ export async function saveArticlesToJson(articles: UnifiedArticle[]): Promise<vo
 
 /**
  * JSONファイルから記事一覧を読み込み
+ * ファイルが存在しない場合は、APIから直接記事を取得して保存する
  */
 export async function loadArticlesFromJson(): Promise<UnifiedArticle[]> {
   try {
@@ -97,10 +98,28 @@ export async function loadArticlesFromJson(): Promise<UnifiedArticle[]> {
     const articles = JSON.parse(fileContent) as UnifiedArticle[];
     return articles;
   } catch (error) {
-    // ファイルが存在しない場合は空配列を返す
+    // ファイルが存在しない場合は、APIから直接記事を取得
     if ((error as NodeJS.ErrnoException).code === "ENOENT") {
-      console.warn("Articles JSON file not found, returning empty array");
-      return [];
+      console.warn("Articles JSON file not found, fetching articles from API...");
+      try {
+        // APIから記事を取得
+        const articles = await fetchAndUnifyArticles();
+        
+        // 取得した記事をJSONファイルに保存（次回以降のビルドで使用）
+        // 保存に失敗しても、取得した記事は返す
+        try {
+          await saveArticlesToJson(articles);
+          console.log(`Successfully fetched and saved ${articles.length} articles`);
+        } catch (saveError) {
+          console.warn("Failed to save articles to JSON, but returning fetched articles:", saveError);
+        }
+        
+        return articles;
+      } catch (fetchError) {
+        console.error("Failed to fetch articles from API:", fetchError);
+        // API取得に失敗した場合は空配列を返す（既存の動作を維持）
+        return [];
+      }
     }
     console.error("Failed to load articles from JSON:", error);
     throw error;
