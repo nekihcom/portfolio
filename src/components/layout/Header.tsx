@@ -48,14 +48,12 @@ export function Header() {
           </Link> */}
 
           {/* PC用ナビゲーション（左側） */}
-          <nav className="hidden@md: flex @md: items-center @md: gap-6">
+          <nav className="">
             {leftNavigationItems.map((item) => (
               <Link
                 key={item.label}
                 href={item.href}
-                className={`font-medium hover:opacity-70 dark:text-white ${
-                  isScrolled ? "text-sm" : "text-base"
-                } transition-all duration-300`}
+                className={`font-bold hover:opacity-70 dark:text-white text-lg transition-all duration-300`}
               >
                 {item.label}
               </Link>
@@ -64,7 +62,7 @@ export function Header() {
         </div>
 
         {/* PC用ナビゲーション（右側） */}
-        <nav className="hidden@md:flex@md: items-center">
+        <nav className="">
           {rightNavigationItems.map((item) => (
             <Link
               key={item.label}

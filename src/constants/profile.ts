@@ -3,7 +3,7 @@ import type { Profile, DetailedProfile } from "@/types/type";
 export const profile: Profile = {
   name: "もちけん",
   occupation: "Software Engineer",
-  bio: "'97 / SIer所属 / 左利き / 歯列矯正中<br>千葉ロッテマリーンズファン<br>マイブーム：イコラブ(=LOVE)",
+  bio: "'97 / SIer所属 / 左利き / 早生まれ / 歯列矯正中<br>千葉ロッテマリーンズファン<br>マイブーム：イコラブ(=LOVE)<br><br>システムやアプリのコトを幅広く色々とやっています。",
   imageUrl: "/profile/avatar.jpg", // ダミー画像用のパス
   socialLinks: [
     {
