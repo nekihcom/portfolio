@@ -3,7 +3,7 @@ import { ArticleCard } from "@/components/common/ArticleCard";
 import { SectionContainer } from "@/components/common/SectionContainer";
 import { loadArticlesFromJson } from "@/services/unified-articles";
 
-const sectionTitle = "記事一覧";
+const sectionTitle = "ARTICLES";
 
 export async function ArticleListSection() {
   try {
