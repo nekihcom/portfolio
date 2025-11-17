@@ -22,7 +22,7 @@ export async function ArticleListSection() {
 
     return (
       <SectionContainer sectionTitle={sectionTitle} className="space-y-6 mb-[150px]">
-        <div className="grid grid-cols-1 gap-6 md:grid-cols-2 @lg:grid-cols-3">
+        <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
           {displayedArticles.map((article) => (
             <ArticleCard key={article.uuid} article={article} />
           ))}
