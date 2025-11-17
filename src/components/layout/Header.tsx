@@ -3,13 +3,12 @@
 import Link from "next/link";
 import { useState } from "react";
 import { Menu, X } from "lucide-react";
-import { useScrollPosition } from "@/hooks/useScrollPosition";
 import { profile } from "@/constants/profile";
 import { SectionContainer } from "../common/SectionContainer";
 
 const navigationItems = [
   { label: "HOME", href: "/" },
-  // { label: "PROFILE", href: "#" },
+  { label: "ARTICLES", href: "/articles" },
   // { label: "WORKS", href: "#" },
   // { label: "CONTACT", href: "#" },
 ];
@@ -26,15 +25,10 @@ const rightNavigationItems = navigationItems.filter(
 
 export function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const isScrolled = useScrollPosition();
 
   return (
     <header
-      className={`max-w-6xl rounded-b-xl rounded-bl-xl mx-auto fixed top-0 left-0 right-0 z-50 border-b border-black/10 shadow-2xl transition-all duration-300 dark:border-white/10 backdrop-blur-sm ${
-        isScrolled
-          ? "h-[60px] bg-transparent"
-          : "top-[-60px] h-[80px] bg-neutral-100/95 dark:bg-black/95 animate-float"
-      }`}
+      className="max-w-6xl rounded-b-xl rounded-bl-xl mx-auto fixed top-0 left-0 right-0 z-50 border-b border-black/10 shadow-2xl transition-all duration-300 dark:border-white/10 backdrop-blur-sm h-[60px] bg-transparent"
     >
       <SectionContainer className="flex h-full items-center justify-between">
         <div className="flex items-center gap-6">
@@ -48,7 +42,7 @@ export function Header() {
           </Link> */}
 
           {/* PC用ナビゲーション（左側） */}
-          <nav className="">
+          <nav className="flex items-center gap-6">
             {leftNavigationItems.map((item) => (
               <Link
                 key={item.label}
@@ -64,15 +58,13 @@ export function Header() {
         {/* PC用ナビゲーション（右側） */}
         <nav className="">
           {rightNavigationItems.map((item) => (
-            <Link
-              key={item.label}
-              href={item.href}
-              className={`font-medium hover:opacity-70 dark:text-white ${
-                isScrolled ? "text-sm" : "text-base"
-              } transition-all duration-300`}
-            >
-              {item.label}
-            </Link>
+              <Link
+                key={item.label}
+                href={item.href}
+                className="font-medium hover:opacity-70 dark:text-white text-sm transition-all duration-300"
+              >
+                {item.label}
+              </Link>
           ))}
         </nav>
 
