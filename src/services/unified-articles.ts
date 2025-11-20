@@ -4,6 +4,7 @@ import path from "path";
 import { getNoteArticlesWithThumbnail } from "@/services/note";
 import { getQiitaArticlesWithOgp } from "@/services/qiita";
 import type { UnifiedArticle } from "@/types/type";
+import type { ArticleSourceId } from "@/constants/article-sources";
 import { note as noteConstants } from "@/constants/note";
 import { qiita as qiitaConstants } from "@/constants/qiita";
 
@@ -31,23 +32,25 @@ export async function fetchAndUnifyArticles(): Promise<UnifiedArticle[]> {
     const qiitaArticles = await getQiitaArticlesWithOgp(qiitaApiUrl, 0); // バッチ処理ではキャッシュしない
 
     // noteの記事をUnifiedArticle形式に変換
+    const noteSource: ArticleSourceId = "note";
     const unifiedNoteArticles: UnifiedArticle[] = noteArticles.map((article) => ({
       uuid: generateUuidFromUrl(article.url),
       title: article.title,
       url: article.url,
       thumbnailUrl: article.thumbnailUrl,
       updatedAt: article.updatedAt,
-      source: "note" as const,
+      source: noteSource,
     }));
 
     // Qiitaの記事をUnifiedArticle形式に変換
+    const qiitaSource: ArticleSourceId = "qiita";
     const unifiedQiitaArticles: UnifiedArticle[] = qiitaArticles.map((article) => ({
       uuid: generateUuidFromUrl(article.url),
       title: article.title,
       url: article.url,
       thumbnailUrl: article.ogpImageUrl,
       updatedAt: article.updated_at,
-      source: "qiita" as const,
+      source: qiitaSource,
     }));
 
     // 両方の記事を統合

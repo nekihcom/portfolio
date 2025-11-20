@@ -114,5 +114,5 @@ export interface UnifiedArticle {
   url: string;
   thumbnailUrl: string;
   updatedAt: string;
-  source: "note" | "qiita";
+  source: import("@/constants/article-sources").ArticleSourceId;
 }

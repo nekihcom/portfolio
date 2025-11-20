@@ -1,14 +1,11 @@
 import Link from "next/link";
 import Image from "next/image";
 import type { UnifiedArticle } from "@/types/type";
+import { getArticleSourceMeta } from "@/constants/article-sources";
 import { NewBadge } from "./NewBadge";
 
 interface ArticleCardProps {
   article: UnifiedArticle;
-}
-
-function getSourceIconPath(source: "note" | "qiita"): string {
-  return source === "note" ? "/sns/note-icon.svg" : "/sns/qiita-icon.png";
 }
 
 function formatDate(dateString: string): string {
@@ -30,6 +27,8 @@ function isWithin7Days(dateString: string): boolean {
 }
 
 export function ArticleCard({ article }: ArticleCardProps) {
+  const sourceMeta = getArticleSourceMeta(article.source);
+
   return (
     <Link
       href={article.url}
@@ -64,8 +63,8 @@ export function ArticleCard({ article }: ArticleCardProps) {
             {isWithin7Days(article.updatedAt) && <NewBadge />}
           </div>
           <Image
-            src={getSourceIconPath(article.source)}
-            alt={article.source}
+            src={sourceMeta.iconPath}
+            alt={sourceMeta.label}
             width={24}
             height={24}
             className="h-6 w-auto"

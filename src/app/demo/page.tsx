@@ -2,6 +2,7 @@ import dayjs from "dayjs";
 import Image from "next/image";
 import Link from "next/link";
 import { loadArticlesFromJson } from "@/services/unified-articles";
+import { getArticleSourceMeta } from "@/constants/article-sources";
 
 function formatDate(dateString: string): string {
   const date = new Date(dateString);
@@ -10,10 +11,6 @@ function formatDate(dateString: string): string {
     month: "long",
     day: "numeric",
   });
-}
-
-function getSourceLabel(source: "note" | "qiita"): string {
-  return source === "note" ? "note" : "Qiita";
 }
 
 export default async function DemoPage() {
@@ -66,7 +63,7 @@ export default async function DemoPage() {
                       <div className="flex-1 space-y-2">
                         <div className="flex items-center gap-2">
                           <span className="rounded-full bg-blue-100 px-2 py-1 text-xs font-medium text-blue-800 dark:bg-blue-900 dark:text-blue-200">
-                            {getSourceLabel(article.source)}
+                            {getArticleSourceMeta(article.source).label}
                           </span>
                           <time className="text-sm text-gray-600 dark:text-gray-400">
                             {formatDate(article.updatedAt)}
