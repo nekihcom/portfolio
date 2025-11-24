@@ -1,6 +1,7 @@
 import type { Profile } from "@/types/type";
 import { SocialLinks } from "@/components/common/SocialLinks";
 import { SectionContainer } from "@/components/common/SectionContainer";
+import { MoreLink } from "@/components/common/MoreLink";
 
 interface ProfileSectionProps {
   profile: Profile;
@@ -17,7 +18,7 @@ const sectionTitle = "PROFILE";
 
 export function ProfileSection({ profile }: ProfileSectionProps) {
   return (
-    <SectionContainer sectionTitle={sectionTitle} className="flex flex-col gap-6 sm:gap-8 mb-[300px]">
+    <SectionContainer sectionTitle={sectionTitle} className="flex flex-col gap-6 sm:gap-8">
       <div className="flex flex-col gap-6 md:flex-row md:items-start md:gap-8">
         {/* 左側: プロフィール画像 */}
         <div className="relative mx-auto size-60 shrink-0 overflow-hidden rounded-full bg-black dark:bg-white md:mx-0">
@@ -27,7 +28,7 @@ export function ProfileSection({ profile }: ProfileSectionProps) {
             className="size-full object-cover"
           />
         </div>
-        {/* 右側: 名前、職業、SNSリンク、bio、リンク */}
+        {/* 右側: 名前、職業、SNSリンク、bio */}
         <div className="flex w-full flex-col gap-7 md:items-start">
           <div className="flex flex-col items-center gap-3 md:items-start">
             <div className="flex items-center gap-3">
@@ -52,9 +53,9 @@ export function ProfileSection({ profile }: ProfileSectionProps) {
               />
             </div>
           )}
-          {/* <div className="flex justify-end pt-2 md:justify-start">
+          <div className="flex justify-end pt-2 md:justify-start">
             <MoreLink href="/profile" />
-          </div> */}
+          </div>
         </div>
       </div>
     </SectionContainer>
