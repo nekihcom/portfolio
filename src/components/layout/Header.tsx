@@ -8,6 +8,7 @@ import { SectionContainer } from "../common/SectionContainer";
 
 const navigationItems = [
   { label: "HOME", href: "/" },
+  { label: "PROFILE", href: "/profile" },
   { label: "ARTICLES", href: "/articles" },
   // { label: "WORKS", href: "#" },
   // { label: "CONTACT", href: "#" },

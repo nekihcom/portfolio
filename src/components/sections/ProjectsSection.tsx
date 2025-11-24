@@ -1,6 +1,6 @@
 import Link from "next/link";
 import type { Project } from "@/types/type";
-import { SectionTitle } from "@/components/common/SectionTitle";
+import { SectionContainer } from "@/components/common/SectionContainer";
 
 interface ProjectsSectionProps {
   projects: Project[];
@@ -27,8 +27,7 @@ export function ProjectsSection({ projects }: ProjectsSectionProps) {
   }
 
   return (
-    <section className="space-y-6">
-      <SectionTitle>プロジェクト実績</SectionTitle>
+    <SectionContainer sectionTitle="個人開発実績" className="space-y-6">
       <div className="grid gap-6 sm:grid-cols-2">
         {projects.map((project, index) => {
           const content = (
@@ -69,6 +68,6 @@ export function ProjectsSection({ projects }: ProjectsSectionProps) {
           );
         })}
       </div>
-    </section>
+    </SectionContainer>
   );
 }

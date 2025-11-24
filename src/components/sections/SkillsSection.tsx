@@ -5,7 +5,7 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
-import { SectionTitle } from "@/components/common/SectionTitle";
+import { SectionContainer } from "@/components/common/SectionContainer";
 
 interface SkillsSectionProps {
   skills: Skill[];
@@ -64,9 +64,8 @@ export function SkillsSection({ skills }: SkillsSectionProps) {
   const defaultOpenCategory = orderedCategories.length > 0 ? [orderedCategories[0]] : [];
 
   return (
-    <section className="space-y-6">
+    <SectionContainer sectionTitle="技術スタック" className="space-y-6">
       <div>
-        <SectionTitle>技術スタック</SectionTitle>
         <div className="mt-1 text-xs dark:text-white/40 sm:text-sm">
           <span className="block sm:inline">⭐️：学習経験or個人開発での使用経験あり</span>
           <span className="hidden sm:inline"> / </span>
@@ -109,6 +108,6 @@ export function SkillsSection({ skills }: SkillsSectionProps) {
           );
         })}
       </Accordion>
-    </section>
+    </SectionContainer>
   );
 }

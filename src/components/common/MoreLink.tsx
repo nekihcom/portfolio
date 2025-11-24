@@ -20,7 +20,7 @@ export function MoreLink({
       href={href}
       target={target}
       rel={rel}
-      className={`text-sm text-primary underline-offset-4 transition-opacity hover:underline hover:opacity-70 dark:text-primary ${className}`}
+      className={`text-primary font-bold underline-offset-4 transition-opacity hover:underline hover:opacity-70 dark:text-primary ${className}`}
     >
       {children}
     </Link>

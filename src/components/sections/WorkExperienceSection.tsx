@@ -1,5 +1,5 @@
 import type { WorkExperience } from "@/types/type";
-import { SectionTitle } from "@/components/common/SectionTitle";
+import { SectionContainer } from "@/components/common/SectionContainer";
 
 interface WorkExperienceSectionProps {
   workExperience: WorkExperience[];
@@ -24,8 +24,7 @@ export function WorkExperienceSection({
   }
 
   return (
-    <section className="space-y-6">
-      <SectionTitle>職歴</SectionTitle>
+    <SectionContainer sectionTitle="職歴" className="space-y-6">
       <div className="space-y-8">
         {workExperience.map((exp, index) => (
           <div key={index} className="relative pl-6">
@@ -80,6 +79,6 @@ export function WorkExperienceSection({
           </div>
         ))}
       </div>
-    </section>
+    </SectionContainer>
   );
 }

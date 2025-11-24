@@ -1,33 +1,41 @@
-import { ProfileSection } from "@/components/sections/ProfileSection";
-import { SkillsSection } from "@/components/sections/SkillsSection";
-import { WorkExperienceSection } from "@/components/sections/WorkExperienceSection";
-import { ProjectsSection } from "@/components/sections/ProjectsSection";
-import { CertificationsSection } from "@/components/sections/CertificationsSection";
 import { detailedProfile } from "@/constants/profile";
+import { DetailedProfileSection } from "@/components/sections/DetailedProfileSection";
+import { CertificationsSection } from "@/components/sections/CertificationsSection";
+import { SkillsSection } from "@/components/sections/SkillsSection";
+import { ProjectsSection } from "@/components/sections/ProjectsSection";
+import { WorkExperienceSection } from "@/components/sections/WorkExperienceSection";
 
 export default function ProfilePage() {
   return (
     <div className="min-h-screen  dark:bg-black">
-      <main className="mx-auto w-full max-w-4xl px-4 py-8 sm:px-6 sm:py-12 md:py-16">
-        <ProfileSection profile={detailedProfile} />
-        <div className="space-y-18 pt-12 sm:pt-16">
-          {detailedProfile.skills && (
+      <main className="px-8 py-10 sm:px-6 sm:py-12 md:py-16">
+        <div className="pt-24 h-[calc(100vh-200px)]">
+          <DetailedProfileSection profile={detailedProfile} />
+        </div>
+        {detailedProfile.skills && (
+          <div className="h-[calc(100vh-200px)]">
             <SkillsSection skills={detailedProfile.skills} />
-          )}
-          {detailedProfile.workExperience && (
+          </div>
+        )}
+        {detailedProfile.workExperience && (
+          <div className="h-[calc(100vh-200px)]">
             <WorkExperienceSection
               workExperience={detailedProfile.workExperience}
             />
-          )}
-          {detailedProfile.projects && (
+          </div>
+        )}
+        {detailedProfile.projects && (
+          <div className="h-[calc(75vh-200px)]">
             <ProjectsSection projects={detailedProfile.projects} />
-          )}
-          {detailedProfile.certifications && (
+          </div>
+        )}
+        {detailedProfile.certifications && (
+          <div className="h-[calc(100vh-200px)]">
             <CertificationsSection
               certifications={detailedProfile.certifications}
             />
-          )}
-        </div>
+          </div>
+        )}
       </main>
     </div>
   );

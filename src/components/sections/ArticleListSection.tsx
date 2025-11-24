@@ -3,13 +3,12 @@
 import { useState } from "react";
 import { ArticleCard } from "@/components/common/ArticleCard";
 import { SectionContainer } from "@/components/common/SectionContainer";
-import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import type { UnifiedArticle } from "@/types/type";
+import { MoreLink } from "@/components/common/MoreLink";
 
 const sectionTitle = "ARTICLES";
 const DEFAULT_INITIAL_DISPLAY_COUNT = 6;
-const DEFAULT_LOAD_MORE_COUNT = 12;
 const DEFAULT_DETAIL_LINK = "/articles";
 const DEFAULT_DETAIL_LINK_LABEL = "Read More Articles →";
 
@@ -26,17 +25,11 @@ export function ArticleListSection({
   articles,
   showSectionTitle = true,
   initialDisplayCount = DEFAULT_INITIAL_DISPLAY_COUNT,
-  loadMoreCount = DEFAULT_LOAD_MORE_COUNT,
   detailLink = DEFAULT_DETAIL_LINK,
   detailLinkLabel = DEFAULT_DETAIL_LINK_LABEL,
 }: ArticleListSectionProps) {
   const [displayCount, setDisplayCount] = useState(initialDisplayCount);
   const displayedArticles = articles.slice(0, displayCount);
-  const hasMore = displayCount < articles.length;
-
-  const handleLoadMore = () => {
-    setDisplayCount((prev) => prev + loadMoreCount);
-  };
 
   if (articles.length === 0) {
     return (
@@ -55,10 +48,6 @@ export function ArticleListSection({
     <SectionContainer
       sectionTitle={showSectionTitle ? sectionTitle : undefined}
       className="space-y-6 mb-[150px]"
-      detailLink={detailLink}
-      detailLinkLabel={detailLinkLabel}
-      detailLinkVariant="outline"
-      detailLinkSize="lg"
     >
       <div
         className={cn(
@@ -69,17 +58,9 @@ export function ArticleListSection({
           <ArticleCard key={article.uuid} article={article} />
         ))}
       </div>
-      {hasMore && (
-        <div className="flex justify-center pt-6">
-          <Button
-            onClick={handleLoadMore}
-            variant="outline"
-            className="text-sm"
-          >
-            もっと見る
-          </Button>
-        </div>
-      )}
+      <div className="flex justify-end">
+        <MoreLink href={detailLink} children={detailLinkLabel} className="text-md" />
+      </div>
     </SectionContainer>
   );
 }

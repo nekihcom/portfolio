@@ -1,6 +1,6 @@
 import Link from "next/link";
 import type { Certification } from "@/types/type";
-import { SectionTitle } from "@/components/common/SectionTitle";
+import { SectionContainer } from "@/components/common/SectionContainer";
 
 interface CertificationsSectionProps {
   certifications: Certification[];
@@ -23,8 +23,7 @@ export function CertificationsSection({
   }
 
   return (
-    <section className="space-y-6">
-      <SectionTitle>資格・認定</SectionTitle>
+    <SectionContainer sectionTitle="資格・認定" className="space-y-6">
       <ul className="space-y-4">
         {certifications.map((cert, index) => (
           <li
@@ -58,6 +57,6 @@ export function CertificationsSection({
           </li>
         ))}
       </ul>
-    </section>
+    </SectionContainer> 
   );
 }
