@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
+import Script from "next/script";
 import { Analytics } from "@vercel/analytics/next"
 
 import "./globals.css";
@@ -32,6 +33,12 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased bg-neutral-100 text-gray-900`}
       >
+        <Script
+          async
+          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8055306644572160"
+          crossOrigin="anonymous"
+          strategy="afterInteractive"
+        />
         <Header />
         <div className="pt-[100px]">
           {children}
