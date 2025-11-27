@@ -4,6 +4,13 @@
       "path": "/api/cron/update-articles",
       "schedule": "0 17 * * *"
     }
+  ],
+  "redirects": [
+    {
+      "source": "*",
+      "destination": "https://blog.mchkn.com/",
+      "statusCode": 301
+    }
   ]
 }
 
