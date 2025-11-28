@@ -15,9 +15,9 @@ const iconPaths = {
 
 export function DetailedProfileSection({ profile }: DetailedProfileSectionProps) {
   return (
-    <SectionContainer sectionTitle="私について" className="flex flex-col gap-6 sm:gap-8">
+    <SectionContainer sectionTitle="私について" className="pt-20 pb-24">
       <div className="flex justify-center items-center">
-      <div className="flex flex-col gap-6 md:flex-row md:items-center md:gap-8">
+        <div className="flex flex-col gap-6 md:flex-row md:items-center md:gap-8">
         {/* 左側: プロフィール画像 */}
         <div className="relative mx-auto size-60 shrink-0 overflow-hidden rounded-full bg-black dark:bg-white md:mx-0">
           <img

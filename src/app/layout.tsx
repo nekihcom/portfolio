@@ -40,7 +40,7 @@ export default function RootLayout({
           strategy="afterInteractive"
         />
         <Header />
-        <div className="pt-[100px]">
+        <div className="pt-[80px] pb-24">
           {children}
         </div>
         <Footer />

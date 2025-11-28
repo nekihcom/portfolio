@@ -23,7 +23,7 @@ export function CertificationsSection({
   }
 
   return (
-    <SectionContainer sectionTitle="資格・認定" className="space-y-6">
+    <SectionContainer sectionTitle="資格・認定" className="space-y-6 py-24">
       <ul className="space-y-4">
         {certifications.map((cert, index) => (
           <li

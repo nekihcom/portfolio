@@ -41,9 +41,9 @@ export function HeroSection({ profile }: HeroSectionProps) {
   const subtitle = useTypewriter(subtitleText, TYPEWRITER_CONFIG.subtitle);
 
   return (
-    <section className="w-full max-w-4xl mx-auto px-4 sm:px-6 mb-[100px]">
-      <div className="flex min-h-[80vh] items-center justify-center dark:bg-black">
-        <div className="w-full">
+    <section className="w-full max-w-4xl mx-auto px-4 sm:px-6">
+      <div className="h-[calc(100vh-80px)] relative dark:bg-black">
+        <div className="w-full absolute top-[40%] left-[50%] translate-x-[-50%] translate-y-[-50%]">
           <h1 className="mb-4 text-6xl font-bold dark:text-white sm:text-8xl md:text-9xl">
             {title.displayedText}
             {title.showCursor && !title.isComplete && (

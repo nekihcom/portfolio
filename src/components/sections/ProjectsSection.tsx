@@ -27,7 +27,7 @@ export function ProjectsSection({ projects }: ProjectsSectionProps) {
   }
 
   return (
-    <SectionContainer sectionTitle="個人開発実績" className="space-y-6">
+    <SectionContainer sectionTitle="個人開発実績" className="space-y-6 py-24">
       <div className="grid gap-6 sm:grid-cols-2">
         {projects.map((project, index) => {
           const content = (

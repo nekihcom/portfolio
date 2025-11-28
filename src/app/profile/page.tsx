@@ -7,34 +7,20 @@ import { WorkExperienceSection } from "@/components/sections/WorkExperienceSecti
 
 export default function ProfilePage() {
   return (
-    <div className="min-h-screen  dark:bg-black">
-      <main className="px-8 py-10 sm:px-6 sm:py-12 md:py-16">
-        <div className="pt-24 h-[calc(100vh-200px)]">
-          <DetailedProfileSection profile={detailedProfile} />
-        </div>
+    <div className="dark:bg-black">
+      <main className="px-8 sm:px-6">
+        <DetailedProfileSection profile={detailedProfile} />
         {detailedProfile.skills && (
-          <div className="h-[calc(100vh-200px)]">
-            <SkillsSection skills={detailedProfile.skills} />
-          </div>
+          <SkillsSection skills={detailedProfile.skills} />
         )}
         {detailedProfile.workExperience && (
-          <div className="h-[calc(100vh-200px)]">
-            <WorkExperienceSection
-              workExperience={detailedProfile.workExperience}
-            />
-          </div>
+          <WorkExperienceSection workExperience={detailedProfile.workExperience} />
         )}
         {detailedProfile.projects && (
-          <div className="h-[calc(75vh-200px)]">
-            <ProjectsSection projects={detailedProfile.projects} />
-          </div>
+          <ProjectsSection projects={detailedProfile.projects} />
         )}
         {detailedProfile.certifications && (
-          <div className="h-[calc(100vh-200px)]">
-            <CertificationsSection
-              certifications={detailedProfile.certifications}
-            />
-          </div>
+          <CertificationsSection certifications={detailedProfile.certifications} />
         )}
       </main>
     </div>

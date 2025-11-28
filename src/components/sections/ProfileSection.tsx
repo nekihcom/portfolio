@@ -18,7 +18,7 @@ const sectionTitle = "PROFILE";
 
 export function ProfileSection({ profile }: ProfileSectionProps) {
   return (
-    <SectionContainer sectionTitle={sectionTitle} className="flex flex-col gap-6 sm:gap-8">
+    <SectionContainer sectionTitle={sectionTitle} className="flex flex-col gap-6 sm:gap-8 h-screen">
       <div className="flex flex-col gap-6 md:flex-row md:items-start md:gap-8">
         {/* 左側: プロフィール画像 */}
         <div className="relative mx-auto size-60 shrink-0 overflow-hidden rounded-full bg-black dark:bg-white md:mx-0">

@@ -64,7 +64,7 @@ export function SkillsSection({ skills }: SkillsSectionProps) {
   const defaultOpenCategory = orderedCategories.length > 0 ? [orderedCategories[0]] : [];
 
   return (
-    <SectionContainer sectionTitle="技術スタック" className="space-y-6">
+    <SectionContainer sectionTitle="技術スタック" className="space-y-6 py-24">
       <div>
         <div className="mt-1 text-xs dark:text-white/40 sm:text-sm">
           <span className="block sm:inline">⭐️：学習経験or個人開発での使用経験あり</span>

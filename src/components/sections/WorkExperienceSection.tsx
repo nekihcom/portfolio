@@ -24,7 +24,7 @@ export function WorkExperienceSection({
   }
 
   return (
-    <SectionContainer sectionTitle="職歴" className="space-y-6">
+    <SectionContainer sectionTitle="職歴" className="space-y-6 py-24">
       <div className="space-y-8">
         {workExperience.map((exp, index) => (
           <div key={index} className="relative pl-6">

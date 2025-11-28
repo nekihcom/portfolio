@@ -47,7 +47,7 @@ export function ArticleListSection({
   return (
     <SectionContainer
       sectionTitle={showSectionTitle ? sectionTitle : undefined}
-      className="space-y-6 mb-[150px]"
+      className="space-y-6 min-h-screen"
     >
       <div
         className={cn(
