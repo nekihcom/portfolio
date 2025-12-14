@@ -1,25 +1,21 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Zen_Maru_Gothic } from "next/font/google";
 import Script from "next/script";
 import { Analytics } from "@vercel/analytics/next"
 
 import "./globals.css";
-import { ScrollToTop } from "@/components/common/ScrollToTop";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
+import { ScrollToTop } from "@/components/common/ScrollToTop";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const zenMaruGothic = Zen_Maru_Gothic({
+  variable: "--font-zen-maru-gothic",
   subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
+  weight: ["400"],
 });
 
 export const metadata: Metadata = {
-  title: "mochiken",
+  title: "mochiken, Software Engineer",
   description: "エンジニアもちけんのポートフォリオサイトです",
 };
 
@@ -31,7 +27,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased bg-neutral-100 text-gray-900`}
+        className={`${zenMaruGothic.variable} antialiased bg-neutral-100 text-gray-900`}
       >
         <Script
           async
@@ -43,8 +39,8 @@ export default function RootLayout({
         <div className="pt-[80px] pb-24">
           {children}
         </div>
-        <Footer />
         <ScrollToTop />
+        <Footer />
         <Analytics />
       </body>
     </html>
