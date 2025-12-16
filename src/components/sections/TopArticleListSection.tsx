@@ -10,7 +10,7 @@ const TopArticleListSection = async () => {
     <SectionContainer className="py-10 px-4 md:px-0">
       <ArticleRowWithThumbnailList articles={articles} />
       <div className="py-8 text-end">
-        <UnderlinedTextWithArrowLink href="/Article">ブログ一覧へ</UnderlinedTextWithArrowLink>
+        <UnderlinedTextWithArrowLink href="/article">ブログ一覧へ</UnderlinedTextWithArrowLink>
       </div>
     </SectionContainer>
   );
