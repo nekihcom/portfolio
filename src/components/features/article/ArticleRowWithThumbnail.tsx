@@ -6,7 +6,7 @@ import { formatDate } from "@/lib/utils";
 
 
 type Props = {
-  article: Iarticle;
+  article: IArticle;
 }
 
 const ArticleRowWithThumbnail = ( { article }: Props ) => {
