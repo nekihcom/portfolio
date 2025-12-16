@@ -18,10 +18,10 @@ export const DemoPage = () => {
           <SolidButton href="/">トップページへ</SolidButton>
         </div>
         <div className="py-4">
-          <OutlineButton href="/blog">ブログ一覧へ</OutlineButton>
+          <OutlineButton href="/Article">ブログ一覧へ</OutlineButton>
         </div>
         <div className="py-4">
-          <GradientButton href="/blog">ブログを見る</GradientButton>
+          <GradientButton href="/Article">ブログを見る</GradientButton>
         </div>
         <div className="py-4">
           <IconButton href="/">ホームに戻る</IconButton>
@@ -34,12 +34,12 @@ export const DemoPage = () => {
         
         {/* パターン2: 背景色が左から右に広がるテキストリンク */}
         <div className="py-4">
-          <SlideBackgroundTextLink href="/blog">ブログ一覧へ</SlideBackgroundTextLink>
+          <SlideBackgroundTextLink href="/Article">ブログ一覧へ</SlideBackgroundTextLink>
         </div>
         
         {/* パターン3: テキストが右に移動してアイコンが表示されるリンク */}
         <div className="py-4">
-          <IconSlideTextLink href="/blog">ブログを見る</IconSlideTextLink>
+          <IconSlideTextLink href="/Article">ブログを見る</IconSlideTextLink>
         </div>
         
         {/* パターン4: 波線アンダーラインがアニメーションするリンク */}
@@ -49,7 +49,7 @@ export const DemoPage = () => {
         
         {/* パターン5: テキストに下線付きで矢印が横にあるリンク */}
         <div className="py-4">
-          <UnderlinedTextWithArrowLink href="/blog">ブログ記事を見る</UnderlinedTextWithArrowLink>
+          <UnderlinedTextWithArrowLink href="/Article">ブログ記事を見る</UnderlinedTextWithArrowLink>
         </div>
       </Container>
     </>

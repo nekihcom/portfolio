@@ -4,6 +4,15 @@ import { useState } from "react";
 import Link from "next/link";
 import Container from "@/components/common/Container";
 
+const HEADER_NAV_MENU = [
+  {
+    name: "Article",
+    href: "/article",
+    target: "_self",
+    closeMenu: true
+  }
+];
+
 export const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
@@ -26,12 +35,16 @@ export const Header = () => {
 
           {/* PC表示: ナビゲーションメニュー（右側） */}
           <nav className="hidden md:flex md:items-center md:gap-6">
-            <Link 
-              href="/blog" 
-              className="text-gray-900 font-medium hover:text-gray-600 transition-colors"
-            >
-              Blog
-            </Link>
+            {HEADER_NAV_MENU.map((menu) => (
+              <Link
+                key={menu.name}
+                href={menu.href}
+                className="text-gray-900 font-medium hover:text-gray-600 transition-colors"
+                target={menu.target}
+              >
+                {menu.name}
+              </Link>
+            ))}
           </nav>
 
           {/* スマートフォン・タブレット表示: ハンバーガーボタン（右側） */}
@@ -66,13 +79,17 @@ export const Header = () => {
         }`}
       >
         <nav className="flex flex-col p-6 gap-4">
-          <Link
-            href="/blog"
-            onClick={closeMenu}
-            className="text-gray-900 font-medium hover:text-gray-600 transition-colors py-2"
-          >
-            Blog
-          </Link>
+          {HEADER_NAV_MENU.map((menu) => (
+            <Link
+              key={menu.name}
+              href={menu.href}
+              className="text-gray-900 font-medium hover:text-gray-600 transition-colors"
+              target={menu.target}
+              onClick={menu.closeMenu ? closeMenu : undefined}
+            >
+              {menu.name}
+            </Link>
+          ))}
         </nav>
       </div>
 

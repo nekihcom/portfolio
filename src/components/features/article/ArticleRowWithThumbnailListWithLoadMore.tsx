@@ -1,17 +1,17 @@
 'use client';
 
 import { useState } from "react";
-import { IBlogArticle } from "@/types/type";
-import BlogRowWithThumbnail from "@/components/features/blog/BlogRowWithThumbnail";
+import { IArticle } from "@/types/type";
+import ArticleRowWithThumbnail from "@/components/features/article/ArticleRowWithThumbnail";
 
 type Props = {
-  articles: IBlogArticle[];
+  articles: IArticle[];
 }
 
 const INITIAL_DISPLAY_COUNT = 6;
 const LOAD_MORE_COUNT = 6;
 
-const BlogRowWithThumbnailListWithLoadMore = ({ articles }: Props) => {
+const ArticleRowWithThumbnailListWithLoadMore = ({ articles }: Props) => {
   const [displayedCount, setDisplayedCount] = useState(INITIAL_DISPLAY_COUNT);
 
   const displayedArticles = articles.slice(0, displayedCount);
@@ -27,8 +27,8 @@ const BlogRowWithThumbnailListWithLoadMore = ({ articles }: Props) => {
         <>
           <ul className="">
             {displayedArticles.map((article) => (
-              <li key={article.nid} className="mb-4 last:mb-0 sm:max-w-none mx-auto">
-                <BlogRowWithThumbnail article={article} />
+              <li key={article.id} className="mb-4 last:mb-0 sm:max-w-none mx-auto">
+                <ArticleRowWithThumbnail article={article} />
               </li>
             ))}
           </ul>
@@ -52,4 +52,4 @@ const BlogRowWithThumbnailListWithLoadMore = ({ articles }: Props) => {
   );
 };
 
-export default BlogRowWithThumbnailListWithLoadMore;
+export default ArticleRowWithThumbnailListWithLoadMore;

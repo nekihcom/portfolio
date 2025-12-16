@@ -3,21 +3,69 @@ export type TSocialLinksObject = {
 };
 
 export interface IProfile {
-  name: string;
-  title: string;
-  created: string;
-  field_bio: string;
-  field_thumbnail: string;
-  field_link: TSocialLinksObject;
-  field_job: string;
+  "name": string;
+  "thumbnail": string;
+  "job": string;
+  "bio": string;
+  "link": TSocialLinksObject;
 }
 
-export interface IBlogArticle {
-  nid: string;
+export interface IArticle {
+  id: string;
   title: string;
-  created: string;
-  field_category?: string;
-  field_url?: string;
-  field_thumbnail?: string;
-  body?: string;
+  created_dt: string;
+  thumbnail?:string;
+  url:string;
+  source: string;
 }
+
+
+export type QiitaItemResponse = {
+  coediting: boolean;
+  comments_count: number;
+  created_at: string;
+  id: string;
+  likes_count: number;
+  page_views_count: number;
+  private: boolean;
+  reactions_count: number;
+  rendered_body: string;
+  tags: { name: string; versions: [] }[];
+  title: string;
+  updated_at: string;
+  url: string;
+  user: {
+    description: string;
+    facebook_id: string;
+    followees_count: number;
+    followers_count: number;
+    github_login_name: string;
+    id: string;
+    items_count: number;
+    linkedin_id: string;
+    location: string;
+    name: string;
+    organization: string;
+    permanent_id: number;
+    profile_image_url: string;
+    team_only: boolean;
+    twitter_screen_name: string;
+    website_url: string;
+  };
+};
+
+export type ParsedQiitaItem = {
+  coediting: boolean;
+  comments_count: number;
+  created_at: string;
+  id: string;
+  likes_count: number;
+  ogpImageUrl: string;
+  page_views_count: number;
+  private: boolean;
+  reactions_count: number;
+  tags: { name: string; versions: [] }[];
+  title: string;
+  updated_at: string;
+  url: string;
+};

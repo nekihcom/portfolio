@@ -1,0 +1,12 @@
+{
+  "name": "もちけん / Mochiken",
+  "thumbnail": "/profile/thumbnail.png",
+  "job": "Software Engineer",
+  "bio": "<p>'97 / SIer / CMS / Drupal / BI / PowerBI&nbsp;<br>システムアーキテクト / プロジェクトリード<br><br>システムやアプリのコトを色々やっています。<br>好きなもの：スポーツ（野球）、焼肉、アイドル</p>",
+  "link": {
+    "X": "https://x.com/nekihcom",
+    "GitHub": "https://github.com/nekihcom",
+    "Qiita": "https://qiita.com/nekihcom",
+    "note": "https://note.com/nekihcom"
+  }
+}

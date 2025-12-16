@@ -1,11 +1,11 @@
-import { IBlogArticle } from "@/types/type";
+import { IArticle } from "@/types/type";
 import { formatDate } from "@/lib/utils";
 import Image from "next/image";
 type Props = {
-  article?: IBlogArticle;
+  article?: Iarticle;
 }
 
-const BlogDetailContent = ({ article }: Props) => {
+const ArticleDetailContent = ({ article }: Props) => {
   return (
     <article className="@bg-gray-300">
       <div className="mb-2">
@@ -27,11 +27,11 @@ const BlogDetailContent = ({ article }: Props) => {
         </div>
       </div>
       <div 
-        id="BlogBody"
+        id="ArticleBody"
         dangerouslySetInnerHTML={{ __html: article?.body ?? "" }} 
       />
     </article>
   );
 };
 
-export default BlogDetailContent;
+export default ArticleDetailContent;

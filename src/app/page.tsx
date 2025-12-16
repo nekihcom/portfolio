@@ -1,12 +1,12 @@
 import { TopProfileSection } from "@/components/sections/TopProfileSection";
-import TopBlogListSection from "@/components/sections/TopBlogListSection";
+import TopArticleListSection from "@/components/sections/TopArticleListSection";
 
 export const Home = () => {
 
   return (
     <>
       <TopProfileSection /> 
-      <TopBlogListSection />
+      <TopArticleListSection />
     </>
   );
 }

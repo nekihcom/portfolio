@@ -16,6 +16,15 @@ const nextConfig: NextConfig = {
         protocol: "https",
         hostname: "placehold.jp",
       },
+      {
+        protocol: "https",
+        hostname: "qiita-user-contents.imgix.net",
+      },
+      {
+        protocol: "https",
+        hostname: "assets.st-note.com",
+      },
+
     ],
   },
 };

@@ -1,9 +1,11 @@
 import Container from "@/components/common/Container";
-import { getProfile } from "@/services/profile";
 import SocialLinkList from "@/components/common/SocialLinkList";
+import type { IProfile } from "@/types/type";
+
+const PROFILE_FILE_PATH = "@/data/profile.json";
 
 export const Footer = async () => {
-  const profile = await getProfile();
+  const profile: IProfile = await import(PROFILE_FILE_PATH);
   const currentYear = new Date().getFullYear();
 
   return (
@@ -12,14 +14,14 @@ export const Footer = async () => {
         {/* スマートフォン・タブレット表示: SNSリンク → コピーライト（縦並び） */}
         <div className="flex flex-col items-center gap-4 md:hidden">
           {/* SNSリンク */}
-          {profile?.field_link && Object.keys(profile.field_link).length > 0 && (
+          {profile?.link && Object.keys(profile.link).length > 0 && (
             <div>
-              <SocialLinkList links={profile.field_link} />
+              <SocialLinkList links={profile.link} />
             </div>
           )}
           {/* コピーライト */}
           <div className="text-sm text-gray-600">
-            © {currentYear} {profile?.title.split('/ ')[1]} All rights reserved.
+            © {currentYear} {profile?.name} All rights reserved.
           </div>
         </div>
         
@@ -27,13 +29,13 @@ export const Footer = async () => {
         <div className="hidden md:flex md:items-center md:justify-between">
           {/* コピーライト（左側） */}
           <div className="text-sm text-gray-600">
-            © {currentYear} {profile?.title.split('/ ')[1]} All rights reserved.
+            © {currentYear} {profile?.name.split('/ ')[1]} All rights reserved.
           </div>
           
           {/* SNSリンク（右側） */}
-          {profile?.field_link && Object.keys(profile.field_link).length > 0 && (
+          {profile?.link && Object.keys(profile.link).length > 0 && (
             <div>
-              <SocialLinkList links={profile.field_link} />
+              <SocialLinkList links={profile.link} />
             </div>
           )}
         </div>

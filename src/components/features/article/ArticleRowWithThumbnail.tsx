@@ -1,15 +1,15 @@
 import Image from "next/image";
 import Link from "next/link";
 
-import { IBlogArticle } from "@/types/type";
+import { IArticle } from "@/types/type";
 import { formatDate } from "@/lib/utils";
 
 
 type Props = {
-  article: IBlogArticle;
+  article: Iarticle;
 }
 
-const BlogRowWithThumbnail = ( { article }: Props ) => {
+const ArticleRowWithThumbnail = ( { article }: Props ) => {
   const content =  (
     <div className="p-4 relative group">
       {/* 上辺の枠線（中央から広がる） */}
@@ -23,14 +23,14 @@ const BlogRowWithThumbnail = ( { article }: Props ) => {
       {/* 日付（左上） */}
       <div className="mb-4">
         <time className="text-gray-600">
-          {formatDate(article.created)}
+          {formatDate(article.created_dt)}
         </time>
       </div>
       <div className="flex flex-col sm:flex-row sm:gap-4 hover:opacity-50 transition-opacity duration-200">
         {/* サムネイル画像 */}
         <div className="relative w-full sm:w-[40%] h-48 mb-4 sm:mb-0 overflow-hidden shrink-0">
           <Image
-            src={"https://images.unsplash.com/photo-1499750310107-5fef28a66643"}
+            src={article.thumbnail ?? ""}
             alt={article.title ?? ""}
             fill
             className="object-cover"
@@ -45,7 +45,7 @@ const BlogRowWithThumbnail = ( { article }: Props ) => {
           </h3>
           
           {/* カテゴリラベル */}
-          {article.field_category && (
+          {article.source && (
             <div className="flex items-center gap-2 mb-4 sm:mb-0">
               <svg
                 className="w-4 h-4 text-gray-500"
@@ -61,7 +61,7 @@ const BlogRowWithThumbnail = ( { article }: Props ) => {
                 />
               </svg>
               <span className="text-sm text-gray-500">
-                {article.field_category}
+                {article.source}
               </span>
             </div>
           )}
@@ -77,7 +77,9 @@ const BlogRowWithThumbnail = ( { article }: Props ) => {
 
   return (
     <Link
-      href={`/blog/${article.nid}`}
+      href={`${article.url}`}
+      target="_blank"
+      rel="noopener noreferrer"
       className="block group bg-white"
     >
       {content}
@@ -85,4 +87,4 @@ const BlogRowWithThumbnail = ( { article }: Props ) => {
   );
 };
 
-export default BlogRowWithThumbnail;
+export default ArticleRowWithThumbnail;
