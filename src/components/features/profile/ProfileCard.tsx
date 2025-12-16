@@ -17,14 +17,14 @@ const ProfileCard = ({ profile }: Props) => {
         </div>
       </div>
       <div className="mt-8 text-center px-6">
-        <h2 className="text-lg font-bold text-gray-800">{profile.title}</h2>
-        <p className="text-gray-500 text-sm mt-1">{profile.field_job}</p>
+        <h2 className="text-lg font-bold text-gray-800">{profile.name}</h2>
+        <p className="text-gray-500 text-sm mt-1">{profile.job}</p>
       </div>
       <div className="mt-6 flex justify-center gap-6">
-        <SocialLinkList links={profile.field_link} />
+        <SocialLinkList links={profile.link} />
       </div>
       <div className="mt-6 px-6 text-center text-gray-700 text-sm">
-        <div dangerouslySetInnerHTML={{ __html: profile.field_bio }} />
+        <div dangerouslySetInnerHTML={{ __html: profile.bio }} />
       </div>
     </div>
 
