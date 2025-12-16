@@ -13,14 +13,14 @@ const parser = new Parser({
  */
 export async function fetchNoteArticles(): Promise<IArticle[]> {
   try {
-    const rssUrl = process.env.NOTE_RSS_URL;
+    const userName = process.env.USERNAME;
     
-    if (!rssUrl) {
-      console.warn("NOTE_RSS_URL is not set");
+    if (!userName) {
+      console.warn("USERNAME is not set");
       return [];
     }
 
-    const feed = await parser.parseURL(rssUrl);
+    const feed = await parser.parseURL(`https://note.com/${userName}/rss`);
     
     if (!feed.items || feed.items.length === 0) {
       return [];

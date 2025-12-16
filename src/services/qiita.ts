@@ -24,10 +24,10 @@ async function getOgpImageUrl(url: string): Promise<string | undefined> {
  */
 export async function fetchQiitaArticles(): Promise<IArticle[]> {
   try {
-    const userName = process.env.QIITA_USER_NAME;
+    const userName = process.env.USERNAME;
     
     if (!userName) {
-      console.warn("QIITA_USER_NAME is not set");
+      console.warn("USERNAME is not set");
       return [];
     }
 
