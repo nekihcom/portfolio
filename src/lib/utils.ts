@@ -26,6 +26,5 @@ export const isWithin7Days = (dateString: string): boolean => {
   if (diffDays >= 0 && diffDays <= 7) {
     isWithin7Days = true;
   }
-  console.log(isWithin7Days);
   return isWithin7Days;
 };
