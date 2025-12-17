@@ -1,4 +1,3 @@
-import dayjs from "dayjs";
 import { isWithin7Days } from "@/lib/utils";
 
 type Props = {
