@@ -16,7 +16,7 @@ const zenMaruGothic = Zen_Maru_Gothic({
 });
 
 export const metadata: Metadata = {
-  title: "mochiken, Software Engineer",
+  title: "Mochiken, Software Engineer",
   description: "エンジニアもちけんのポートフォリオサイトです",
 };
 

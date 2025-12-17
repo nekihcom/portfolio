@@ -9,7 +9,7 @@ type Props = {
 
 const Profile = ({ profile }: Props) => {
   return (
-    <div className="w-full max-w-md mx-auto p-6">
+    <div className="w-full max-w-lg mx-auto p-6">
       {/* 上段：プロフィール画像と基本情報 */}
       <div className="flex flex-col items-center gap-4 mb-6@ md:flex-row md:items-start md:gap-6">
         {/* 左側：プロフィール画像 */}
