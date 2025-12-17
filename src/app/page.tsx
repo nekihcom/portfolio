@@ -1,5 +1,6 @@
 import { TopProfileSection } from "@/components/sections/TopProfileSection";
 import TopArticleListSection from "@/components/sections/TopArticleListSection";
+import TopWorkSection from "@/components/sections/TopWorkSection";
 
 export const Home = () => {
 
@@ -7,6 +8,7 @@ export const Home = () => {
     <>
       <TopProfileSection /> 
       <TopArticleListSection />
+      <TopWorkSection />
     </>
   );
 }
