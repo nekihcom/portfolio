@@ -6,6 +6,12 @@ import Container from "@/components/common/Container";
 
 const HEADER_NAV_MENU = [
   {
+    name: "Profile",
+    href: "/profile",
+    target: "_self",
+    closeMenu: true
+  },
+  {
     name: "Article",
     href: "/article",
     target: "_self",

@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import NewLabel from "@/components/common/NewLabel";
 
 import { IArticle } from "@/types/type";
 import { formatDate } from "@/lib/utils";
@@ -21,10 +22,11 @@ const ArticleRowWithThumbnail = ( { article }: Props ) => {
       {/* 左辺の枠線（中央から広がる） */}
       <div className="absolute top-0 left-0 bottom-0 w-0.5 bg-gray-200 scale-y-0 group-hover:scale-y-100 transition-transform duration-300 origin-center"></div>
       {/* 日付（左上） */}
-      <div className="mb-4">
+      <div className="mb-4 flex items-center gap-2">
         <time className="text-gray-600">
           {formatDate(article.created_dt)}
         </time>
+        <NewLabel dateString={article.created_dt} />
       </div>
       <div className="flex flex-col sm:flex-row sm:gap-4 hover:opacity-50 transition-opacity duration-200">
         {/* サムネイル画像 */}

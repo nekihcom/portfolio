@@ -1,14 +1,5 @@
 import dayjs from "dayjs";
-
-/**
- * 日付が7日以内かどうかを判定
- */
-const isWithin7Days = (dateString: string): boolean => {
-  const articleDate = dayjs(dateString);
-  const today = dayjs();
-  const diffDays = today.diff(articleDate, "day");
-  return diffDays >= 0 && diffDays <= 7;
-};
+import { isWithin7Days } from "@/lib/utils";
 
 type Props = {
   dateString: string;

@@ -2,12 +2,36 @@ export type TSocialLinksObject = {
   [key: string]: string;
 };
 
+export interface ICareerItem {
+  name: string;
+  period: string;
+  role: string;
+  description: string;
+}
+
+export interface ISkillItem {
+  name: string;
+}
+
+export interface ISkillCategory {
+  category: string;
+  items: ISkillItem[];
+}
+
+export interface ICertification {
+  name: string;
+  date: string;
+}
+
 export interface IProfile {
-  "name": string;
-  "thumbnail": string;
-  "job": string;
-  "bio": string;
-  "link": TSocialLinksObject;
+  name: string;
+  thumbnail: string;
+  job: string;
+  bio: string;
+  link: TSocialLinksObject;
+  career: ICareerItem[];
+  skills: ISkillCategory[];
+  certifications?: ICertification[];
 }
 
 export interface IArticle {
