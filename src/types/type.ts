@@ -99,10 +99,27 @@ export interface ITechStack {
   items: string[];
 }
 
+export interface IThumbnail {
+  url: string;
+  height: number;
+  width: number;
+}
+
 export interface IWork {
-  name: string;
-  thumbnail: string;
+  id: string;
+  createdAt: string;
+  updatedAt: string;
+  publishedAt: string;
+  revisedAt: string;
+  title: string;
+  created_dt: string;
+  thumbnails: IThumbnail[];
   description: string;
-  techStacks: ITechStack[];
-  images: string[];
+  description2?: string;
+  frontend?: string;
+  backend?: string;
+  infra?: string;
+  deploy?: string;
+  cicd?: string;
+  version?: string;
 }

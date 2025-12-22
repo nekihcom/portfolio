@@ -1,10 +1,11 @@
-"use client";
 import SectionContainer from "@/components/common/SectionContainer";
 import WorkList from "@/components/features/work/WorkList";
+import { getWorksList } from "@/services/work";
 import { IWork } from "@/types/type";
 
-const TopWorkSection = () => {
-  const works: IWork[] = []; // await getWorks();
+
+const TopWorkSection = async () => {
+  const works: IWork[] = await getWorksList(3);
 
   return (
     <SectionContainer className="py-10" title="実績" subtitle="Work">

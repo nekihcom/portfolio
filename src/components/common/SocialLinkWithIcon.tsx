@@ -17,9 +17,11 @@ type Props = {
 const SocialLinkWithIcon = ({ platform, url }: Props) => {
   return (
     <>
+    {platform && url && (
       <a href={url} target="_blank" rel="noopener noreferrer">
         <Image src={'/sns/' + iconMap[platform]} alt={platform} width={25} height={25} className="" />
       </a>
+    )}
     </>
   );
 };

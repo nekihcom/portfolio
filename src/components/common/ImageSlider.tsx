@@ -1,8 +1,11 @@
+"use client";
 import Image from "next/image";
 import { useState } from "react";
+import { IThumbnail } from "@/types/type";
+
 
 type Props = {
-  images: string[];
+  images: IThumbnail[];
 }
 
 // 画像スライダーコンポーネント
@@ -28,7 +31,7 @@ const ImageSlider = ({ images }: Props) => {
             }`}
           >
             <Image
-              src={image}
+              src={image.url}
               alt={`サムネイル ${index + 1}`}
               fill
               className="object-cover"
@@ -40,7 +43,7 @@ const ImageSlider = ({ images }: Props) => {
       {/* 下段: 選択された画像 */}
       <div className="relative w-full aspect-video rounded-lg overflow-hidden border border-border">
         <Image
-          src={images[selectedIndex]}
+          src={images[selectedIndex].url}
           alt={`画像 ${selectedIndex + 1}`}
           fill
           className="object-cover"
