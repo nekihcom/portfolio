@@ -4,6 +4,7 @@ import SkillsSection from "@/components/features/profile/SkillsSection";
 import CertificationsSection from "@/components/features/profile/CertificationsSection";
 import SectionContainer from "@/components/common/SectionContainer";
 import Profile from "@/components/features/profile/Profile";
+import WorkSection from "@/components/sections/WorkSection";
 
 const PROFILE_FILE_PATH = "@/data/profile.json";
 
@@ -30,6 +31,8 @@ export default async function ProfilePage() {
           )}
         </div>
       </SectionContainer>
+
+      <WorkSection />
     </div>
   );
 }
