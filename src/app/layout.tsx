@@ -8,6 +8,7 @@ import "./globals.css";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { ScrollToTop } from "@/components/common/ScrollToTop";
+import { CtaSection } from "@/components/sections/CtaSection";
 
 const zenMaruGothic = Zen_Maru_Gothic({
   variable: "--font-zen-maru-gothic",
@@ -40,6 +41,7 @@ export default function RootLayout({
         <div className="pt-[80px] pb-24">
           {children}
         </div>
+      <CtaSection />
         <ScrollToTop />
         <Footer />
         <Analytics />
