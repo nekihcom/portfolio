@@ -1,6 +1,7 @@
 import type { IProfile } from "@/types/type";
 import SectionContainer from "@/components/common/SectionContainer";
 import Profile from "@/components/features/profile/Profile";
+import UnderlinedTextWithArrowLink from "@/components/ui/links/UnderlinedTextWithArrowLink";
 
 const PROFILE_FILE_PATH = "@/data/profile.json";
 
@@ -13,6 +14,10 @@ export const TopProfileSection = async () => {
       <div className="flex flex-col items-center gap-4">
         {profile && <Profile profile={profile} />}
       </div>
+      <div className="py-4 text-end">
+        <UnderlinedTextWithArrowLink href="/profile">もっと詳しく</UnderlinedTextWithArrowLink>
+      </div>
+
     </SectionContainer>
   );
 };

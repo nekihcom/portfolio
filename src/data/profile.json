@@ -2,9 +2,9 @@
   "name": "もちけん / Mochiken",
   "thumbnail": "/profile/thumbnail.png",
   "job": "Software Engineer",
-  "bio": "<p>1997年生まれ。埼玉県出身、東京都在住。<br />SIerでエンジニアとしてBIやCMS導入の支援をしています。<br/>CMS / BI / システムアーキテクト / プロジェクトリード<br /><br />スポーツが好きで 、毎週草野球でピッチャーやってます。</p>",
+  "bio": "<p>1997年生まれ。埼玉県出身、東京都在住。<br />SIerでエンジニアとしてBIやCMS導入の支援をしています。<br/>CMS / BI / システムアーキテクト / プロジェクトリード<br /><br />スキ：野球＆バドミントン（観るのもやるのも）、お笑い</p>",
   "link": {
-    "X": "https://x.com/nekihcom",
+    "X": "",
     "GitHub": "https://github.com/nekihcom",
     "Qiita": "https://qiita.com/nekihcom",
     "note": "https://note.com/nekihcom"
@@ -20,26 +20,29 @@
       "name": "成蹊大学 理工学部情報科学科",
       "period": "2015年4月 - 2019年3月",
       "role": "自然言語処理専攻",
-      "description": "人工知能、機械学習、自然言語処理、RNN、LSTMなどを学習・研究"
+      "description": "人工知能、機械学習、自然言語処理、RNN、LSTMなどを学習・研究<br />卒業研究ではTwitter(現X)のツイートを元にした会話文生成モデルを構築。"
     }
   ],
   "skills": [
     {
-      "category": "プログラミング言語",
+      "category": "フロントエンド",
       "items" : [
-        { "name": "TypeScript" },
         { "name": "JavaScript" },
-        { "name": "PHP" },
-        { "name": "Python" }
+        { "name": "TypeScript" },
+        { "name": "React" },
+        { "name": "Next.js" }
       ]
     },
     {
-      "category": "フレームワーク・ライブラリ",
+      "category": "バックエンド",
       "items": [
-        { "name": "Next.js" },
-        { "name": "React" },
+        { "name": "PHP" },
+        { "name": "Java" },
+        { "name": "Python" },
+        { "name": "Symfony" },
+        { "name": "Django" },
         { "name": "Drupal" },
-        { "name": "Node.js" }
+        { "name": "Wordpress" }
       ]
     },
     {
@@ -52,9 +55,7 @@
     {
       "category": "クラウド",
       "items": [
-        { "name": "AWS" },
-        { "name": "Vercel" },
-        { "name": "Docker" }
+        { "name": "AWS" }
       ]
     },
     {
@@ -66,32 +67,48 @@
       ]
     },
     {
-      "category": "ビジネス",
+      "category": "CI/CD、デプロイ",
+      "items": [
+        { "name": "Vercel" },
+        { "name": "Git" },
+        { "name": "GitHub / GitHub Actions" }
+      ]
+    },
+    {
+      "category": "ビジネススキル",
       "items": [
         { "name": "プロジェクトマネジメント" },
         { "name": "システムアーキテクチャ" },
         { "name": "システム・機能設計" },
-        { "name": "要件定義書作成" },
+        { "name": "要件定義" },
         { "name": "顧客折衝" }
-      ]
-    },
-    {
-      "category": "ツール・その他",
-      "items": [
-        { "name": "PowerBI" },
-        { "name": "Git" },
-        { "name": "GitHub Actions" }
       ]
     }
   ],
   "certifications": [
     {
-      "name": "基本情報技術者",
-      "date": "2017年4月"
+      "name": "TOEIC 715点",
+      "date": "2025年12月"
+    },
+    {
+      "name": "統計検定2級",
+      "date": "2025年4月"
+    },
+    {
+      "name": "統計検定3級",
+      "date": "2024年7月"
+    },
+    {
+      "name": "Drupal Siter Builder",
+      "date": "2023年3月"
     },
     {
       "name": "応用情報技術者",
-      "date": "2018年10月"
+      "date": "2021年2月"
+    },
+    {
+      "name": "基本情報技術者",
+      "date": "2019年6月"
     }
   ]
 }

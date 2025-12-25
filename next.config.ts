@@ -5,8 +5,8 @@ const nextConfig: NextConfig = {
   images: {
     remotePatterns: [
       {
-        protocol: "http",
-        hostname: "57.180.63.16",
+        protocol: "https",
+        hostname: "picsum.photos",
       },
       {
         protocol: "https",
@@ -14,7 +14,7 @@ const nextConfig: NextConfig = {
       },
       {
         protocol: "https",
-        hostname: "placehold.jp",
+        hostname: "images.microcms-assets.io",
       },
       {
         protocol: "https",

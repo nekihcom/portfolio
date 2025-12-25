@@ -93,3 +93,33 @@ export type ParsedQiitaItem = {
   updated_at: string;
   url: string;
 };
+
+export interface ITechStack {
+  category: string;
+  items: string[];
+}
+
+export interface IThumbnail {
+  url: string;
+  height: number;
+  width: number;
+}
+
+export interface IWork {
+  id: string;
+  createdAt: string;
+  updatedAt: string;
+  publishedAt: string;
+  revisedAt: string;
+  title: string;
+  created_dt: string;
+  thumbnails: IThumbnail[];
+  description: string;
+  description2?: string;
+  frontend?: string;
+  backend?: string;
+  infra?: string;
+  deploy?: string;
+  cicd?: string;
+  version?: string;
+}

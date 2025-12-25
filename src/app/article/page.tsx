@@ -10,7 +10,7 @@ const ArticleListPage = async () => {
   return (
     <>
       <Container className="py-10 px-4 md:px-0">
-        <h2 className="text-2xl md:text-4xl font-bold text-gray-900 mb-8">Latest Article</h2>
+        <h2 className="text-2xl md:text-4xl font-bold text-gray-900 mb-8">過去の投稿</h2>
         <ArticleRowWithThumbnailListWithLoadMore articles={articles} />
       </Container>
     </>
