@@ -15,10 +15,9 @@ export default async function Home() {
   return (
     <div className="mx-auto w-full max-w-[960px] px-6 py-8 pc:py-16">
       <section>
-        {/* TODO: 自己紹介文を実際の内容に差し替える */}
-        <h1 className="text-3xl font-semibold">自己紹介文をここに記載</h1>
+        <h1 className="text-3xl font-semibold">はじめまして、nekihcomです。</h1>
         <p className="mt-4 text-foreground/70">
-          ここにプロフィール・肩書き・活動内容などの自己紹介文が入ります。
+          普段はエンジニアとして働きながら、個人事業の獲得を目指してX・note・ブログで発信活動をしています。仕事や技術の中で得た知見を、わかりやすく届けることを心がけています。
         </p>
         <ul className="mt-6 flex gap-4 text-sm font-medium">
           {SNS_LINKS.map((link) => (

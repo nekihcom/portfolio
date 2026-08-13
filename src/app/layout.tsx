@@ -22,8 +22,7 @@ export const metadata: Metadata = {
     default: SITE_NAME,
     template: `%s | ${SITE_NAME}`,
   },
-  // TODO: 自己紹介文が確定次第、実際の内容に差し替える
-  description: "自己紹介文をここに記載",
+  description: "エンジニアのnekihcomが、個人事業獲得を目指して発信する技術・仕事の知見ブログ。",
   openGraph: {
     type: "website",
     siteName: SITE_NAME,
