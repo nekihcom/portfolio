@@ -1,4 +1,5 @@
 import { notFound } from "next/navigation";
+import type { Metadata } from "next";
 import {
   getPostBySlug,
   getPostRecordMap,
@@ -13,6 +14,24 @@ export async function generateStaticParams() {
   return posts.map((post) => ({ slug: post.slug }));
 }
 
+export async function generateMetadata(
+  props: PageProps<"/blog/[slug]">,
+): Promise<Metadata> {
+  const { slug } = await props.params;
+  const post = await getPostBySlug(slug);
+  if (!post) return {};
+
+  return {
+    title: post.title,
+    description: post.summary,
+    openGraph: {
+      title: post.title,
+      description: post.summary,
+      images: post.ogpImageUrl ? [post.ogpImageUrl] : undefined,
+    },
+  };
+}
+
 export default async function PostPage(props: PageProps<"/blog/[slug]">) {
   const { slug } = await props.params;
   const post = await getPostBySlug(slug);
@@ -23,10 +42,10 @@ export default async function PostPage(props: PageProps<"/blog/[slug]">) {
   const recordMap = await getPostRecordMap(post.id);
 
   return (
-    <article className="mx-auto w-full max-w-3xl px-6 py-16">
+    <article className="mx-auto w-full max-w-[960px] px-6 py-8 pc:py-16">
       <h1 className="text-3xl font-semibold">{post.title}</h1>
       {post.publishedAt && (
-        <p className="mt-2 text-sm text-zinc-500">{post.publishedAt}</p>
+        <p className="mt-2 text-sm text-foreground/60">{post.publishedAt}</p>
       )}
       <div className="mt-10">
         <PostRenderer recordMap={recordMap} />
