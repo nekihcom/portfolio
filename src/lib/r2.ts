@@ -2,6 +2,7 @@ import {
   S3Client,
   PutObjectCommand,
   HeadObjectCommand,
+  S3ServiceException,
 } from "@aws-sdk/client-s3";
 import { FetchHttpHandler } from "@smithy/fetch-http-handler";
 
@@ -27,14 +28,36 @@ function extensionFromUrl(url: string): string {
   return match ? match[1] : "bin";
 }
 
+/**
+ * Notionの署名付きURLのpathname（署名クエリを除いた部分）から短いハッシュを導出する。
+ * Notion側で画像を差し替えるとpathnameのファイルIDが変わるため、これをR2オブジェクトキーに
+ * 含めることで差し替え後は自動的に別キーとなり、古い画像が永久に配信され続ける事態を防ぐ。
+ */
+async function contentHashFromUrl(url: string): Promise<string> {
+  const pathname = new URL(url).pathname;
+  const digest = await crypto.subtle.digest(
+    "SHA-256",
+    new TextEncoder().encode(pathname),
+  );
+  return Array.from(new Uint8Array(digest))
+    .map((byte) => byte.toString(16).padStart(2, "0"))
+    .join("")
+    .slice(0, 16);
+}
+
 async function objectExists(key: string): Promise<boolean> {
   try {
     await s3.send(
       new HeadObjectCommand({ Bucket: R2_BUCKET_NAME, Key: key }),
     );
     return true;
-  } catch {
-    return false;
+  } catch (e) {
+    // 404は「未存在」を意味する正常系だが、403等の権限・設定不備は握りつぶさず
+    // 呼び出し元（persistImageToR2の失敗隔離）に伝播させる
+    if (e instanceof S3ServiceException && e.$metadata.httpStatusCode === 404) {
+      return false;
+    }
+    throw e;
   }
 }
 
@@ -47,7 +70,8 @@ export async function persistImageToR2(
   key: string,
 ): Promise<string> {
   const ext = extensionFromUrl(sourceUrl);
-  const objectKey = `${key}.${ext}`;
+  const contentHash = await contentHashFromUrl(sourceUrl);
+  const objectKey = `${key}-${contentHash}.${ext}`;
 
   if (!(await objectExists(objectKey))) {
     const response = await fetch(sourceUrl);

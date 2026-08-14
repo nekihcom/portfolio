@@ -2,6 +2,8 @@ import type { MetadataRoute } from "next";
 import { getPublishedPosts } from "@/lib/notion";
 import { SITE_URL } from "@/lib/site";
 
+export const revalidate = 3600;
+
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const posts = await getPublishedPosts();
 

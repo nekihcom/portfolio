@@ -34,8 +34,11 @@ yarn-debug.log*
 yarn-error.log*
 .pnpm-debug.log*
 
-# env files (can opt-in for committing if needed)
-.env*
+# env files
+# .env は非シークレット値のみを含み、どのビルド環境でも参照できるようコミットする
+# （SRC_ADVERSARIAL_REVIEW.md 指摘6）。.env.local/.dev.varsはシークレットを含むため除外。
+.env
+.env*.local
 .dev.vars
 
 # vercel
