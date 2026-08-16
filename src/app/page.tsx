@@ -13,7 +13,7 @@ export default async function Home() {
   const posts = (await getPublishedPosts()).slice(0, 3);
 
   return (
-    <div className="mx-auto w-full max-w-[960px] px-6 py-8 pc:py-16">
+    <div className="mx-auto w-full max-w-240 px-6 py-8 pc:py-16">
       <section>
         <h1 className="text-3xl font-semibold">はじめまして、nekihcomです。</h1>
         <p className="mt-4 text-foreground/70">
@@ -35,7 +35,7 @@ export default async function Home() {
         </ul>
       </section>
 
-      <section className="mt-16">
+      {/* <section className="mt-16">
         <h2 className="text-xl font-semibold">最新記事</h2>
         <ul className="mt-6 flex flex-col gap-8">
           {posts.map((post) => (
@@ -59,7 +59,7 @@ export default async function Home() {
         >
           記事一覧を見る
         </Link>
-      </section>
+      </section> */}
     </div>
   );
 }
