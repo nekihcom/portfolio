@@ -5,6 +5,7 @@ import "prismjs/themes/prism-tomorrow.css";
 import "./globals.css";
 import { SITE_NAME, SITE_URL } from "@/lib/site";
 import { Header } from "@/components/header";
+import { Footer } from "@/components/footer";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -37,7 +38,8 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
     >
       <body className="min-h-full flex flex-col">
         <Header />
-        {children}
+        <div className="flex-1">{children}</div>
+        <Footer />
       </body>
     </html>
   );

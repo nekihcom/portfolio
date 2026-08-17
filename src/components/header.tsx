@@ -4,7 +4,6 @@ import { SITE_NAME } from "@/lib/site";
 const NAV_LINKS = [
   // { label: "Blog", href: "/blog" },
   { label: "Contact", href: "/contact" },
-  { label: "Privacy", href: "/privacy" },
 ];
 
 export function Header() {
