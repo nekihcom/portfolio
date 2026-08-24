@@ -24,6 +24,7 @@
   ],
   "vars": {
     "NOTION_DATABASE_ID": "3dbdf2e0-0adf-40de-8a24-2369fef50469",
+    "NOTION_WORKS_DATABASE_ID": "a24bc76c-7817-439a-b6ec-33f31a027c96",
     "R2_ACCOUNT_ID": "d5cfddb3193f9878ca6ecbfb980de515",
     "R2_BUCKET_NAME": "mchkn-blog-images",
     "R2_PUBLIC_URL": "https://images.mchkn.com",

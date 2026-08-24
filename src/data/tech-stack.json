@@ -1,0 +1,22 @@
+[
+  {
+    "ja": "言語",
+    "en": "Languages",
+    "items": ["TypeScript", "JavaScript", "PHP", "Java", "SQL", "Python"]
+  },
+  {
+    "ja": "フレームワーク",
+    "en": "Frameworks",
+    "items": ["React", "Next.js", "jQuery", "Symfony", "FastAPI", "Django"]
+  },
+  {
+    "ja": "インフラ",
+    "en": "Infrastructure",
+    "items": ["GCP", "AWS", "PostgreSQL", "MySQL"]
+  },
+  {
+    "ja": "ツール",
+    "en": "Tools",
+    "items": ["GitHub Actions", "GitHub", "Figma", "CloudFlare", "Vercel", "Netlify"]
+  }
+]

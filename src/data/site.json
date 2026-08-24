@@ -1,0 +1,10 @@
+{
+  "siteName": "mchkn.com",
+  "siteUrl": "https://www.mchkn.com",
+  "contactFormUrl": "https://docs.google.com/forms/d/e/1FAIpQLSeh1ZkxbbvuNXcLy3Ql0EN0SxglVI0j_Zux2eywzaGmFPCn7A/viewform?usp=header",
+  "snsLinks": [
+    { "label": "GH", "name": "GitHub", "href": "https://github.com/nekihcom" },
+    { "label": "X", "name": "X", "href": "https://x.com/nekihcom" },
+    { "label": "note", "name": "note", "href": "https://note.com/nekihcom" }
+  ]
+}
