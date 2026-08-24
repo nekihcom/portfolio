@@ -15,7 +15,7 @@ const notion = new Client({
 const notionCompat = new NotionCompatAPI(notion);
 
 const DATABASE_ID = process.env.NOTION_DATABASE_ID!;
-const PUBLISHED_STATUS = "完了";
+const WORKS_DATABASE_ID = process.env.NOTION_WORKS_DATABASE_ID!;
 
 export type Post = {
   id: string;
@@ -80,8 +80,8 @@ export async function getPublishedPosts(): Promise<Post[]> {
     const response = await notion.databases.query({
       database_id: DATABASE_ID,
       filter: {
-        property: "ステータス",
-        status: { equals: PUBLISHED_STATUS },
+        property: "公開",
+        checkbox: { equals: true },
       },
       sorts: [{ property: "公開日", direction: "descending" }],
       start_cursor: cursor,
@@ -100,12 +100,115 @@ export async function getPublishedPosts(): Promise<Post[]> {
   return posts.filter((post) => post.slug !== "");
 }
 
+export type WorkItem = {
+  id: string;
+  slug: string;
+  year: string;
+  engagement: string;
+  title: string;
+  description: string;
+  tags: string[];
+  order: number;
+  thumbnailUrl: string | null;
+};
+
+async function toWorkItem(page: PageObjectResponse): Promise<WorkItem> {
+  const props = page.properties;
+
+  const title =
+    props["タイトル"]?.type === "title"
+      ? props["タイトル"].title.map((t) => t.plain_text).join("")
+      : "";
+
+  const slug =
+    props["スラッグ"]?.type === "rich_text"
+      ? props["スラッグ"].rich_text.map((t) => t.plain_text).join("")
+      : "";
+
+  const year =
+    props["年"]?.type === "rich_text"
+      ? props["年"].rich_text.map((t) => t.plain_text).join("")
+      : "";
+
+  const engagement =
+    props["稼働形態"]?.type === "select"
+      ? props["稼働形態"].select?.name ?? ""
+      : "";
+
+  const description =
+    props["概要"]?.type === "rich_text"
+      ? props["概要"].rich_text.map((t) => t.plain_text).join("")
+      : "";
+
+  const tags =
+    props["タグ"]?.type === "multi_select"
+      ? props["タグ"].multi_select.map((t) => t.name)
+      : [];
+
+  const order =
+    props["並び順"]?.type === "number" ? props["並び順"].number ?? 0 : 0;
+
+  const thumbnailFile =
+    props["サムネイル"]?.type === "files" ? props["サムネイル"].files[0] : undefined;
+  const rawThumbnailUrl =
+    thumbnailFile?.type === "external"
+      ? thumbnailFile.external.url
+      : thumbnailFile?.type === "file"
+        ? thumbnailFile.file.url
+        : null;
+
+  const thumbnailUrl = rawThumbnailUrl
+    ? await persistImageToR2(rawThumbnailUrl, `works/${page.id}`).catch((e: unknown) => {
+        console.error(`Failed to persist thumbnail image to R2 for page ${page.id}:`, e);
+        return rawThumbnailUrl;
+      })
+    : null;
+
+  return {
+    id: page.id,
+    slug,
+    year,
+    engagement,
+    title,
+    description,
+    tags,
+    order,
+    thumbnailUrl,
+  };
+}
+
+export async function getWorks(): Promise<WorkItem[]> {
+  const pages: PageObjectResponse[] = [];
+  let cursor: string | undefined;
+
+  do {
+    const response = await notion.databases.query({
+      database_id: WORKS_DATABASE_ID,
+      filter: {
+        property: "公開",
+        checkbox: { equals: true },
+      },
+      start_cursor: cursor,
+    });
+
+    pages.push(
+      ...response.results.filter(
+        (page): page is PageObjectResponse => "properties" in page,
+      ),
+    );
+    cursor = response.has_more ? response.next_cursor ?? undefined : undefined;
+  } while (cursor);
+
+  const works = await Promise.all(pages.map(toWorkItem));
+  return works.sort((a, b) => a.order - b.order);
+}
+
 export const getPostBySlug = cache(async (slug: string): Promise<Post | null> => {
   const response = await notion.databases.query({
     database_id: DATABASE_ID,
     filter: {
       and: [
-        { property: "ステータス", status: { equals: PUBLISHED_STATUS } },
+        { property: "公開", checkbox: { equals: true } },
         { property: "スラッグ", rich_text: { equals: slug } },
       ],
     },
