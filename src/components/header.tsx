@@ -28,7 +28,7 @@ export function Header() {
 
   return (
     <header className="relative border-b border-gray-divider">
-      <div className="flex items-center justify-between px-6 py-[18px] pc:px-[120px] pc:py-[26px]">
+      <div className="flex items-center justify-between px-6 py-4.5 pc:px-30 pc:py-6.5 max-w-360 mx-auto w-full">
         <Link
           href="/"
           className="font-mono text-[15px] font-medium text-foreground pc:text-[18px]"
