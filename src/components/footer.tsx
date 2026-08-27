@@ -27,7 +27,7 @@ export function Footer() {
             href="/privacy"
             className="transition-colors duration-150 hover:text-accent pc:order-2"
           >
-            プライバシーポリシー
+            Privacy
           </Link>
           <span className="font-mono pc:order-1">
             © {year} {SITE_NAME}

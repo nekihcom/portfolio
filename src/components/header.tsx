@@ -7,8 +7,8 @@ import { CONTACT_FORM_URL, SITE_NAME, SNS_LINKS } from "@/lib/site";
 
 const NAV_LINKS = [
   { label: "Profile", href: "/profile" },
-  { label: "Work", href: "/work" },
   { label: "Blog", href: "/blog" },
+  { label: "Work", href: "/work" },
 ];
 
 export function Header() {

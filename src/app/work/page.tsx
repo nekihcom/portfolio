@@ -39,19 +39,19 @@ export default async function WorkPage(props: PageProps<"/work">) {
   return (
     <div className="mx-auto flex w-full max-w-[1440px] flex-col">
       <section className="flex flex-col gap-4 px-6 py-10 pc:px-[120px] pc:pb-12 pc:pt-20">
-        <span className="font-mono text-xs tracking-[0.08em] text-gray-label">
+        {/* <span className="font-mono text-xs tracking-[0.08em] text-gray-label">
           WORK
-        </span>
-        <h1 className="text-[34px] font-bold pc:text-[52px]">制作実績</h1>
-        <p className="text-sm leading-[1.8] text-gray-text pc:max-w-[680px] pc:text-base">
+        </span> */}
+        <h1 className="text-[34px] font-bold pc:text-[52px]">WORK</h1>
+        {/* <p className="text-sm leading-[1.8] text-gray-text pc:max-w-[680px] pc:text-base">
           これまでの制作実績・主な仕事の一覧です。全{works.length}件。
-        </p>
+        </p> */}
       </section>
 
       {tags.length > 0 && (
         <section className="flex flex-col gap-3 px-6 pb-9 pc:px-[120px] pc:pb-14">
           <span className="font-mono text-xs text-gray-label">
-            FILTER BY TAG
+            FILTER
           </span>
           <div className="flex flex-wrap gap-[10px] font-mono text-[13px]">
             <Link

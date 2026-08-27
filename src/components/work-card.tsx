@@ -53,13 +53,13 @@ export function WorkCard({ item, size = "default" }: WorkCardProps) {
         <p className="text-[13px] leading-[1.8] text-gray-sub pc:text-sm">
           {item.description}
         </p>
-        <div className="flex flex-wrap gap-[6px] font-mono text-[11px] text-gray-sub">
+        {/* <div className="flex flex-wrap gap-[6px] font-mono text-[11px] text-gray-sub">
           {item.tags.map((tag) => (
             <span key={tag} className="border border-gray-border-weak px-2 py-1">
               {tag}
             </span>
           ))}
-        </div>
+        </div> */}
       </div>
     </div>
   );

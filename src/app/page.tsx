@@ -20,7 +20,7 @@ export default async function Home() {
             {PROFILE.occupation}
           </span>
           <h1 className="text-[40px] font-bold leading-[1.2] pc:text-[76px] pc:leading-[1.15]">
-            {PROFILE.nameJa}
+            {PROFILE.nameJa} <span className="text-gray-sub text-2xl">{PROFILE.nameEn}</span>
           </h1>
           <p className="text-[15px] leading-[1.8] text-gray-text pc:max-w-[620px] pc:text-[17px]">
             {PROFILE.home.intro}
@@ -46,9 +46,9 @@ export default async function Home() {
       <section className="flex flex-col gap-5 border-t border-foreground px-6 py-10 pc:grid pc:grid-cols-[280px_1fr] pc:gap-15 pc:px-[120px] pc:pb-[110px] pc:pt-16">
         <div className="flex flex-col gap-2">
           <h2 className="text-[22px] font-bold pc:text-[26px]">About</h2>
-          <span className="font-mono text-[11px] text-gray-label pc:text-xs">
+          {/* <span className="font-mono text-[11px] text-gray-label pc:text-xs">
             はじめまして！
-          </span>
+          </span> */}
         </div>
         <div className="flex flex-col items-start gap-5 pc:gap-7">
           <p className="whitespace-pre-line text-[15px] leading-[1.8] text-gray-text pc:max-w-[720px] pc:text-base">
@@ -58,7 +58,7 @@ export default async function Home() {
             href="/profile"
             className="self-end border-b border-accent pb-[2px] text-sm font-medium text-foreground transition-colors duration-150 hover:text-accent-hover"
           >
-            もっと詳しく →
+            More →
           </Link>
         </div>
       </section>
@@ -68,12 +68,12 @@ export default async function Home() {
         <div className="flex items-end justify-between">
           <div className="flex flex-col gap-2">
             <h2 className="text-[22px] font-bold pc:text-[26px]">Blog</h2>
-            <span className="font-mono text-[11px] text-gray-label pc:text-xs">
+            {/* <span className="font-mono text-[11px] text-gray-label pc:text-xs">
               技術や仕事、日常、いろいろ。
-            </span>
+            </span> */}
           </div>
           <Link href="/blog" className="text-sm font-medium">
-            記事をすべて見る →
+            More →
           </Link>
         </div>
         {posts.length === 0 ? (
@@ -118,12 +118,12 @@ export default async function Home() {
         <div className="flex items-end justify-between">
           <div className="flex flex-col gap-2">
             <h2 className="text-[22px] font-bold pc:text-[26px]">Work</h2>
-            <span className="font-mono text-[11px] text-gray-label pc:text-xs">
+            {/* <span className="font-mono text-[11px] text-gray-label pc:text-xs">
               これまで達成した成果や作ったモノの記録
-            </span>
+            </span> */}
           </div>
           <Link href="/work" className="text-sm font-medium">
-            実績をすべて見る →
+            More →
           </Link>
         </div>
         {works.length === 0 ? (

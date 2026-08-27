@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import type { Metadata } from "next";
 import { getWorks } from "@/lib/notion";
 import { PROFILE, CAREER, TECH_STACK, CTA } from "@/lib/profile";
@@ -18,21 +19,20 @@ export default async function ProfilePage() {
     <div className="mx-auto flex w-full max-w-[1440px] flex-col">
       {/* ヒーロー */}
       <section className="flex flex-col gap-6 px-6 py-10 pc:grid pc:grid-cols-[280px_1fr] pc:items-start pc:gap-20 pc:px-[120px] pc:py-20">
-        <div
-          className="flex h-[140px] w-[140px] items-end border border-gray-border p-[10px] pc:h-[280px] pc:w-[280px] pc:p-4"
-          style={{
-            background:
-              "repeating-linear-gradient(135deg,#efefef 0 8px,#f7f7f7 8px 16px)",
-          }}
-        >
-          <span className="font-mono text-[10px] text-gray-label pc:text-[11px]">
-            avatar 1:1
-          </span>
+        <div className="relative h-[140px] w-[140px] border border-gray-border pc:h-[280px] pc:w-[280px]">
+          <Image
+            src="/profile/icon.png"
+            alt={PROFILE.nameJa}
+            fill
+            className="object-cover"
+            sizes="(min-width: 960px) 280px, 140px"
+            priority
+          />
         </div>
-        <div className="flex flex-col gap-4 pc:gap-7 pc:pt-2">
-          <span className="font-mono text-[11px] tracking-[0.14em] text-gray-label pc:text-[13px]">
+        <div className="flex flex-col gap-4 pc:gap-7">
+          {/* <span className="font-mono text-[11px] tracking-[0.14em] text-gray-label pc:text-[13px]">
             PROFILE
-          </span>
+          </span> */}
           <h1 className="text-[34px] font-bold leading-[1.25] pc:text-[52px]">
             {PROFILE.nameJa}{" "}
             <span className="font-mono text-sm font-normal text-gray-label pc:text-xl">
@@ -53,9 +53,9 @@ export default async function ProfilePage() {
       <section className="flex flex-col gap-6 border-t border-foreground px-6 py-10 pc:grid pc:grid-cols-[280px_1fr] pc:gap-20 pc:px-[120px] pc:pb-[100px] pc:pt-16">
         <div className="flex flex-col gap-2">
           <h2 className="text-[22px] font-bold pc:text-[26px]">Career</h2>
-          <span className="font-mono text-[11px] text-gray-label pc:text-xs">
+          {/* <span className="font-mono text-[11px] text-gray-label pc:text-xs">
             経歴
-          </span>
+          </span> */}
         </div>
         <div className="flex flex-col">
           {CAREER.map((item, index) => (
@@ -92,9 +92,9 @@ export default async function ProfilePage() {
       <section className="flex flex-col gap-6 border-t border-gray-divider px-6 py-10 pc:grid pc:grid-cols-[280px_1fr] pc:gap-20 pc:px-[120px] pc:pb-[100px] pc:pt-16">
         <div className="flex flex-col gap-2">
           <h2 className="text-[22px] font-bold pc:text-[26px]">Tech Stack</h2>
-          <span className="font-mono text-[11px] text-gray-label pc:text-xs">
+          {/* <span className="font-mono text-[11px] text-gray-label pc:text-xs">
             技術スタック
-          </span>
+          </span> */}
         </div>
         <div className="flex flex-col gap-7 pc:grid pc:grid-cols-2 pc:gap-x-15 pc:gap-y-11">
           {TECH_STACK.map((category) => (
@@ -127,9 +127,9 @@ export default async function ProfilePage() {
       >
         <div className="flex flex-col gap-2">
           <h2 className="text-[22px] font-bold pc:text-[26px]">Work</h2>
-          <span className="font-mono text-[11px] text-gray-label pc:text-xs">
+          {/* <span className="font-mono text-[11px] text-gray-label pc:text-xs">
             制作実績
-          </span>
+          </span> */}
         </div>
         <div className="flex flex-col gap-5">
           <div className="flex flex-col gap-5 pc:grid pc:grid-cols-2 pc:gap-7">
