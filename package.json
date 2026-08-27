@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "dotenv -e .dev.vars -- next dev",
-    "build": "next build",
+    "build": "dotenv -e .dev.vars -- next build",
     "start": "next start",
     "lint": "eslint",
     "preview": "opennextjs-cloudflare build && opennextjs-cloudflare preview",
