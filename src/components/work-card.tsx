@@ -8,11 +8,11 @@ type WorkCardProps = {
 
 export function WorkCard({ item, size = "default" }: WorkCardProps) {
   const imageHeight =
-    size === "default"
-      ? "h-[130px] pc:h-[170px]"
-      : "h-[130px] pc:h-[150px]";
+    size === "default" ? "h-[130px] pc:h-[170px]" : "h-[130px] pc:h-[150px]";
   const headingSize =
-    size === "default" ? "text-[17px] pc:text-[19px]" : "text-[17px] pc:text-[18px]";
+    size === "default"
+      ? "text-[17px] pc:text-[19px]"
+      : "text-[17px] pc:text-[18px]";
 
   return (
     <div className="flex flex-col border border-gray-divider bg-card pc:pb-7">

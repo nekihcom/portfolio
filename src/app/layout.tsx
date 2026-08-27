@@ -25,7 +25,8 @@ export const metadata: Metadata = {
     default: SITE_NAME,
     template: `%s | ${SITE_NAME}`,
   },
-  description: "エンジニアのnekihcomが、個人事業獲得を目指して発信する技術・仕事の知見ブログ。",
+  description:
+    "エンジニアのnekihcomが、個人事業獲得を目指して発信する技術・仕事の知見ブログ。",
   openGraph: {
     type: "website",
     siteName: SITE_NAME,

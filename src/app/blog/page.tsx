@@ -7,7 +7,8 @@ export const revalidate = 3600;
 
 export const metadata: Metadata = {
   title: "Blog",
-  description: "実務で詰まったこと、判断に迷ったこと。技術の話も、そうでない話も。",
+  description:
+    "実務で詰まったこと、判断に迷ったこと。技術の話も、そうでない話も。",
 };
 
 const PAGE_SIZE = 6;
@@ -57,9 +58,7 @@ export default async function BlogPage(props: PageProps<"/blog">) {
         {/* <span className="font-mono text-xs tracking-[0.08em] text-gray-label">
           BLOG
         </span> */}
-        <h1 className="text-[34px] font-bold pc:text-[52px]">
-          BLOG
-        </h1>
+        <h1 className="text-[34px] font-bold pc:text-[52px]">BLOG</h1>
         {/* <p className="text-sm leading-[1.8] text-gray-text pc:max-w-[680px] pc:text-base">
           実務で詰まったこと、判断に迷ったこと。技術の話も、そうでない話も。全{posts.length}
           記事。
@@ -68,9 +67,7 @@ export default async function BlogPage(props: PageProps<"/blog">) {
 
       {tags.length > 0 && (
         <section className="flex flex-col gap-3 px-6 pb-9 pc:px-[120px] pc:pb-14">
-          <span className="font-mono text-xs text-gray-label">
-            FILTER
-          </span>
+          <span className="font-mono text-xs text-gray-label">FILTER</span>
           <div className="flex flex-wrap gap-[10px] font-mono text-[13px]">
             <Link
               href={buildHref(undefined, 1)}
@@ -81,7 +78,9 @@ export default async function BlogPage(props: PageProps<"/blog">) {
               }
             >
               All{" "}
-              <span className={!tagParam ? "text-gray-disabled" : "text-gray-label"}>
+              <span
+                className={!tagParam ? "text-gray-disabled" : "text-gray-label"}
+              >
                 {posts.length}
               </span>
             </Link>
@@ -99,7 +98,9 @@ export default async function BlogPage(props: PageProps<"/blog">) {
                 >
                   {tag}{" "}
                   <span
-                    className={isActive ? "text-gray-disabled" : "text-gray-label"}
+                    className={
+                      isActive ? "text-gray-disabled" : "text-gray-label"
+                    }
                   >
                     {count}
                   </span>

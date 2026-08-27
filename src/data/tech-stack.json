@@ -17,6 +17,13 @@
   {
     "ja": "ツール",
     "en": "Tools",
-    "items": ["GitHub Actions", "GitHub", "Figma", "CloudFlare", "Vercel", "Netlify"]
+    "items": [
+      "GitHub Actions",
+      "GitHub",
+      "Figma",
+      "CloudFlare",
+      "Vercel",
+      "Netlify"
+    ]
   }
 ]

@@ -47,9 +47,7 @@ async function contentHashFromUrl(url: string): Promise<string> {
 
 async function objectExists(key: string): Promise<boolean> {
   try {
-    await s3.send(
-      new HeadObjectCommand({ Bucket: R2_BUCKET_NAME, Key: key }),
-    );
+    await s3.send(new HeadObjectCommand({ Bucket: R2_BUCKET_NAME, Key: key }));
     return true;
   } catch (e) {
     // 404は「未存在」を意味する正常系だが、403等の権限・設定不備は握りつぶさず

@@ -7,8 +7,10 @@
     "build": "dotenv -e .dev.vars -- next build",
     "start": "next start",
     "lint": "eslint",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
     "preview": "opennextjs-cloudflare build && opennextjs-cloudflare preview",
-    "deploy": "opennextjs-cloudflare build && opennextjs-cloudflare deploy",
+    "deploy": "npm run lint && npm run format:check && opennextjs-cloudflare build && opennextjs-cloudflare deploy",
     "cf-typegen": "wrangler types --env-interface CloudflareEnv cloudflare-env.d.ts"
   },
   "dependencies": {
@@ -31,6 +33,8 @@
     "dotenv-cli": "^11.0.0",
     "eslint": "^9",
     "eslint-config-next": "16.3.0",
+    "eslint-config-prettier": "^10.1.8",
+    "prettier": "^3.9.6",
     "tailwindcss": "^4",
     "typescript": "^5",
     "wrangler": "^4.121.0"

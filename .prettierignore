@@ -1,0 +1,8 @@
+.next
+.open-next
+.wrangler
+node_modules
+package-lock.json
+*.tsbuildinfo
+README.html
+cloudflare-env.d.ts

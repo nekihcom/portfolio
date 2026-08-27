@@ -3,24 +3,22 @@
   "main": ".open-next/worker.js",
   "name": "portfolio",
   "compatibility_date": "2026-08-11",
-  "compatibility_flags": [
-    "nodejs_compat"
-  ],
+  "compatibility_flags": ["nodejs_compat"],
   "assets": {
     "directory": ".open-next/assets",
-    "binding": "ASSETS"
+    "binding": "ASSETS",
   },
   "r2_buckets": [
     {
       "binding": "NEXT_INC_CACHE_R2_BUCKET",
-      "bucket_name": "mchkn-blog-images"
-    }
+      "bucket_name": "mchkn-blog-images",
+    },
   ],
   "services": [
     {
       "binding": "WORKER_SELF_REFERENCE",
-      "service": "portfolio"
-    }
+      "service": "portfolio",
+    },
   ],
   "vars": {
     "NOTION_DATABASE_ID": "3dbdf2e0-0adf-40de-8a24-2369fef50469",
@@ -28,6 +26,6 @@
     "R2_ACCOUNT_ID": "d5cfddb3193f9878ca6ecbfb980de515",
     "R2_BUCKET_NAME": "mchkn-blog-images",
     "R2_PUBLIC_URL": "https://images.mchkn.com",
-    "NEXT_PUBLIC_R2_PUBLIC_URL": "https://images.mchkn.com"
-  }
+    "NEXT_PUBLIC_R2_PUBLIC_URL": "https://images.mchkn.com",
+  },
 }
