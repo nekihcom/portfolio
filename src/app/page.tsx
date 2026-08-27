@@ -20,7 +20,8 @@ export default async function Home() {
             {PROFILE.occupation}
           </span>
           <h1 className="text-[40px] font-bold leading-[1.2] pc:text-[76px] pc:leading-[1.15]">
-            {PROFILE.nameJa} <span className="text-gray-sub text-2xl">{PROFILE.nameEn}</span>
+            {PROFILE.nameJa}{" "}
+            <span className="text-gray-sub text-2xl">{PROFILE.nameEn}</span>
           </h1>
           <p className="text-[15px] leading-[1.8] text-gray-text pc:max-w-[620px] pc:text-[17px]">
             {PROFILE.home.intro}
@@ -141,7 +142,10 @@ export default async function Home() {
         )}
       </section>
 
-      <CtaSection heading={CTA.home.heading} description={CTA.home.description} />
+      <CtaSection
+        heading={CTA.home.heading}
+        description={CTA.home.description}
+      />
     </div>
   );
 }

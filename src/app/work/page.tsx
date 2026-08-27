@@ -50,9 +50,7 @@ export default async function WorkPage(props: PageProps<"/work">) {
 
       {tags.length > 0 && (
         <section className="flex flex-col gap-3 px-6 pb-9 pc:px-[120px] pc:pb-14">
-          <span className="font-mono text-xs text-gray-label">
-            FILTER
-          </span>
+          <span className="font-mono text-xs text-gray-label">FILTER</span>
           <div className="flex flex-wrap gap-[10px] font-mono text-[13px]">
             <Link
               href={buildHref(undefined)}
@@ -63,7 +61,9 @@ export default async function WorkPage(props: PageProps<"/work">) {
               }
             >
               All{" "}
-              <span className={!tagParam ? "text-gray-disabled" : "text-gray-label"}>
+              <span
+                className={!tagParam ? "text-gray-disabled" : "text-gray-label"}
+              >
                 {works.length}
               </span>
             </Link>
@@ -81,7 +81,9 @@ export default async function WorkPage(props: PageProps<"/work">) {
                 >
                   {tag}{" "}
                   <span
-                    className={isActive ? "text-gray-disabled" : "text-gray-label"}
+                    className={
+                      isActive ? "text-gray-disabled" : "text-gray-label"
+                    }
                   >
                     {count}
                   </span>

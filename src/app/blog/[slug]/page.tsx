@@ -53,7 +53,10 @@ export default async function PostPage(props: PageProps<"/blog/[slug]">) {
 
   return (
     <div className="mx-auto flex w-full max-w-[1440px] flex-col">
-      <nav aria-label="パンくず" className="px-6 pt-8 font-mono text-xs pc:px-[120px] pc:pt-14">
+      <nav
+        aria-label="パンくず"
+        className="px-6 pt-8 font-mono text-xs pc:px-[120px] pc:pt-14"
+      >
         <Link href="/blog" className="text-foreground">
           Blog
         </Link>
@@ -91,8 +94,13 @@ export default async function PostPage(props: PageProps<"/blog/[slug]">) {
         >
           <div className="border-b border-gray-divider py-6 pc:border-b-0 pc:border-r pc:py-9 pc:pr-10">
             {prevPost && (
-              <Link href={`/blog/${prevPost.slug}`} className="group flex flex-col gap-2">
-                <span className="font-mono text-xs text-gray-label">← PREV</span>
+              <Link
+                href={`/blog/${prevPost.slug}`}
+                className="group flex flex-col gap-2"
+              >
+                <span className="font-mono text-xs text-gray-label">
+                  ← PREV
+                </span>
                 <span className="text-base font-bold leading-[1.6] group-hover:text-accent pc:text-lg">
                   {prevPost.title}
                 </span>
@@ -101,8 +109,13 @@ export default async function PostPage(props: PageProps<"/blog/[slug]">) {
           </div>
           <div className="py-6 text-left pc:py-9 pc:pl-10 pc:text-right">
             {nextPost && (
-              <Link href={`/blog/${nextPost.slug}`} className="group flex flex-col gap-2 pc:items-end">
-                <span className="font-mono text-xs text-gray-label">NEXT →</span>
+              <Link
+                href={`/blog/${nextPost.slug}`}
+                className="group flex flex-col gap-2 pc:items-end"
+              >
+                <span className="font-mono text-xs text-gray-label">
+                  NEXT →
+                </span>
                 <span className="text-base font-bold leading-[1.6] group-hover:text-accent pc:text-lg">
                   {nextPost.title}
                 </span>
