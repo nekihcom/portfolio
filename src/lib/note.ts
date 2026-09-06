@@ -73,7 +73,5 @@ export async function getPosts(): Promise<Post[]> {
   const xml = await response.text();
   const items = xml.match(/<item>[\s\S]*?<\/item>/g) ?? [];
 
-  return items
-    .map(toPost)
-    .filter((post): post is Post => post !== null);
+  return items.map(toPost).filter((post): post is Post => post !== null);
 }
