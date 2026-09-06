@@ -1,5 +1,6 @@
 import Link from "next/link";
-import { getPublishedPosts, getWorks } from "@/lib/notion";
+import { getWorks } from "@/lib/notion";
+import { getPosts } from "@/lib/note";
 import { formatDate } from "@/lib/format";
 import { PROFILE, CTA } from "@/lib/profile";
 import { WorkCard } from "@/components/work-card";
@@ -8,7 +9,7 @@ import { CtaSection } from "@/components/cta-section";
 export const revalidate = 3600;
 
 export default async function Home() {
-  const posts = (await getPublishedPosts()).slice(0, 3);
+  const posts = (await getPosts()).slice(0, 3);
   const works = (await getWorks()).slice(0, 3);
 
   return (
@@ -84,20 +85,16 @@ export default async function Home() {
         ) : (
           <div className="flex flex-col gap-4 pc:grid pc:grid-cols-3 pc:gap-8">
             {posts.map((post) => (
-              <Link
+              <a
                 key={post.id}
-                href={`/blog/${post.slug}`}
+                href={post.url}
+                target="_blank"
+                rel="noopener noreferrer"
                 className="group flex flex-col gap-3 border border-gray-divider bg-card p-5 pc:gap-4 pc:p-7 pc:pb-[28px]"
               >
                 {post.publishedAt && (
                   <div className="flex items-center gap-[10px] font-mono text-[11px] text-gray-label pc:gap-3 pc:text-xs">
                     <span>{formatDate(post.publishedAt)}</span>
-                    {post.tags[0] && (
-                      <>
-                        <span className="text-gray-border">|</span>
-                        <span>{post.tags[0]}</span>
-                      </>
-                    )}
                   </div>
                 )}
                 <h3 className="text-[17px] font-bold leading-[1.55] group-hover:text-accent pc:text-[19px]">
@@ -108,7 +105,7 @@ export default async function Home() {
                     {post.summary}
                   </p>
                 )}
-              </Link>
+              </a>
             ))}
           </div>
         )}
