@@ -1,49 +1,24 @@
-# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+# build output
+dist/
+
+# generated types
+.astro/
 
 # dependencies
-/node_modules
-/.pnp
-.pnp.*
-.yarn/*
-!.yarn/patches
-!.yarn/plugins
-!.yarn/releases
-!.yarn/versions
+node_modules/
 
-# testing
-/coverage
-
-# next.js
-/.next/
-/out/
-
-# opennextjs-cloudflare
-/.open-next/
-.wrangler/
-
-# production
-/build
-
-# misc
-.DS_Store
-*.pem
-
-# debug
+# logs
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
-.pnpm-debug.log*
+pnpm-debug.log*
 
-# env files
-# .env は非シークレット値のみを含み、どのビルド環境でも参照できるようコミットする
-# （SRC_ADVERSARIAL_REVIEW.md 指摘6）。.env.local/.dev.varsはシークレットを含むため除外。
+# environment variables
 .env
-.env*.local
-.dev.vars
+.env.production
 
-# vercel
-.vercel
+# macOS-specific files
+.DS_Store
 
-# typescript
-*.tsbuildinfo
-next-env.d.ts
+# jetbrains setting folder
+.idea/
