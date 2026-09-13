@@ -1,0 +1,22 @@
+@use "variables" as *;
+@use "mixins" as *;
+
+.connect {
+  // padding: 56px 0 48px;
+  // border-top: 1px solid $color-border;
+
+  &__inner {
+    @include container;
+  }
+
+  &__social {
+    margin-top: 24px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+
+    li:last-child {
+      grid-column: 1 / -1;
+    }
+  }
+}

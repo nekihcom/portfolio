@@ -1,23 +1,46 @@
+---
+import { getEntry } from 'astro:content';
+import { buildSeoMeta, type SeoInput } from '../lib/seo';
+import '../styles/style.scss';
+
+interface Props extends SeoInput {}
+
+const profileEntry = await getEntry('profile', 'default');
+const seo = buildSeoMeta(Astro.site, profileEntry!.data, Astro.props);
+---
 <!doctype html>
-<html lang="en">
+<html lang="ja">
 	<head>
 		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<link rel="icon" href="/favicon.ico" />
 		<meta name="generator" content={Astro.generator} />
-		<title>Astro Basics</title>
+
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			rel="stylesheet"
+			href="https://fonts.googleapis.com/css2?family=Sawarabi+Gothic&display=swap"
+		/>
+
+		<title>{seo.title}</title>
+		<meta name="description" content={seo.description} />
+		<link rel="canonical" href={seo.canonicalUrl} />
+
+		<meta property="og:type" content="profile" />
+		<meta property="og:title" content={seo.title} />
+		<meta property="og:description" content={seo.description} />
+		<meta property="og:url" content={seo.canonicalUrl} />
+		<meta property="og:locale" content={seo.ogLocale} />
+
+		<meta name="twitter:card" content="summary" />
+		<meta name="twitter:title" content={seo.title} />
+		<meta name="twitter:description" content={seo.description} />
+
+		<script type="application/ld+json" set:html={seo.jsonLd} is:inline />
 	</head>
 	<body>
 		<slot />
 	</body>
 </html>
-
-<style>
-	html,
-	body {
-		margin: 0;
-		width: 100%;
-		height: 100%;
-	}
-</style>

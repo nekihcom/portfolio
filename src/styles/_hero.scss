@@ -1,0 +1,64 @@
+@use "variables" as *;
+@use "mixins" as *;
+
+.hero {
+  // padding: 32px 0 40px;
+
+  &__inner {
+    @include container;
+  }
+
+  &__container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 24px;
+  }
+
+  &__photo {
+    flex-shrink: 0;
+    width: 128px;
+    height: 128px;
+    border-radius: 50%;
+    overflow: hidden;
+    background-color: $color-bg-alt;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+
+  &__name {
+    font-size: 28px;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    color: $color-text;
+  }
+
+  &__role {
+    margin-top: 6px;
+    font-size: 16px;
+    color: $color-text-sub;
+  }
+
+  &__meta {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    margin-top: 12px;
+  }
+
+  &__meta-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+    color: $color-text-sub;
+
+    .icon {
+      color: $color-text-muted;
+    }
+  }
+}

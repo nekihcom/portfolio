@@ -1,0 +1,19 @@
+@use "variables" as *;
+
+@mixin container {
+  // width: 100%;
+  // max-width: $container-width;
+  // margin: 0 auto;
+  // padding: 0 20px;
+}
+
+@mixin pc {
+  @media (min-width: 768px) {
+    @content;
+  }
+}
+
+// サンプル
+// @include pc {
+//   color: red;
+// }

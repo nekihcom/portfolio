@@ -1,0 +1,15 @@
+- id: student
+  order: 1
+  period: "2015.04 – 2019.03"
+  role: Student
+  org: Seikei University
+- id: first-job
+  order: 2
+  period: "2019.04 – 2025.12"
+  role: Project Leader / Engineer
+  org: System Integrators
+- id: current-job
+  order: 3
+  period: "2026.01 – Present"
+  role: Project Leader / Engineer
+  org: Financial Company

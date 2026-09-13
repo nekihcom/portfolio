@@ -1,0 +1,9 @@
+default:
+  name: Mochiken
+  role: Software Engineer
+  location: Tokyo, Japan
+  birthday: "1997.02.11"
+  seo:
+    description: >-
+      Mochiken（ソフトウェアエンジニア）のポートフォリオサイト。プロダクト実績や経歴をご紹介。
+    locale: ja_JP

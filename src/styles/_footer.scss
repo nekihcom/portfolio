@@ -1,0 +1,8 @@
+@use "variables" as *;
+
+.footer {
+  padding: 0 0 96px;
+  text-align: center;
+  font-size: 13px;
+  color: $color-text-muted;
+}

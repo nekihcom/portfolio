@@ -1,0 +1,17 @@
+---
+import { getCollection } from 'astro:content';
+import SectionLabel from '../atoms/SectionLabel.astro';
+import TimelineItem from '../molecules/TimelineItem.astro';
+
+const career = (await getCollection('career')).sort((a, b) => b.data.order - a.data.order);
+---
+<section id="about" class="career">
+  <div class="career__inner">
+    <div class="career__intro">
+      <SectionLabel text="CAREER" />
+    </div>
+    <ol class="timeline">
+      {career.map((entry) => <TimelineItem entry={entry.data} />)}
+    </ol>
+  </div>
+</section>

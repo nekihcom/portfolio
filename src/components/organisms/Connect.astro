@@ -1,0 +1,25 @@
+---
+import { getCollection } from 'astro:content';
+import SectionLabel from '../atoms/SectionLabel.astro';
+import SocialLink from '../molecules/SocialLink.astro';
+import Button from '../atoms/Button.astro';
+import Icon from '../atoms/Icon.astro';
+
+const socialLinks = (await getCollection('socialLinks')).sort((a, b) => a.data.order - b.data.order);
+---
+<section id="contact" class="connect">
+  <div class="connect__inner">
+    <SectionLabel text="CONNECT" />
+    <ul class="connect__social">
+      {socialLinks.map((link) => (
+        <li>
+          <SocialLink link={link.data} />
+        </li>
+      ))}
+    </ul>
+    <Button href={socialLinks[2]?.data.href} variant="blog">
+      <span>Contact Me</span>
+      <Icon name="external-link" />
+    </Button>
+  </div>
+</section>

@@ -1,0 +1,38 @@
+---
+import { getEntry } from 'astro:content';
+import { getCollection } from 'astro:content';
+
+import Avatar from '../atoms/Avatar.astro';
+import HeroMetaItem from '../molecules/HeroMetaItem.astro';
+import profileImage from '../../assets/images/profile.png';
+import SocialLink from '../molecules/SocialLink.astro';
+import Button from '../atoms/Button.astro';
+import Icon from '../atoms/Icon.astro';
+
+const profileEntry = await getEntry('profile', 'default');
+const profile = profileEntry!.data;
+const socialLinks = (await getCollection('socialLinks')).sort((a, b) => a.data.order - b.data.order);
+
+---
+<section id="home" class="hero">
+  <div class="hero__inner">
+    <div class="hero__container">
+      <Avatar src={profileImage} alt={profile.name} />
+      <div class="hero__info">
+        <h1 class="hero__name">{profile.name}</h1>
+        <p class="hero__role">{profile.role}</p>
+        <ul class="hero__meta">
+          <HeroMetaItem icon="location" text={profile.location} />
+          <HeroMetaItem icon="calendar" text={profile.birthday} />
+        </ul>
+      </div>
+      
+    </div>
+    <div class="hero__cta">
+      <Button href={socialLinks[2]?.data.href} variant="blog">
+        <span>{"Contact Me"}</span>
+        <Icon name="external-link" />
+      </Button>
+    </div>
+  </div>
+</section>

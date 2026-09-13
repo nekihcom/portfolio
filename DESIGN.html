@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>DESIGN.md</title>
+<style>
+/* ============================================================
+   案A「白紙」— sageの卓上に置いた一枚の紙。ゴシック見出し＋深緑
+   クラス名なし / 単一<style> / 外部読み込みなし
+   ============================================================ */
+*, *::before, *::after { box-sizing: border-box; }
+
+html {
+  /* background-color: #BFC9AC; */              /* ページ地色 */
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  max-width: 1024px;
+  margin: 0 auto;
+  padding: 5rem 3.5rem 6.5rem;
+  background-color: #FBFAF7;              /* 紙面 */
+  color: #1F2420;
+  font-family: -apple-system, BlinkMacSystemFont, "Hiragino Kaku Gothic ProN", "Hiragino Sans", "BIZ UDPGothic", Meiryo, "Yu Gothic", YuGothic, "MS PGothic", sans-serif;
+  font-size: 16.5px;
+  line-height: 1.95;
+  letter-spacing: .01em;
+  text-wrap: pretty;
+  /* box-shadow: 0 1px 2px rgba(31,36,32,.14), 0 14px 44px rgba(31,36,32,.12); */
+}
+
+/* ---- 見出し：明朝 + サイズ/罫線/色で4階層を分離 ---- */
+h1, h2 { font-family: -apple-system, BlinkMacSystemFont, "Hiragino Kaku Gothic ProN", "Hiragino Sans", "BIZ UDPGothic", Meiryo, "Yu Gothic", YuGothic, "MS PGothic", sans-serif; font-weight: 700; }
+h1 {
+  font-size: 2.15rem; line-height: 1.5; letter-spacing: .03em;
+  margin: 0 0 2rem; padding-bottom: 1.1rem;
+  border-bottom: 2px solid #2F6B5F;
+}
+h2 {
+  font-size: 1.5rem; line-height: 1.6;
+  margin: 3.75rem 0 1.25rem; padding-bottom: .5rem;
+  border-bottom: 1px solid #DCD9CE;
+}
+h2::before {
+  content: ""; display: inline-block;
+  width: .5rem; height: .5rem; margin-right: .65rem;
+  vertical-align: .12em; background-color: #2F6B5F;
+}
+h3 {
+  font-size: 1.14rem; font-weight: 700; color: #2A5F55;
+  margin: 2.75rem 0 .85rem;
+}
+h4 {
+  font-size: .95rem; font-weight: 700; color: #5C6257;
+  letter-spacing: .07em; margin: 2.1rem 0 .6rem;
+}
+
+/* ---- 本文 ---- */
+p { margin: 0 0 1.4rem; }
+strong { font-weight: 700; color: #16211D; }
+em {
+  font-style: normal;
+  background-image: linear-gradient(transparent 60%, #CFE0D4 60%);
+}
+a {
+  color: #2A5F55;
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: .22em;
+}
+a:hover { background-color: #E4EDE6; text-decoration-thickness: 2px; }
+a:focus-visible { outline: 2px solid #2F6B5F; outline-offset: 2px; }
+
+/* ---- リスト ---- */
+ul, ol { margin: 0 0 1.4rem; padding-left: 1.65rem; }
+li { margin: .4rem 0; }
+li::marker { color: #2F6B5F; }
+ul ul, ol ol, ul ol, ol ul { margin: .4rem 0 .2rem; }
+
+/* ---- テーブル：紙面から一段浮かせる ---- */
+table {
+  width: 100%; border-collapse: collapse;
+  margin: 1.75rem 0 2.25rem;
+  font-size: .94rem; line-height: 1.75;
+  background-color: #FFFFFF;
+  border: 1px solid #E1DFD3;
+  box-shadow: 0 1px 0 rgba(31,36,32,.06);
+}
+th {
+  text-align: left; font-weight: 700;
+  padding: .75rem 1rem;
+  background-color: #E4EDE6; color: #1F2420;
+  border-bottom: 2px solid #2F6B5F;
+}
+td { padding: .75rem 1rem; border-bottom: 1px solid #EBE9DF; vertical-align: top; }
+tbody tr:nth-child(even) td { background-color: #FAF9F4; }
+tbody tr:last-child td { border-bottom: none; }
+
+/* ---- コード ---- */
+code {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Courier New", "Hiragino Kaku Gothic ProN", Meiryo, monospace;
+  font-size: .86em;
+  padding: .12em .38em;
+  background-color: #F1F0E8;
+  border: 1px solid #E3E1D6;
+  border-radius: 3px;
+  color: #27453F;
+  word-break: break-all;
+}
+pre {
+  margin: 1.75rem 0 2.25rem;
+  padding: 1.15rem 1.25rem;
+  background-color: #F4F3EC;
+  border: 1px solid #E1DFD3;
+  border-left: 3px solid #2F6B5F;
+  border-radius: 4px;
+  overflow-x: auto;
+}
+pre > code {
+  display: block; padding: 0;
+  background: none; border: none; border-radius: 0;
+  color: #232823; font-size: .855rem; line-height: 1.8;
+  white-space: pre; word-break: normal;
+}
+
+/* ---- その他 ---- */
+blockquote {
+  margin: 2rem 0; padding: .1rem 0 .1rem 1.25rem;
+  border-left: 2px solid #B9C4AB; color: #4E544A;
+}
+blockquote p:last-child { margin-bottom: 0; }
+hr { border: none; height: 1px; background-color: #DCD9CE; margin: 3.25rem 0; }
+img {
+  display: block; max-width: 100%; height: auto;
+  margin: 1.9rem 0; border: 1px solid #E1DFD3; border-radius: 4px;
+}
+
+/* ---- 狭い画面 ---- */
+@media (max-width: 640px) {
+  body { padding: 2.5rem 1.25rem 4rem; font-size: 16px; line-height: 1.85; }
+  h1 { font-size: 1.7rem; }
+  h2 { font-size: 1.3rem; }
+  table { font-size: .88rem; }
+}
+
+/* ---- 印刷 / PDF ---- */
+@media print {
+  @page { margin: 18mm 16mm; }
+  html, body { background: #FFFFFF; color: #000000; }
+  body {
+    max-width: none; margin: 0; padding: 0;
+    font-size: 10.5pt; line-height: 1.75; box-shadow: none;
+  }
+  h1, h2, h3, h4 { break-after: avoid; page-break-after: avoid; }
+  h1 { font-size: 20pt; border-bottom-color: #000; }
+  h2 { font-size: 15pt; }
+  h3 { font-size: 12pt; color: #000; }
+  h4 { color: #000; }
+  h2::before { background: #000; }
+  p, li, blockquote { orphans: 3; widows: 3; }
+  pre, table, blockquote, img, tr { break-inside: avoid; page-break-inside: avoid; }
+  thead { display: table-header-group; }
+  table { box-shadow: none; border-color: #999; }
+  th { background: #EEE; border-bottom-color: #000; }
+  td { border-bottom-color: #CCC; }
+  pre { background: #F6F6F6; border-color: #BBB; border-left-color: #000; white-space: pre-wrap; }
+  code { background: #F2F2F2; border-color: #CCC; color: #000; }
+  em { background: none; text-decoration: underline; }
+  a { color: #000; }
+  a[href^="http"]::after { content: " (" attr(href) ")"; font-size: .82em; color: #444; }
+  img { border-color: #BBB; }
+}
+</style>
+</head>
+<body>
+<h1 id="design.md">DESIGN.md</h1>
+<p>本ドキュメントは、現在の実装内容を分析し設計として整理したものである。実装への追従が必要な生きたドキュメントであり、構造を変更した場合は本ファイルも更新すること。</p>
+<h2 id="概要">1. 概要</h2>
+<p>個人ポートフォリオサイト（1ページ構成）。プロフィール・経歴・実績・連絡先を表示する静的サイトであり、Astroで静的生成しCloudflare
+Workers（Static Assets）にデプロイする構成である。</p>
+<table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr>
+<th>項目</th>
+<th>内容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>フレームワーク</td>
+<td>Astro 7（<code>output</code> 未指定のため静的サイト生成）</td>
+</tr>
+<tr>
+<td>言語</td>
+<td>TypeScript / Astroコンポーネント / SCSS</td>
+</tr>
+<tr>
+<td>ホスティング</td>
+<td>Cloudflare Workers（<code>wrangler.jsonc</code> の
+<code>assets.directory: ./dist</code>）</td>
+</tr>
+<tr>
+<td>ドメイン</td>
+<td><code>www.mchkn.com</code>（カスタムドメインルーティング）</td>
+</tr>
+<tr>
+<td>CI/CD</td>
+<td>GitHub Actions（<code>main</code> push契機で
+<code>npm run deploy</code>）</td>
+</tr>
+<tr>
+<td>サイトマップ</td>
+<td><code>@astrojs/sitemap</code> インテグレーション</td>
+</tr>
+</tbody>
+</table>
+<h2 id="ディレクトリ構成">2. ディレクトリ構成</h2>
+<pre><code>repo/
+├── astro.config.mjs        # site URL・sitemapインテグレーション
+├── wrangler.jsonc           # Cloudflare Workers デプロイ設定
+├── src/
+│   ├── content.config.ts    # Content Collections定義（データ層のスキーマ）
+│   ├── data/                # YAMLデータソース + アイコン定義
+│   ├── assets/images/       # ビルド時最適化される画像
+│   ├── components/
+│   │   ├── atoms/           # 最小単位のUI部品
+│   │   ├── molecules/       # atomsを組み合わせた部品
+│   │   └── organisms/       # ページを構成するセクション単位
+│   ├── layouts/Layout.astro # HTML shell + SEO meta出力
+│   ├── lib/seo.ts           # SEOメタ情報の生成ロジック
+│   ├── pages/index.astro    # 唯一のページ（トップページ）
+│   └── styles/              # SCSS（変数・mixin・コンポーネント別partial）
+└── .github/workflows/deploy.yml</code></pre>
+<h2 id="アーキテクチャ">3. アーキテクチャ</h2>
+<h3 id="レンダリングモデル">3.1 レンダリングモデル</h3>
+<ul>
+<li>Astroのデフォルト（SSG）で全ページをビルド時に静的HTML化する。クライアントサイドJSは出力していない（<code>.astro</code>コンポーネントのみ、hydrationディレクティブ不使用）。</li>
+<li><code>src/pages/index.astro</code>
+が唯一のルートであり、<code>Layout</code> の中に <code>organisms</code>
+を並べる構成。</li>
+</ul>
+<pre><code>index.astro
+└── Layout.astro (HTML shell, &lt;head&gt; SEOタグ)
+    └── main.wrap
+        ├── Hero        (id=&quot;home&quot;)
+        ├── Career      (id=&quot;about&quot;)
+        ├── Work        (id=&quot;work&quot;)
+        └── Connect     (id=&quot;contact&quot;)
+    └── SiteFooter</code></pre>
+<h3 id="コンポーネント設計atomic-design">3.2 コンポーネント設計（Atomic
+Design）</h3>
+<p><code>atoms → molecules → organisms</code>
+の3階層で構成し、下位層は上位層の詳細を知らない一方向依存になっている。</p>
+<table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr>
+<th>階層</th>
+<th>コンポーネント</th>
+<th>役割</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>atoms</td>
+<td><code>Avatar</code></td>
+<td><code>astro:assets</code> の <code>Image</code>
+によるプロフィール画像最適化表示</td>
+</tr>
+<tr>
+<td>atoms</td>
+<td><code>Button</code></td>
+<td><code>variant: 'pill' \| 'blog'</code>
+でクラス出し分けするリンクボタン</td>
+</tr>
+<tr>
+<td>atoms</td>
+<td><code>Icon</code></td>
+<td><code>data/icons.ts</code> のSVGパス定義を
+<code>stroke</code>/<code>fill</code> モードで描画</td>
+</tr>
+<tr>
+<td>atoms</td>
+<td><code>SectionLabel</code></td>
+<td>セクション見出しラベル</td>
+</tr>
+<tr>
+<td>molecules</td>
+<td><code>HeroMetaItem</code></td>
+<td>アイコン+テキストの1行（所在地・生年月日）</td>
+</tr>
+<tr>
+<td>molecules</td>
+<td><code>ProjectCard</code></td>
+<td>実績カード（画像+タイトル+説明）</td>
+</tr>
+<tr>
+<td>molecules</td>
+<td><code>SocialLink</code></td>
+<td><code>Button(variant="pill")</code> + <code>Icon</code> の合成</td>
+</tr>
+<tr>
+<td>molecules</td>
+<td><code>TimelineItem</code></td>
+<td>経歴タイムラインの1エントリ</td>
+</tr>
+<tr>
+<td>organisms</td>
+<td><code>Hero</code></td>
+<td>プロフィール表示 + Contactボタン</td>
+</tr>
+<tr>
+<td>organisms</td>
+<td><code>Career</code></td>
+<td>経歴タイムライン一覧</td>
+</tr>
+<tr>
+<td>organisms</td>
+<td><code>Work</code></td>
+<td>実績一覧（取得失敗時のフォールバック表示あり）</td>
+</tr>
+<tr>
+<td>organisms</td>
+<td><code>Connect</code></td>
+<td>SNSリンク一覧 + Contactボタン</td>
+</tr>
+<tr>
+<td>organisms</td>
+<td><code>SiteFooter</code></td>
+<td>コピーライト表示</td>
+</tr>
+</tbody>
+</table>
+<p>Props型は各コンポーネントで
+<code>CollectionEntry&lt;'xxx'&gt;['data']</code>
+を参照しており、データ層のZodスキーマがそのままUI層の型として再利用されている（型定義の重複を避ける設計）。</p>
+<h3 id="データ層content-collections">3.3 データ層（Content
+Collections）</h3>
+<p><code>src/content.config.ts</code> でYAMLファイルを
+<code>astro/loaders</code> の <code>file()</code>
+ローダーで読み込み、Zodスキーマでバリデーションしている。</p>
+<table>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+</colgroup>
+<thead>
+<tr>
+<th>コレクション</th>
+<th>ソース</th>
+<th>スキーマ概要</th>
+<th>利用箇所</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>profile</code></td>
+<td><code>data/profile.yaml</code></td>
+<td>name / role / location / birthday / seo</td>
+<td>Hero, SiteFooter, Layout(SEO)</td>
+</tr>
+<tr>
+<td><code>career</code></td>
+<td><code>data/career.yaml</code></td>
+<td>order / period / role / org</td>
+<td>Career</td>
+</tr>
+<tr>
+<td><code>projects</code></td>
+<td><code>data/projects.yaml</code>（<strong>未作成</strong>）</td>
+<td>order / title / description / image / alt</td>
+<td>Work</td>
+</tr>
+<tr>
+<td><code>socialLinks</code></td>
+<td><code>data/social.yaml</code></td>
+<td>order / label / href / icon</td>
+<td>Hero, Connect</td>
+</tr>
+<tr>
+<td><code>blog</code></td>
+<td><code>data/blog.yaml</code>（<strong>未作成</strong>）</td>
+<td>label / href</td>
+<td>参照コンポーネントなし</td>
+</tr>
+</tbody>
+</table>
+<p><code>icons</code>
+オブジェクト（<code>data/icons.ts</code>）のキー集合がそのまま
+<code>socialLinks.icon</code> のZod
+enumに使われており、アイコン追加時の一元管理点になっている。</p>
+<h3 id="seo">3.4 SEO</h3>
+<p><code>src/lib/seo.ts</code> の <code>buildSeoMeta()</code>
+が、<code>profile</code> コレクションと呼び出し元の
+<code>SeoInput</code>（title/description/path省略可）からタイトル・description・canonical
+URL・OGP・JSON-LD（<code>schema.org/Person</code>）をまとめて生成し、<code>Layout.astro</code>
+の <code>&lt;head&gt;</code> に展開する。ページ固有のSEO上書きは
+<code>&lt;Layout {...seoProps}&gt;</code> で行う設計だが、現状
+<code>index.astro</code> は上書きなし（デフォルト値を使用）。</p>
+<h3 id="スタイル">3.5 スタイル</h3>
+<ul>
+<li>SCSSを厳密BEM（<code>Block__Element--Modifier</code>。要素は<code>__</code>、モディファイアは<code>--</code>で連結）の命名（<code>.hero__inner</code>
+等）でコンポーネント単位のpartialに分割し、<code>style.scss</code> で
+<code>@use</code> している。</li>
+<li><code>_variables.scss</code>
+に配色・フォント・コンテナ幅・トランジションのデザイントークンを集約。</li>
+<li><code>_mixins.scss</code> に共通化されたmixinを定義。</li>
+<li>コンポーネント側（<code>.astro</code>）にはstyleブロックを持たず、クラス名経由でグローバルSCSSと結合する設計（Astroのscoped
+styleは不使用）。</li>
+</ul>
+<h3 id="デプロイ">3.6 デプロイ</h3>
+<ul>
+<li><code>npm run deploy</code> =
+<code>astro build &amp;&amp; wrangler deploy</code>。</li>
+<li>GitHub Actions（<code>.github/workflows/deploy.yml</code>）が
+<code>main</code> ブランチへのpushをトリガに、Node 22.19.0でビルドし
+<code>CLOUDFLARE_API_TOKEN</code> / <code>CLOUDFLARE_ACCOUNT_ID</code>
+を用いてデプロイする。</li>
+<li>Cloudflare側は静的アセット配信のみ（Workers上でのAPI等は未使用）。</li>
+</ul>
+<h2 id="既知の課題未実装点">4. 既知の課題・未実装点</h2>
+<p>実装調査の過程で確認した、設計上の注意点。リファクタリング対象ではなくドキュメント化のみだが、今後の変更時に踏まえるべき事項として記載する。</p>
+<ol type="1">
+<li><strong><code>projects</code> / <code>blog</code>
+コレクションのデータ未整備</strong>: <code>content.config.ts</code>
+にスキーマは定義済みだが <code>src/data/projects.yaml</code> と
+<code>src/data/blog.yaml</code> が存在しない。<code>Work.astro</code> は
+<code>try/catch</code> でロード失敗を吸収し
+<code>"Cannot fetch Work informations."</code>
+を表示するフォールバック実装があるが、<code>blog</code>
+コレクションは参照箇所自体が存在しない（未使用の定義）。</li>
+<li><strong><code>socialLinks[2]</code> のインデックス直書き</strong>:
+<code>Hero.astro</code> / <code>Connect.astro</code>
+の両方で、Contactボタンのhrefを <code>socialLinks</code>
+ソート結果の3番目（<code>order: 5</code>
+のEmail想定）に固定でアクセスしている。<code>social.yaml</code>
+の並び順や件数を変更すると意図しないリンクになる暗黙の結合がある。</li>
+<li><strong><code>Button</code> の <code>variant="blog"</code>
+命名とButton用途の乖離</strong>: Contact用ボタンに
+<code>variant="blog"</code>（CSSクラス
+<code>blog-button</code>）を使っており、命名とセマンティクスが一致していない。</li>
+<li><strong><code>Button</code>
+のクラス出し分けが厳密BEMのモディファイア規約から外れている</strong>:
+<code>variant</code> によって <code>social-pill</code> /
+<code>blog-button</code>
+という無関係な別クラス名を出力しており、<code>.button--pill</code> /
+<code>.button--blog</code>
+のようなモディファイア（<code>--</code>連結）にはなっていない。</li>
+</ol>
+</body>
+</html>
