@@ -1,11 +1,9 @@
 {
-  "$schema": "node_modules/wrangler/config-schema.json",
-  "name": "portfolio",
-  "compatibility_date": "2026-09-11",
-  "assets": {
-    "directory": "./dist"
-  },
-  "routes": [
-    { "pattern": "www.mchkn.com", "custom_domain": true }
-  ]
+	"$schema": "node_modules/wrangler/config-schema.json",
+	"name": "portfolio",
+	"compatibility_date": "2026-09-11",
+	"assets": {
+		"directory": "./dist",
+	},
+	"routes": [{ "pattern": "www.mchkn.com", "custom_domain": true }],
 }

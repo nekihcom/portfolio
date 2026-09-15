@@ -7,20 +7,27 @@ let projects: Awaited<ReturnType<typeof getCollection<'projects'>>> = [];
 let loadError = false;
 
 try {
-  projects = (await getCollection('projects')).sort((a, b) => a.data.order - b.data.order);
+	projects = (await getCollection('projects')).sort(
+		(a, b) => a.data.order - b.data.order,
+	);
 } catch {
-  loadError = true;
+	loadError = true;
 }
 ---
+
 <section id="work" class="work">
-  <div class="work__inner">
-    <SectionLabel text="WORKS" />
-    {loadError || projects.length === 0 ? (
-      <p class="work__lead">Cannot fetch Work informations.</p>
-    ) : (
-      <div class="work__grid">
-        {projects.map((entry) => <ProjectCard project={entry.data} />)}
-      </div>
-    )}
-  </div>
+	<div class="work__inner">
+		<SectionLabel text="WORKS" />
+		{
+			loadError || projects.length === 0 ? (
+				<p class="work__lead">Cannot fetch Work informations.</p>
+			) : (
+				<div class="work__grid">
+					{projects.map((entry) => (
+						<ProjectCard project={entry.data} />
+					))}
+				</div>
+			)
+		}
+	</div>
 </section>

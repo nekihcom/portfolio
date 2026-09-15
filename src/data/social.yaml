@@ -1,15 +1,15 @@
 - id: x
   order: 1
   label: X
-  href: "https://x.com/nekihcom"
+  href: 'https://x.com/nekihcom'
   icon: x
 - id: github
   order: 2
   label: GitHub
-  href: "https://github.com/nekihcom"
+  href: 'https://github.com/nekihcom'
   icon: github
 - id: email
   order: 5
   label: Email
-  href: "mailto:mchkn.dev@gmail.com"
+  href: 'mailto:mchkn.dev@gmail.com'
   icon: mail

@@ -13,7 +13,15 @@ $color-accent-dark: #71805a;
 $color-accent-light: #dfe6d3;
 
 // Typography
-$font-base: "Sawarabi Gothic", -apple-system, BlinkMacSystemFont, "Hiragino Sans", "Yu Gothic UI", "Segoe UI", Roboto, sans-serif;
+$font-base:
+	'Sawarabi Gothic',
+	-apple-system,
+	BlinkMacSystemFont,
+	'Hiragino Sans',
+	'Yu Gothic UI',
+	'Segoe UI',
+	Roboto,
+	sans-serif;
 
 // Layout
 $container-width: 350px;

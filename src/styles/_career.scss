@@ -1,68 +1,68 @@
-@use "variables" as *;
-@use "mixins" as *;
+@use 'variables' as *;
+@use 'mixins' as *;
 
 .career {
-  // padding: 56px 0;
-  // background-color: $color-bg-alt;
-  // border-top: 1px solid $color-border;
-  // border-bottom: 1px solid $color-border;
+	// padding: 56px 0;
+	// background-color: $color-bg-alt;
+	// border-top: 1px solid $color-border;
+	// border-bottom: 1px solid $color-border;
 
-  &__inner {
-    @include container;
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 32px;
-  }
+	&__inner {
+		@include container;
+		display: grid;
+		grid-template-columns: 1fr;
+		gap: 32px;
+	}
 }
 
 .timeline {
-  position: relative;
-  padding-left: 28px;
+	position: relative;
+	padding-left: 28px;
 
-  &::before {
-    content: "";
-    position: absolute;
-    top: 6px;
-    bottom: 6px;
-    left: 4px;
-    width: 1px;
-    background-color: $color-border;
-  }
+	&::before {
+		content: '';
+		position: absolute;
+		top: 6px;
+		bottom: 6px;
+		left: 4px;
+		width: 1px;
+		background-color: $color-border;
+	}
 
-  &__item {
-    position: relative;
-    padding-bottom: 40px;
+	&__item {
+		position: relative;
+		padding-bottom: 40px;
 
-    &:last-child {
-      padding-bottom: 0;
-    }
-  }
+		&:last-child {
+			padding-bottom: 0;
+		}
+	}
 
-  &__dot {
-    position: absolute;
-    top: 6px;
-    left: -28px;
-    width: 9px;
-    height: 9px;
-    border-radius: 50%;
-    background-color: $color-accent;
-  }
+	&__dot {
+		position: absolute;
+		top: 6px;
+		left: -28px;
+		width: 9px;
+		height: 9px;
+		border-radius: 50%;
+		background-color: $color-accent;
+	}
 
-  &__period {
-    font-size: 13px;
-    color: $color-text-muted;
-  }
+	&__period {
+		font-size: 13px;
+		color: $color-text-muted;
+	}
 
-  &__role {
-    margin-top: 6px;
-    font-size: 17px;
-    font-weight: 600;
-    color: $color-text;
-  }
+	&__role {
+		margin-top: 6px;
+		font-size: 17px;
+		font-weight: 600;
+		color: $color-text;
+	}
 
-  &__org {
-    margin-top: 4px;
-    font-size: 14px;
-    color: $color-text-sub;
-  }
+	&__org {
+		margin-top: 4px;
+		font-size: 14px;
+		color: $color-text-sub;
+	}
 }

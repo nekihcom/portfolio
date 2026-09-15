@@ -3,13 +3,14 @@ import Icon from '../atoms/Icon.astro';
 import type { IconName } from '../../data/icons';
 
 interface Props {
-  icon: IconName;
-  text: string;
+	icon: IconName;
+	text: string;
 }
 
 const { icon, text } = Astro.props;
 ---
+
 <li class="hero__meta-item">
-  <Icon name={icon} />
-  <span>{text}</span>
+	<Icon name={icon} />
+	<span>{text}</span>
 </li>

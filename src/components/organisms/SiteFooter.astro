@@ -5,6 +5,7 @@ const profileEntry = await getEntry('profile', 'default');
 const profile = profileEntry!.data;
 const year = new Date().getFullYear();
 ---
+
 <footer class="footer">
-  <p>&copy; {year} {profile.name}. All rights reserved.</p>
+	<p>&copy; {year} {profile.name}. All rights reserved.</p>
 </footer>

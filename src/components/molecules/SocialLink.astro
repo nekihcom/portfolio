@@ -4,12 +4,13 @@ import Icon from '../atoms/Icon.astro';
 import type { CollectionEntry } from 'astro:content';
 
 interface Props {
-  link: CollectionEntry<'socialLinks'>['data'];
+	link: CollectionEntry<'socialLinks'>['data'];
 }
 
 const { link } = Astro.props;
 ---
+
 <Button href={link.href} variant="pill">
-  <Icon name={link.icon} />
-  <span>{link.label}</span>
+	<Icon name={link.icon} />
+	<span>{link.label}</span>
 </Button>

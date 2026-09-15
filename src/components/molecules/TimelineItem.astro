@@ -2,14 +2,15 @@
 import type { CollectionEntry } from 'astro:content';
 
 interface Props {
-  entry: CollectionEntry<'career'>['data'];
+	entry: CollectionEntry<'career'>['data'];
 }
 
 const { entry } = Astro.props;
 ---
+
 <li class="timeline__item">
-  <span class="timeline__dot"></span>
-  <p class="timeline__period">{entry.period}</p>
-  <p class="timeline__role">{entry.role}</p>
-  <p class="timeline__org">{entry.org}</p>
+	<span class="timeline__dot"></span>
+	<p class="timeline__period">{entry.period}</p>
+	<p class="timeline__role">{entry.role}</p>
+	<p class="timeline__org">{entry.org}</p>
 </li>

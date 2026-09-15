@@ -1,86 +1,86 @@
-@use "variables" as *;
-@use "mixins" as *;
+@use 'variables' as *;
+@use 'mixins' as *;
 
 .work {
-  // padding: 56px 0;
+	// padding: 56px 0;
 
-  &__inner {
-    @include container;
-  }
+	&__inner {
+		@include container;
+	}
 
-  &__lead {
-    margin-top: 16px;
-    font-size: 15px;
-    color: $color-text-sub;
-  }
+	&__lead {
+		margin-top: 16px;
+		font-size: 15px;
+		color: $color-text-sub;
+	}
 
-  &__grid {
-    margin-top: 32px;
-    display: flex;
-    flex-direction: column;
-    gap: 24px;
-  }
+	&__grid {
+		margin-top: 32px;
+		display: flex;
+		flex-direction: column;
+		gap: 24px;
+	}
 }
 
 .project-card {
-  display: flex;
-  align-items: flex-start;
-  gap: 16px;
+	display: flex;
+	align-items: flex-start;
+	gap: 16px;
 
-  &__thumb {
-    flex-shrink: 0;
-    width: 42%;
-    border-radius: 12px;
-    overflow: hidden;
-    background-color: $color-bg-alt;
-    aspect-ratio: 3 / 2;
-    transition: transform $transition-base;
-  }
+	&__thumb {
+		flex-shrink: 0;
+		width: 42%;
+		border-radius: 12px;
+		overflow: hidden;
+		background-color: $color-bg-alt;
+		aspect-ratio: 3 / 2;
+		transition: transform $transition-base;
+	}
 
-  &:hover &__thumb {
-    transform: translateY(-4px);
-  }
+	&:hover &__thumb {
+		transform: translateY(-4px);
+	}
 
-  &__thumb img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
+	&__thumb img {
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+	}
 
-  &__body {
-    flex: 1;
-    min-width: 0;
-  }
+	&__body {
+		flex: 1;
+		min-width: 0;
+	}
 
-  &__title {
-    font-size: 17px;
-    font-weight: 700;
-    color: $color-text;
-  }
+	&__title {
+		font-size: 17px;
+		font-weight: 700;
+		color: $color-text;
+	}
 
-  &__desc {
-    margin-top: 6px;
-    font-size: 13px;
-    color: $color-text-sub;
-  }
+	&__desc {
+		margin-top: 6px;
+		font-size: 13px;
+		color: $color-text-sub;
+	}
 
-  &__link {
-    margin-top: 10px;
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    font-size: 13px;
-    font-weight: 600;
-    color: $color-accent-dark;
-    transition: gap $transition-base;
+	&__link {
+		margin-top: 10px;
+		display: inline-flex;
+		align-items: center;
+		gap: 6px;
+		font-size: 13px;
+		font-weight: 600;
+		color: $color-accent-dark;
+		transition: gap $transition-base;
 
-    .icon {
-      width: 16px;
-      height: 16px;
-    }
+		.icon {
+			width: 16px;
+			height: 16px;
+		}
 
-    &:hover {
-      gap: 10px;
-    }
-  }
+		&:hover {
+			gap: 10px;
+		}
+	}
 }

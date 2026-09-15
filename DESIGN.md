@@ -6,14 +6,14 @@
 
 個人ポートフォリオサイト（1ページ構成）。プロフィール・経歴・実績・連絡先を表示する静的サイトであり、Astroで静的生成しCloudflare Workers（Static Assets）にデプロイする構成である。
 
-| 項目 | 内容 |
-| --- | --- |
-| フレームワーク | Astro 7（`output` 未指定のため静的サイト生成） |
-| 言語 | TypeScript / Astroコンポーネント / SCSS |
-| ホスティング | Cloudflare Workers（`wrangler.jsonc` の `assets.directory: ./dist`） |
-| ドメイン | `www.mchkn.com`（カスタムドメインルーティング） |
-| CI/CD | GitHub Actions（`main` push契機で `npm run deploy`） |
-| サイトマップ | `@astrojs/sitemap` インテグレーション |
+| 項目           | 内容                                                                 |
+| -------------- | -------------------------------------------------------------------- |
+| フレームワーク | Astro 7（`output` 未指定のため静的サイト生成）                       |
+| 言語           | TypeScript / Astroコンポーネント / SCSS                              |
+| ホスティング   | Cloudflare Workers（`wrangler.jsonc` の `assets.directory: ./dist`） |
+| ドメイン       | `www.mchkn.com`（カスタムドメインルーティング）                      |
+| CI/CD          | GitHub Actions（`main` push契機で `npm run deploy`）                 |
+| サイトマップ   | `@astrojs/sitemap` インテグレーション                                |
 
 ## 2. ディレクトリ構成
 
@@ -58,21 +58,21 @@ index.astro
 
 `atoms → molecules → organisms` の3階層で構成し、下位層は上位層の詳細を知らない一方向依存になっている。
 
-| 階層 | コンポーネント | 役割 |
-| --- | --- | --- |
-| atoms | `Avatar` | `astro:assets` の `Image` によるプロフィール画像最適化表示 |
-| atoms | `Button` | `variant: 'pill' \| 'blog'` でクラス出し分けするリンクボタン |
-| atoms | `Icon` | `data/icons.ts` のSVGパス定義を `stroke`/`fill` モードで描画 |
-| atoms | `SectionLabel` | セクション見出しラベル |
-| molecules | `HeroMetaItem` | アイコン+テキストの1行（所在地・生年月日） |
-| molecules | `ProjectCard` | 実績カード（画像+タイトル+説明） |
-| molecules | `SocialLink` | `Button(variant="pill")` + `Icon` の合成 |
-| molecules | `TimelineItem` | 経歴タイムラインの1エントリ |
-| organisms | `Hero` | プロフィール表示 + Contactボタン |
-| organisms | `Career` | 経歴タイムライン一覧 |
-| organisms | `Work` | 実績一覧（取得失敗時のフォールバック表示あり） |
-| organisms | `Connect` | SNSリンク一覧 + Contactボタン |
-| organisms | `SiteFooter` | コピーライト表示 |
+| 階層      | コンポーネント | 役割                                                         |
+| --------- | -------------- | ------------------------------------------------------------ |
+| atoms     | `Avatar`       | `astro:assets` の `Image` によるプロフィール画像最適化表示   |
+| atoms     | `Button`       | `variant: 'pill' \| 'blog'` でクラス出し分けするリンクボタン |
+| atoms     | `Icon`         | `data/icons.ts` のSVGパス定義を `stroke`/`fill` モードで描画 |
+| atoms     | `SectionLabel` | セクション見出しラベル                                       |
+| molecules | `HeroMetaItem` | アイコン+テキストの1行（所在地・生年月日）                   |
+| molecules | `ProjectCard`  | 実績カード（画像+タイトル+説明）                             |
+| molecules | `SocialLink`   | `Button(variant="pill")` + `Icon` の合成                     |
+| molecules | `TimelineItem` | 経歴タイムラインの1エントリ                                  |
+| organisms | `Hero`         | プロフィール表示 + Contactボタン                             |
+| organisms | `Career`       | 経歴タイムライン一覧                                         |
+| organisms | `Work`         | 実績一覧（取得失敗時のフォールバック表示あり）               |
+| organisms | `Connect`      | SNSリンク一覧 + Contactボタン                                |
+| organisms | `SiteFooter`   | コピーライト表示                                             |
 
 Props型は各コンポーネントで `CollectionEntry<'xxx'>['data']` を参照しており、データ層のZodスキーマがそのままUI層の型として再利用されている（型定義の重複を避ける設計）。
 
@@ -80,13 +80,13 @@ Props型は各コンポーネントで `CollectionEntry<'xxx'>['data']` を参�
 
 `src/content.config.ts` でYAMLファイルを `astro/loaders` の `file()` ローダーで読み込み、Zodスキーマでバリデーションしている。
 
-| コレクション | ソース | スキーマ概要 | 利用箇所 |
-| --- | --- | --- | --- |
-| `profile` | `data/profile.yaml` | name / role / location / birthday / seo | Hero, SiteFooter, Layout(SEO) |
-| `career` | `data/career.yaml` | order / period / role / org | Career |
-| `projects` | `data/projects.yaml`（**未作成**） | order / title / description / image / alt | Work |
-| `socialLinks` | `data/social.yaml` | order / label / href / icon | Hero, Connect |
-| `blog` | `data/blog.yaml`（**未作成**） | label / href | 参照コンポーネントなし |
+| コレクション  | ソース                             | スキーマ概要                              | 利用箇所                      |
+| ------------- | ---------------------------------- | ----------------------------------------- | ----------------------------- |
+| `profile`     | `data/profile.yaml`                | name / role / location / birthday / seo   | Hero, SiteFooter, Layout(SEO) |
+| `career`      | `data/career.yaml`                 | order / period / role / org               | Career                        |
+| `projects`    | `data/projects.yaml`（**未作成**） | order / title / description / image / alt | Work                          |
+| `socialLinks` | `data/social.yaml`                 | order / label / href / icon               | Hero, Connect                 |
+| `blog`        | `data/blog.yaml`（**未作成**）     | label / href                              | 参照コンポーネントなし        |
 
 `icons` オブジェクト（`data/icons.ts`）のキー集合がそのまま `socialLinks.icon` のZod enumに使われており、アイコン追加時の一元管理点になっている。
 

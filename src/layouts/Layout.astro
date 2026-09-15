@@ -8,6 +8,7 @@ interface Props extends SeoInput {}
 const profileEntry = await getEntry('profile', 'default');
 const seo = buildSeoMeta(Astro.site, profileEntry!.data, Astro.props);
 ---
+
 <!doctype html>
 <html lang="ja">
 	<head>
