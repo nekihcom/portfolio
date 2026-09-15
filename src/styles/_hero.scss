@@ -2,12 +2,6 @@
 @use 'mixins' as *;
 
 .hero {
-	// padding: 32px 0 40px;
-
-	&__inner {
-		@include container;
-	}
-
 	&__container {
 		display: flex;
 		flex-direction: row;

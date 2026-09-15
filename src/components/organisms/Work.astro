@@ -20,11 +20,11 @@ try {
 		<SectionLabel text="WORKS" />
 		{
 			loadError || projects.length === 0 ? (
-				<p class="work__lead">Cannot fetch Work informations.</p>
+				<p class="work__lead reveal">Cannot fetch Work informations.</p>
 			) : (
 				<div class="work__grid">
-					{projects.map((entry) => (
-						<ProjectCard project={entry.data} />
+					{projects.map((entry, index) => (
+						<ProjectCard project={entry.data} index={index} />
 					))}
 				</div>
 			)

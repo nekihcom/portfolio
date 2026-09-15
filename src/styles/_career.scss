@@ -2,13 +2,7 @@
 @use 'mixins' as *;
 
 .career {
-	// padding: 56px 0;
-	// background-color: $color-bg-alt;
-	// border-top: 1px solid $color-border;
-	// border-bottom: 1px solid $color-border;
-
 	&__inner {
-		@include container;
 		display: grid;
 		grid-template-columns: 1fr;
 		gap: 32px;

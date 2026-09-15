@@ -14,7 +14,11 @@ const career = (await getCollection('career')).sort(
 			<SectionLabel text="CAREER" />
 		</div>
 		<ol class="timeline">
-			{career.map((entry) => <TimelineItem entry={entry.data} />)}
+			{
+				career.map((entry, index) => (
+					<TimelineItem entry={entry.data} index={index} />
+				))
+			}
 		</ol>
 	</div>
 </section>

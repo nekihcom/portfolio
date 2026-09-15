@@ -3,12 +3,13 @@ import type { CollectionEntry } from 'astro:content';
 
 interface Props {
 	entry: CollectionEntry<'career'>['data'];
+	index: number;
 }
 
-const { entry } = Astro.props;
+const { entry, index } = Astro.props;
 ---
 
-<li class="timeline__item">
+<li class="timeline__item reveal" style={`transition-delay: ${index * 80}ms`}>
 	<span class="timeline__dot"></span>
 	<p class="timeline__period">{entry.period}</p>
 	<p class="timeline__role">{entry.role}</p>

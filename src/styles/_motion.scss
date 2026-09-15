@@ -1,0 +1,22 @@
+@use 'variables' as *;
+
+.reveal {
+	opacity: 0;
+	transform: translateY($reveal-offset);
+	transition:
+		opacity $reveal-duration $reveal-easing,
+		transform $reveal-duration $reveal-easing;
+
+	&.is-visible {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.reveal {
+		opacity: 1;
+		transform: none;
+		transition: none;
+	}
+}

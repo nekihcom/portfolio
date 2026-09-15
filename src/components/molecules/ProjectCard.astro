@@ -4,12 +4,16 @@ import type { CollectionEntry } from 'astro:content';
 
 interface Props {
 	project: CollectionEntry<'projects'>['data'];
+	index: number;
 }
 
-const { project } = Astro.props;
+const { project, index } = Astro.props;
 ---
 
-<article class="project-card">
+<article
+	class="project-card reveal"
+	style={`transition-delay: ${index * 80}ms`}
+>
 	<div class="project-card__thumb">
 		<Image src={project.image} alt={project.alt} />
 	</div>

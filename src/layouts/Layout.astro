@@ -43,5 +43,8 @@ const seo = buildSeoMeta(Astro.site, profileEntry!.data, Astro.props);
 	</head>
 	<body>
 		<slot />
+		<script>
+			import '../scripts/reveal';
+		</script>
 	</body>
 </html>

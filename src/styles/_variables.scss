@@ -28,3 +28,9 @@ $container-width: 350px;
 
 // Transitions
 $transition-base: 0.2s ease;
+
+// Scroll reveal motion
+$reveal-duration: 0.6s;
+$reveal-easing: ease-out;
+$reveal-offset: 20px;
+$reveal-stagger-step: 80ms;

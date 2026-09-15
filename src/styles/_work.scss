@@ -2,12 +2,6 @@
 @use 'mixins' as *;
 
 .work {
-	// padding: 56px 0;
-
-	&__inner {
-		@include container;
-	}
-
 	&__lead {
 		margin-top: 16px;
 		font-size: 15px;

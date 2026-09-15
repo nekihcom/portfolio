@@ -15,8 +15,8 @@ const socialLinks = (await getCollection('socialLinks')).sort(
 		<SectionLabel text="CONNECT" />
 		<ul class="connect__social">
 			{
-				socialLinks.map((link) => (
-					<li>
+				socialLinks.map((link, index) => (
+					<li class="reveal" style={`transition-delay: ${index * 80}ms`}>
 						<SocialLink link={link.data} />
 					</li>
 				))
