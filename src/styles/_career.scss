@@ -47,16 +47,17 @@
 		color: $color-text-muted;
 	}
 
-	&__role {
+	&__org {
 		margin-top: 6px;
 		font-size: 17px;
 		font-weight: 600;
 		color: $color-text;
 	}
 
-	&__org {
+	&__role {
 		margin-top: 4px;
 		font-size: 14px;
+		font-weight: 400;
 		color: $color-text-sub;
 	}
 }
