@@ -1,13 +1,13 @@
 ---
 import { getCollection } from 'astro:content';
 import SectionLabel from '../atoms/SectionLabel.astro';
-import ProjectCard from '../molecules/ProjectCard.astro';
+import WorkCard from '../molecules/WorkCard.astro';
 
-let projects: Awaited<ReturnType<typeof getCollection<'projects'>>> = [];
+let works: Awaited<ReturnType<typeof getCollection<'works'>>> = [];
 let loadError = false;
 
 try {
-	projects = (await getCollection('projects')).sort(
+	works = (await getCollection('works')).sort(
 		(a, b) => a.data.order - b.data.order,
 	);
 } catch {
@@ -19,12 +19,12 @@ try {
 	<div class="work__inner">
 		<SectionLabel text="WORKS" />
 		{
-			loadError || projects.length === 0 ? (
+			loadError || works.length === 0 ? (
 				<p class="work__lead reveal">Cannot fetch Work informations.</p>
 			) : (
 				<div class="work__grid">
-					{projects.map((entry, index) => (
-						<ProjectCard project={entry.data} index={index} />
+					{works.map((entry, index) => (
+						<WorkCard work={entry.data} index={index} />
 					))}
 				</div>
 			)

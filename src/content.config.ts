@@ -28,8 +28,8 @@ const career = defineCollection({
 	}),
 });
 
-const projects = defineCollection({
-	loader: file('src/data/projects.yaml'),
+const works = defineCollection({
+	loader: file('src/data/works.yaml'),
 	schema: ({ image }) =>
 		z.object({
 			order: z.number(),

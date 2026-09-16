@@ -65,7 +65,7 @@ index.astro
 | atoms     | `Icon`         | `data/icons.ts` のSVGパス定義を `stroke`/`fill` モードで描画 |
 | atoms     | `SectionLabel` | セクション見出しラベル                                       |
 | molecules | `HeroMetaItem` | アイコン+テキストの1行（所在地・生年月日）                   |
-| molecules | `ProjectCard`  | 実績カード（画像+タイトル+説明）                             |
+| molecules | `WorkCard`     | 実績カード（画像+タイトル+説明）                             |
 | molecules | `SocialLink`   | `Button(variant="pill")` + `Icon` の合成                     |
 | molecules | `TimelineItem` | 経歴タイムラインの1エントリ                                  |
 | organisms | `Hero`         | プロフィール表示 + Contactボタン                             |
@@ -84,7 +84,7 @@ Props型は各コンポーネントで `CollectionEntry<'xxx'>['data']` を参�
 | ------------- | ---------------------------------- | ----------------------------------------- | ----------------------------- |
 | `profile`     | `data/profile.yaml`                | name / role / location / birthday / seo   | Hero, SiteFooter, Layout(SEO) |
 | `career`      | `data/career.yaml`                 | order / period / role / org               | Career                        |
-| `projects`    | `data/projects.yaml`（**未作成**） | order / title / description / image / alt | Work                          |
+| `works`       | `data/works.yaml`（**未作成**）    | order / title / description / image / alt | Work                          |
 | `socialLinks` | `data/social.yaml`                 | order / label / href / icon               | Hero, Connect                 |
 | `blog`        | `data/blog.yaml`（**未作成**）     | label / href                              | 参照コンポーネントなし        |
 
@@ -111,7 +111,7 @@ Props型は各コンポーネントで `CollectionEntry<'xxx'>['data']` を参�
 
 実装調査の過程で確認した、設計上の注意点。リファクタリング対象ではなくドキュメント化のみだが、今後の変更時に踏まえるべき事項として記載する。
 
-1. **`projects` / `blog` コレクションのデータ未整備**: `content.config.ts` にスキーマは定義済みだが `src/data/projects.yaml` と `src/data/blog.yaml` が存在しない。`Work.astro` は `try/catch` でロード失敗を吸収し `"Cannot fetch Work informations."` を表示するフォールバック実装があるが、`blog` コレクションは参照箇所自体が存在しない（未使用の定義）。
+1. **`works` / `blog` コレクションのデータ未整備**: `content.config.ts` にスキーマは定義済みだが `src/data/works.yaml` と `src/data/blog.yaml` が存在しない。`Work.astro` は `try/catch` でロード失敗を吸収し `"Cannot fetch Work informations."` を表示するフォールバック実装があるが、`blog` コレクションは参照箇所自体が存在しない（未使用の定義）。
 2. **`socialLinks[2]` のインデックス直書き**: `Hero.astro` / `Connect.astro` の両方で、Contactボタンのhrefを `socialLinks` ソート結果の3番目（`order: 5` のEmail想定）に固定でアクセスしている。`social.yaml` の並び順や件数を変更すると意図しないリンクになる暗黙の結合がある。
 3. **`Button` の `variant="blog"` 命名とButton用途の乖離**: Contact用ボタンに `variant="blog"`（CSSクラス `blog-button`）を使っており、命名とセマンティクスが一致していない。
 4. **`Button` のクラス出し分けが厳密BEMのモディファイア規約から外れている**: `variant` によって `social-pill` / `blog-button` という無関係な別クラス名を出力しており、`.button--pill` / `.button--blog` のようなモディファイア（`--`連結）にはなっていない。

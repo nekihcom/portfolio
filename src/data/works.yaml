@@ -1,0 +1,6 @@
+- id: sample-project
+  order: 1
+  title: サンプルプロジェクト
+  description: プロジェクトの概要をここに記載する。
+  image: ../assets/images/profile.png
+  alt: サンプルプロジェクトのスクリーンショット
