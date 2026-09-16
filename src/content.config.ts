@@ -51,12 +51,19 @@ const socialLinks = defineCollection({
 	}),
 });
 
-const blog = defineCollection({
-	loader: file('src/data/blog.yaml'),
-	schema: z.object({
-		label: z.string(),
-		href: z.string(),
-	}),
-});
+// const blog = defineCollection({
+// 	loader: file('src/data/blog.yaml'),
+// 	schema: z.object({
+// 		label: z.string(),
+// 		href: z.string(),
+// 	}),
+// });
 
-export const collections = { profile, career, projects, socialLinks, blog };
+export const collections = 
+{ 
+	profile, 
+	career,
+	works,
+	socialLinks,
+	// blog
+};
