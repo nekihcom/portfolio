@@ -43,6 +43,7 @@ const works = defineCollection({
 const socialLinks = defineCollection({
 	loader: file('src/data/social.yaml'),
 	schema: z.object({
+		id: z.string(),
 		order: z.number(),
 		label: z.string(),
 		href: z.string(),

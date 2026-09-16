@@ -22,7 +22,10 @@ const socialLinks = (await getCollection('socialLinks')).sort(
 				))
 			}
 		</ul>
-		<Button href={socialLinks[2]?.data.href} variant="blog">
+		<Button
+			href={socialLinks.find((link) => link.data.id === 'email')?.data.href}
+			variant="solid"
+		>
 			<span>Contact Me</span>
 			<Icon name="external-link" />
 		</Button>
