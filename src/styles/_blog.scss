@@ -8,11 +8,11 @@
 	grid-template-columns: minmax(0, 1fr);
 }
 
-.back-link {
+// 矢印アイコン付きの文字リンク。ホバーで矢印との間隔が開き、移動先があることを示す
+@mixin arrow-link {
 	display: inline-flex;
 	align-items: center;
 	gap: 6px;
-	margin-bottom: 24px;
 	font-size: 13px;
 	font-weight: 600;
 	color: $color-accent-dark;
@@ -25,6 +25,18 @@
 
 	&:hover {
 		gap: 10px;
+	}
+}
+
+.back-link {
+	@include arrow-link;
+	margin-bottom: 24px;
+}
+
+.blog {
+	&__more {
+		@include arrow-link;
+		margin-top: 28px;
 	}
 }
 

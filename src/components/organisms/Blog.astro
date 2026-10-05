@@ -1,0 +1,26 @@
+---
+import SectionLabel from '../atoms/SectionLabel.astro';
+import Icon from '../atoms/Icon.astro';
+import PostList from './PostList.astro';
+import { getCategories, getPosts } from '../../lib/blog';
+
+const LATEST_COUNT = 3;
+
+const [posts, categories] = await Promise.all([getPosts(), getCategories()]);
+const latest = posts.slice(0, LATEST_COUNT);
+---
+
+<section id="blog" class="blog">
+	<div class="blog__inner">
+		<SectionLabel text="BLOG" />
+		<PostList posts={latest} categories={categories} />
+		{
+			posts.length > 0 && (
+				<a href="/blog" class="blog__more reveal">
+					<span>すべての記事を見る</span>
+					<Icon name="arrow-right" />
+				</a>
+			)
+		}
+	</div>
+</section>
