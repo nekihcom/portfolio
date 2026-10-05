@@ -3,8 +3,10 @@ import type { GetStaticPaths } from 'astro';
 import { render } from 'astro:content';
 import Layout from '../../layouts/Layout.astro';
 import Icon from '../../components/atoms/Icon.astro';
+import CategoryBadge from '../../components/atoms/CategoryBadge.astro';
 import SiteFooter from '../../components/organisms/SiteFooter.astro';
 import {
+	categoryPath,
 	findCategory,
 	formatDate,
 	getCategories,
@@ -43,7 +45,10 @@ const { Content } = await render(post);
 					<time datetime={post.data.publishedAt.toISOString()}>
 						{formatDate(post.data.publishedAt)}
 					</time>
-					<span class="post__category">{category.label}</span>
+					<CategoryBadge
+						href={categoryPath(category.id)}
+						label={category.label}
+					/>
 				</div>
 				<h1 class="post__title">{post.data.title}</h1>
 			</header>

@@ -19,7 +19,7 @@ const { posts, categories } = Astro.props;
 				<li>
 					<PostCard
 						post={post}
-						categoryLabel={findCategory(categories, post.data.category).label}
+						category={findCategory(categories, post.data.category)}
 						index={index}
 					/>
 				</li>

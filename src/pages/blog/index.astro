@@ -2,6 +2,7 @@
 import Layout from '../../layouts/Layout.astro';
 import SectionLabel from '../../components/atoms/SectionLabel.astro';
 import Icon from '../../components/atoms/Icon.astro';
+import CategoryNav from '../../components/molecules/CategoryNav.astro';
 import PostList from '../../components/organisms/PostList.astro';
 import SiteFooter from '../../components/organisms/SiteFooter.astro';
 import { getCategories, getPosts } from '../../lib/blog';
@@ -23,6 +24,7 @@ const [posts, categories] = await Promise.all([getPosts(), getCategories()]);
 			</a>
 			<SectionLabel text="BLOG" />
 			<h1 class="section-title">記事一覧</h1>
+			<CategoryNav categories={categories} />
 			<div class="blog-index__list">
 				<PostList posts={posts} categories={categories} />
 			</div>

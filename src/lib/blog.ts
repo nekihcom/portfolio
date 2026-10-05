@@ -38,6 +38,10 @@ export function findCategory(
 	return { id: category.id, ...category.data };
 }
 
+export function categoryPath(id: string): string {
+	return `/blog/category/${id}`;
+}
+
 // ビルド環境（CI は UTC）に関係なく、日本時間の日付で表示する
 const dateFormatter = new Intl.DateTimeFormat('ja-JP', {
 	timeZone: 'Asia/Tokyo',
