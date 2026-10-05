@@ -1,0 +1,81 @@
+@use 'variables' as *;
+@use 'mixins' as *;
+
+// トップの 1 カラム幅（$container-width）では記事本文やコードが窮屈なため、ブログ系ページだけ広げる
+.wrap--wide {
+	max-width: $article-width;
+}
+
+.back-link {
+	display: inline-flex;
+	align-items: center;
+	gap: 6px;
+	margin-bottom: 24px;
+	font-size: 13px;
+	font-weight: 600;
+	color: $color-accent-dark;
+	transition: gap $transition-base;
+
+	.icon {
+		width: 16px;
+		height: 16px;
+	}
+
+	&:hover {
+		gap: 10px;
+	}
+}
+
+.blog-index {
+	&__list {
+		margin-top: 32px;
+	}
+}
+
+.post-list {
+	display: flex;
+	flex-direction: column;
+	gap: 28px;
+
+	&__empty {
+		font-size: 15px;
+		color: $color-text-sub;
+	}
+}
+
+.post-card {
+	&__meta {
+		display: flex;
+		flex-wrap: wrap;
+		align-items: center;
+		gap: 4px 12px;
+		font-size: 13px;
+		color: $color-text-muted;
+	}
+
+	&__category {
+		color: $color-accent-dark;
+	}
+
+	&__title {
+		margin-top: 6px;
+		font-size: 17px;
+		font-weight: 700;
+		line-height: 1.5;
+		color: $color-text;
+	}
+
+	&__link {
+		transition: color $transition-base;
+
+		&:hover {
+			color: $color-accent-dark;
+		}
+	}
+
+	&__desc {
+		margin-top: 6px;
+		font-size: 13px;
+		color: $color-text-sub;
+	}
+}

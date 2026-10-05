@@ -50,6 +50,10 @@ export const icons = {
 		mode: 'stroke',
 		markup: '<path d="M5 12h14M13 6l6 6-6 6"/>',
 	},
+	'arrow-left': {
+		mode: 'stroke',
+		markup: '<path d="M19 12H5M11 6l-6 6 6 6"/>',
+	},
 } as const satisfies Record<string, IconDef>;
 
 export type IconName = keyof typeof icons;

@@ -1,0 +1,29 @@
+---
+import PostCard from '../molecules/PostCard.astro';
+import { findCategory, type Category, type Post } from '../../lib/blog';
+
+interface Props {
+	posts: Post[];
+	categories: Category[];
+}
+
+const { posts, categories } = Astro.props;
+---
+
+{
+	posts.length === 0 ? (
+		<p class="post-list__empty reveal">記事はまだありません。</p>
+	) : (
+		<ul class="post-list">
+			{posts.map((post, index) => (
+				<li>
+					<PostCard
+						post={post}
+						categoryLabel={findCategory(categories, post.data.category).label}
+						index={index}
+					/>
+				</li>
+			))}
+		</ul>
+	)
+}

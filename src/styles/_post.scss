@@ -1,0 +1,128 @@
+@use 'variables' as *;
+@use 'mixins' as *;
+
+.post {
+	&__meta {
+		display: flex;
+		flex-wrap: wrap;
+		align-items: center;
+		gap: 4px 12px;
+		font-size: 13px;
+		color: $color-text-muted;
+	}
+
+	&__category {
+		color: $color-accent-dark;
+	}
+
+	&__title {
+		margin-top: 8px;
+		font-size: 24px;
+		font-weight: 700;
+		line-height: 1.4;
+		letter-spacing: -0.01em;
+
+		@include pc {
+			font-size: 28px;
+		}
+	}
+
+	&__footer {
+		margin-top: 56px;
+		padding-top: 24px;
+		border-top: 1px solid $color-border;
+	}
+
+	// 本文は Notion から生成した HTML でクラスを付けられないため、要素セレクタで組版する
+	&__body {
+		margin-top: 40px;
+		font-size: 16px;
+		line-height: 1.9;
+		overflow-wrap: anywhere;
+
+		> * + * {
+			margin-top: 1.25em;
+		}
+
+		h1,
+		h2,
+		h3 {
+			margin-top: 2.2em;
+			line-height: 1.5;
+			font-weight: 700;
+		}
+
+		h1 {
+			font-size: 22px;
+		}
+
+		h2 {
+			padding-bottom: 8px;
+			border-bottom: 1px solid $color-border;
+			font-size: 20px;
+		}
+
+		h3 {
+			font-size: 17px;
+		}
+
+		a {
+			color: $color-accent-dark;
+			text-decoration: underline;
+			text-underline-offset: 3px;
+		}
+
+		ul,
+		ol {
+			padding-left: 1.5em;
+		}
+
+		ul {
+			list-style: disc;
+		}
+
+		ol {
+			list-style: decimal;
+		}
+
+		li + li,
+		li > ul,
+		li > ol {
+			margin-top: 0.4em;
+		}
+
+		blockquote {
+			margin-left: 0;
+			margin-right: 0;
+			padding: 4px 0 4px 16px;
+			border-left: 3px solid $color-accent-light;
+			color: $color-text-sub;
+		}
+
+		hr {
+			margin: 2.5em 0;
+			border: none;
+			border-top: 1px solid $color-border;
+		}
+
+		img {
+			height: auto;
+			border-radius: 8px;
+		}
+
+		:not(pre) > code {
+			padding: 2px 6px;
+			border-radius: 4px;
+			background-color: $color-bg-alt;
+			font-size: 0.9em;
+		}
+
+		pre {
+			padding: 16px;
+			border-radius: 8px;
+			overflow-x: auto;
+			font-size: 14px;
+			line-height: 1.6;
+		}
+	}
+}
