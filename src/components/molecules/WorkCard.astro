@@ -10,10 +10,7 @@ interface Props {
 const { work, index } = Astro.props;
 ---
 
-<article
-	class="work-card reveal"
-	style={`transition-delay: ${index * 80}ms`}
->
+<article class="work-card reveal" style={`transition-delay: ${index * 80}ms`}>
 	<div class="work-card__thumb">
 		<Image src={work.image} alt={work.alt} />
 	</div>

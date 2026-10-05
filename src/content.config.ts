@@ -59,9 +59,8 @@ const socialLinks = defineCollection({
 // 	}),
 // });
 
-export const collections = 
-{ 
-	profile, 
+export const collections = {
+	profile,
 	career,
 	works,
 	socialLinks,
