@@ -4,6 +4,9 @@ dist/
 # generated types
 .astro/
 
+# Notion から build 時にダウンロードする画像
+public/notion-images/
+
 # dependencies
 node_modules/
 

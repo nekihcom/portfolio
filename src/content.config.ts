@@ -1,6 +1,7 @@
 import { defineCollection, z } from 'astro:content';
 import { file } from 'astro/loaders';
 import { icons, type IconName } from './data/icons';
+import { notionLoader } from './lib/notion/loader';
 
 const iconNames = Object.keys(icons) as [IconName, ...IconName[]];
 
@@ -51,18 +52,31 @@ const socialLinks = defineCollection({
 	}),
 });
 
-// const blog = defineCollection({
-// 	loader: file('src/data/blog.yaml'),
-// 	schema: z.object({
-// 		label: z.string(),
-// 		href: z.string(),
-// 	}),
-// });
+const blog = defineCollection({
+	loader: notionLoader(),
+	schema: z.object({
+		title: z.string(),
+		category: z.string(),
+		description: z.string(),
+		publishedAt: z.coerce.date(),
+		updatedAt: z.coerce.date(),
+	}),
+});
+
+// URL には Notion の選択肢名（id）を使い、表示名はここで管理する
+const categories = defineCollection({
+	loader: file('src/data/categories.yaml'),
+	schema: z.object({
+		order: z.number(),
+		label: z.string(),
+	}),
+});
 
 export const collections = {
 	profile,
 	career,
 	works,
 	socialLinks,
-	// blog
+	blog,
+	categories,
 };
