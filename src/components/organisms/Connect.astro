@@ -8,6 +8,9 @@ import Icon from '../atoms/Icon.astro';
 const socialLinks = (await getCollection('socialLinks')).sort(
 	(a, b) => a.data.order - b.data.order,
 );
+// social.yaml から email を外した場合に、リンク先のないボタンを出さない
+const emailHref = socialLinks.find((link) => link.data.id === 'email')?.data
+	.href;
 ---
 
 <section id="contact" class="connect">
@@ -22,12 +25,13 @@ const socialLinks = (await getCollection('socialLinks')).sort(
 				))
 			}
 		</ul>
-		<Button
-			href={socialLinks.find((link) => link.data.id === 'email')?.data.href}
-			variant="solid"
-		>
-			<span>Contact Me</span>
-			<Icon name="external-link" />
-		</Button>
+		{
+			emailHref && (
+				<Button href={emailHref} variant="solid">
+					<span>Contact Me</span>
+					<Icon name="external-link" />
+				</Button>
+			)
+		}
 	</div>
 </section>

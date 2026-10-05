@@ -58,21 +58,21 @@ index.astro
 
 `atoms → molecules → organisms` の3階層で構成し、下位層は上位層の詳細を知らない一方向依存になっている。
 
-| 階層      | コンポーネント | 役割                                                         |
-| --------- | -------------- | ------------------------------------------------------------ |
-| atoms     | `Avatar`       | `astro:assets` の `Image` によるプロフィール画像最適化表示   |
-| atoms     | `Button`       | `variant: 'pill' \| 'blog'` でクラス出し分けするリンクボタン |
-| atoms     | `Icon`         | `data/icons.ts` のSVGパス定義を `stroke`/`fill` モードで描画 |
-| atoms     | `SectionLabel` | セクション見出しラベル                                       |
-| molecules | `HeroMetaItem` | アイコン+テキストの1行（所在地・生年月日）                   |
-| molecules | `WorkCard`     | 実績カード（画像+タイトル+説明）                             |
-| molecules | `SocialLink`   | `Button(variant="pill")` + `Icon` の合成                     |
-| molecules | `TimelineItem` | 経歴タイムラインの1エントリ                                  |
-| organisms | `Hero`         | プロフィール表示 + Contactボタン                             |
-| organisms | `Career`       | 経歴タイムライン一覧                                         |
-| organisms | `Work`         | 実績一覧（取得失敗時のフォールバック表示あり）               |
-| organisms | `Connect`      | SNSリンク一覧 + Contactボタン                                |
-| organisms | `SiteFooter`   | コピーライト表示                                             |
+| 階層      | コンポーネント | 役割                                                                                         |
+| --------- | -------------- | -------------------------------------------------------------------------------------------- |
+| atoms     | `Avatar`       | `astro:assets` の `Image` によるプロフィール画像最適化表示                                   |
+| atoms     | `Button`       | `variant: 'pill' \| 'solid'` を `button--<variant>` のモディファイアで出し分けるリンクボタン |
+| atoms     | `Icon`         | `data/icons.ts` のSVGパス定義を `stroke`/`fill` モードで描画                                 |
+| atoms     | `SectionLabel` | セクション見出しラベル                                                                       |
+| molecules | `HeroMetaItem` | アイコン+テキストの1行（所在地・生年月日）                                                   |
+| molecules | `WorkCard`     | 実績カード（画像+タイトル+説明）                                                             |
+| molecules | `SocialLink`   | `Button(variant="pill")` + `Icon` の合成                                                     |
+| molecules | `TimelineItem` | 経歴タイムラインの1エントリ                                                                  |
+| organisms | `Hero`         | プロフィール表示 + Contactボタン                                                             |
+| organisms | `Career`       | 経歴タイムライン一覧                                                                         |
+| organisms | `Work`         | 実績一覧（取得失敗時のフォールバック表示あり）                                               |
+| organisms | `Connect`      | SNSリンク一覧 + Contactボタン                                                                |
+| organisms | `SiteFooter`   | コピーライト表示                                                                             |
 
 Props型は各コンポーネントで `CollectionEntry<'xxx'>['data']` を参照しており、データ層のZodスキーマがそのままUI層の型として再利用されている（型定義の重複を避ける設計）。
 
@@ -80,13 +80,13 @@ Props型は各コンポーネントで `CollectionEntry<'xxx'>['data']` を参�
 
 `src/content.config.ts` でYAMLファイルを `astro/loaders` の `file()` ローダーで読み込み、Zodスキーマでバリデーションしている。
 
-| コレクション  | ソース                             | スキーマ概要                              | 利用箇所                      |
-| ------------- | ---------------------------------- | ----------------------------------------- | ----------------------------- |
-| `profile`     | `data/profile.yaml`                | name / role / location / birthday / seo   | Hero, SiteFooter, Layout(SEO) |
-| `career`      | `data/career.yaml`                 | order / period / role / org               | Career                        |
-| `works`       | `data/works.yaml`（**未作成**）    | order / title / description / image / alt | Work                          |
-| `socialLinks` | `data/social.yaml`                 | order / label / href / icon               | Hero, Connect                 |
-| `blog`        | `data/blog.yaml`（**未作成**）     | label / href                              | 参照コンポーネントなし        |
+| コレクション  | ソース                          | スキーマ概要                              | 利用箇所                      |
+| ------------- | ------------------------------- | ----------------------------------------- | ----------------------------- |
+| `profile`     | `data/profile.yaml`             | name / role / location / birthday / seo   | Hero, SiteFooter, Layout(SEO) |
+| `career`      | `data/career.yaml`              | order / period / role / org               | Career                        |
+| `works`       | `data/works.yaml`（**未作成**） | order / title / description / image / alt | Work                          |
+| `socialLinks` | `data/social.yaml`              | order / label / href / icon               | Hero, Connect                 |
+| `blog`        | `data/blog.yaml`（**未作成**）  | label / href                              | 参照コンポーネントなし        |
 
 `icons` オブジェクト（`data/icons.ts`）のキー集合がそのまま `socialLinks.icon` のZod enumに使われており、アイコン追加時の一元管理点になっている。
 
@@ -112,6 +112,3 @@ Props型は各コンポーネントで `CollectionEntry<'xxx'>['data']` を参�
 実装調査の過程で確認した、設計上の注意点。リファクタリング対象ではなくドキュメント化のみだが、今後の変更時に踏まえるべき事項として記載する。
 
 1. **`works` / `blog` コレクションのデータ未整備**: `content.config.ts` にスキーマは定義済みだが `src/data/works.yaml` と `src/data/blog.yaml` が存在しない。`Work.astro` は `try/catch` でロード失敗を吸収し `"Cannot fetch Work informations."` を表示するフォールバック実装があるが、`blog` コレクションは参照箇所自体が存在しない（未使用の定義）。
-2. **`socialLinks[2]` のインデックス直書き**: `Hero.astro` / `Connect.astro` の両方で、Contactボタンのhrefを `socialLinks` ソート結果の3番目（`order: 5` のEmail想定）に固定でアクセスしている。`social.yaml` の並び順や件数を変更すると意図しないリンクになる暗黙の結合がある。
-3. **`Button` の `variant="blog"` 命名とButton用途の乖離**: Contact用ボタンに `variant="blog"`（CSSクラス `blog-button`）を使っており、命名とセマンティクスが一致していない。
-4. **`Button` のクラス出し分けが厳密BEMのモディファイア規約から外れている**: `variant` によって `social-pill` / `blog-button` という無関係な別クラス名を出力しており、`.button--pill` / `.button--blog` のようなモディファイア（`--`連結）にはなっていない。
