@@ -1,0 +1,17 @@
+---
+interface Props {
+	href: string;
+	label: string;
+	current?: boolean;
+}
+
+const { href, label, current = false } = Astro.props;
+---
+
+<a
+	href={href}
+	class:list={['category-badge', { 'category-badge--current': current }]}
+	aria-current={current ? 'page' : undefined}
+>
+	{label}
+</a>

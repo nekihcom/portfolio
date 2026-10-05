@@ -1,0 +1,67 @@
+---
+import type { GetStaticPaths } from 'astro';
+import { render } from 'astro:content';
+import Layout from '../../layouts/Layout.astro';
+import Icon from '../../components/atoms/Icon.astro';
+import CategoryBadge from '../../components/atoms/CategoryBadge.astro';
+import SiteFooter from '../../components/organisms/SiteFooter.astro';
+import {
+	categoryPath,
+	findCategory,
+	formatDate,
+	getCategories,
+	getPosts,
+	type Post,
+} from '../../lib/blog';
+
+export const getStaticPaths = (async () => {
+	const posts = await getPosts();
+	return posts.map((post) => ({ params: { slug: post.id }, props: { post } }));
+}) satisfies GetStaticPaths;
+
+interface Props {
+	post: Post;
+}
+
+const { post } = Astro.props;
+const category = findCategory(await getCategories(), post.data.category);
+const { Content } = await render(post);
+---
+
+<Layout
+	title={post.data.title}
+	description={post.data.description || undefined}
+	path={`/blog/${post.id}`}
+	ogType="article"
+>
+	<main class="wrap wrap--wide">
+		<article class="post">
+			<a href="/blog" class="back-link">
+				<Icon name="arrow-left" />
+				<span>Blog</span>
+			</a>
+			<header class="post__header">
+				<div class="post__meta">
+					<time datetime={post.data.publishedAt.toISOString()}>
+						{formatDate(post.data.publishedAt)}
+					</time>
+					<CategoryBadge
+						href={categoryPath(category.id)}
+						label={category.label}
+					/>
+				</div>
+				<h1 class="post__title">{post.data.title}</h1>
+			</header>
+			<div class="post__body">
+				<Content />
+			</div>
+			<footer class="post__footer">
+				<a href="/blog" class="back-link">
+					<Icon name="arrow-left" />
+					<span>記事一覧に戻る</span>
+				</a>
+			</footer>
+		</article>
+	</main>
+	<SiteFooter />
+</Layout>

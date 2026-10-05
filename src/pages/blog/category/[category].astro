@@ -1,0 +1,60 @@
+---
+import type { GetStaticPaths } from 'astro';
+import Layout from '../../../layouts/Layout.astro';
+import SectionLabel from '../../../components/atoms/SectionLabel.astro';
+import Icon from '../../../components/atoms/Icon.astro';
+import CategoryNav from '../../../components/molecules/CategoryNav.astro';
+import PostList from '../../../components/organisms/PostList.astro';
+import SiteFooter from '../../../components/organisms/SiteFooter.astro';
+import {
+	categoryPath,
+	getCategories,
+	getPosts,
+	type Category,
+	type Post,
+} from '../../../lib/blog';
+
+// 記事の有無ではなく categories.yaml を基準に生成し、記事 0 件のカテゴリの URL も 404 にしない
+export const getStaticPaths = (async () => {
+	const [posts, categories] = await Promise.all([getPosts(), getCategories()]);
+	return categories.map((category) => ({
+		params: { category: category.id },
+		props: {
+			category,
+			categories,
+			posts: posts.filter((post) => post.data.category === category.id),
+		},
+	}));
+}) satisfies GetStaticPaths;
+
+interface Props {
+	category: Category;
+	categories: Category[];
+	posts: Post[];
+}
+
+const { category, categories, posts } = Astro.props;
+---
+
+<Layout
+	title={`${category.data.label} | Blog`}
+	description={`「${category.data.label}」カテゴリのブログ記事の一覧。`}
+	path={categoryPath(category.id)}
+	ogType="website"
+>
+	<main class="wrap wrap--wide">
+		<section class="blog-index">
+			<a href="/" class="back-link">
+				<Icon name="arrow-left" />
+				<span>Top</span>
+			</a>
+			<SectionLabel text="BLOG" />
+			<h1 class="section-title">{category.data.label}</h1>
+			<CategoryNav categories={categories} currentId={category.id} />
+			<div class="blog-index__list">
+				<PostList posts={posts} categories={categories} />
+			</div>
+		</section>
+	</main>
+	<SiteFooter />
+</Layout>

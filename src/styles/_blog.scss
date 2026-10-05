@@ -1,0 +1,124 @@
+@use 'variables' as *;
+@use 'mixins' as *;
+
+// トップの 1 カラム幅（$container-width）では記事本文やコードが窮屈なため、ブログ系ページだけ広げる
+.wrap--wide {
+	max-width: $article-width;
+	// grid の列は既定で中身の最小幅まで広がるため、折り返さない長いコード行があると画面外にはみ出す
+	grid-template-columns: minmax(0, 1fr);
+}
+
+// 矢印アイコン付きの文字リンク。ホバーで矢印との間隔が開き、移動先があることを示す
+@mixin arrow-link {
+	display: inline-flex;
+	align-items: center;
+	gap: 6px;
+	font-size: 13px;
+	font-weight: 600;
+	color: $color-accent-dark;
+	transition: gap $transition-base;
+
+	.icon {
+		width: 16px;
+		height: 16px;
+	}
+
+	&:hover {
+		gap: 10px;
+	}
+}
+
+.back-link {
+	@include arrow-link;
+	margin-bottom: 24px;
+}
+
+.blog {
+	&__more {
+		@include arrow-link;
+		margin-top: 28px;
+	}
+}
+
+.blog-index {
+	&__list {
+		margin-top: 32px;
+	}
+}
+
+.category-badge {
+	display: inline-block;
+	padding: 2px 10px;
+	border: 1px solid $color-accent-light;
+	border-radius: 999px;
+	font-size: 12px;
+	line-height: 1.6;
+	color: $color-accent-dark;
+	transition:
+		background-color $transition-base,
+		border-color $transition-base;
+
+	&:hover {
+		border-color: $color-accent;
+	}
+
+	&--current {
+		border-color: $color-accent;
+		background-color: $color-accent;
+		color: $color-surface;
+	}
+}
+
+.category-nav {
+	margin-top: 20px;
+
+	&__list {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 8px;
+	}
+}
+
+.post-list {
+	display: flex;
+	flex-direction: column;
+	gap: 28px;
+
+	&__empty {
+		font-size: 15px;
+		color: $color-text-sub;
+	}
+}
+
+.post-card {
+	&__meta {
+		display: flex;
+		flex-wrap: wrap;
+		align-items: center;
+		gap: 4px 12px;
+		font-size: 13px;
+		color: $color-text-muted;
+	}
+
+	&__title {
+		margin-top: 6px;
+		font-size: 17px;
+		font-weight: 700;
+		line-height: 1.5;
+		color: $color-text;
+	}
+
+	&__link {
+		transition: color $transition-base;
+
+		&:hover {
+			color: $color-accent-dark;
+		}
+	}
+
+	&__desc {
+		margin-top: 6px;
+		font-size: 13px;
+		color: $color-text-sub;
+	}
+}

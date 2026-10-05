@@ -1,0 +1,35 @@
+---
+import CategoryBadge from '../atoms/CategoryBadge.astro';
+import { categoryPath, type Category } from '../../lib/blog';
+
+interface Props {
+	categories: Category[];
+	/** 表示中のカテゴリ。全記事一覧では指定しない */
+	currentId?: string;
+}
+
+const { categories, currentId } = Astro.props;
+---
+
+<nav class="category-nav" aria-label="カテゴリ">
+	<ul class="category-nav__list">
+		<li>
+			<CategoryBadge
+				href="/blog"
+				label="すべて"
+				current={currentId === undefined}
+			/>
+		</li>
+		{
+			categories.map((category) => (
+				<li>
+					<CategoryBadge
+						href={categoryPath(category.id)}
+						label={category.data.label}
+						current={category.id === currentId}
+					/>
+				</li>
+			))
+		}
+	</ul>
+</nav>

@@ -1,0 +1,10 @@
+# id は Notion の Category（セレクト）の選択肢名と一致させる。URL（/blog/category/<id>）にも使う
+- id: tech
+  order: 1
+  label: 技術
+- id: career
+  order: 2
+  label: キャリア
+- id: life
+  order: 3
+  label: 日々のこと
