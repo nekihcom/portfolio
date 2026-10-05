@@ -4,6 +4,8 @@
 // トップの 1 カラム幅（$container-width）では記事本文やコードが窮屈なため、ブログ系ページだけ広げる
 .wrap--wide {
 	max-width: $article-width;
+	// grid の列は既定で中身の最小幅まで広がるため、折り返さない長いコード行があると画面外にはみ出す
+	grid-template-columns: minmax(0, 1fr);
 }
 
 .back-link {
