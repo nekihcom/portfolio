@@ -8,3 +8,6 @@
 - id: life
   order: 3
   label: 日々のこと
+- id: study
+  order: 4
+  label: 勉強
