@@ -120,5 +120,118 @@
 			font-size: 14px;
 			line-height: 1.6;
 		}
+
+		// 列数の多い表で本文の幅を押し広げないよう、表だけを横スクロールさせる
+		.table-scroll {
+			overflow-x: auto;
+		}
+
+		table {
+			border-collapse: collapse;
+			font-size: 14px;
+			line-height: 1.6;
+			overflow-wrap: normal;
+		}
+
+		th,
+		td {
+			min-width: 6em;
+			padding: 8px 12px;
+			border: 1px solid $color-border;
+			text-align: left;
+			vertical-align: top;
+		}
+
+		th {
+			background-color: $color-bg-alt;
+			font-weight: 700;
+		}
+
+		.bookmark {
+			margin-left: 0;
+			margin-right: 0;
+
+			&__link {
+				display: flex;
+				border: 1px solid $color-border;
+				border-radius: 8px;
+				overflow: hidden;
+				background-color: $color-surface;
+				color: $color-text;
+				text-decoration: none;
+				transition: background-color $transition-base;
+
+				&:hover {
+					background-color: $color-bg-alt;
+				}
+			}
+
+			&__text {
+				display: flex;
+				flex: 1 1 0;
+				flex-direction: column;
+				gap: 4px;
+				min-width: 0;
+				padding: 12px 16px;
+				line-height: 1.5;
+			}
+
+			&__title,
+			&__description,
+			&__url > span {
+				overflow: hidden;
+				text-overflow: ellipsis;
+				white-space: nowrap;
+			}
+
+			&__title {
+				font-size: 14px;
+			}
+
+			&__description {
+				font-size: 12px;
+				color: $color-text-sub;
+			}
+
+			&__url {
+				display: flex;
+				align-items: center;
+				gap: 6px;
+				min-width: 0;
+				margin-top: 4px;
+				font-size: 12px;
+				color: $color-text-sub;
+			}
+
+			&__icon {
+				flex-shrink: 0;
+				width: 16px;
+				height: 16px;
+				border-radius: 0;
+			}
+
+			&__image {
+				display: none;
+				flex: 0 0 33%;
+				max-width: 240px;
+
+				@include pc {
+					display: block;
+				}
+
+				img {
+					width: 100%;
+					height: 100%;
+					object-fit: cover;
+					border-radius: 0;
+				}
+			}
+
+			&__caption {
+				margin-top: 6px;
+				font-size: 13px;
+				color: $color-text-sub;
+			}
+		}
 	}
 }
