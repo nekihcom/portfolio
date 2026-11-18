@@ -1,8 +1,12 @@
 import type { Loader } from 'astro/loaders';
 import { type Client, isFullPage, iteratePaginatedAPI } from '@notionhq/client';
-import type { PageObjectResponse } from '@notionhq/client/build/src/api-endpoints';
+import type {
+	PageObjectResponse,
+	RichTextItemResponse,
+} from '@notionhq/client/build/src/api-endpoints';
 import { NotionToMarkdown } from 'notion-to-md';
 import { createNotionClient, readNotionEnv } from './client';
+import { escapeHtml, fetchLinkPreview, richTextToHtml } from './html';
 import { createImageSaver } from './images';
 
 // Notion DB のプロパティ名。DB 側で名前を変えた場合はここだけを直す
@@ -30,6 +34,17 @@ const CODE_LANG: Record<string, string> = {
 	'vb.net': 'vb',
 	'java/c/c++/c#': 'java',
 };
+
+// ブロック内で改行できる、テキストを本文に持つブロック。引用（quote）は notion-to-md が改行を処理する
+const LINE_BREAK_BLOCKS = [
+	'paragraph',
+	'bulleted_list_item',
+	'numbered_list_item',
+	'to_do',
+	'toggle',
+] as const;
+
+type TextBlock = { rich_text: RichTextItemResponse[] };
 
 type Property = PageObjectResponse['properties'][string];
 
@@ -104,6 +119,86 @@ function createMarkdownConverter(notion: Client, publicDir: URL) {
 		const lang = CODE_LANG[code.language] ?? code.language;
 		const body = code.rich_text.map((t) => t.plain_text).join('');
 		return `\`\`\`${lang}\n${body}\n\`\`\``;
+	});
+
+	// Markdown では単独の改行が空白扱いになるため、Notion のブロック内改行を行末スペース 2 つの改行にする。
+	// 変換後は false を返し、書式や見出しの処理は notion-to-md の既定処理に任せる
+	for (const type of LINE_BREAK_BLOCKS) {
+		n2m.setCustomTransformer(type, async (block) => {
+			if (!(type in block)) return false;
+			const { rich_text } = (
+				block as unknown as Record<typeof type, TextBlock>
+			)[type];
+			for (const text of rich_text) {
+				text.plain_text = text.plain_text.replace(/ *\n/g, '  \n');
+			}
+			return false;
+		});
+	}
+
+	// notion-to-md は「bookmark」という文字のテキストリンクにするため、Notion と同じリンクカードを組み立てる
+	n2m.setCustomTransformer('bookmark', async (block) => {
+		if (!('bookmark' in block)) return false;
+		const { url, caption } = block.bookmark;
+		const preview = await fetchLinkPreview(url);
+		const title = escapeHtml(preview.title || url);
+		const description = preview.description
+			? `<span class="bookmark__description">${escapeHtml(preview.description)}</span>`
+			: '';
+		const icon = preview.icon
+			? `<img class="bookmark__icon" src="${escapeHtml(preview.icon)}" alt="" width="16" height="16" loading="lazy">`
+			: '';
+		const image = preview.image
+			? `<span class="bookmark__image"><img src="${escapeHtml(preview.image)}" alt="" loading="lazy"></span>`
+			: '';
+		const figcaption =
+			caption.length > 0
+				? `<figcaption class="bookmark__caption">${richTextToHtml(caption)}</figcaption>`
+				: '';
+		return [
+			'<figure class="bookmark">',
+			`<a class="bookmark__link" href="${escapeHtml(url)}" target="_blank" rel="noopener">`,
+			'<span class="bookmark__text">',
+			`<span class="bookmark__title">${title}</span>`,
+			description,
+			`<span class="bookmark__url">${icon}<span>${escapeHtml(url)}</span></span>`,
+			'</span>',
+			image,
+			'</a>',
+			figcaption,
+			'</figure>',
+		].join('');
+	});
+
+	// notion-to-md は Markdown の表にするため、1 行目が常に見出しになり、行の順序も保証されない。
+	// Notion の列見出し・行見出しの設定を反映できるよう HTML で出力する
+	n2m.setCustomTransformer('table', async (block) => {
+		if (!('table' in block)) return false;
+		const { has_column_header, has_row_header } = block.table;
+		const rows: string[][] = [];
+		for await (const row of iteratePaginatedAPI(notion.blocks.children.list, {
+			block_id: block.id,
+		})) {
+			if ('table_row' in row)
+				rows.push(row.table_row.cells.map(richTextToHtml));
+		}
+
+		const toRow = (cells: string[], header: boolean) =>
+			`<tr>${cells
+				.map((cell, i) => {
+					if (header) return `<th scope="col">${cell}</th>`;
+					if (has_row_header && i === 0) return `<th scope="row">${cell}</th>`;
+					return `<td>${cell}</td>`;
+				})
+				.join('')}</tr>`;
+		const head = has_column_header ? rows.slice(0, 1) : [];
+		const body = has_column_header ? rows.slice(1) : rows;
+		return [
+			'<div class="table-scroll"><table>',
+			head.length > 0 ? `<thead>${toRow(head[0], true)}</thead>` : '',
+			`<tbody>${body.map((cells) => toRow(cells, false)).join('')}</tbody>`,
+			'</table></div>',
+		].join('');
 	});
 
 	return async (pageId: string) =>
