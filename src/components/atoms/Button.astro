@@ -1,12 +1,20 @@
 ---
+import { isExternalLink } from '../../lib/link';
+
 interface Props {
 	href: string;
 	variant: 'pill' | 'solid';
 }
 
 const { href, variant } = Astro.props;
+const external = isExternalLink(href);
 ---
 
-<a href={href} class={`button button--${variant}`}>
+<a
+	href={href}
+	class={`button button--${variant}`}
+	target={external ? '_blank' : undefined}
+	rel={external ? 'noopener noreferrer' : undefined}
+>
 	<slot />
 </a>

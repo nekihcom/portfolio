@@ -157,7 +157,7 @@ function createMarkdownConverter(notion: Client, publicDir: URL) {
 				: '';
 		return [
 			'<figure class="bookmark">',
-			`<a class="bookmark__link" href="${escapeHtml(url)}" target="_blank" rel="noopener">`,
+			`<a class="bookmark__link" href="${escapeHtml(url)}" target="_blank" rel="noopener noreferrer">`,
 			'<span class="bookmark__text">',
 			`<span class="bookmark__title">${title}</span>`,
 			description,
