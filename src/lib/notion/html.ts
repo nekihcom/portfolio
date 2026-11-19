@@ -1,4 +1,5 @@
 import type { RichTextItemResponse } from '@notionhq/client/build/src/api-endpoints';
+import { isExternalLink } from '../link';
 
 // 本文の Markdown に埋め込む HTML ブロックは Markdown として解釈されないため、自前で組み立てる
 
@@ -23,7 +24,13 @@ export function richTextToHtml(richText: RichTextItemResponse[]): string {
 			if (annotations.italic) html = `<em>${html}</em>`;
 			if (annotations.strikethrough) html = `<del>${html}</del>`;
 			if (annotations.underline) html = `<u>${html}</u>`;
-			if (href) html = `<a href="${escapeHtml(href)}">${html}</a>`;
+			if (href) {
+				// 埋め込む HTML は Markdown のプラグインを通らないため、外部リンクの属性をここで付ける
+				const attrs = isExternalLink(href)
+					? ' target="_blank" rel="noopener noreferrer"'
+					: '';
+				html = `<a href="${escapeHtml(href)}"${attrs}>${html}</a>`;
+			}
 			return html;
 		})
 		.join('');

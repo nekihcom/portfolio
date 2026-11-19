@@ -8,6 +8,11 @@
   label: GitHub
   href: 'https://github.com/nekihcom'
   icon: github
+- id: linkedin
+  order: 3
+  label: LinkedIn
+  href: 'https://www.linkedin.com/in/masaya-kemmochi-189915225/'
+  icon: linkedin
 - id: email
   order: 5
   label: Email
