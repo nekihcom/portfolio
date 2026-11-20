@@ -1,0 +1,20 @@
+- id: language
+  order: 1
+  label: 言語
+  items:
+    - TypeScript
+    - JavaScript
+    - Python
+- id: framework
+  order: 2
+  label: フレームワーク
+  items:
+    - Astro
+    - React
+- id: infra-tool
+  order: 3
+  label: インフラ・ツール
+  items:
+    - Cloudflare
+    - GitHub Actions
+    - Notion
