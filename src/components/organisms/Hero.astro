@@ -1,22 +1,14 @@
 ---
 import { getEntry } from 'astro:content';
-import { getCollection } from 'astro:content';
 
 import Avatar from '../atoms/Avatar.astro';
 import HeroMetaItem from '../molecules/HeroMetaItem.astro';
 import profileImage from '../../assets/images/profile.png';
-import SocialLink from '../molecules/SocialLink.astro';
 import Button from '../atoms/Button.astro';
 import Icon from '../atoms/Icon.astro';
 
 const profileEntry = await getEntry('profile', 'default');
 const profile = profileEntry!.data;
-const socialLinks = (await getCollection('socialLinks')).sort(
-	(a, b) => a.data.order - b.data.order,
-);
-// social.yaml から email を外した場合に、リンク先のないボタンを出さない
-const emailHref = socialLinks.find((link) => link.data.id === 'email')?.data
-	.href;
 ---
 
 <section id="home" class="hero">
@@ -32,15 +24,11 @@ const emailHref = socialLinks.find((link) => link.data.id === 'email')?.data
 				</ul>
 			</div>
 		</div>
-		{
-			emailHref && (
-				<div class="hero__cta">
-					<Button href={emailHref} variant="solid">
-						<span>{'Contact Me'}</span>
-						<Icon name="external-link" />
-					</Button>
-				</div>
-			)
-		}
+		<div class="hero__cta">
+			<Button href="#contact" variant="solid">
+				<span>{'Contact Me'}</span>
+				<Icon name="arrow-down" />
+			</Button>
+		</div>
 	</div>
 </section>

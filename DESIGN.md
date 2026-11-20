@@ -88,12 +88,12 @@ index.astro
 | molecules | `WorkCard`      | 実績カード（画像+タイトル+説明）                                                             |
 | molecules | `SocialLink`    | `Button(variant="pill")` + `Icon` の合成                                                     |
 | molecules | `TimelineItem`  | 経歴タイムラインの1エントリ                                                                  |
-| organisms | `Hero`          | プロフィール表示 + Contactボタン                                                             |
+| organisms | `Hero`          | プロフィール表示 + Contactボタン（Connectへのページ内リンク）                                |
 | organisms | `Career`        | 経歴タイムライン一覧                                                                         |
 | organisms | `Work`          | 実績一覧（取得失敗時のフォールバック表示あり）                                               |
 | organisms | `Blog`          | トップ用の最新記事3件 + 一覧への導線                                                         |
 | organisms | `PostList`      | 記事カードのリスト。0件時は「記事はまだありません」を表示                                    |
-| organisms | `Connect`       | SNSリンク一覧 + Contactボタン                                                                |
+| organisms | `Connect`       | SNSリンク一覧                                                                                |
 | organisms | `SiteFooter`    | コピーライト表示                                                                             |
 
 Props型は各コンポーネントで `CollectionEntry<'xxx'>['data']` を参照しており、データ層のZodスキーマがそのままUI層の型として再利用されている（型定義の重複を避ける設計）。
@@ -107,7 +107,7 @@ Props型は各コンポーネントで `CollectionEntry<'xxx'>['data']` を参�
 | `profile`     | `data/profile.yaml`                           | name / role / location / birthday / seo                              | Hero, SiteFooter, Layout(SEO) |
 | `career`      | `data/career.yaml`                            | order / period / role / org                                          | Career                        |
 | `works`       | `data/works.yaml`（**未作成**）               | order / title / description / image / alt                            | Work                          |
-| `socialLinks` | `data/social.yaml`                            | order / label / href / icon                                          | Hero, Connect                 |
+| `socialLinks` | `data/social.yaml`                            | order / label / href / icon                                          | Connect                       |
 | `blog`        | Notion データソース（`lib/notion/loader.ts`） | title / category / description / publishedAt / updatedAt。id は Slug | ブログ系ページ, Blog          |
 | `categories`  | `data/categories.yaml`                        | order / label。id は Notion の Category の選択肢名                   | ブログ系ページ, Blog          |
 

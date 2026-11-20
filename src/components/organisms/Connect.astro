@@ -2,15 +2,10 @@
 import { getCollection } from 'astro:content';
 import SectionLabel from '../atoms/SectionLabel.astro';
 import SocialLink from '../molecules/SocialLink.astro';
-import Button from '../atoms/Button.astro';
-import Icon from '../atoms/Icon.astro';
 
 const socialLinks = (await getCollection('socialLinks')).sort(
 	(a, b) => a.data.order - b.data.order,
 );
-// social.yaml から email を外した場合に、リンク先のないボタンを出さない
-const emailHref = socialLinks.find((link) => link.data.id === 'email')?.data
-	.href;
 ---
 
 <section id="contact" class="connect">
@@ -25,13 +20,5 @@ const emailHref = socialLinks.find((link) => link.data.id === 'email')?.data
 				))
 			}
 		</ul>
-		{
-			emailHref && (
-				<Button href={emailHref} variant="solid">
-					<span>Contact Me</span>
-					<Icon name="external-link" />
-				</Button>
-			)
-		}
 	</div>
 </section>
