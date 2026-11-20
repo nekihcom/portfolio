@@ -49,7 +49,7 @@ repo/
 
 ### 3.1 レンダリングモデル
 
-- Astroのデフォルト（SSG）で全ページをビルド時に静的HTML化する。クライアントサイドJSはスクロール連動モーション（`scripts/reveal.ts`）のみで、hydrationディレクティブは使っていない。
+- Astroのデフォルト（SSG）で全ページをビルド時に静的HTML化する。クライアントサイドJSはスクロール連動モーション（`scripts/reveal.ts`）と `/career` の開閉アニメーション（`scripts/accordion.ts`）のみで、hydrationディレクティブは使っていない。
 - 各ページは `Layout` の中に `organisms` を並べる構成。
 
 | ルート                      | ファイル                               | 内容                                                                     |
@@ -75,7 +75,7 @@ index.astro
 
 ブログ系ページと `/career` は本文やコードが `$container-width`（350px）では窮屈なため、`main.wrap.wrap--wide`（最大 `$article-width` = 680px）を使う。
 
-`/career` のプロジェクトの開閉は HTML の `details` / `summary` で作り、JS は使わない。ページを開いた時点ではすべて閉じている。
+`/career` のプロジェクトの開閉は HTML の `details` / `summary` で作る。ページを開いた時点ではすべて閉じている。開閉の高さのアニメーションは `scripts/accordion.ts` が Web Animations API で付ける（`/career` だけで読み込む）。`prefers-reduced-motion: reduce` の環境と JS が動かない環境では、`details` の標準の動きで一瞬で開閉する。
 
 ### 3.2 コンポーネント設計（Atomic Design）
 

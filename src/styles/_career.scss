@@ -148,7 +148,8 @@
 		transition: transform $transition-base;
 	}
 
-	&[open] &__chevron {
+	// is-closing は閉じるアニメーション中に scripts/accordion.ts が付ける
+	&[open]:not(.is-closing) &__chevron {
 		transform: rotate(180deg);
 	}
 
