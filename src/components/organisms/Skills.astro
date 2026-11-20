@@ -1,0 +1,27 @@
+---
+import { getCollection } from 'astro:content';
+import SectionLabel from '../atoms/SectionLabel.astro';
+import SkillTag from '../atoms/SkillTag.astro';
+
+const skills = (await getCollection('skills')).sort(
+	(a, b) => a.data.order - b.data.order,
+);
+---
+
+<section id="skills" class="skills">
+	<SectionLabel text="SKILLS" />
+	<div class="skills__groups">
+		{
+			skills.map((group) => (
+				<div class="skills__group reveal">
+					<h2 class="skills__heading">{group.data.label}</h2>
+					<ul class="skills__tags">
+						{group.data.items.map((item) => (
+							<SkillTag label={item} />
+						))}
+					</ul>
+				</div>
+			))
+		}
+	</div>
+</section>

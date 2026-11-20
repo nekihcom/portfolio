@@ -1,5 +1,5 @@
-import { defineCollection, z } from 'astro:content';
-import { file } from 'astro/loaders';
+import { defineCollection, reference, z } from 'astro:content';
+import { file, glob } from 'astro/loaders';
 import { icons, type IconName } from './data/icons';
 import { notionLoader } from './lib/notion/loader';
 
@@ -12,6 +12,7 @@ const profile = defineCollection({
 		role: z.string(),
 		location: z.string(),
 		birthday: z.string(),
+		summary: z.string().max(150),
 		seo: z.object({
 			description: z.string(),
 			locale: z.string(),
@@ -26,6 +27,28 @@ const career = defineCollection({
 		period: z.string(),
 		role: z.string(),
 		org: z.string(),
+	}),
+});
+
+// 本文は型を決めずに Markdown で自由に書く。career には career.yaml の id を書く
+const projects = defineCollection({
+	loader: glob({ pattern: '**/*.md', base: './src/content/projects' }),
+	schema: z.object({
+		career: reference('career'),
+		order: z.number(),
+		title: z.string(),
+		summary: z.string(),
+		period: z.string().optional(),
+		stack: z.array(z.string()).optional(),
+	}),
+});
+
+const skills = defineCollection({
+	loader: file('src/data/skills.yaml'),
+	schema: z.object({
+		order: z.number(),
+		label: z.string(),
+		items: z.array(z.string()),
 	}),
 });
 
@@ -75,6 +98,8 @@ const categories = defineCollection({
 export const collections = {
 	profile,
 	career,
+	projects,
+	skills,
 	works,
 	socialLinks,
 	blog,

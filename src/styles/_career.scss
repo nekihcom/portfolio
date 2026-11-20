@@ -7,6 +7,12 @@
 		grid-template-columns: 1fr;
 		gap: 32px;
 	}
+
+	&__more {
+		@include arrow-link;
+		// grid の子は既定で横幅いっぱいに伸び、クリックできる範囲が広がりすぎるため文字幅にとどめる
+		justify-self: start;
+	}
 }
 
 .timeline {
@@ -59,5 +65,163 @@
 		font-size: 14px;
 		font-weight: 400;
 		color: $color-text-sub;
+	}
+}
+
+.career-index {
+	&__list {
+		display: grid;
+		gap: 48px;
+		margin-top: 32px;
+	}
+
+	&__period {
+		font-size: 13px;
+		color: $color-text-muted;
+	}
+
+	&__org {
+		margin-top: 6px;
+		font-size: 20px;
+		font-weight: 700;
+		line-height: 1.5;
+		color: $color-text;
+	}
+
+	&__role {
+		margin-top: 4px;
+		font-size: 14px;
+		color: $color-text-sub;
+	}
+
+	&__projects {
+		display: grid;
+		gap: 12px;
+		margin-top: 16px;
+	}
+}
+
+.project {
+	border: 1px solid $color-border;
+	border-radius: 12px;
+	background-color: $color-surface;
+
+	&__summary {
+		display: grid;
+		grid-template-columns: 1fr auto;
+		gap: 4px 12px;
+		padding: 14px 16px;
+		border-radius: 12px;
+		list-style: none;
+		cursor: pointer;
+
+		// Safari は list-style では開閉の三角を消せないため、疑似要素でも消す
+		&::-webkit-details-marker {
+			display: none;
+		}
+
+		&:focus-visible {
+			outline: 2px solid $color-accent;
+			outline-offset: 2px;
+		}
+	}
+
+	&__title {
+		font-size: 16px;
+		font-weight: 700;
+		line-height: 1.5;
+		color: $color-text;
+	}
+
+	&__lead {
+		grid-column: 1;
+		font-size: 13px;
+		color: $color-text-sub;
+	}
+
+	&__chevron {
+		display: flex;
+		grid-column: 2;
+		grid-row: 1 / span 2;
+		align-self: center;
+		color: $color-accent-dark;
+		transition: transform $transition-base;
+	}
+
+	&[open] &__chevron {
+		transform: rotate(180deg);
+	}
+
+	&__content {
+		padding: 16px;
+		border-top: 1px solid $color-border;
+	}
+
+	&__period {
+		margin-bottom: 12px;
+		font-size: 12px;
+		color: $color-text-muted;
+	}
+
+	// 本文は Markdown から生成した HTML でクラスを付けられないため、要素セレクタで組版する
+	&__body {
+		font-size: 14px;
+		line-height: 1.8;
+		overflow-wrap: anywhere;
+
+		> * + * {
+			margin-top: 1em;
+		}
+
+		h3,
+		h4 {
+			margin-top: 1.6em;
+			line-height: 1.5;
+			font-weight: 700;
+		}
+
+		h3 {
+			font-size: 15px;
+		}
+
+		h4 {
+			font-size: 14px;
+		}
+
+		a {
+			color: $color-accent-dark;
+			text-decoration: underline;
+			text-underline-offset: 3px;
+		}
+
+		ul,
+		ol {
+			padding-left: 1.5em;
+		}
+
+		ul {
+			list-style: disc;
+		}
+
+		ol {
+			list-style: decimal;
+		}
+
+		li + li,
+		li > ul,
+		li > ol {
+			margin-top: 0.3em;
+		}
+
+		strong {
+			font-weight: 700;
+		}
+	}
+
+	&__stack {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 8px;
+		margin-top: 16px;
 	}
 }

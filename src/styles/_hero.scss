@@ -37,6 +37,13 @@
 		color: $color-text-sub;
 	}
 
+	&__summary {
+		margin-top: 24px;
+		font-size: 14px;
+		line-height: 1.8;
+		color: $color-text;
+	}
+
 	&__meta {
 		display: flex;
 		flex-direction: column;
