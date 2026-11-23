@@ -23,14 +23,14 @@ if (orphans.length > 0) {
 	throw new Error(`career.yaml にない経歴を参照しているプロジェクト: ${list}`);
 }
 
-// トップのタイムラインと同じく新しい順に並べ、各経歴にプロジェクトを order 順で紐づける
+// トップのタイムラインと同じく新しい順に並べ、各経歴にプロジェクトを order の降順で紐づける
 const entries = career
 	.sort((a, b) => b.data.order - a.data.order)
 	.map((entry) => ({
 		entry,
 		projects: projects
 			.filter((project) => project.data.career.id === entry.id)
-			.sort((a, b) => a.data.order - b.data.order),
+			.sort((a, b) => b.data.order - a.data.order),
 	}));
 ---
 

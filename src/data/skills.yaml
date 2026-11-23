@@ -5,16 +5,36 @@
     - TypeScript
     - JavaScript
     - Python
+    - PHP
 - id: framework
   order: 2
   label: フレームワーク
   items:
     - Astro
     - React
-- id: infra-tool
+    - React
+    - Next.js
+    - Strands
+    - Fast API
+    - Symfony
+- id: infra-cicd
   order: 3
-  label: インフラ・ツール
+  label: インフラ・CICD
   items:
     - Cloudflare
-    - GitHub Actions
+    - AWS
+    - GCP
+    - GitHub / GitHub Actions
+    - Vercel
+    - Netlify
+- id: tool
+  order: 4
+  label: ツール
+  items:
+    - Drupal
+    - WordPress
+    - Google Tag Manager
+    - Google Analytics
     - Notion
+    - Backlog
+    - Slack
