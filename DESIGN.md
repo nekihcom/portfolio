@@ -25,6 +25,7 @@ repo/
 ├── src/
 │   ├── content.config.ts    # Content Collections定義（データ層のスキーマ）
 │   ├── data/                # YAMLデータソース + アイコン定義
+│   ├── content/projects/    # 経歴の詳細ページに載せるプロジェクト（1件1ファイルの Markdown）
 │   ├── assets/images/       # ビルド時最適化される画像
 │   ├── components/
 │   │   ├── atoms/           # 最小単位のUI部品
@@ -37,6 +38,7 @@ repo/
 │   │   └── notion/          # Notion 連携（環境変数・ローダー・画像保存）
 │   ├── pages/
 │   │   ├── index.astro      # トップページ
+│   │   ├── career/          # 経歴の詳細ページ
 │   │   └── blog/            # ブログ一覧・記事詳細・カテゴリ別一覧
 │   └── styles/              # SCSS（変数・mixin・コンポーネント別partial）
 ├── public/notion-images/    # ビルド時にNotionから保存する画像（git管理外）
@@ -47,69 +49,80 @@ repo/
 
 ### 3.1 レンダリングモデル
 
-- Astroのデフォルト（SSG）で全ページをビルド時に静的HTML化する。クライアントサイドJSはスクロール連動モーション（`scripts/reveal.ts`）のみで、hydrationディレクティブは使っていない。
+- Astroのデフォルト（SSG）で全ページをビルド時に静的HTML化する。クライアントサイドJSはスクロール連動モーション（`scripts/reveal.ts`）と `/career` の開閉アニメーション（`scripts/accordion.ts`）のみで、hydrationディレクティブは使っていない。
 - 各ページは `Layout` の中に `organisms` を並べる構成。
 
-| ルート                      | ファイル                               | 内容                                                   |
-| --------------------------- | -------------------------------------- | ------------------------------------------------------ |
-| `/`                         | `pages/index.astro`                    | トップページ                                           |
-| `/blog`                     | `pages/blog/index.astro`               | 全記事一覧（公開日の降順）                             |
-| `/blog/[slug]`              | `pages/blog/[slug].astro`              | 記事詳細。`slug` は Notion の Slug プロパティ          |
-| `/blog/category/[category]` | `pages/blog/category/[category].astro` | カテゴリ別一覧。`categories.yaml` の定義ごとに生成する |
+| ルート                      | ファイル                               | 内容                                                                     |
+| --------------------------- | -------------------------------------- | ------------------------------------------------------------------------ |
+| `/`                         | `pages/index.astro`                    | トップページ                                                             |
+| `/career`                   | `pages/career/index.astro`             | 経歴の詳細。経歴を新しい順に並べ、各経歴のプロジェクトを開閉式で表示する |
+| `/blog`                     | `pages/blog/index.astro`               | 全記事一覧（公開日の降順）                                               |
+| `/blog/[slug]`              | `pages/blog/[slug].astro`              | 記事詳細。`slug` は Notion の Slug プロパティ                            |
+| `/blog/category/[category]` | `pages/blog/category/[category].astro` | カテゴリ別一覧。`categories.yaml` の定義ごとに生成する                   |
 
 ```
 index.astro
 └── Layout.astro (HTML shell, <head> SEOタグ)
     └── main.wrap
         ├── Hero        (id="home")
-        ├── Career      (id="about")
+        ├── Skills      (id="skills")
+        ├── Career      (id="about")   タイムライン + /career への導線
         ├── Work        (id="work")    ※現在は非表示
         ├── Blog        (id="blog")    最新3件 + 一覧への導線
         └── Connect     (id="contact")
     └── SiteFooter
 ```
 
-ブログ系ページは本文やコードが `$container-width`（350px）では窮屈なため、`main.wrap.wrap--wide`（最大 `$article-width` = 680px）を使う。
+ブログ系ページと `/career` は本文やコードが `$container-width`（350px）では窮屈なため、`main.wrap.wrap--wide`（最大 `$article-width` = 680px）を使う。
+
+`/career` のプロジェクトの開閉は HTML の `details` / `summary` で作る。ページを開いた時点ではすべて閉じている。開閉の高さのアニメーションは `scripts/accordion.ts` が Web Animations API で付ける（`/career` だけで読み込む）。`prefers-reduced-motion: reduce` の環境と JS が動かない環境では、`details` の標準の動きで一瞬で開閉する。
 
 ### 3.2 コンポーネント設計（Atomic Design）
 
 `atoms → molecules → organisms` の3階層で構成し、下位層は上位層の詳細を知らない一方向依存になっている。
 
-| 階層      | コンポーネント  | 役割                                                                                         |
-| --------- | --------------- | -------------------------------------------------------------------------------------------- |
-| atoms     | `Avatar`        | `astro:assets` の `Image` によるプロフィール画像最適化表示                                   |
-| atoms     | `Button`        | `variant: 'pill' \| 'solid'` を `button--<variant>` のモディファイアで出し分けるリンクボタン |
-| atoms     | `Icon`          | `data/icons.ts` のSVGパス定義を `stroke`/`fill` モードで描画                                 |
-| atoms     | `SectionLabel`  | セクション見出しラベル                                                                       |
-| atoms     | `CategoryBadge` | カテゴリ表示。リンク先と現在地表示（`current`）を受け取る                                    |
-| molecules | `HeroMetaItem`  | アイコン+テキストの1行（所在地・生年月日）                                                   |
-| molecules | `PostCard`      | 記事カード（公開日+カテゴリ+タイトル+概要）                                                  |
-| molecules | `CategoryNav`   | 「すべて」+全カテゴリの切替ナビ                                                              |
-| molecules | `WorkCard`      | 実績カード（画像+タイトル+説明）                                                             |
-| molecules | `SocialLink`    | `Button(variant="pill")` + `Icon` の合成                                                     |
-| molecules | `TimelineItem`  | 経歴タイムラインの1エントリ                                                                  |
-| organisms | `Hero`          | プロフィール表示 + Contactボタン（Connectへのページ内リンク）                                |
-| organisms | `Career`        | 経歴タイムライン一覧                                                                         |
-| organisms | `Work`          | 実績一覧（取得失敗時のフォールバック表示あり）                                               |
-| organisms | `Blog`          | トップ用の最新記事3件 + 一覧への導線                                                         |
-| organisms | `PostList`      | 記事カードのリスト。0件時は「記事はまだありません」を表示                                    |
-| organisms | `Connect`       | SNSリンク一覧                                                                                |
-| organisms | `SiteFooter`    | コピーライト表示                                                                             |
+| 階層      | コンポーネント     | 役割                                                                                         |
+| --------- | ------------------ | -------------------------------------------------------------------------------------------- |
+| atoms     | `Avatar`           | `astro:assets` の `Image` によるプロフィール画像最適化表示                                   |
+| atoms     | `Button`           | `variant: 'pill' \| 'solid'` を `button--<variant>` のモディファイアで出し分けるリンクボタン |
+| atoms     | `Icon`             | `data/icons.ts` のSVGパス定義を `stroke`/`fill` モードで描画                                 |
+| atoms     | `SectionLabel`     | セクション見出しラベル                                                                       |
+| atoms     | `CategoryBadge`    | カテゴリ表示。リンク先と現在地表示（`current`）を受け取る                                    |
+| atoms     | `SkillTag`         | 技術名のタグ（`li`）。SKILLS セクションと `/career` の使用技術で共用する                     |
+| molecules | `HeroMetaItem`     | アイコン+テキストの1行（所在地・生年月日）                                                   |
+| molecules | `PostCard`         | 記事カード（公開日+カテゴリ+タイトル+概要）                                                  |
+| molecules | `CategoryNav`      | 「すべて」+全カテゴリの切替ナビ                                                              |
+| molecules | `WorkCard`         | 実績カード（画像+タイトル+説明）                                                             |
+| molecules | `SocialLink`       | `Button(variant="pill")` + `Icon` の合成                                                     |
+| molecules | `TimelineItem`     | 経歴タイムラインの1エントリ                                                                  |
+| molecules | `ProjectAccordion` | プロジェクト1件の開閉式カード（タイトル+1行の要約。開くと期間+Markdown本文+使用技術）        |
+| organisms | `Hero`             | プロフィール表示（プロフィール文を含む） + Contactボタン（Connectへのページ内リンク）        |
+| organisms | `Skills`           | 技術スタックを分類ごとの小見出し+タグで表示                                                  |
+| organisms | `Career`           | 経歴タイムライン一覧 + `/career` への導線                                                    |
+| organisms | `Work`             | 実績一覧（取得失敗時のフォールバック表示あり）                                               |
+| organisms | `Blog`             | トップ用の最新記事3件 + 一覧への導線                                                         |
+| organisms | `PostList`         | 記事カードのリスト。0件時は「記事はまだありません」を表示                                    |
+| organisms | `Connect`          | SNSリンク一覧                                                                                |
+| organisms | `SiteFooter`       | コピーライト表示                                                                             |
 
 Props型は各コンポーネントで `CollectionEntry<'xxx'>['data']` を参照しており、データ層のZodスキーマがそのままUI層の型として再利用されている（型定義の重複を避ける設計）。
 
 ### 3.3 データ層（Content Collections）
 
-`src/content.config.ts` でコレクションを定義し、Zodスキーマでバリデーションしている。`blog` 以外は YAML ファイルを `astro/loaders` の `file()` ローダーで読み込む。
+`src/content.config.ts` でコレクションを定義し、Zodスキーマでバリデーションしている。`blog` と `projects` 以外は YAML ファイルを `astro/loaders` の `file()` ローダーで読み込む。`projects` は Markdown ファイルを `glob()` ローダーで読み込み、本文を型を決めずに自由に書けるようにしている。
 
-| コレクション  | ソース                                        | スキーマ概要                                                         | 利用箇所                      |
-| ------------- | --------------------------------------------- | -------------------------------------------------------------------- | ----------------------------- |
-| `profile`     | `data/profile.yaml`                           | name / role / location / birthday / seo                              | Hero, SiteFooter, Layout(SEO) |
-| `career`      | `data/career.yaml`                            | order / period / role / org                                          | Career                        |
-| `works`       | `data/works.yaml`（**未作成**）               | order / title / description / image / alt                            | Work                          |
-| `socialLinks` | `data/social.yaml`                            | order / label / href / icon                                          | Connect                       |
-| `blog`        | Notion データソース（`lib/notion/loader.ts`） | title / category / description / publishedAt / updatedAt。id は Slug | ブログ系ページ, Blog          |
-| `categories`  | `data/categories.yaml`                        | order / label。id は Notion の Category の選択肢名                   | ブログ系ページ, Blog          |
+| コレクション  | ソース                                        | スキーマ概要                                                                                                          | 利用箇所                      |
+| ------------- | --------------------------------------------- | --------------------------------------------------------------------------------------------------------------------- | ----------------------------- |
+| `profile`     | `data/profile.yaml`                           | name / role / location / birthday / summary（150文字以内） / seo                                                      | Hero, SiteFooter, Layout(SEO) |
+| `skills`      | `data/skills.yaml`                            | order / label / items（技術名の配列）                                                                                 | Skills                        |
+| `career`      | `data/career.yaml`                            | order / period / role / org                                                                                           | Career, `/career`             |
+| `projects`    | `content/projects/*.md`                       | career（`career` への reference） / order / title / summary / period・stack（省略可）+ Markdown 本文。id はファイル名 | `/career`                     |
+| `works`       | `data/works.yaml`（**未作成**）               | order / title / description / image / alt                                                                             | Work                          |
+| `socialLinks` | `data/social.yaml`                            | order / label / href / icon                                                                                           | Connect                       |
+| `blog`        | Notion データソース（`lib/notion/loader.ts`） | title / category / description / publishedAt / updatedAt。id は Slug                                                  | ブログ系ページ, Blog          |
+| `categories`  | `data/categories.yaml`                        | order / label。id は Notion の Category の選択肢名                                                                    | ブログ系ページ, Blog          |
+
+`projects` の `career` は `reference('career')` だが、Astro は存在しない id をログに出すだけでビルドを止めない。そのため `pages/career/index.astro` で `career.yaml` にない経歴を参照するプロジェクトを検出し、ビルドを失敗させる。
 
 `icons` オブジェクト（`data/icons.ts`）のキー集合がそのまま `socialLinks.icon` のZod enumに使われており、アイコン追加時の一元管理点になっている。
 
@@ -159,9 +172,10 @@ HTML の組み立てとリンク先の情報取得は `lib/notion/html.ts` に�
 
 - SCSSを厳密BEM（`Block__Element--Modifier`。要素は`__`、モディファイアは`--`で連結）の命名（`.hero__inner` 等）でコンポーネント単位のpartialに分割し、`style.scss` で `@use` している。
 - `_variables.scss` に配色・フォント・コンテナ幅・トランジションのデザイントークンを集約。
-- `_mixins.scss` に共通化されたmixinを定義。
+- `_mixins.scss` に共通化されたmixinを定義。矢印アイコン付きの文字リンク（`arrow-link`）はブログと Career の導線で共用する。
 - コンポーネント側（`.astro`）にはstyleブロックを持たず、クラス名経由でグローバルSCSSと結合する設計（Astroのscoped styleは不使用）。
 - ブログは `_blog.scss`（一覧・カード・カテゴリ）と `_post.scss`（記事本文）に分ける。記事本文は Notion から生成した HTML でクラスを付けられないため、`.post__body` 配下だけは要素セレクタで組版する。ただしローダーが HTML を組み立てるリンクカード（`.bookmark`）と表のスクロール枠（`.table-scroll`）はクラスで指定する。
+- `/career` のプロジェクトの本文も Markdown から生成した HTML でクラスを付けられないため、`_career.scss` の `.project__body` 配下を要素セレクタ（`p`・`h3`・`h4`・`ul`・`ol`・`strong`・`a`）で組版する。SKILLS とタグは `_skills.scss` に置く。
 
 ### 3.6 デプロイ
 

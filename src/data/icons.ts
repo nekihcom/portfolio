@@ -58,6 +58,10 @@ export const icons = {
 		mode: 'stroke',
 		markup: '<path d="M19 12H5M11 6l-6 6 6 6"/>',
 	},
+	'chevron-down': {
+		mode: 'stroke',
+		markup: '<path d="M6 9l6 6 6-6"/>',
+	},
 } as const satisfies Record<string, IconDef>;
 
 export type IconName = keyof typeof icons;

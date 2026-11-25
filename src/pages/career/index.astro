@@ -1,0 +1,75 @@
+---
+import { getCollection } from 'astro:content';
+import Layout from '../../layouts/Layout.astro';
+import SectionLabel from '../../components/atoms/SectionLabel.astro';
+import Icon from '../../components/atoms/Icon.astro';
+import ProjectAccordion from '../../components/molecules/ProjectAccordion.astro';
+import SiteFooter from '../../components/organisms/SiteFooter.astro';
+
+const [career, projects] = await Promise.all([
+	getCollection('career'),
+	getCollection('projects'),
+]);
+
+// reference() は存在しない id をログに出すだけでビルドを止めないため、ここで失敗させる
+const careerIds = new Set(career.map((entry) => entry.id));
+const orphans = projects.filter(
+	(project) => !careerIds.has(project.data.career.id),
+);
+if (orphans.length > 0) {
+	const list = orphans
+		.map((project) => `${project.id}（career: ${project.data.career.id}）`)
+		.join(', ');
+	throw new Error(`career.yaml にない経歴を参照しているプロジェクト: ${list}`);
+}
+
+// トップのタイムラインと同じく新しい順に並べ、各経歴にプロジェクトを order の降順で紐づける
+const entries = career
+	.sort((a, b) => b.data.order - a.data.order)
+	.map((entry) => ({
+		entry,
+		projects: projects
+			.filter((project) => project.data.career.id === entry.id)
+			.sort((a, b) => b.data.order - a.data.order),
+	}));
+---
+
+<Layout
+	title="Career"
+	description="経歴と、これまでに担当したプロジェクトの一覧。"
+	path="/career"
+	ogType="website"
+>
+	<main class="wrap wrap--wide">
+		<section class="career-index">
+			<a href="/" class="back-link">
+				<Icon name="arrow-left" />
+				<span>Top</span>
+			</a>
+			<SectionLabel text="CAREER" />
+			<h1 class="section-title">経歴</h1>
+			<div class="career-index__list">
+				{
+					entries.map(({ entry, projects }) => (
+						<section id={entry.id} class="career-index__item">
+							<p class="career-index__period">{entry.data.period}</p>
+							<h2 class="career-index__org">{entry.data.org}</h2>
+							<p class="career-index__role">{entry.data.role}</p>
+							{projects.length > 0 && (
+								<div class="career-index__projects">
+									{projects.map((project) => (
+										<ProjectAccordion project={project} />
+									))}
+								</div>
+							)}
+						</section>
+					))
+				}
+			</div>
+		</section>
+	</main>
+	<SiteFooter />
+	<script>
+		import '../../scripts/accordion';
+	</script>
+</Layout>

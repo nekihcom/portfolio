@@ -1,0 +1,36 @@
+---
+import { render, type CollectionEntry } from 'astro:content';
+import Icon from '../atoms/Icon.astro';
+import SkillTag from '../atoms/SkillTag.astro';
+
+interface Props {
+	project: CollectionEntry<'projects'>;
+}
+
+const { project } = Astro.props;
+const { title, summary, period, stack } = project.data;
+const { Content } = await render(project);
+---
+
+<details class="project">
+	<summary class="project__summary">
+		<span class="project__title">{title}</span>
+		<span class="project__lead">{summary}</span>
+		<span class="project__chevron"><Icon name="chevron-down" /></span>
+	</summary>
+	<div class="project__content">
+		{period && <p class="project__period">{period}</p>}
+		<div class="project__body">
+			<Content />
+		</div>
+		{
+			stack && stack.length > 0 && (
+				<ul class="project__stack">
+					{stack.map((item) => (
+						<SkillTag label={item} />
+					))}
+				</ul>
+			)
+		}
+	</div>
+</details>
